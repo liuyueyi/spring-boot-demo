@@ -1,0 +1,5 @@
+biz:
+  whitelist: a,b,c,d,e,f,g
+  ratelimit: 1,2,3
+  total: application-biz
+  profile: biz-profile

@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: native #配置服务器使用本地配置，默认git配置
+  cloud:
+    config:
+      name: eureka-service-consumer
+      uri: http://127.0.0.1:8084/config/
+      profile: pro
+
+eureka:
+  client:
+    serviceUrl: #注册中心的注册地址
+      defaultZone: http://127.0.0.1:8081/eureka/

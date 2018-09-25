@@ -1,0 +1,12 @@
+# 端口号
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev,biz
+
+source: config-application.yml
+
+biz:
+  total: application
