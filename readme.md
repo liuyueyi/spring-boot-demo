@@ -12,7 +12,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 
 - [x] [配置相关](http://spring.hhui.top/spring-blog/categories/SpringBoot/%E9%85%8D%E7%BD%AE/)
 - [ ] Bean相关
-- [ ] 日志相关
+- [x] 日志相关
 - [ ] AOP相关
 - [ ] SPEL
 - [ ] 事件通知机制
