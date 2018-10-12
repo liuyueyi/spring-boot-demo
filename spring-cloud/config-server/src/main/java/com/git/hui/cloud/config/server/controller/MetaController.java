@@ -1,5 +1,7 @@
 package com.git.hui.cloud.config.server.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.support.hsf.HSFJSONUtils;
 import com.git.hui.cloud.config.server.modal.ResWrapper;
 import com.git.hui.cloud.config.server.modal.data.MetaData;
 import com.git.hui.cloud.config.server.modal.req.ConfReqDO;
@@ -9,6 +11,8 @@ import com.git.hui.cloud.config.server.modal.res.ConfVO;
 import com.git.hui.cloud.config.server.modal.res.DetailResVO;
 import com.git.hui.cloud.config.server.modal.res.IndexResVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -24,6 +28,15 @@ import java.util.*;
 @RequestMapping(path = "/api/meta")
 public class MetaController {
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @RequestMapping(path = {"/apps"}, method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS})
+    public ResWrapper<String> getClients() {
+        List<String> result = discoveryClient.getServices();
+        return ResWrapper.buildSuccess(JSONObject.toJSONString(result));
+    }
+    
     /**
      * 应用配置首页
      *
