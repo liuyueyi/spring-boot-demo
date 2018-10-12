@@ -1,6 +1,8 @@
 package com.git.hui.boot.bean.rest;
 
 import com.alibaba.fastjson.JSON;
+import com.git.hui.boot.autoconfig.AutoBean;
+import com.git.hui.boot.autoconfig.AutoConfBean;
 import com.git.hui.boot.bean.autoload.factory.FacDemoBean;
 import com.git.hui.boot.bean.autoload.simple.AnoDemoBean;
 import com.git.hui.boot.bean.autoload.simple.ConfigDemoBean;
@@ -16,15 +18,23 @@ import java.util.Map;
  */
 @RestController
 public class DemoController {
+    /**
+     * 构造方法引入方式
+     */
     private AnoDemoBean anoDemoBean;
-
     public DemoController(AnoDemoBean anoDemoBean) {
         this.anoDemoBean = anoDemoBean;
     }
 
+    /**
+     * 经典的注解引入方式
+     */
     @Autowired
     private ConfigDemoBean configDemoBean;
 
+    /**
+     * 通过 FactoryBean 创建bean的使用测试
+     */
     private FacDemoBean facDemoBean;
 
     @Autowired
@@ -32,6 +42,14 @@ public class DemoController {
         this.facDemoBean = facDemoBean;
     }
 
+    /**
+     * 测试引入第三方包的情况
+     */
+    @Autowired
+    private AutoBean autoBean;
+
+    @Autowired
+    private AutoConfBean autoConfBean;
 
     @GetMapping(path = "/show")
     public String show(String name) {
@@ -39,6 +57,8 @@ public class DemoController {
         map.put("ano", anoDemoBean.getName(name));
         map.put("config", configDemoBean.getName(name));
         map.put("fac", facDemoBean.getName(name));
+        map.put("auto", autoBean != null ? autoBean.getName() : "null");
+        map.put("autoConf", autoConfBean != null ? autoConfBean.getName() : "null");
         return JSON.toJSONString(map);
     }
 }

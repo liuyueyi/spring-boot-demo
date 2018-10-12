@@ -2,6 +2,7 @@ package com.git.hui.boot.bean.config;
 
 import com.git.hui.boot.bean.autoload.factory.DemoFactoryBean;
 import com.git.hui.boot.bean.autoload.factory.FacDemoBean;
+import com.git.hui.boot.bean.autoload.simple.AnotherConfigBean;
 import com.git.hui.boot.bean.autoload.simple.ConfigDemoBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,11 @@ public class BeanLoadConfig {
     @Bean
     public ConfigDemoBean configDemoBean() {
         return new ConfigDemoBean();
+    }
+
+    @Bean
+    public AnotherConfigBean anotherConfigBean() {
+        return new AnotherConfigBean();
     }
 
     @Bean

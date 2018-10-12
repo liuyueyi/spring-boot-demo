@@ -15,6 +15,7 @@
         <module>002-properties</module>
         <module>003-log</module>
         <module>004-bean</module>
+        <module>005-autoconfig</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
