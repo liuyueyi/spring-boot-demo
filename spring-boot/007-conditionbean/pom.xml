@@ -3,26 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>boot-demo</artifactId>
+        <artifactId>spring-boot</artifactId>
         <groupId>com.git.hui.boot</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <modules>
-        <module>000-properties</module>
-        <module>001-properties</module>
-        <module>002-properties</module>
-        <module>003-log</module>
-        <module>004-bean</module>
-        <module>005-autoconfig</module>
-        <module>006-dynamicbean</module>
-        <module>007-conditionbean</module>
-    </modules>
 
-    <artifactId>spring-boot</artifactId>
+    <artifactId>007-conditionbean</artifactId>
 
-    <description>SpringBoot 配置相关演示demo</description>
+    <description>用来掩饰条件注册bean的示例</description>
 
     <dependencies>
         <dependency>
@@ -30,6 +19,5 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>
