@@ -13,7 +13,12 @@
         <module>000-properties</module>
         <module>001-properties</module>
         <module>002-properties</module>
-        <module>004-mysql</module>
+        <module>003-log</module>
+        <module>004-bean</module>
+        <module>005-autoconfig</module>
+        <module>006-dynamicbean</module>
+        <module>007-conditionbean</module>
+        <module>100-mysql</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
