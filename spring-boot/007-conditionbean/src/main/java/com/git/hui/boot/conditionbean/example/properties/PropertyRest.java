@@ -30,9 +30,9 @@ public class PropertyRest {
         Map<String, String> result = new HashMap<>(4);
         // 存在
         result.put("propertyExistBean", propertyExistBean == null ? "null ===> false" : propertyExistBean.getName());
-        // 不存在
+        // 存在
         result.put("propertyNotExistBean",
-                propertyNotExistBean == null ? "null ===> true" : propertyNotExistBean.getName());
+                propertyNotExistBean == null ? "null ===> false" : propertyNotExistBean.getName());
         // 存在
         result.put("propertyValueExistBean",
                 propertyValueExistBean == null ? "null ==> false" : propertyValueExistBean.getName());

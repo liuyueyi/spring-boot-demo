@@ -1,10 +1,8 @@
 package com.git.hui.boot.conditionbean.example.expression;
 
-import lombok.Getter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 
 /**
  * Created by @author yihui in 10:36 18/10/18.
