@@ -19,6 +19,7 @@
         <module>006-dynamicbean</module>
         <module>007-conditionbean</module>
         <module>200-webflux</module>
+        <module>008-beanorder</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
