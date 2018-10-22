@@ -18,18 +18,12 @@
         <module>005-autoconfig</module>
         <module>006-dynamicbean</module>
         <module>007-conditionbean</module>
+        <module>200-webflux</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
 
     <description>SpringBoot 配置相关演示demo</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    </dependencies>
 
 
 </project>

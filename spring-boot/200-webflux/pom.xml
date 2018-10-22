@@ -9,13 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>006-dynamicbean</artifactId>
-    <description>动态注册bean的演示, 结合动态Bean和代理，实现一个demo</description>
+    <artifactId>200-webflux</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
     </dependencies>
 
