@@ -9,6 +9,7 @@
     <modules>
         <module>spring-cloud</module>
         <module>spring-boot</module>
+        <module>spring-case</module>
     </modules>
     <packaging>pom</packaging>
 
