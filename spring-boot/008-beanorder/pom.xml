@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>006-dynamicbean</artifactId>
-    <description>动态注册bean的演示, 结合动态Bean和代理，实现一个demo</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>008-beanorder</artifactId>
+    <description>bean加载顺序和选择问题</description>
 
 </project>

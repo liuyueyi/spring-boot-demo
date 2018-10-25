@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class ExpressAutoConfig {
     /**
      * 当存在配置，且配置为true时才创建这个bean
-     * @return
+     * @returntrade_idbuy
      */
     @Bean
     @ConditionalOnExpression("#{'true'.equals(environment['conditional.express'])}")
