@@ -18,13 +18,14 @@
         <module>005-autoconfig</module>
         <module>006-dynamicbean</module>
         <module>007-conditionbean</module>
-        <module>200-webflux</module>
         <module>008-beanorder</module>
+        <module>100-mysql</module>
+        <module>200-webflux</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
 
-    <description>SpringBoot 配置相关演示demo</description>
+    <description>SpringBoot相关演示demo</description>
 
 
 </project>
