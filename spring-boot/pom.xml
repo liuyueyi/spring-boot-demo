@@ -20,6 +20,7 @@
         <module>007-conditionbean</module>
         <module>008-beanorder</module>
         <module>100-mysql</module>
+        <module>120-redis-config</module>
         <module>200-webflux</module>
     </modules>
 

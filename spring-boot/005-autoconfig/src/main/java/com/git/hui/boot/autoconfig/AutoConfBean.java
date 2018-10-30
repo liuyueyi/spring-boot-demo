@@ -2,6 +2,8 @@ package com.git.hui.boot.autoconfig;
 
 import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by @author yihui in 18:54 18/10/12.
  */
@@ -16,5 +18,10 @@ public class AutoConfBean {
 
     public String getName() {
         return name;
+    }
+
+    @PostConstruct
+    public void register() {
+        BeanWrapper.init(this);
     }
 }
