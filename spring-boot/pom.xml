@@ -22,6 +22,7 @@
         <module>100-mysql</module>
         <module>120-redis-config</module>
         <module>200-webflux</module>
+        <module>121-redis-jedis-config</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>

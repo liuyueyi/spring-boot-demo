@@ -27,7 +27,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [ ] hibernate
     - [ ] jooq
 - [ ] Mongo
-- [ ] Redis读写
+- [ ] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/)
 - [ ] MemCache
 - [ ] SpringCache
 - [ ] 定时器 
