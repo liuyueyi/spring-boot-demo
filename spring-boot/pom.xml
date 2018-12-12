@@ -24,6 +24,7 @@
         <module>200-webflux</module>
         <module>121-redis-jedis-config</module>
         <module>122-redis-template</module>
+        <module>008-schedule</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>

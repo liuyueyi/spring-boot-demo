@@ -63,6 +63,17 @@ public class ZSetBean {
     }
 
     /**
+     * 判断value在zset中的排名  zrank
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public Long rank(String key, String value) {
+        return redisTemplate.opsForZSet().rank(key, value);
+    }
+
+    /**
      * 查询集合中指定顺序的值， 0 -1 表示获取全部的集合内容  zrange
      *
      * 返回有序的集合，score小的在前面
