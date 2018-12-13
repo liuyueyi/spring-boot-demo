@@ -25,6 +25,7 @@
         <module>121-redis-jedis-config</module>
         <module>122-redis-template</module>
         <module>008-schedule</module>
+        <module>110-mongo-basic</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>

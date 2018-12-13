@@ -1,5 +1,9 @@
 # Spring-Boot-Demo
 
+[![Build Status](https://travis-ci.org/liuyueyi/spring-boot-demo.svg?branch=master)](https://travis-ci.org/liuyueyi/spring-boot-demo)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/liuyueyi/spring-boot-demo.svg)](http://isitmaintained.com/project/liuyueyi/spring-boot-demo "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/liuyueyi/spring-boot-demo.svg)](http://isitmaintained.com/project/liuyueyi/spring-boot-demo "Percentage of issues still open")
+
 SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习历程
 
 ## 1. 博文相关
@@ -26,11 +30,12 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [ ] mybatis
     - [ ] hibernate
     - [ ] jooq
-- [ ] Mongo
+- [ ] [Mongo](http://spring.hhui.top/spring-blog/tags/Mongo/)
 - [ ] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/)
 - [ ] MemCache
 - [ ] SpringCache
 - [ ] 定时器 
+- [ ] SOLR
 
 ### III. MVC篇
 
@@ -67,7 +72,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 
 ### 声明
 
-尽信书则不如，已上内容，纯属一家之言，因个人能力有限，难免有疏漏和错误之处，如发现bug或者有更好的建议，欢迎批评指正，不吝感激
+尽信书则不如，已上内容，一家之言，因个人能力有限，难免有疏漏和错误之处，如发现bug或者有更好的建议，欢迎批评指正，不吝感激
 
 - 微博地址: 小灰灰Blog
 - QQ： 一灰灰/3302797840
