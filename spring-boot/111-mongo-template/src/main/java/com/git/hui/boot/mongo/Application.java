@@ -1,6 +1,8 @@
 package com.git.hui.boot.mongo;
 
 import com.git.hui.boot.mongo.wrapper.MongoReadWrapper;
+import com.git.hui.boot.mongo.wrapper.MongoAddWrapper;
+import com.git.hui.boot.mongo.wrapper.MongoUpdateWrapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,10 +13,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     private final MongoReadWrapper mongoReadWrapper;
+    private final MongoAddWrapper mongoAddWrapper;
+    private final MongoUpdateWrapper mongoUpdateWrapper;
 
-    public Application(MongoReadWrapper mongoReadWrapper) {
+    public Application(MongoReadWrapper mongoReadWrapper, MongoAddWrapper mongoAddWrapper,
+            MongoUpdateWrapper mongoUpdateWrapper) {
         this.mongoReadWrapper = mongoReadWrapper;
+        this.mongoAddWrapper = mongoAddWrapper;
+        this.mongoUpdateWrapper = mongoUpdateWrapper;
 
+        updateDemo();
+    }
+
+    private void queryDemo() {
         // 指定查询
         this.mongoReadWrapper.specialFieldQuery();
 
@@ -40,6 +51,21 @@ public class Application {
         this.mongoReadWrapper.pageQuery();
 
         this.mongoReadWrapper.complexQuery();
+    }
+
+    private void addDemo() {
+        this.mongoAddWrapper.insert();
+        this.mongoAddWrapper.insertMany();
+        this.mongoAddWrapper.upsertNoMatch();
+        this.mongoAddWrapper.upsertOneMatch();
+        this.mongoAddWrapper.upsertTwoMatch();
+    }
+
+    private void updateDemo() {
+        this.mongoUpdateWrapper.basicUpdate();
+        this.mongoUpdateWrapper.fieldUpdate();
+        this.mongoUpdateWrapper.updateInnerArray();
+        this.mongoUpdateWrapper.updateInnerDoc();
     }
 
     public static void main(String[] args) {

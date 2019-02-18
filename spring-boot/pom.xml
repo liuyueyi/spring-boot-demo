@@ -27,6 +27,7 @@
         <module>008-schedule</module>
         <module>110-mongo-basic</module>
         <module>111-mongo-template</module>
+        <module>201-web</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
