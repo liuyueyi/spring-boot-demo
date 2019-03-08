@@ -1,4 +1,4 @@
-package com.git.hui.boot.web.config;
+package com.git.hui.boot.web.configs;
 
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
