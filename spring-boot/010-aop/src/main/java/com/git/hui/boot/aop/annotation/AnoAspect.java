@@ -4,14 +4,13 @@ import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by @author yihui in 10:52 19/3/1.
  */
 @Aspect
-@Component
-public class AnoAspcet {
+//@Component
+public class AnoAspect {
 
     @Before("execution(public * com.git.hui.boot.aop.demo.*.*(*))")
     public void doBefore(JoinPoint joinPoint) {
@@ -44,5 +43,15 @@ public class AnoAspcet {
         Object ans = joinPoint.proceed();
         System.out.println("do in Aspect around ------- over! ans: " + ans);
         return ans;
+    }
+
+    @Before("point()")
+    public void sameBefore() {
+        System.out.println("SameAspect");
+    }
+
+    @Before("@annotation(AnoDot)")
+    public void anoBefore() {
+        System.out.println("AnoAspect");
     }
 }

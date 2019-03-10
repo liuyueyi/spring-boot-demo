@@ -1,14 +1,12 @@
 package com.git.hui.boot.aop;
 
-import com.git.hui.boot.aop.demo.DemoBean;
 
+import com.git.hui.boot.aop.demo.DemoBean;
+import com.git.hui.boot.aop.demo2.AnoDemoBean;
+import com.git.hui.boot.aop.demo2.ScopeDemoBean;
+import com.git.hui.boot.aop.order.InnerDemoBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.origin.OriginTrackedValue;
-import org.springframework.core.env.Environment;
-import org.springframework.core.env.StandardEnvironment;
-
-import java.util.Map;
 
 /**
  * Created by @author yihui in 12:02 19/2/28.
@@ -16,11 +14,37 @@ import java.util.Map;
 @SpringBootApplication
 public class Application {
 
-    public Application(DemoBean demoBean) {
-        String ans = demoBean.randUUID(System.currentTimeMillis());
-        System.out.println("----- ans: " + ans + "---------");
+    private DemoBean demoBean;
+    private AnoDemoBean anoDemoBean;
+
+    private InnerDemoBean innerDemoBean;
+
+    public Application(DemoBean demoBean, AnoDemoBean anoDemoBean, InnerDemoBean innerDemoBean) {
+        this.demoBean = demoBean;
+        this.anoDemoBean = anoDemoBean;
+        this.innerDemoBean = innerDemoBean;
+
+        //        this.anoDemoBean();
+        //        this.demoBean();
+
+        this.innerDemoBean();
     }
-//
+
+    private void innerDemoBean() {
+        System.out.println("result: " + innerDemoBean.print());
+    }
+
+    private void anoDemoBean() {
+        //        System.out.println(">>>>>>>" + anoDemoBean.randUUID(System.currentTimeMillis()));
+        anoDemoBean.scopeUUID(System.currentTimeMillis());
+    }
+
+    private void demoBean() {
+        System.out.println(">>>>> " + demoBean.genUUID(System.currentTimeMillis()));
+    }
+
+
+    //
     //    @SuppressWarnings("unchecked")
     //    public Application(Environment environment) {
     //        final String KEY = "alarm.title";
