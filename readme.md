@@ -36,6 +36,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 - [ ] SpringCache
 - [ ] 定时器 
 - [ ] SOLR
+- [ ] ES
 
 ### III. MVC篇
 
@@ -47,6 +48,9 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 - [ ] 数据返回/视图绑定/重定向
 - [ ] 异常处理
 - [ ] 安全相关(SQL/XSS等注入)
+- [ ] 跨域处理
+- [ ] WebSocket
+- [ ] reactive
 
 
 ### IV. SpringCloud篇

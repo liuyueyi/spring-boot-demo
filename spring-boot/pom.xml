@@ -29,6 +29,7 @@
         <module>111-mongo-template</module>
         <module>201-web</module>
         <module>010-aop</module>
+        <module>011-aop-logaspect</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>

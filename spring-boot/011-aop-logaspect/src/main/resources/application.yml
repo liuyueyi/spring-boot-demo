@@ -1,0 +1,1 @@
+logaspect.aop.express="execution(public * com.git.hui.boot.aop.demo.*.*(*)) || @annotation(AnoDot)"
