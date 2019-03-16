@@ -1,0 +1,27 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:beans="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <!--指定扫描的包路径，自动注册包含指定注解的对象到Spring容器，并包含了 context:annotation-config 的作用-->
+    <context:component-scan base-package="com.git.hui.spring"/>
+
+    <!-- 这个使用来激活注册的Bean，简单来讲就是使Ioc工作起来 -->
+    <!--<context:annotation-config/>-->
+
+    <!--<bean name="printServer" class="com.git.hui.spring.PrintServer"/>-->
+    <!--<bean name="helloRest" class="com.git.hui.spring.HelloRest"/>-->
+
+
+    <!--<mvc:annotation-driven/>-->
+
+    <!--cglib代理-->
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+
+</beans>
