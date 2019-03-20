@@ -2,9 +2,11 @@ package com.git.hui.spring;
 
 import com.git.hui.spring.config.RootConfig;
 import com.git.hui.spring.config.WebConfig;
+import com.git.hui.spring.hook.filter.MyCorsFilter;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -40,6 +42,6 @@ public class MyWebApplicationInitializer extends AbstractDispatcherServletInitia
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new CharacterEncodingFilter("UTF-8", true)};
+        return new Filter[]{new CharacterEncodingFilter("UTF-8", true), new MyCorsFilter()};
     }
 }
