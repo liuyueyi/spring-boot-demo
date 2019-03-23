@@ -28,7 +28,7 @@ public class MyCorsFilter implements Filter {
             HttpServletRequest request = (HttpServletRequest) servletRequest;
             HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-            if ("hello".equals(request.getRequestURI())) {
+            if ("/hello".equals(request.getRequestURI())) {
                 response.setHeader("Access-Control-Allow-Origin", request.getHeader("origin"));
                 response.setHeader("Access-Control-Allow-Methods", "*");
                 response.setHeader("Access-Control-Allow-Credentials", "true");
