@@ -30,6 +30,8 @@
         <module>201-web</module>
         <module>010-aop</module>
         <module>011-aop-logaspect</module>
+        <module>202-web-params</module>
+        <module>101-jdbctemplate</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
