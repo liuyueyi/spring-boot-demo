@@ -1,6 +1,7 @@
 package com.git.hui.boot.jdbc;
 
 import com.git.hui.boot.jdbc.insert.InsertService;
+import com.git.hui.boot.jdbc.query.QueryService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,9 +11,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public Application(InsertService insertService) {
+    private InsertService insertService;
+    private QueryService queryService;
+
+    public Application(InsertService insertService, QueryService queryService) {
+        this.insertService = insertService;
+        this.queryService = queryService;
+
+        queryTest();
+    }
+
+    public void insertTest() {
         insertService.basicInsert();
         insertService.batchInsert();
+    }
+
+    public void queryTest() {
+        queryService.queryForMap();
+        queryService.queryForObject();
     }
 
     public static void main(String[] args) {
