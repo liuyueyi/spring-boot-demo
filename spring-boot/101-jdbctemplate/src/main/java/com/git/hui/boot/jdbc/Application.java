@@ -29,6 +29,7 @@ public class Application {
     public void queryTest() {
         queryService.queryForMap();
         queryService.queryForObject();
+        queryService.queryForList();
     }
 
     public static void main(String[] args) {

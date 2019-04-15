@@ -111,7 +111,7 @@ public class QueryService {
 
         // 更简单的方式，直接通过BeanPropertyRowMapper来实现属性的赋值，前提是sql返回的列名能正确匹配
         moneyPO = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(MoneyPO.class));
-        System.out.println(moneyPO);
+        System.out.println("queryForObject by BeanPropertyRowMapper: " + moneyPO);
 
 
         // 下面开始测试下 org.springframework.jdbc.core.JdbcTemplate.queryForObject(java.lang.String, java.lang.Class<T>, java.lang.Object...)
@@ -121,8 +121,18 @@ public class QueryService {
         System.out.println("queryForObject by requireId return: " + res);
 
         try {
+            // 只允许返回一个数据，然后传入基本数据类型，下面这种方式是禁止的
             MoneyPO po = jdbcTemplate.queryForObject(sql, MoneyPO.class);
             System.out.println("queryForObject by requireType return: " + po);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            // 如果没有命中，则抛异常出来
+            Integer notHit = jdbcTemplate.queryForObject(sql2, Integer.class, 100);
+            System.out.println("not hit: " + notHit);
         } catch (Exception e) {
             e.printStackTrace();
         }
