@@ -1,6 +1,5 @@
 package com.git.hui.boot.jdbc.query;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -8,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -55,18 +53,6 @@ public class QueryService {
             e.printStackTrace();
         }
     }
-
-    @Data
-    public static class MoneyPO implements Serializable {
-        private static final long serialVersionUID = -5423883314375017670L;
-        private Integer id;
-        private String name;
-        private Integer money;
-        private boolean isDeleted;
-        private Long created;
-        private Long updated;
-    }
-
 
     public void queryForObject() {
         System.out.println("============ query for object! ==============");
