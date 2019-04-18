@@ -1,16 +1,17 @@
 package com.git.hui.boot.jdbc.update;
 
+import com.alibaba.fastjson.JSON;
 import com.git.hui.boot.jdbc.query.MoneyPO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Executors;
 
 /**
@@ -23,8 +24,8 @@ public class UpdateService {
 
     public void update() {
         updateOne();
+        updateBatch();
     }
-
 
     private MoneyPO queryById(int id) {
         return jdbcTemplate.queryForObject(
@@ -79,5 +80,49 @@ public class UpdateService {
             }
         });
         System.out.println("statementSetter update: " + ans + " | db: " + queryById(id));
+    }
+
+
+    private List<MoneyPO> queryByIds(List<Integer> ids) {
+        StringBuilder strIds = new StringBuilder();
+        for (Integer id : ids) {
+            strIds.append(id).append(",");
+        }
+        return jdbcTemplate.query("select id, `name`, money, is_deleted as isDeleted, unix_timestamp(create_at) as " +
+                "created, unix_timestamp(update_at) as updated from money where id in (" +
+                strIds.substring(0, strIds.length() - 1) + ")", new BeanPropertyRowMapper<>(MoneyPO.class));
+    }
+
+    private void updateBatch() {
+        // 批量修改，
+        // 执行多条sql的场景
+        int[] ans = jdbcTemplate
+                .batchUpdate("update money set money=1300 where id =10", "update money set money=1300 where id = 11");
+        System.out.println(
+                "batch update by sql ans: " + JSON.toJSONString(ans) + " | db: " + queryByIds(Arrays.asList(10, 11)));
+
+        // 占位替换方式
+        ans = jdbcTemplate.batchUpdate("update money set money=money + ? where id = ?",
+                Arrays.asList(new Object[]{99, 10}, new Object[]{99, 11}));
+        System.out.println("batch update by placeHolder ans: " + JSON.toJSONString(ans) + " | db: " +
+                queryByIds(Arrays.asList(10, 11)));
+
+
+        // 通过 statement
+        ans = jdbcTemplate
+                .batchUpdate("update money set money=money + ? where id = ?", new BatchPreparedStatementSetter() {
+                    @Override
+                    public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                        preparedStatement.setInt(1, 99);
+                        preparedStatement.setInt(2, i + 10);
+                    }
+
+                    @Override
+                    public int getBatchSize() {
+                        return 2;
+                    }
+                });
+        System.out.println("batch update by statement ans: " + JSON.toJSONString(ans) + " | db: " +
+                queryByIds(Arrays.asList(10, 11)));
     }
 }

@@ -25,7 +25,10 @@ public class Application {
         this.queryServiceV2 = queryServiceV2;
         this.updateService = updateService;
 
+        insertTest();
+        queryTest();
         queryTest2();
+        updateTest();
     }
 
 
