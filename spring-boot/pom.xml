@@ -20,18 +20,20 @@
         <module>007-conditionbean</module>
         <module>008-beanorder</module>
         <module>009-schedule</module>
+        <module>010-aop</module>
+        <module>011-aop-logaspect</module>
         <module>100-mysql</module>
+        <module>101-jdbctemplate</module>
         <module>120-redis-config</module>
-        <module>200-webflux</module>
         <module>121-redis-jedis-config</module>
         <module>122-redis-template</module>
         <module>110-mongo-basic</module>
         <module>111-mongo-template</module>
+        <module>130-influxdb</module>
+        <module>200-webflux</module>
         <module>201-web</module>
-        <module>010-aop</module>
-        <module>011-aop-logaspect</module>
         <module>202-web-params</module>
-        <module>101-jdbctemplate</module>
+        <module>203-websocket</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
