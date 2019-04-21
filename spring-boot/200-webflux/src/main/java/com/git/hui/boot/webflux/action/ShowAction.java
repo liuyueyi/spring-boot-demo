@@ -31,6 +31,7 @@ public class ShowAction {
 
     /**
      * sse 服务端推送模式, 每隔一秒向客户端推送一次数据
+     *
      * @param serverRequest
      * @return
      */
