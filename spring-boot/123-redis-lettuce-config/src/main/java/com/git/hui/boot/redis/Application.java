@@ -9,13 +9,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Created by @author yihui in 18:13 18/10/30.
+ * Created by @author yihui in 17:53 19/4/26.
  */
 @SpringBootApplication
 public class Application {
-
-
-
     public Application(RedisTemplate<String, String> redisTemplate) {
         redisTemplate.opsForValue().get("key");
 
@@ -34,7 +31,10 @@ public class Application {
             });
         }
 
-    }   public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
     }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class);
+    }
+
 }
