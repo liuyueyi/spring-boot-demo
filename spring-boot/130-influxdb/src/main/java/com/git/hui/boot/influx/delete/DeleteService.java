@@ -1,6 +1,5 @@
 package com.git.hui.boot.influx.delete;
 
-import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
