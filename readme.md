@@ -30,12 +30,13 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [ ] mybatis
     - [ ] hibernate
     - [ ] jooq
+    - [ ] influxdb
 - [ ] [Mongo](http://spring.hhui.top/spring-blog/tags/Mongo/)
 - [ ] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/)
 - [ ] MemCache
 - [ ] SpringCache
 - [ ] 定时器 
-- [ ] SOLR
+- [ ] [SOLR](http://spring.hhui.top/spring-blog/tags/Solr/)
 - [ ] ES
 
 ### III. MVC篇
@@ -68,6 +69,28 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 ### V. 源码篇
 
 - [ ] xxx
+
+### VI. 应用相关
+
+#### 1. [SpringBoot应用篇Bean之注销与动态注册实现服务mock](http://spring.hhui.top/spring-blog/2018/10/17/181017-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87Bean%E4%B9%8B%E6%B3%A8%E9%94%80%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1mock/)
+
+> 通过bean的基础知识，实现动态的bean注册于销毁，通过定义接口，模拟生成mock服务，用于后续测试的演示工程， 工程源码： [https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-boot/006-dynamicbean](https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-boot/006-dynamicbean)
+
+#### 2. [SpringBoot应用篇之FactoryBean及代理实现SPI机制的实例](http://spring.hhui.top/spring-blog/2018/10/24/181024-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BFactoryBean%E5%8F%8A%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0SPI%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AE%9E%E4%BE%8B/)
+
+> SPI在实际的业务开发中，可能很多童鞋都没有接触过，如果看一些开源项目如logback, dubbo... 会发现这个技术应用还是比较广泛的；这篇文章主要是在学习FactoryBean之后的萌发的，通过工程bean，来时先SPI的效果，这里也用到了代理的相关知识点，对于希望理解SPI、代理模式和FactoryBean的童鞋，还是比较有用的, 工程源码: [https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-case/000-spi-factorybean](https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-case/000-spi-factorybean)
+
+#### 3. [SpringBoot应用篇之借助Redis实现排行榜功能](http://spring.hhui.top/spring-blog/2018/12/25/181225-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E5%AE%9E%E7%8E%B0%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%8A%9F%E8%83%BD/)
+
+> 排行榜可以说大量的出现在我们的视线中，那么你真的知道如何实现一个排行榜的功能么？如何保证排行榜的实时刷新，快速获取自己的排名？这篇文章就是redis学习后的典型应用，通过zset来实现排行榜功能，源码为：[https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-case/120-redis-ranklist](https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-case/120-redis-ranklist)
+
+#### 4. [SpringCloud应用篇之AOP实现日志功能](http://spring.hhui.top/spring-blog/2019/03/13/190313-SpringCloud%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BAOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E5%8A%9F%E8%83%BD/)
+
+> 日志可以说是后端定位问题的神器，没有日志如何找bug？但是埋点、写日志对于后端来说，就不那么友好了。这篇文章是在AOP学习之后的应用，尽量少侵入的方式，实现服务相应相关日志，主要是提供一种解耦的日志输出思路，源码可见: [https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-boot/011-aop-logaspect](https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-boot/011-aop-logaspect)
+
+#### 5. [SpringBoot系列教程应用篇之借助Redis搭建一个简单站点统计服务](http://spring.hhui.top/spring-blog/2019/05/13/190513-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E6%9C%8D%E5%8A%A1/)
+
+> 站点统计uv,pv 可以说是一个非常有意思的场景了，如何实现呢？我希望统计我的网站，总访问量，访问人数，每个人的访问排名，每天的pv/uv统计，找到我的网站中最受大家欢迎的页面，可以怎么实现？学完redis之后，忽然发现，redis的几个数据结构貌似可以搞一搞，实现这个功能，所以就有了这篇应用文章，源码为： [https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-case/124-redis-sitecount](https://github.com/liuyueyi/spring-boot-demo/tree/master/spring-case/124-redis-sitecount)
 
 ## 2. 其他
 

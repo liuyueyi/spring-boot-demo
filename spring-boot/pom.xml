@@ -27,15 +27,15 @@
         <module>120-redis-config</module>
         <module>121-redis-jedis-config</module>
         <module>122-redis-template</module>
+        <module>123-redis-lettuce-config</module>
         <module>110-mongo-basic</module>
         <module>111-mongo-template</module>
         <module>130-influxdb</module>
+        <module>140-search-solr</module>
         <module>200-webflux</module>
         <module>201-web</module>
         <module>202-web-params</module>
         <module>203-websocket</module>
-        <module>123-redis-lettuce-config</module>
-        <module>140-search-solr</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
