@@ -36,6 +36,7 @@
         <module>201-web</module>
         <module>202-web-params</module>
         <module>203-websocket</module>
+        <module>102-jpa</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
