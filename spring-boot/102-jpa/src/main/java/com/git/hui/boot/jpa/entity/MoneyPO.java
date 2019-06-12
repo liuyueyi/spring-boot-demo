@@ -1,9 +1,11 @@
 package com.git.hui.boot.jpa.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by @author yihui in 21:01 19/6/10.
@@ -13,7 +15,10 @@ import java.sql.Date;
 @Table(name = "money")
 public class MoneyPO {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // 如果是auto，则会报异常 Table 'mysql.hibernate_sequence' doesn't exist
+    //    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
@@ -26,8 +31,10 @@ public class MoneyPO {
     private Byte isDeleted;
 
     @Column(name = "create_at")
-    private Date createAt;
+    @CreatedDate
+    private Timestamp createAt;
 
     @Column(name = "update_at")
-    private Date updateAt;
+    @CreatedDate
+    private Timestamp updateAt;
 }

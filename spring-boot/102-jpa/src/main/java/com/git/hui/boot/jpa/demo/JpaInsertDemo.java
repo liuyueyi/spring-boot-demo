@@ -5,7 +5,7 @@ import com.git.hui.boot.jpa.repository.MoneyCreateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Arrays;
 
 /**
@@ -31,11 +31,11 @@ public class JpaInsertDemo {
         moneyPO.setName("jpa 一灰灰");
         moneyPO.setMoney(1000L);
         moneyPO.setIsDeleted((byte) 0x00);
-        Date now = new Date(System.currentTimeMillis());
+        Timestamp now = new Timestamp(System.currentTimeMillis());
         moneyPO.setCreateAt(now);
         moneyPO.setUpdateAt(now);
 
-        MoneyPO res = moneyCreateRepository.save(moneyPO);
+        MoneyPO res = moneyCreateRepository.saveAndFlush(moneyPO);
         System.out.println("after insert res: " + res);
     }
 
@@ -46,7 +46,7 @@ public class JpaInsertDemo {
         moneyPO.setName("batch jpa 一灰灰");
         moneyPO.setMoney(1000L);
         moneyPO.setIsDeleted((byte) 0x00);
-        Date now = new Date(System.currentTimeMillis());
+        Timestamp now = new Timestamp(System.currentTimeMillis());
         moneyPO.setCreateAt(now);
         moneyPO.setUpdateAt(now);
 
@@ -58,18 +58,23 @@ public class JpaInsertDemo {
         moneyPO2.setUpdateAt(now);
 
         Iterable<MoneyPO> res = moneyCreateRepository.saveAll(Arrays.asList(moneyPO, moneyPO2));
+        moneyCreateRepository.flush();
         System.out.println("after batchAdd res: " + res);
     }
 
 
     private void addWithNull() {
         // 单个添加
-        MoneyPO moneyPO = new MoneyPO();
-        moneyPO.setName("jpa 一灰灰 ex");
-        moneyPO.setMoney(2000L);
-        moneyPO.setIsDeleted(null);
-        MoneyPO res = moneyCreateRepository.save(moneyPO);
-        System.out.println("after insert res: " + res);
+        try {
+            MoneyPO moneyPO = new MoneyPO();
+            moneyPO.setName("jpa 一灰灰 ex");
+            moneyPO.setMoney(2000L);
+            moneyPO.setIsDeleted(null);
+            MoneyPO res = moneyCreateRepository.saveAndFlush(moneyPO);
+            System.out.println("after insert res: " + res);
+        } catch (Exception e) {
+            System.out.println("addWithNull field: " + e.getMessage());
+        }
     }
 
     private void addWithId() {
@@ -77,8 +82,9 @@ public class JpaInsertDemo {
         MoneyPO moneyPO = new MoneyPO();
         moneyPO.setId(20);
         moneyPO.setName("jpa 一灰灰 ex");
-        moneyPO.setMoney(2100L);
-        MoneyPO res = moneyCreateRepository.save(moneyPO);
+        moneyPO.setMoney(2200L);
+        moneyPO.setIsDeleted((byte) 0x00);
+        MoneyPO res = moneyCreateRepository.saveAndFlush(moneyPO);
         System.out.println("after insert res: " + res);
     }
 }

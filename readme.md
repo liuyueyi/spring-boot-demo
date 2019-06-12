@@ -27,6 +27,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [x] 基本配置，数据源等
     - [x] jdbcTemplate
     - [x] JPA
+        - 项目工程： [spring-boot/102-jpa](spring-boot/102-jpa)
     - [ ] mybatis
     - [ ] hibernate
     - [ ] jooq
@@ -35,7 +36,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [x] 项目工程
         - 基础环境 [spring-boot/110-mongo-basic](spring-boot/110-mongo-basic)
         - mongoTemplate使用姿势 [spring-boot/111-mongo-template](spring-boot/111-mongo-template)
-- [x] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/
+- [x] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/)
     - [x] 项目工程：
         - 基本环境构建 [spring-boot/120-redis-config](spring-boot/120-redis-config)
         - jedis环境构建  [spring-boot/121-redis-jedis-config](spring-boot/121-redis-jedis-config)
