@@ -24,21 +24,34 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 ### II. 高级篇
 
 - [ ] [db读写](http://spring.hhui.top/spring-blog/tags/DB/)
-    - [ ] 基本配置，数据源等
-    - [ ] jdbcTemplate
-    - [ ] JPDA
+    - [x] 基本配置，数据源等
+    - [x] jdbcTemplate
+    - [x] JPA
     - [ ] mybatis
     - [ ] hibernate
     - [ ] jooq
-    - [ ] influxdb
+- [ ] influxdb 时序数据库
 - [ ] [Mongo](http://spring.hhui.top/spring-blog/tags/Mongo/)
-- [ ] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/)
+    - [x] 项目工程
+        - 基础环境 [spring-boot/110-mongo-basic](spring-boot/110-mongo-basic)
+        - mongoTemplate使用姿势 [spring-boot/111-mongo-template](spring-boot/111-mongo-template)
+- [x] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/
+    - [x] 项目工程：
+        - 基本环境构建 [spring-boot/120-redis-config](spring-boot/120-redis-config)
+        - jedis环境构建  [spring-boot/121-redis-jedis-config](spring-boot/121-redis-jedis-config)
+        - redisTemplate使用姿势 [spring-boot/122-redis-template](spring-boot/122-redis-template)
+        - lettuce环境构建 [spring-boot/123-redis-lettuce-config](spring-boot/123-redis-lettuce-config)
+        - 排行榜应用实例工程 [spring-case/120-redis-ranklist](spring-case/120-redis-ranklist)
+        - 站点统计应用实例工程 [spring-case/124-redis-sitecount](spring-case/124-redis-sitecount)
 - [ ] MemCache
 - [ ] SpringCache
 - [ ] 定时器 
-- [ ] [SOLR](http://spring.hhui.top/spring-blog/tags/Solr/)
-- [ ] ES
-
+- [ ] 搜索 ES
+- [ ] 搜索 [Solr](http://spring.hhui.top/spring-blog/tags/Solr/)
+    - [x] 项目工程：[spring-boot/140-search-solr](spring-boot/140-search-solr)
+    - [x] [基本环境搭建](http://spring.hhui.top/spring-blog/2019/05/10/190510-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2%E4%B9%8BSolr%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E7%AE%80%E5%8D%95%E6%B5%8B%E8%AF%95/)
+    - [x] [新增与修改使用说明](http://spring.hhui.top/spring-blog/2019/05/26/190526-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2Solr%E4%B9%8B%E6%96%87%E6%A1%A3%E6%96%B0%E5%A2%9E%E4%B8%8E%E4%BF%AE%E6%94%B9%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/) 
+    
 ### III. MVC篇
 
 - [ ] mvc
