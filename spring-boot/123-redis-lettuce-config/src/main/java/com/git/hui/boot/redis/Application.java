@@ -1,6 +1,5 @@
 package com.git.hui.boot.redis;
 
-import com.sun.jmx.snmp.tasks.Task;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,16 +17,8 @@ public class Application {
 
         ExecutorService executorService = Executors.newFixedThreadPool(4);
         while (true) {
-            executorService.submit(new Task() {
-                @Override
-                public void cancel() {
-
-                }
-
-                @Override
-                public void run() {
-                    redisTemplate.opsForValue().get("test");
-                }
+            executorService.submit(() -> {
+                redisTemplate.opsForValue().get("test");
             });
         }
 

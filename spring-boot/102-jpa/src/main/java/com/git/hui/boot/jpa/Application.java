@@ -13,9 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
     public Application(MoneyDemoRepository moneyDemoRepository, JpaQueryDemo jpaQueryDemo, JpaInsertDemo jpaInsertDemo) {
-        MoneyPO moneyPO = moneyDemoRepository.findById(1).get();
-        System.out.println(moneyPO);
-        System.out.println("-----------------------");
+//        MoneyPO moneyPO = moneyDemoRepository.findById(1).get();
+//        System.out.println(moneyPO);
+//        System.out.println("-----------------------");
 
 //        jpaQueryDemo.queryTest();
 
