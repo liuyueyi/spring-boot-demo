@@ -2,6 +2,7 @@ package com.git.hui.boot.jpa.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
  * Created by @author yihui in 21:01 19/6/10.
  */
 @Data
+@DynamicUpdate
 @DynamicInsert
 @Entity
 @Table(name = "money")
@@ -20,7 +22,6 @@ public class MoneyPO {
     // @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-
     private Integer id;
 
     @Column(name = "name")
@@ -39,4 +40,5 @@ public class MoneyPO {
     @Column(name = "update_at")
     @CreatedDate
     private Timestamp updateAt;
+
 }
