@@ -1,5 +1,6 @@
 package com.git.hui.boot.jpa;
 
+import com.git.hui.boot.jpa.demo.JpaDeleteDemo;
 import com.git.hui.boot.jpa.demo.JpaInsertDemo;
 import com.git.hui.boot.jpa.demo.JpaQueryDemo;
 import com.git.hui.boot.jpa.demo.JpaUpdateDemo;
@@ -13,16 +14,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class Application {
-    public Application(MoneyDemoRepository moneyDemoRepository, JpaQueryDemo jpaQueryDemo, JpaInsertDemo
-            jpaInsertDemo, JpaUpdateDemo jpaUpdateDemo) {
-//        MoneyPO moneyPO = moneyDemoRepository.findById(1).get();
-//        System.out.println(moneyPO);
-//        System.out.println("-----------------------");
+    public Application(MoneyDemoRepository moneyDemoRepository, JpaQueryDemo jpaQueryDemo, JpaInsertDemo jpaInsertDemo,
+            JpaUpdateDemo jpaUpdateDemo, JpaDeleteDemo jpaDeleteDemo) {
+        //        MoneyPO moneyPO = moneyDemoRepository.findById(1).get();
+        //        System.out.println(moneyPO);
+        //        System.out.println("-----------------------");
 
-//        jpaQueryDemo.queryTest();
+        //        jpaQueryDemo.queryTest();
 
-//        jpaInsertDemo.testInsert();
-        jpaUpdateDemo.testUpdate();
+        //        jpaInsertDemo.testInsert();
+        //        jpaUpdateDemo.testUpdate();
+
+        jpaDeleteDemo.testDelete();
     }
 
     public static void main(String[] args) {
