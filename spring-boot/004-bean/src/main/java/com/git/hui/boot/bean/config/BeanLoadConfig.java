@@ -4,6 +4,7 @@ import com.git.hui.boot.bean.autoload.factory.DemoFactoryBean;
 import com.git.hui.boot.bean.autoload.factory.FacDemoBean;
 import com.git.hui.boot.bean.autoload.simple.AnotherConfigBean;
 import com.git.hui.boot.bean.autoload.simple.ConfigDemoBean;
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

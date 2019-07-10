@@ -20,12 +20,12 @@ public class Application {
         //        System.out.println(moneyPO);
         //        System.out.println("-----------------------");
 
-        //        jpaQueryDemo.queryTest();
+                jpaQueryDemo.queryTest();
 
         //        jpaInsertDemo.testInsert();
         //        jpaUpdateDemo.testUpdate();
 
-        jpaDeleteDemo.testDelete();
+//        jpaDeleteDemo.testDelete();
     }
 
     public static void main(String[] args) {

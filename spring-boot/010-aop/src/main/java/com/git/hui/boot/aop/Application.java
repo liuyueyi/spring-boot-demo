@@ -4,6 +4,7 @@ package com.git.hui.boot.aop;
 import com.git.hui.boot.aop.demo.DemoBean;
 import com.git.hui.boot.aop.demo2.AnoDemoBean;
 import com.git.hui.boot.aop.demo2.ScopeDemoBean;
+import com.git.hui.boot.aop.factory.ProxyFactoryDemoService;
 import com.git.hui.boot.aop.order.InnerDemoBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,16 +20,23 @@ public class Application {
 
     private InnerDemoBean innerDemoBean;
 
-    public Application(DemoBean demoBean, AnoDemoBean anoDemoBean, InnerDemoBean innerDemoBean) {
+    private ProxyFactoryDemoService proxyFactoryDemoService;
+
+    public Application(DemoBean demoBean, AnoDemoBean anoDemoBean, InnerDemoBean innerDemoBean,
+            ProxyFactoryDemoService proxyFactoryDemoService) {
         this.demoBean = demoBean;
         this.anoDemoBean = anoDemoBean;
         this.innerDemoBean = innerDemoBean;
 
+        this.proxyFactoryDemoService = proxyFactoryDemoService;
+        this.proxyFactoryDemoService.testShow();
+
         //        this.anoDemoBean();
         //        this.demoBean();
 
-        this.innerDemoBean();
+//        this.innerDemoBean();
     }
+
 
     private void innerDemoBean() {
         System.out.println("result: " + innerDemoBean.print());
