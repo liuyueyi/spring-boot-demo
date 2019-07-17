@@ -21,6 +21,8 @@ public interface MoneyBaseQueryRepository extends CrudRepository<MoneyPO, Intege
      */
     List<MoneyPO> findByName(String name);
 
+    List<MoneyPO> queryByName(String name);
+
     /**
      * 根据用户名 + money查询
      *
@@ -90,6 +92,14 @@ public interface MoneyBaseQueryRepository extends CrudRepository<MoneyPO, Intege
      * @return
      */
     List<MoneyPO> findByMoneyOrderByIdDesc(Long money);
+
+    /**
+     * 根据多个条件进行排序
+     *
+     * @param id
+     * @return
+     */
+    List<MoneyPO> queryByIdGreaterThanEqualOrderByMoneyDescIdAsc(Integer id);
 
     /**
      * 分页查询，获取前面三个数据

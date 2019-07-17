@@ -41,6 +41,9 @@ public class JpaQueryDemo {
         Iterable<MoneyPO> res = moneyCurdRepository.findByName(name);
         System.out.println("findByName return: " + res);
 
+        res = moneyCurdRepository.queryByName(name);
+        System.out.println("queryByName return: " + res);
+
         Long money = 100L;
         res = moneyCurdRepository.findByNameAndMoney(name, money);
         System.out.println("findByNameAndMoney return: " + res);
@@ -88,6 +91,11 @@ public class JpaQueryDemo {
         Long money = 400L;
         Iterable<MoneyPO> res = moneyCurdRepository.findByMoneyOrderByIdDesc(money);
         System.out.println("findByMoneyAndOrderByIdDesc return: " + res);
+
+        Integer startId = 7;
+        res = moneyCurdRepository.queryByIdGreaterThanEqualOrderByMoneyDescIdAsc(startId);
+        System.out.println("queryByIdGreaterThanEqualOrderByMoneyDescIdAsc return: " + res);
+
     }
 
     private void queryWithPageSize() {
