@@ -37,6 +37,9 @@
         <module>202-web-params</module>
         <module>203-websocket</module>
         <module>102-jpa</module>
+        <module>131-influxdb-java</module>
+        <module>204-web-freemaker</module>
+        <module>205-web-thymeleaf</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
