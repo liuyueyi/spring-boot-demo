@@ -54,7 +54,8 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [x] [新增与修改使用说明](http://spring.hhui.top/spring-blog/2019/05/26/190526-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2Solr%E4%B9%8B%E6%96%87%E6%A1%A3%E6%96%B0%E5%A2%9E%E4%B8%8E%E4%BF%AE%E6%94%B9%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/) 
     
 ### III. MVC篇
-
+- [ ] web
+    - [x] [spring & 模板引擎构建web项目](http://spring.hhui.top/spring-blog/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/) 
 - [ ] mvc
 - [ ] 过滤器 & 拦截器
 - [ ] RequestHeader, ResponseHeader相关设置
