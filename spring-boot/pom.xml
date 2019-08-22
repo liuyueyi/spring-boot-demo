@@ -40,6 +40,8 @@
         <module>131-influxdb-java</module>
         <module>204-web-freemaker</module>
         <module>205-web-thymeleaf</module>
+        <module>012-context-listener</module>
+        <module>206-web-beetl</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
