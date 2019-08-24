@@ -5,7 +5,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
@@ -17,6 +16,7 @@ public class MyContextAppHolder implements FactoryBean<DemoBean>, ApplicationCon
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("context aware init");
         this.applicationContext = applicationContext;
     }
 
