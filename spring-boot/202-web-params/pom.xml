@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>202-web-params</artifactId>
-    <!--<packaging>war</packaging>-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -19,7 +18,6 @@
     </dependencies>
 
     <build>
-        <finalName>web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
