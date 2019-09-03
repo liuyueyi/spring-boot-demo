@@ -202,4 +202,9 @@ public class ParamGetRest {
     public String selfParam(@ListParam(name = "names") List<String> names, Integer age) {
         return names + " | age=" + age;
     }
+
+    @GetMapping(path = "self2")
+    public String selfParam2(List<String> names, Integer age) {
+        return names + " | age=" + age;
+    }
 }

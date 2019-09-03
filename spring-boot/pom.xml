@@ -42,6 +42,7 @@
         <module>205-web-thymeleaf</module>
         <module>012-context-listener</module>
         <module>206-web-beetl</module>
+        <module>003-log4j2</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
