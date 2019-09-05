@@ -60,7 +60,9 @@ public class ParamGetRest {
      */
     @GetMapping(path = "arg")
     public String argParam(String name, Integer age) {
-        return "name: " + name + " age: " + age;
+        String ans = "name: " + name + " age: " + age;
+        System.out.println(ans);
+        return ans;
     }
 
 

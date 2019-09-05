@@ -27,7 +27,7 @@ public class Application extends WebMvcConfigurationSupport {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
-        converters.add(0, responseBodyConverter());
+        converters.add(responseBodyConverter());
     }
 
     @Override
