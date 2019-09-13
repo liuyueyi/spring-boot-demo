@@ -18,6 +18,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Configuration
 public class AutoBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor {
+    /**
+     * 这个接口的作用是在Spring上下文的注册Bean定义的逻辑都跑完后，但是所有的Bean都还没真正实例化之前调用。
+     * @param registry
+     * @throws BeansException
+     */
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         // 注册Bean定义，容器根据定义返回bean

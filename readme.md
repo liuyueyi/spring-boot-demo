@@ -25,10 +25,11 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 
 - [ ] [db读写](http://spring.hhui.top/spring-blog/tags/DB/)
     - [x] 基本配置，数据源等
-    - [x] jdbcTemplate
-    - [x] JPA
+    - [x] [jdbcTemplate](http://spring.hhui.top/spring-blog/tags/JdbcTemplate/)
+    - [x] [jpa](http://spring.hhui.top/spring-blog/tags/JPA/)
         - 项目工程： [spring-boot/102-jpa](spring-boot/102-jpa)
     - [ ] mybatis
+    - [ ] mybatis plus
     - [ ] hibernate
     - [ ] jooq
 - [ ] influxdb 时序数据库
@@ -54,18 +55,25 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [x] [新增与修改使用说明](http://spring.hhui.top/spring-blog/2019/05/26/190526-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2Solr%E4%B9%8B%E6%96%87%E6%A1%A3%E6%96%B0%E5%A2%9E%E4%B8%8E%E4%BF%AE%E6%94%B9%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/) 
     
 ### III. MVC篇
-- [ ] web
-    - [x] [spring & 模板引擎构建web项目](http://spring.hhui.top/spring-blog/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/) 
-- [ ] mvc
+
 - [ ] 过滤器 & 拦截器
-- [ ] RequestHeader, ResponseHeader相关设置
 - [ ] Get/Post/Put/Delete等http方法支持
-- [ ] 参数绑定
-- [ ] 数据返回/视图绑定/重定向
+- [x] 参数绑定(get/post参数解析，自定义参数解析器)
+    - [x] 项目工程: [spring-boot/202-web-params](spring-boot/202-web-params)
+    - [x] [请求参数解析姿势大全](http://spring.hhui.top/spring-blog/tags/%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/)
+- [ ] 返回相关
+    - [x] 数据返回
+        - 项目:[spring-boot/207-web-response](spring-boot/207-web-response)
+        - [返回数据姿势大全](http://spring.hhui.top/spring-blog/tags/%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE/)
+    - [x] 视图绑定, 
+        - 项目: [spring-boot/204-web-freemaker](spring-boot/204-web-freemaker) | [spring-boot/204-web-thymeleaf](spring-boot/205-web-thymeleaf) [spring-boot/204-web-beetl](spring-boot/206-web-beetl)
+        - [spring & 模板引擎构建web项目](http://spring.hhui.top/spring-blog/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/)
+    - 返回头
 - [ ] 异常处理
 - [ ] 安全相关(SQL/XSS等注入)
 - [ ] 跨域处理
 - [ ] WebSocket
+    - [x] [websocket基础](http://spring.hhui.top/spring-blog/tags/WebSocket/)
 - [ ] reactive
 
 
