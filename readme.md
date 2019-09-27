@@ -43,6 +43,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
         - jedis环境构建  [spring-boot/121-redis-jedis-config](spring-boot/121-redis-jedis-config)
         - redisTemplate使用姿势 [spring-boot/122-redis-template](spring-boot/122-redis-template)
         - lettuce环境构建 [spring-boot/123-redis-lettuce-config](spring-boot/123-redis-lettuce-config)
+        - redis集群实例工程 [spring-boot/124-redis-cluster](spring-boot/124-redis-cluster)
         - 排行榜应用实例工程 [spring-case/120-redis-ranklist](spring-case/120-redis-ranklist)
         - 站点统计应用实例工程 [spring-case/124-redis-sitecount](spring-case/124-redis-sitecount)
 - [ ] MemCache

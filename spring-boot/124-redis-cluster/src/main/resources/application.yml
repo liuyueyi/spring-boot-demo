@@ -1,0 +1,11 @@
+spring:
+  redis:
+    password:
+    cluster:
+      nodes: 192.168.0.203:7000,192.168.0.203:7001,192.168.0.203:7002
+      max-redirects: 3
+    jedis:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
