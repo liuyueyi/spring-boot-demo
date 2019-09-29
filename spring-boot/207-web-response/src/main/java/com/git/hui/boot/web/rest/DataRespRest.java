@@ -99,8 +99,6 @@ public class DataRespRest {
     @GetMapping(path = "img")
     public void imgRsp(HttpServletResponse response) throws IOException {
         response.setContentType("image/png");
-        ServletOutputStream outStream = response.getOutputStream();
-
         String path = "https://spring.hhui.top/spring-blog/imgs/info/info.png";
         URL uri = new URL(path);
         BufferedImage img = ImageIO.read(uri);
