@@ -45,6 +45,7 @@
         <module>003-log4j2</module>
         <module>207-web-response</module>
         <module>124-redis-cluster</module>
+        <module>208-web-mapping</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
