@@ -14,6 +14,7 @@
         <module>001-properties</module>
         <module>002-properties</module>
         <module>003-log</module>
+        <module>003-log4j2</module>
         <module>004-bean</module>
         <module>005-autoconfig</module>
         <module>006-dynamicbean</module>
@@ -22,30 +23,35 @@
         <module>009-schedule</module>
         <module>010-aop</module>
         <module>011-aop-logaspect</module>
+        <module>012-context-listener</module>
+
         <module>100-mysql</module>
         <module>101-jdbctemplate</module>
+        <module>102-jpa</module>
+        <module>110-mongo-basic</module>
+        <module>111-mongo-template</module>
+
         <module>120-redis-config</module>
         <module>121-redis-jedis-config</module>
         <module>122-redis-template</module>
         <module>123-redis-lettuce-config</module>
-        <module>110-mongo-basic</module>
-        <module>111-mongo-template</module>
+        <module>124-redis-cluster</module>
+
         <module>130-influxdb</module>
+        <module>131-influxdb-java</module>
+
         <module>140-search-solr</module>
+
         <module>200-webflux</module>
         <module>201-web</module>
         <module>202-web-params</module>
         <module>203-websocket</module>
-        <module>102-jpa</module>
-        <module>131-influxdb-java</module>
         <module>204-web-freemaker</module>
         <module>205-web-thymeleaf</module>
-        <module>012-context-listener</module>
         <module>206-web-beetl</module>
-        <module>003-log4j2</module>
         <module>207-web-response</module>
-        <module>124-redis-cluster</module>
         <module>208-web-mapping</module>
+        <module>209-web-error</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
