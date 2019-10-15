@@ -52,6 +52,7 @@
         <module>207-web-response</module>
         <module>208-web-mapping</module>
         <module>209-web-error</module>
+        <module>210-web-filter</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
