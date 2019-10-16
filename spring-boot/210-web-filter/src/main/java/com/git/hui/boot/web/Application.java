@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @ServletComponentScan
 @SpringBootApplication
-public class Application implements WebMvcConfigurer {
+public class Application {
 
     @Bean
     public FilterRegistrationBean<OrderFilter> orderFilter() {

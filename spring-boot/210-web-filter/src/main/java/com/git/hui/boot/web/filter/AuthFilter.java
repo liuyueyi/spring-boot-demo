@@ -33,16 +33,17 @@ public class AuthFilter implements Filter, Ordered {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        log.info("in auth filter! {}", demoBean);
         // 测试，用header中的 tx-demo 来判断是否为认证的请求
         HttpServletRequest req = (HttpServletRequest) request;
         String auth = req.getHeader("tx-demo");
         if ("yihuihui".equals(auth)) {
             // 只有认证的请求才允许访问，请求头中没有这个时，不执行下面的的方法，则表示请求被过滤了
-            chain.doFilter(request, response);
+            // 在测试优先级时打开下面的注释
+            // chain.doFilter(request, response);
         } else {
             chain.doFilter(request, response);
         }
-        log.info("in auth filter! {}", demoBean);
     }
 
     @Override

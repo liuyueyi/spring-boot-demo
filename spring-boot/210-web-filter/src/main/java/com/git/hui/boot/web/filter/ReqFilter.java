@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
+ * 说明： @Order 注解， Ordered 接口的实现，都不代表这个filter的初始化顺序； 这两个也无法指定Filter的优先级
  * Created by @author yihui in 16:35 19/10/12.
  */
 @Slf4j

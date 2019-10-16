@@ -12,7 +12,7 @@ import java.io.IOException;
 public class OrderFilter implements Filter {
 
     public OrderFilter() {
-        System.out.println("OrderFilter");
+        System.out.println("init orderFilter");
     }
 
     @Override
