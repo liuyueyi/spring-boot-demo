@@ -53,6 +53,7 @@
         <module>208-web-mapping</module>
         <module>209-web-error</module>
         <module>210-web-filter</module>
+        <module>210-web-filter-order</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
