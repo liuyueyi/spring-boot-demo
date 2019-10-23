@@ -17,7 +17,7 @@ public class Application {
         logger.debug("debug log!!1");
         logger.info("info log!!1");
         logger.warn("warn log!!1");
-        logger.error("error log!!1");
+        logger.error("conf log!!1");
     }
 
     public static void main(String[] args) {

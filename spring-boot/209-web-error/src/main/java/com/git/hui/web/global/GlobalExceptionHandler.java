@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleArithmetic(HttpServletRequest request, HttpServletResponse response, ArithmeticException e)
             throws IOException {
-        log.info("divide error!");
+        log.info("divide conf!");
         return "divide 0: " + getThrowableStackInfo(e);
     }
 
@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleArrayIndexOutBounds(HttpServletRequest request, HttpServletResponse response,
             ArrayIndexOutOfBoundsException e) throws IOException {
-        log.info("array index out error!");
+        log.info("array index out conf!");
         return "aryIndexOutOfBounds: " + getThrowableStackInfo(e);
     }
 
@@ -61,7 +61,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public String handleException(HttpServletRequest request, Exception e) {
-        log.info("some error: {}", e);
+        log.info("some conf: {}", e);
         return "500: " + getThrowableStackInfo(e);
     }
 }

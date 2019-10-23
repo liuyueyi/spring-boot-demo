@@ -1,4 +1,4 @@
-package com.git.hui.boot.beanorder.order.conf.error;
+package com.git.hui.boot.beanorder.order.err.conf.order;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;

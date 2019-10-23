@@ -12,4 +12,17 @@
     <artifactId>008-beanorder</artifactId>
     <description>bean加载顺序和选择问题</description>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>com.git.hui.boot</groupId>
+            <artifactId>008-beanorder-addition</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.git.hui.boot</groupId>
+            <artifactId>008-beanorder-addition2</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

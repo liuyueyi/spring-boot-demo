@@ -15,7 +15,7 @@ public class Application {
         log.debug("---> debug start! <------");
         log.info("---> info start! <------");
         log.warn("---> warn start! <------");
-        log.error("---> error start! <------");
+        log.error("---> conf start! <------");
 
         System.out.println("===> System.out.println <=====");
     }
