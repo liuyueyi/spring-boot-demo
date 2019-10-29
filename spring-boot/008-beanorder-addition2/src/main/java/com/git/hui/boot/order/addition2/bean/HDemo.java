@@ -10,6 +10,6 @@ public class HDemo {
     private String name = "H demo";
 
     public HDemo() {
-//        System.out.println(name);
+        System.out.println(name);
     }
 }

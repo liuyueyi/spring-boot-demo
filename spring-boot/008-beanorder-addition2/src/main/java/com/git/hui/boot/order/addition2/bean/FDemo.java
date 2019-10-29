@@ -12,6 +12,6 @@ public class FDemo {
     private String name = "F demo";
 
     public FDemo() {
-//        System.out.println(name);
+        System.out.println(name);
     }
 }
