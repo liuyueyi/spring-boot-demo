@@ -24,12 +24,7 @@ public class Application implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Application.class);
-
-        List<String> newArgs = new ArrayList<>(Arrays.asList(args));
-        newArgs.add("aConf");
-        newArgs.add("cConf");
-        newArgs.add("bConf");
-        app.run(newArgs.toArray(new String[]{}));
+        app.run();
     }
 
     @Override
