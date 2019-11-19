@@ -1,10 +1,10 @@
 package com.git.hui.boot.jpa.demo;
 
 import com.git.hui.boot.jpa.entity.MoneyPO;
-import com.git.hui.boot.jpa.entity.MoneyPOV2;
+import com.git.hui.boot.jpa.entity.AutoMoneyPO;
 import com.git.hui.boot.jpa.repository.MoneyCreateRepository;
 import com.git.hui.boot.jpa.repository.MoneyCreateRepositoryV2;
-import com.git.hui.boot.jpa.repository.MoneyCreateRepositoryV3;
+import com.git.hui.boot.jpa.repository.MoneyCreateRepositoryWithId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +23,7 @@ public class JpaInsertDemo {
     private MoneyCreateRepositoryV2 moneyCreateRepositoryV2;
 
     @Autowired
-    private MoneyCreateRepositoryV3 moneyCreateRepositoryV3;
+    private MoneyCreateRepositoryWithId moneyCreateRepositoryWithId;
 
     public void testInsert() {
 //        addOne();
@@ -94,28 +94,32 @@ public class JpaInsertDemo {
     }
 
     private void addWithId() {
-        MoneyPO po1 = new MoneyPO();
-        po1.setId(20);
-        po1.setName("jpa 一灰灰 1x");
-        po1.setMoney(2200L + ((long) (Math.random() * 100)));
-        po1.setIsDeleted((byte) 0x00);
-        MoneyPO r1 = moneyCreateRepositoryV2.save(po1);
-        System.out.println("after insert res: " + r1);
+//        MoneyPO po1 = new MoneyPO();
+//        po1.setId(20);
+//        po1.setName("jpa 一灰灰 1x");
+//        po1.setMoney(2200L + ((long) (Math.random() * 100)));
+//        po1.setIsDeleted((byte) 0x00);
+//        MoneyPO r1 = moneyCreateRepositoryV2.save(po1);
+//        System.out.println("after insert res: " + r1);
 
         // 使用自定义的主键生成策略
-        MoneyPOV2 moneyPO = new MoneyPOV2();
-        moneyPO.setId(100);
+        AutoMoneyPO moneyPO = new AutoMoneyPO();
+        moneyPO.setId(20);
         moneyPO.setName("jpa 一灰灰 ex");
         moneyPO.setMoney(2200L + ((long) (Math.random() * 100)));
         moneyPO.setIsDeleted((byte) 0x00);
-        MoneyPOV2 res = moneyCreateRepositoryV3.save(moneyPO);
+        AutoMoneyPO res = moneyCreateRepositoryWithId.save(moneyPO);
         System.out.println("after insert res: " + res);
 
-        moneyPO = new MoneyPOV2();
+        moneyPO.setMoney(3200L + ((long) (Math.random() * 100)));
+        res = moneyCreateRepositoryWithId.save(moneyPO);
+        System.out.println("after insert res: " + res);
+
+        moneyPO = new AutoMoneyPO();
         moneyPO.setName("jpa 一灰灰 2ex");
         moneyPO.setMoney(2200L + ((long) (Math.random() * 100)));
         moneyPO.setIsDeleted((byte) 0x00);
-        res = moneyCreateRepositoryV3.save(moneyPO);
+        res = moneyCreateRepositoryWithId.save(moneyPO);
         System.out.println("after insert res: " + res);
 
     }

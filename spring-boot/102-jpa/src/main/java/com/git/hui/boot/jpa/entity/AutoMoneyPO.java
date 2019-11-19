@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
+ * auto 自定义id生成策略
  * Created by @author yihui in 21:01 19/6/10.
  */
 @Data
@@ -17,7 +18,7 @@ import java.sql.Timestamp;
 @DynamicInsert
 @Entity
 @Table(name = "money")
-public class MoneyPOV2 {
+public class AutoMoneyPO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "myid")
     @GenericGenerator(name = "myid", strategy = "com.git.hui.boot.jpa.generator.ManulInsertGenerator")
