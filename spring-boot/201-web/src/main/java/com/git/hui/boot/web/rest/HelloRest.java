@@ -1,11 +1,14 @@
 package com.git.hui.boot.web.rest;
 
+import com.alibaba.fastjson.JSON;
 import com.git.hui.boot.web.demo.PrintServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -28,4 +31,13 @@ public class HelloRest {
         return UUID.randomUUID().toString();
     }
 
+
+    @GetMapping("bigReq")
+    public String bigReqList() {
+        List<String> result = new ArrayList<>(2048);
+        for (int i = 0; i < 2048; i++) {
+            result.add(UUID.randomUUID().toString());
+        }
+        return JSON.toJSONString(result);
+    }
 }

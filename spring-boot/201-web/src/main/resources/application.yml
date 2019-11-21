@@ -1,0 +1,4 @@
+server:
+  compression:
+    enabled: true
+    min-response-size: 2048
