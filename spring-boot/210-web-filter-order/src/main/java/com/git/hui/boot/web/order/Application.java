@@ -15,7 +15,7 @@ public class Application {
 
     public Application(ApplicationContext applicationContext) {
         try {
-            Object obj = applicationContext.getBean(ReqFilter.class.getName());
+            Object obj = applicationContext.getBean("reqFilter");
             Object obj2 = applicationContext.getBean(ReqFilter.class);
         } catch (Exception e) {
             e.printStackTrace();

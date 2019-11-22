@@ -56,6 +56,7 @@
         <module>209-web-error</module>
         <module>210-web-filter</module>
         <module>210-web-filter-order</module>
+        <module>211-web-servlet</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>
