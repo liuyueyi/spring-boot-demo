@@ -14,13 +14,11 @@ import java.lang.reflect.Method;
 public class PlatformHandlerMapping extends RequestMappingHandlerMapping {
     @Override
     protected RequestCondition<?> getCustomTypeCondition(Class<?> handlerType) {
-        // 判断是否有@ApiVersion注解，构建基于@ApiVersion的RequestCondition
         return buildFrom(AnnotationUtils.findAnnotation(handlerType, Platform.class));
     }
 
     @Override
     protected RequestCondition<?> getCustomMethodCondition(Method method) {
-        // 判断是否有@ApiVersion注解，构建基于@ApiVersion的RequestCondition
         return buildFrom(AnnotationUtils.findAnnotation(method, Platform.class));
     }
 
