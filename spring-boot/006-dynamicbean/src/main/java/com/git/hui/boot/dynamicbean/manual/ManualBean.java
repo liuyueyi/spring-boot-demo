@@ -15,6 +15,7 @@ public class ManualBean {
     public ManualBean() {
         Random random = new Random();
         id = random.nextInt(100);
+        System.out.println("manualBean init!");
     }
 
     public String print(String msg) {
