@@ -57,6 +57,7 @@
         <module>210-web-filter</module>
         <module>210-web-filter-order</module>
         <module>211-web-servlet</module>
+        <module>212-web-listener</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>

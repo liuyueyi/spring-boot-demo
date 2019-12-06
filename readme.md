@@ -57,7 +57,8 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     
 ### III. MVC篇
 
-- [ ] 过滤器 & 拦截器
+- [x] 过滤器 
+- [ ] 拦截器
 - [ ] Get/Post/Put/Delete等http方法支持
 - [x] 参数绑定(get/post参数解析，自定义参数解析器)
     - [x] 项目工程: [spring-boot/202-web-params](spring-boot/202-web-params)
@@ -70,7 +71,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
         - 项目: [spring-boot/204-web-freemaker](spring-boot/204-web-freemaker) | [spring-boot/204-web-thymeleaf](spring-boot/205-web-thymeleaf) [spring-boot/204-web-beetl](spring-boot/206-web-beetl)
         - [spring & 模板引擎构建web项目](http://spring.hhui.top/spring-blog/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/)
     - 返回头
-- [ ] 异常处理
+- [x] 异常处理
 - [ ] 安全相关(SQL/XSS等注入)
 - [ ] 跨域处理
 - [ ] WebSocket
@@ -298,6 +299,9 @@ web系列博文列表，主要介绍web应用搭建的基本知识点，包括�
 - [191016-SpringBoot系列教程web篇之过滤器Filter使用指南](http://spring.hhui.top/spring-blog/2019/10/16/191016-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E8%BF%87%E6%BB%A4%E5%99%A8Filter%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
 - [191018-SpringBoot系列教程web篇之过滤器Filter使用指南扩展篇](http://spring.hhui.top/spring-blog/2019/10/18/191018-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E8%BF%87%E6%BB%A4%E5%99%A8Filter%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E6%89%A9%E5%B1%95%E7%AF%87/)
 - [191120-SpringBoot系列教程Web篇之开启GZIP数据压缩](http://spring.hhui.top/spring-blog/2019/11/20/191120-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWeb%E7%AF%87%E4%B9%8B%E5%BC%80%E5%90%AFGZIP%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9/)
+- [191122-SpringBoot系列教程web篇Servlet 注册的四种姿势](http://spring.hhui.top/spring-blog/2019/11/22/191122-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87Servlet-%E6%B3%A8%E5%86%8C%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%A7%BF%E5%8A%BF/)
+- [191206-SpringBoot系列教程web篇Listener四种注册姿势](http://spring.hhui.top/spring-blog/2019/12/06/191206-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87Listener%E5%9B%9B%E7%A7%8D%E6%B3%A8%E5%86%8C%E5%A7%BF%E5%8A%BF/)
+
 
 ### 10. 搜索篇
 
