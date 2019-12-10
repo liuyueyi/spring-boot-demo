@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by @author yihui in 20:54 18/9/25.
@@ -17,8 +18,13 @@ public class Application {
 
     public Application(JdbcTemplate jdbcTemplate) {
         log.warn("application start!!!");
-        List<Map<String, Object>> result = jdbcTemplate.queryForList("select * from Subscribe limit 2");
-        log.info("result: {}", result);
+
+        // 插入emoj 表情
+        jdbcTemplate.update("insert into Subscribe (`email`, `nick`) values (?, ?)",
+                UUID.randomUUID().toString() + "@t.com", "🐺狼");
+
+        List<Map<String, Object>> r = jdbcTemplate.queryForList("select * from Subscribe order by id desc limit 1");
+        log.info("r: {}", r);
     }
 
     public static void main(String[] args) {
