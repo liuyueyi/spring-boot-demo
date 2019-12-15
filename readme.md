@@ -160,11 +160,13 @@ bean作为Spring生态中的基石存在，可以说在Spring体系中，一切�
 - [181019-SpringBoot基础篇Bean之条件注入@ConditionalOnExpression](http://spring.hhui.top/spring-blog/2018/10/19/181019-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87Bean%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B3%A8%E5%85%A5-ConditionalOnExpression/)
 - [191023-SpringBoot系列教程之Bean加载顺序之错误使用姿势辟谣](http://spring.hhui.top/spring-blog/2019/10/23/191023-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BBean%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F%E4%B9%8B%E9%94%99%E8%AF%AF%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E8%BE%9F%E8%B0%A3/)
 - [191029-SpringBoot系列教程之Bean之指定初始化顺序的若干姿势](http://spring.hhui.top/spring-blog/2019/10/29/191029-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BBean%E4%B9%8B%E6%8C%87%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F%E7%9A%84%E8%8B%A5%E5%B9%B2%E5%A7%BF%E5%8A%BF/)
+- [191214-SpringBoot系列教程自动配置选择生效](http://spring.hhui.top/spring-blog/2019/12/14/191214-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%80%89%E6%8B%A9%E7%94%9F%E6%95%88/)
 
 #### b. 应用博文
 
 - [181017-SpringBoot应用篇Bean之注销与动态注册实现服务mock](http://spring.hhui.top/spring-blog/2018/10/17/181017-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87Bean%E4%B9%8B%E6%B3%A8%E9%94%80%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1mock/)
 - [181024-SpringBoot应用篇之FactoryBean及代理实现SPI机制的实例](http://spring.hhui.top/spring-blog/2018/10/24/181024-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BFactoryBean%E5%8F%8A%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0SPI%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AE%9E%E4%BE%8B/)
+- [191213-SpringBoot应用篇之从0到1实现一个自定义Bean注册器](http://spring.hhui.top/spring-blog/2019/12/13/191213-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E4%BB%8E0%E5%88%B01%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89Bean%E6%B3%A8%E5%86%8C%E5%99%A8/)
 
 ### 4. AOP基础篇
 
