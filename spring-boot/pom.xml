@@ -59,6 +59,7 @@
         <module>211-web-servlet</module>
         <module>212-web-listener</module>
         <module>005-config-selector</module>
+        <module>102-jpa-errorcase</module>
     </modules>
 
     <artifactId>spring-boot</artifactId>

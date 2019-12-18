@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>102-jpa</artifactId>
+    <artifactId>102-jpa-errorcase</artifactId>
+
 
     <dependencies>
         <dependency>
@@ -20,11 +21,5 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.git.hui.boot</groupId>
-            <artifactId>102-jpa-errorcase</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
-
 </project>
