@@ -8,11 +8,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 /**
  * Created by @author yihui in 17:56 19/10/8.
  */
-@ServletComponentScan
-@EnableWebMvc
 @SpringBootApplication
 public class Application {
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
     }

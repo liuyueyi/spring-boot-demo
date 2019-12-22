@@ -1,6 +1,7 @@
 package com.git.hui.boot.web.rest;
 
 import com.git.hui.boot.web.ano.Platform;
+import com.git.hui.boot.web.constants.PlatformEnum;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,20 +19,20 @@ public class DemoMethodRest {
         return "default index";
     }
 
-    @Platform("pc")
+    @Platform(PlatformEnum.PC)
     @GetMapping(path = "index")
     public String pcIndex() {
         return "pc index";
     }
 
 
-    @Platform("app")
+    @Platform(PlatformEnum.APP)
     @GetMapping(path = "index")
     public String appIndex() {
         return "app index";
     }
 
-    @Platform("wap")
+    @Platform(PlatformEnum.WAP)
     @GetMapping(path = "index")
     public String wapIndex() {
         return "wap index";

@@ -1,5 +1,7 @@
 package com.git.hui.boot.web.ano;
 
+import com.git.hui.boot.web.constants.PlatformEnum;
+
 import java.lang.annotation.*;
 
 /**
@@ -9,5 +11,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Platform {
-    String value() default "all";
+    PlatformEnum value() default PlatformEnum.ALL;
 }
