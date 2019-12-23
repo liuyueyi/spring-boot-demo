@@ -11,6 +11,7 @@
         <module>spring-boot</module>
         <module>spring-case</module>
         <module>spring</module>
+        <module>spring-security</module>
     </modules>
     <packaging>pom</packaging>
 
