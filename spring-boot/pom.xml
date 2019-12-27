@@ -17,6 +17,7 @@
         <module>003-log4j2</module>
         <module>004-bean</module>
         <module>005-autoconfig</module>
+        <module>005-config-selector</module>
         <module>006-dynamicbean</module>
         <module>007-conditionbean</module>
         <module>008-beanorder</module>
@@ -30,6 +31,10 @@
         <module>100-mysql</module>
         <module>101-jdbctemplate</module>
         <module>102-jpa</module>
+        <module>102-jpa-errorcase</module>
+        <module>103-mybatis-xml</module>
+        <module>104-mybatis-noxml</module>
+
         <module>110-mongo-basic</module>
         <module>111-mongo-template</module>
 
@@ -58,8 +63,8 @@
         <module>210-web-filter-order</module>
         <module>211-web-servlet</module>
         <module>212-web-listener</module>
-        <module>005-config-selector</module>
-        <module>102-jpa-errorcase</module>
+        <module>105-mybatis-plus</module>
+
     </modules>
 
     <artifactId>spring-boot</artifactId>

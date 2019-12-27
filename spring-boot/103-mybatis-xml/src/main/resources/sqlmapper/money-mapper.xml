@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.boot.mybatis.mapper.MoneyMapper">
+
+    <resultMap id="BaseResultMap" type="com.git.hui.boot.mybatis.entity.MoneyPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="money_po">
+      id, name, money, is_deleted, create_at, update_at
+    </sql>
+
+    <insert id="savePo" parameterType="com.git.hui.boot.mybatis.entity.MoneyPo" useGeneratedKeys="true"
+            keyProperty="po.id">
+      INSERT INTO `money` (`name`, `money`, `is_deleted`)
+      VALUES
+	  (#{po.name}, #{po.money}, #{po.isDeleted});
+    </insert>
+
+    <update id="addMoney" parameterType="java.util.Map">
+        update money set money=money+#{money} where id=#{id}
+    </update>
+
+    <delete id="delPo" parameterType="java.lang.Integer">
+        delete from money where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <select id="findByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money where name=#{name}
+    </select>
+
+    <select id="findByNameAndMoney" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+--         from money where name=#{param1} and money=#{param2}
+        from money where name=#{arg0} and money=#{arg1}
+    </select>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money where id=#{id}
+    </select>
+
+    <select id="findByMap" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                AND name=#{name}
+            </if>
+            <if test="money != null">
+                AND money=#{money}
+            </if>
+        </trim>
+    </select>
+
+    <select id="findByPo" parameterType="com.git.hui.boot.mybatis.entity.MoneyPo" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                AND name=#{name}
+            </if>
+            <if test="money != null">
+                AND money=#{money}
+            </if>
+        </trim>
+    </select>
+</mapper>
