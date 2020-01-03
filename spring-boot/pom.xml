@@ -64,6 +64,7 @@
         <module>211-web-servlet</module>
         <module>212-web-listener</module>
         <module>105-mybatis-plus</module>
+        <module>102-jpa-errorcase2</module>
 
     </modules>
 
