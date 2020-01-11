@@ -13,7 +13,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>000-basic-demo</module>
-        <module>001-authentication-mem</module>
+        <module>001-authentication-mem-config</module>
+        <module>001-authentication-mem-userdetail</module>
+        <module>010-accesscontrol-rbac</module>
+        <module>002-authentication-db</module>
     </modules>
 
 
