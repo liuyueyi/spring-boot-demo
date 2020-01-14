@@ -17,6 +17,7 @@
         <module>001-authentication-mem-userdetail</module>
         <module>010-accesscontrol-rbac</module>
         <module>002-authentication-db</module>
+        <module>011-accesscontrol-acl</module>
     </modules>
 
 
