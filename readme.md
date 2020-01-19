@@ -4,13 +4,13 @@
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/liuyueyi/spring-boot-demo.svg)](http://isitmaintained.com/project/liuyueyi/spring-boot-demo "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/liuyueyi/spring-boot-demo.svg)](http://isitmaintained.com/project/liuyueyi/spring-boot-demo "Percentage of issues still open")
 
-SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习历程
+SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀记录下学习历程
 
 ## 1. 知识点图谱
 
 所有博文集中发布在个人博客网站 ： [一灰灰Blog-Spring](http://spring.hhui.top/)
 
-大致规划的内容包括以下章节，希望能用半年到一年的时间完成....
+大致规划的内容包括以下章节，希望能用<del>半年到一年(严重超期)</del>的时间完成....
 
 ### I. [基础篇](http://spring.hhui.top/spring-blog/categories/SpringBoot/基础篇/)
 
@@ -28,11 +28,13 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     - [x] [jdbcTemplate](http://spring.hhui.top/spring-blog/tags/JdbcTemplate/)
     - [x] [jpa](http://spring.hhui.top/spring-blog/tags/JPA/)
         - 项目工程： [spring-boot/102-jpa](spring-boot/102-jpa)
-    - [ ] mybatis
-    - [ ] mybatis plus
-    - [ ] hibernate
+    - [x] mybatis
+        - 项目工程:  [spring-boot/103-mybatis-xml](spring-boot/103-mybatis-xml) , [spring-boot/104-mybatis-noxml](spring-boot/104-mybatis-noxml)
+    - [x] mybatis plus
+        - 项目工程: [spring-boot/105-mybatis-plus](spring-boot/105-mybatis-plus)
     - [ ] jooq
 - [ ] influxdb 时序数据库
+        - 项目工程: [spring-boot/130-influxdb](spring-boot/130-influxdb) ,  [spring-boot/131-influxdb-java](spring-boot/131-influxdb-java) 
 - [ ] [Mongo](http://spring.hhui.top/spring-blog/tags/Mongo/)
     - [x] 项目工程
         - 基础环境 [spring-boot/110-mongo-basic](spring-boot/110-mongo-basic)
@@ -57,9 +59,12 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
     
 ### III. MVC篇
 
-- [x] 过滤器 
+- [x] 过滤器
+    - [x] 项目工程: 
+        - 基本使用姿势：[spring-boot/210-web-filter](spring-boot/210-web-filter)
+        - filter优先级: [spring-boot/210-web-filter-order](spring-boot/210-web-filter-order)
 - [ ] 拦截器
-- [ ] Get/Post/Put/Delete等http方法支持
+- [x] Get/Post/Put/Delete等http方法支持
 - [x] 参数绑定(get/post参数解析，自定义参数解析器)
     - [x] 项目工程: [spring-boot/202-web-params](spring-boot/202-web-params)
     - [x] [请求参数解析姿势大全](http://spring.hhui.top/spring-blog/tags/%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/)
@@ -130,6 +135,7 @@ SpringBoot与SpringCloud学习过程中的源码汇总，沉淀记录下学习�
 - [180921-SpringBoot基础篇配置信息之自定义配置指定与配置内引用](/spring-blog/2018/09/21/180921-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%8C%87%E5%AE%9A%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%86%85%E5%BC%95%E7%94%A8)
 - [180922-SpringBoot基础篇配置信息之配置刷新](/spring-blog/2018/09/22/180922-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%85%8D%E7%BD%AE%E5%88%B7%E6%96%B0)
 - [180925-SpringBoot基础篇配置信息之默认配置](/spring-blog/2018/09/25/180925-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE)
+- [191214-SpringBoot系列教程自动配置选择生效](http://spring.hhui.top/spring-blog/2019/12/14/191214-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%80%89%E6%8B%A9%E7%94%9F%E6%95%88/)
 
 ### 2. 日志篇
 
@@ -160,7 +166,7 @@ bean作为Spring生态中的基石存在，可以说在Spring体系中，一切�
 - [181019-SpringBoot基础篇Bean之条件注入@ConditionalOnExpression](http://spring.hhui.top/spring-blog/2018/10/19/181019-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87Bean%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B3%A8%E5%85%A5-ConditionalOnExpression/)
 - [191023-SpringBoot系列教程之Bean加载顺序之错误使用姿势辟谣](http://spring.hhui.top/spring-blog/2019/10/23/191023-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BBean%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F%E4%B9%8B%E9%94%99%E8%AF%AF%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E8%BE%9F%E8%B0%A3/)
 - [191029-SpringBoot系列教程之Bean之指定初始化顺序的若干姿势](http://spring.hhui.top/spring-blog/2019/10/29/191029-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BBean%E4%B9%8B%E6%8C%87%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F%E7%9A%84%E8%8B%A5%E5%B9%B2%E5%A7%BF%E5%8A%BF/)
-- [191214-SpringBoot系列教程自动配置选择生效](http://spring.hhui.top/spring-blog/2019/12/14/191214-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%80%89%E6%8B%A9%E7%94%9F%E6%95%88/)
+
 
 #### b. 应用博文
 
@@ -204,6 +210,7 @@ java后端，不得不打交道的就是DB了，有常见的关系型数据库�
 - [190412-SpringBoot高级篇JdbcTemplate之数据查询上篇](http://spring.hhui.top/spring-blog/2019/04/12/190412-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E4%B8%8A%E7%AF%87/)
 - [190417-SpringBoot高级篇JdbcTemplate之数据查询下篇](http://spring.hhui.top/spring-blog/2019/04/17/190417-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E4%B8%8B%E7%AF%87/)
 - [190418-SpringBoot高级篇JdbcTemplate之数据更新与删除](http://spring.hhui.top/spring-blog/2019/04/18/190418-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E4%B8%8E%E5%88%A0%E9%99%A4/)
+- [200119-SpringBoot系列教程之声明式事务Transactional](http://spring.hhui.top/spring-blog/2020/01/19/200119-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1Transactional/)
 
 
 ### 6. Redis篇
@@ -267,6 +274,13 @@ hibernate来操作db的系列教程，主要介绍如何根据方法命名方式
 - [191119-SpringBoot系列教程JPA之指定id保存](http://spring.hhui.top/spring-blog/2019/11/19/191119-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA%E4%B9%8B%E6%8C%87%E5%AE%9Aid%E4%BF%9D%E5%AD%98/)
 
 
+**易错知识点**
+
+- [191218-SpringBoot系列教程JPA 错误姿势之环境配置问题](http://spring.hhui.top/spring-blog/2019/12/18/191218-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA-%E9%94%99%E8%AF%AF%E5%A7%BF%E5%8A%BF%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/)
+- [200103-SpringBoot系列JPA错误姿势之Entity映射](http://spring.hhui.top/spring-blog/2020/01/03/200103-SpringBoot%E7%B3%BB%E5%88%97JPA%E9%94%99%E8%AF%AF%E5%A7%BF%E5%8A%BF%E4%B9%8BEntity%E6%98%A0%E5%B0%84/)
+
+
+
 ### 9. Web篇
 
 
@@ -303,6 +317,14 @@ web系列博文列表，主要介绍web应用搭建的基本知识点，包括�
 - [191120-SpringBoot系列教程Web篇之开启GZIP数据压缩](http://spring.hhui.top/spring-blog/2019/11/20/191120-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWeb%E7%AF%87%E4%B9%8B%E5%BC%80%E5%90%AFGZIP%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9/)
 - [191122-SpringBoot系列教程web篇Servlet 注册的四种姿势](http://spring.hhui.top/spring-blog/2019/11/22/191122-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87Servlet-%E6%B3%A8%E5%86%8C%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%A7%BF%E5%8A%BF/)
 - [191206-SpringBoot系列教程web篇Listener四种注册姿势](http://spring.hhui.top/spring-blog/2019/12/06/191206-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87Listener%E5%9B%9B%E7%A7%8D%E6%B3%A8%E5%86%8C%E5%A7%BF%E5%8A%BF/)
+- [191222-SpringBoot系列教程web篇之自定义请求匹配条件RequestCondition](http://spring.hhui.top/spring-blog/2019/12/22/191222-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%8C%B9%E9%85%8D%E6%9D%A1%E4%BB%B6RequestCondition/)
+- [200104-SpringWeb系列教程RestTemplate 4xx/5xx 异常信息捕获](http://spring.hhui.top/spring-blog/2020/01/04/200104-SpringWeb%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRestTemplate-4xx-5xx-%E5%BC%82%E5%B8%B8%E4%BF%A1%E6%81%AF%E6%8D%95%E8%8E%B7/)
+- [200105-SpringBoot系列web篇之自定义返回Http Code的n种姿势](http://spring.hhui.top/spring-blog/2020/01/05/200105-SpringBoot%E7%B3%BB%E5%88%97web%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%94%E5%9B%9EHttp-Code%E7%9A%84n%E7%A7%8D%E5%A7%BF%E5%8A%BF/)
+
+
+**应用实战篇**
+
+- [191225-SpringBoot 应用篇 实现后端的接口版本支持](http://spring.hhui.top/spring-blog/2019/12/25/191225-SpringBoot-%E5%BA%94%E7%94%A8%E7%AF%87-%E5%AE%9E%E7%8E%B0%E5%90%8E%E7%AB%AF%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81/)
 
 
 ### 10. 搜索篇
@@ -318,6 +340,29 @@ web系列博文列表，主要介绍web应用搭建的基本知识点，包括�
 
 - [190510-SpringBoot高级篇搜索之Solr环境搭建与简单测试](http://spring.hhui.top/spring-blog/2019/05/10/190510-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2%E4%B9%8BSolr%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E7%AE%80%E5%8D%95%E6%B5%8B%E8%AF%95/)
 - [190526-SpringBoot高级篇搜索Solr之文档新增与修改使用姿势](http://spring.hhui.top/spring-blog/2019/05/26/190526-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2Solr%E4%B9%8B%E6%96%87%E6%A1%A3%E6%96%B0%E5%A2%9E%E4%B8%8E%E4%BF%AE%E6%94%B9%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
+- [200114-SpringBoot系列教程Solr之文档删除](http://spring.hhui.top/spring-blog/2020/01/14/200114-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BSolr%E4%B9%8B%E6%96%87%E6%A1%A3%E5%88%A0%E9%99%A4/)
+- [200115-SpringBoot系列教程Solr之查询使用姿势小结](http://spring.hhui.top/spring-blog/2020/01/15/200115-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BSolr%E4%B9%8B%E6%9F%A5%E8%AF%A2%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E5%B0%8F%E7%BB%93/)
+
+
+### 11. SpringSecurity
+
+记录SpringSecurity相关的所有技术文章，分类汇总如下，持续更新中
+
+**简单抽象的说一下SpringSecurity它的定义**
+
+- 很🐂的认证和访问权限校验框架
+
+**那么具体能干嘛？**
+
+- 用户登录认证：用户名+密码登录，确定用户身份
+- 用户访问鉴权（常见的ACL访问控制列表，RBAC角色访问控制）：判定是否有权限访问某个资源
+- 安全保护（CSRF跨站点攻击,Session Fixation会话固定攻击…）
+
+**相关博文**
+
+- [191223-SpringBoot-整合-SpringSecurity-之起源篇（零）](http://spring.hhui.top/spring-blog/2019/12/23/191223-SpringBoot-%E6%95%B4%E5%90%88-SpringSecurity-%E4%B9%8B%E8%B5%B7%E6%BA%90%E7%AF%87%EF%BC%88%E9%9B%B6%EF%BC%89/)
+- [200111-SpringBoot 整合 SpringSecurity 之基于内存认证（一）](http://spring.hhui.top/spring-blog/2020/01/11/200111-SpringBoot-%E6%95%B4%E5%90%88-SpringSecurity-%E4%B9%8B%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AD%98%E8%AE%A4%E8%AF%81%EF%BC%88%E4%B8%80%EF%BC%89/)
+
 
 
 ## 3. 其他
