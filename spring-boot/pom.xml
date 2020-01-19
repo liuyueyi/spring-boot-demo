@@ -65,6 +65,7 @@
         <module>212-web-listener</module>
         <module>105-mybatis-plus</module>
         <module>102-jpa-errorcase2</module>
+        <module>101-jdbctemplate-transaction</module>
 
     </modules>
 
