@@ -10,3 +10,4 @@
 **相关博文**
 
 - [200119-SpringBoot系列教程之声明式事务Transactional](http://spring.hhui.top/spring-blog/2020/01/19/200119-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1Transactional/)
+- [200120-SpringBoot系列教程之事务隔离级别知识点小结](http://spring.hhui.top/spring-blog/2020/01/20/200120-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9F%A5%E8%AF%86%E7%82%B9%E5%B0%8F%E7%BB%93/)
