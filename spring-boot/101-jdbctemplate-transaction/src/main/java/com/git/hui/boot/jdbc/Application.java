@@ -1,6 +1,7 @@
 package com.git.hui.boot.jdbc;
 
 import com.git.hui.boot.jdbc.bean.DetailTransactionalSample;
+import com.git.hui.boot.jdbc.bean.PropagationSample;
 import com.git.hui.boot.jdbc.bean.TransactionalSample;
 import com.git.hui.boot.jdbc.demo.NotEffectSample;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
     public Application(NotEffectSample notEffectSample, TransactionalSample transactionalSample,
-            DetailTransactionalSample detailTransactionalSample) throws Exception {
+            DetailTransactionalSample detailTransactionalSample, PropagationSample propagationSample) throws Exception {
         transactionalSample.testSimpleCase();
         transactionalSample.testManualCase();
 
@@ -20,6 +21,8 @@ public class Application {
 
 
         detailTransactionalSample.testIsolation();
+
+        propagationSample.testPropagation();
 
     }
 
