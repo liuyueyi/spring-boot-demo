@@ -54,9 +54,9 @@ public class TransactionalSample {
 
     public void testManualCase() {
         System.out.println("======= 编程式事务 start ========== ");
-        simpleService.query("transaction before", 220);
+        manualDemo.query("transaction before", 220);
         manualDemo.testTransaction(220);
-        simpleService.query("transaction end", 220);
+        manualDemo.query("transaction end", 220);
         System.out.println("======= 编程式事务 end ========== ");
     }
 }

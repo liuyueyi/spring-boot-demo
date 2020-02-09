@@ -120,6 +120,39 @@ public class NotEffectDemo {
         return true;
     }
 
+
+    /**
+     * 子线程抛异常，主线程无法捕获，导致事务不生效
+     *
+     * @param id
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public boolean testMultThread2(int id) throws InterruptedException {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                updateName(id);
+                query("after update name", id);
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean ans = update(id);
+                query("after update id", id);
+            }
+        }).start();
+
+        Thread.sleep(1000);
+        System.out.println("------- 子线程 --------");
+
+        update(id);
+        query("after outer update id", id);
+        throw new RuntimeException("failed to update ans");
+    }
+
     private boolean updateName(int id) {
         String sql = "update money set `name`='更新' where id=" + id;
         jdbcTemplate.execute(sql);

@@ -24,6 +24,8 @@ public class NotEffectSample {
         testCall(530, (id) -> notEffectDemo.testCall(530));
 
         testCall(540, (id) -> notEffectDemo.testMultThread(540));
+
+        testCall(550, (id) -> notEffectDemo.testMultThread2(550));
     }
 
     private void testCall(int id, CallFunc<Integer, Boolean> func) {
