@@ -66,6 +66,7 @@
         <module>105-mybatis-plus</module>
         <module>102-jpa-errorcase2</module>
         <module>101-jdbctemplate-transaction</module>
+        <module>300-rabbitmq</module>
 
     </modules>
 
