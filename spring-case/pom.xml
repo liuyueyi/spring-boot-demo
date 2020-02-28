@@ -18,6 +18,8 @@
         <module>120-redis-ranklist</module>
         <module>124-redis-sitecount</module>
         <module>201-web-api-version</module>
+        <module>008-bean-order</module>
+        <module>008-bean-order-client</module>
     </modules>
 
     <dependencies>
