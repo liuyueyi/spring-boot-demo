@@ -11,7 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public Application() {
+    public Application(DemoBean demoBean) {
+        demoBean.print();
     }
 
     public static void main(String[] args) {

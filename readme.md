@@ -173,6 +173,7 @@ bean作为Spring生态中的基石存在，可以说在Spring体系中，一切�
 - [181017-SpringBoot应用篇Bean之注销与动态注册实现服务mock](http://spring.hhui.top/spring-blog/2018/10/17/181017-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87Bean%E4%B9%8B%E6%B3%A8%E9%94%80%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1mock/)
 - [181024-SpringBoot应用篇之FactoryBean及代理实现SPI机制的实例](http://spring.hhui.top/spring-blog/2018/10/24/181024-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BFactoryBean%E5%8F%8A%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0SPI%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AE%9E%E4%BE%8B/)
 - [191213-SpringBoot应用篇之从0到1实现一个自定义Bean注册器](http://spring.hhui.top/spring-blog/2019/12/13/191213-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E4%BB%8E0%E5%88%B01%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89Bean%E6%B3%A8%E5%86%8C%E5%99%A8/)
+- [200317-SpringBoot系列教程之实战：如何指定特定bean最先加载](http://spring.hhui.top/spring-blog/2020/03/17/200317-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E6%88%98%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E7%89%B9%E5%AE%9Abean%E6%9C%80%E5%85%88%E5%8A%A0%E8%BD%BD/)
 
 ### 4. AOP基础篇
 

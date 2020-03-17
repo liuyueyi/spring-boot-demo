@@ -1,6 +1,6 @@
 package com.git.hui.boot.client;
 
-import com.git.hui.boot.client.load.PropertyLoader;
+import com.git.hui.boot.client.load.DatasourceLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
 @Configuration
 public class ClientAutoConfiguration {
     @Bean
-    public PropertyLoader propertyLoader(Environment environment) {
-        return new PropertyLoader(environment);
+    public DatasourceLoader propertyLoader(Environment environment) {
+        return new DatasourceLoader(environment);
     }
 }

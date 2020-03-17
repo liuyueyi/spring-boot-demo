@@ -7,8 +7,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DemoBean {
-
     public DemoBean() {
         System.out.println("demo bean init!");
+    }
+
+    public void print() {
+        System.out.println("print demo bean ");
     }
 }

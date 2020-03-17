@@ -1,6 +1,7 @@
 package com.git.hui.boot.client;
 
-import com.git.hui.boot.client.load.PropertyLoader;
+import com.git.hui.boot.client.load.DatasourceLoader;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -14,6 +15,14 @@ public class ClientBeanProcessor extends InstantiationAwareBeanPostProcessorAdap
     private ConfigurableListableBeanFactory beanFactory;
 
     @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+
+        System.out.println("准备实例: " + beanName);
+
+        return super.postProcessBeforeInitialization(bean, beanName);
+    }
+
+    @Override
     public void setBeanFactory(BeanFactory beanFactory) {
         if (!(beanFactory instanceof ConfigurableListableBeanFactory)) {
             throw new IllegalArgumentException(
@@ -21,7 +30,7 @@ public class ClientBeanProcessor extends InstantiationAwareBeanPostProcessorAdap
         }
 
         this.beanFactory = (ConfigurableListableBeanFactory) beanFactory;
-        PropertyLoader propertyLoader = this.beanFactory.getBean(PropertyLoader.class);
+        DatasourceLoader propertyLoader = this.beanFactory.getBean(DatasourceLoader.class);
         System.out.println(propertyLoader);
     }
 
