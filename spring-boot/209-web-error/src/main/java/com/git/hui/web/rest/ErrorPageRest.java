@@ -1,9 +1,11 @@
 package com.git.hui.web.rest;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by @author yihui in 16:56 19/9/30.
@@ -34,5 +36,20 @@ public class ErrorPageRest {
         }
 
         return index;
+    }
+
+    @ResponseBody
+    @PostMapping(path = "post")
+    public String res(@RequestBody String response, HttpServletRequest httpServletRequest) {
+        System.out.println(response);
+        return response;
+    }
+
+
+    @ResponseBody
+    @PostMapping(path = "get")
+    public String get(@RequestParam(name = "key") String key) {
+        System.out.println(key);
+        return key;
     }
 }
