@@ -343,6 +343,7 @@ web系列博文列表，主要介绍web应用搭建的基本知识点，包括�
 - [190526-SpringBoot高级篇搜索Solr之文档新增与修改使用姿势](http://spring.hhui.top/spring-blog/2019/05/26/190526-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2Solr%E4%B9%8B%E6%96%87%E6%A1%A3%E6%96%B0%E5%A2%9E%E4%B8%8E%E4%BF%AE%E6%94%B9%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 - [200114-SpringBoot系列教程Solr之文档删除](http://spring.hhui.top/spring-blog/2020/01/14/200114-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BSolr%E4%B9%8B%E6%96%87%E6%A1%A3%E5%88%A0%E9%99%A4/)
 - [200115-SpringBoot系列教程Solr之查询使用姿势小结](http://spring.hhui.top/spring-blog/2020/01/15/200115-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BSolr%E4%B9%8B%E6%9F%A5%E8%AF%A2%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E5%B0%8F%E7%BB%93/)
+- [SpringBoot系列教程之Solr身份认证与授权更新异常解决方案](http://spring.hhui.top/spring-blog/2020/03/30/200330-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BSolr%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83%E6%9B%B4%E6%96%B0%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/)
 
 
 ### 11. SpringSecurity
