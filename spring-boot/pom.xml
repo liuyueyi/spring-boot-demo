@@ -69,6 +69,9 @@
         <module>300-rabbitmq</module>
         <module>301-rabbitmq-publish</module>
         <module>302-rabbitmq-consumer</module>
+        <module>220-web-sse</module>
+        <module>219-web-asyn</module>
+        <module>141-search-solr-auth</module>
 
     </modules>
 
