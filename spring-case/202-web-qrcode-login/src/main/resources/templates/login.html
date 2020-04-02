@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SpringBoot thymeleaf"/>
+    <meta name="author" content="YiHui"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>二维码界面</title>
+</head>
+<body>
+
+<div>
+    <div class="title">请扫码登录</div>
+
+
+    <img th:src="${qrcode}"/>
+
+    <div id="state" style="display: none"></div>
+
+    <script th:inline="javascript">
+        var stateTag = document.getElementById('state');
+
+        var subscribeUrl = [[${subscribe}]];
+        var source = new EventSource(subscribeUrl);
+        source.onmessage = function (event) {
+            text = event.data;
+            console.log("receive: " + text);
+            if (text == 'scan') {
+                stateTag.innerText = '已扫描';
+                stateTag.style.display = 'block';
+            } else if (text.startsWith('login#')) {
+                // 登录格式为 login#cookie
+                var cookie = text.substring(6);
+                document.cookie = cookie;
+                window.location.href = [[${redirect}]];
+                source.close();
+            }
+        };
+
+        source.onopen = function (evt) {
+            console.log("开始订阅");
+        }
+    </script>
+</div>
+</body>
+</html>

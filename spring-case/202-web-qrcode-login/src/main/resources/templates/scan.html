@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SpringBoot thymeleaf"/>
+    <meta name="author" content="YiHui"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>扫码登录界面</title>
+</head>
+<body>
+
+<div>
+    <div class="title">确定登录嘛？</div>
+
+    <div>
+        <a id="login">登录</a>
+    </div>
+
+    <script th:inline="javascript">
+
+        // 生成uuid，模拟传递用户token
+        function guid() {
+
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+
+            });
+        }
+
+        // 获取实际的token，补齐参数，这里只是一个简单的模拟
+        var url = [[${url}]];
+        document.getElementById("login").href = url + "&token=" + guid();
+    </script>
+
+</div>
+</body>
+</html>

@@ -20,6 +20,7 @@
         <module>201-web-api-version</module>
         <module>008-bean-order</module>
         <module>008-bean-order-client</module>
+        <module>202-web-qrcode-login</module>
     </modules>
 
     <dependencies>
