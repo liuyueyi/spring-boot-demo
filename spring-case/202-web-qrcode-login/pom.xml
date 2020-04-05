@@ -16,23 +16,33 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.hui.media</groupId>
-            <artifactId>qrcode-plugin</artifactId>
-            <version>2.2</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.github.hui.media</groupId>-->
+            <!--<artifactId>qrcode-plugin</artifactId>-->
+            <!--<version>2.2</version>-->
+        <!--</dependency>-->
+
+        <!--如果github方式下载不到最新的包，可以注释掉，选择用jitpack方式，效果一样哦-->
+        <dependency>
+            <groupId>com.github.liuyueyi.quick-media</groupId>
+            <artifactId>qrcode-plugin</artifactId>
+            <version>2.2</version>
         </dependency>
     </dependencies>
 
     <repositories>
         <repository>
-            <id>yihui-maven-repo</id>
-            <url>https://raw.githubusercontent.com/liuyueyi/maven-repository/master/repository</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
+        <!--<repository>-->
+            <!--<id>yihui-maven-repo</id>-->
+            <!--<url>https://raw.githubusercontent.com/liuyueyi/maven-repository/master/repository</url>-->
+        <!--</repository>-->
     </repositories>
 </project>
