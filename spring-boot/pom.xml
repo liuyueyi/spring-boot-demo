@@ -72,6 +72,7 @@
         <module>220-web-sse</module>
         <module>219-web-asyn</module>
         <module>141-search-solr-auth</module>
+        <module>106-mybatis-plus-generator</module>
 
     </modules>
 

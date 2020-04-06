@@ -129,6 +129,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [103-mybatis-xml](spring-boot/103-mybatis-xml) | 【DB】mybatis xml配置整合方式 | mybatis |
 | [104-mybatis-noxml](spring-boot/104-mybatis-noxml) | 【DB】mybatis 注解整合方式 | mybatis |
 | [105-mybatis-plus](spring-boot/105-mybatis-plus) | 【DB】mybatis-plus整合 | mybatis-plus |
+| [106-mybatis-plus-generator](spring-boot/106-mybatis-plus-generator) | 【DB】mybatis-plus代码自动生成 | mybatis-plus |
 | [110-mongo-basic](spring-boot/110-mongo-basic) | 【DB】mongodb整合 | mongodb |
 | [111-mongo-template](spring-boot/111-mongo-template) | 【DB】mongodb CURD使用姿势 | `MongoTemplate` |
 | [120-redis-config](spring-boot/120-redis-config)  | 【redis】环境配置与基本使用 | redis |
@@ -286,6 +287,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】Mybatis+xml整合篇](http://spring.hhui.top/spring-blog/2019/12/27/191227-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BMybatis-xml%E6%95%B4%E5%90%88%E7%AF%87/)
 -  [【DB系列】Mybatis+注解整合篇](http://spring.hhui.top/spring-blog/2019/12/30/191230-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BMybatis-%E6%B3%A8%E8%A7%A3%E6%95%B4%E5%90%88%E7%AF%87/)
 -  [【DB系列】MybatisPlus整合篇](http://spring.hhui.top/spring-blog/2019/12/31/191231-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BMybatisPlus%E6%95%B4%E5%90%88%E7%AF%87/)
+-  [【DB系列】Mybatis-Plus代码自动生成](http://spring.hhui.top/spring-blog/2020/04/06/200406-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BMybatis-Plus%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/)
 -  [【DB系列】声明式事务Transactional](http://spring.hhui.top/spring-blog/2020/01/19/200119-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1Transactional/)
 -  [【DB系列】事务隔离级别知识点小结](http://spring.hhui.top/spring-blog/2020/01/20/200120-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9F%A5%E8%AF%86%E7%82%B9%E5%B0%8F%E7%BB%93/)
 -  [【DB系列】事务传递属性](http://spring.hhui.top/spring-blog/2020/02/02/200202-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E4%BC%A0%E9%80%92%E5%B1%9E%E6%80%A7/)
