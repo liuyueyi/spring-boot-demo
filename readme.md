@@ -165,6 +165,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果 | `FactoryBean` |
 | [006-importbean](spring-case/006-importbean) | 将非spring项目导入Spring生态 <br/> 自定义注入实例 | `ImportBeanDefinitionRegistrar` |
 | [008-bean-order](spring-case/008-bean-order)<br/>[008-bean-order-client](spring-case/008-bean-order-client) | 指定bean加载优先级，让中间件的核心bean优于业务bean被加载 |`InstantiationAwareBeanPostProcessorAdapter`, `@Import` |
+| [009-distribute-scheduler-task](spring-case/009-distribute-scheduler-task) | 分布式定时任务mock实例 | AOP实现定时任务选择; 重写`ScheduledAnnotationBeanPostProcessor`扩展定时任务生成 |
 | [120-redis-ranklist](spring-case/120-redis-ranklist) | redis实现排行榜 | `zset` |
 | [124-redis-sitecount](spring-case/124-redis-sitecount) | redis实现站点统计 | `redisTemplate` |
 | [201-web-api-version](spring-case/201-web-api-version) | web版本控制 | `RequestMappingHandlerMapping` |
@@ -180,10 +181,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [011-accesscontrol-acl](spring-security/011-accesscontrol-acl) | acl权限管理 | |
 | | | |
 | **spring-cloud** | 微服务 | |
-| [config-server](spring-cloud/config-server) | 配置中心 | |
-| [eurka-server](spring-cloud/eurka-server) | 注册中心 | |
-| [eurka-service-consumer](spring-cloud/eurka-service-consumer) | 服务提供者 | |
-| [eurka-service-provider](spring-cloud/eurka-service-provider) | 服务消费者 | |
+| [config-server](spring-cloud/config-server) | 配置中心 | spring cloud config|
+| [eurka-server](spring-cloud/eurka-server) | 注册中心 | spring cloud eurka |
+| [eurka-service-consumer](spring-cloud/eurka-service-consumer) | 服务提供者 | spring cloud eurka |
+| [eurka-service-provider](spring-cloud/eurka-service-provider) | 服务消费者 | ribbon feign |
 
 
 ## 2. 系列博文
@@ -196,6 +197,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 4. [【SpringBoot实战】借助Redis搭建一个简单站点统计服务](http://spring.hhui.top/spring-blog/2019/05/13/190513-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E6%9C%8D%E5%8A%A1/)
 5. [【SpringBoot实战】AOP实现日志功能](http://spring.hhui.top/spring-blog/2019/03/13/190313-SpringCloud%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BAOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E5%8A%9F%E8%83%BD/)
 6. [【SpringBoot实战】徒手撸一个扫码登录示例工程](http://spring.hhui.top/spring-blog/2020/04/02/200402-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%BE%92%E6%89%8B%E6%92%B8%E4%B8%80%E4%B8%AA%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B/)
+7. [【SpringBoot实战】mock一个简单的分布式定时任务](https://spring.hhui.top/spring-blog/2020/04/12/200412-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/)
 
 
 ### 1. 基础系列
@@ -241,6 +243,9 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】日志管理之默认配置](http://spring.hhui.top/spring-blog/2018/09/27/180927-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E4%B9%8B%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/)
 - [【基础系列】日志管理之logback配置文件](http://spring.hhui.top/spring-blog/2018/09/29/180929-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E4%B9%8Blogback%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/)
 
+**定时任务**
+
+- [【基础系列】实现一个简单的分布式定时任务(应用篇)](https://spring.hhui.top/spring-blog/2020/04/12/200412-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/)
 
 ### 2. DB系列
 

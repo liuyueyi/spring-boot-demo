@@ -16,7 +16,7 @@ public class BasicScheduleDemo {
      * @throws InterruptedException
      */
     @Scheduled(cron = "0/1 * * * * ?")
-    public void scheduleAtFixRate() throws InterruptedException {
+    private void scheduleAtFixRate() throws InterruptedException {
         long now = System.currentTimeMillis() / 1000;
         Thread.sleep(10);
         System.out.println("FixRate: " + (System.currentTimeMillis() / 1000) + " >>> " + now + " >>> " +
@@ -27,7 +27,7 @@ public class BasicScheduleDemo {
      * 固定两次执行之间延迟2s
      */
     @Scheduled(fixedDelay = 2000)
-    public void scheduleDelay() {
+    private void scheduleDelay() {
         System.out.println("FixDelay: " + (System.currentTimeMillis() / 1000)  + " >>> " +
                 Thread.currentThread().getName());
     }
@@ -36,7 +36,7 @@ public class BasicScheduleDemo {
      * 定时 20:10:00 执行一次
      */
     @Scheduled(cron = "0 10 20 * * ?")
-    public void scheduleAtSpecialTime() {
+    private void scheduleAtSpecialTime() {
         System.out.println(
                 "specialTime: " + (System.currentTimeMillis() / 1000) + " >>> " + Thread.currentThread().getName());
     }

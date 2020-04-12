@@ -22,6 +22,7 @@
         <module>008-bean-order-client</module>
         <module>202-web-qrcode-login</module>
         <module>203-web-rest-adapter</module>
+        <module>009-distribute-scheduler-task</module>
     </modules>
 
     <dependencies>
