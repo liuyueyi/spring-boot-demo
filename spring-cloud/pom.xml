@@ -18,6 +18,7 @@
         <module>eurka-service-consumer</module>
         <module>eurka-service-provider</module>
         <module>config-server</module>
+        <module>gateway</module>
     </modules>
 
 

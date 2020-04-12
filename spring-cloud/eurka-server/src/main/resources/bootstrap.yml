@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: native #配置服务器使用本地配置，默认git配置
+    active: native
   cloud:
     config:
       name: eureka-server
