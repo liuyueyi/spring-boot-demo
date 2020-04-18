@@ -10,7 +10,9 @@ spring:
     gateway:
       discovery:
         locator:
+          # 开启服务注册和发现的功能
           enabled: true
+          # 服务名转小写
           lower-case-service-id: true
 
 eureka:
