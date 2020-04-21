@@ -369,6 +369,14 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】实现后端的接口版本支持（应用篇）](http://spring.hhui.top/spring-blog/2019/12/25/191225-SpringBoot-%E5%BA%94%E7%94%A8%E7%AF%87-%E5%AE%9E%E7%8E%B0%E5%90%8E%E7%AB%AF%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81/)
 -  [【WEB系列】徒手撸一个扫码登录示例工程（应用篇）](http://spring.hhui.top/spring-blog/2020/04/02/200402-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%BE%92%E6%89%8B%E6%92%B8%E4%B8%80%E4%B8%AA%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B/)
 
+
+**WebFlux系列**
+
+由于WebFlux和SpringMVC在一些基础上差别较大，单独开一个系列教程版块
+
+- [【WEB系列】WebFlux之初体验](http://spring.hhui.top/spring-blog/2020/04/21/200421-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWebFlux%E4%B9%8B%E5%88%9D%E4%BD%93%E9%AA%8C/)
+
+
 ### 6. SpringSecurity系列
 
 记录SpringSecurity相关的所有技术文章，分类汇总如下，持续更新中

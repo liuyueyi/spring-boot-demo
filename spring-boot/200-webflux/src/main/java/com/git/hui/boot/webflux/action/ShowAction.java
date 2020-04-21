@@ -19,6 +19,11 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @Component
 public class ShowAction {
 
+    public Mono<ServerResponse> hello(ServerRequest serverRequest) {
+        return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
+                .body(Mono.just("hello " + serverRequest.queryParam("name").orElse("NoBody")), String.class);
+    }
+
     public Mono<ServerResponse> showTime(ServerRequest serverRequest) {
         return ok().contentType(MediaType.TEXT_PLAIN)
                 .body(Mono.just("Now is " + new SimpleDateFormat("HH:mm:ss").format(new Date())), String.class);

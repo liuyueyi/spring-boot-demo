@@ -16,7 +16,9 @@ public class RouterConfig {
 
     @Bean
     public RouterFunction<ServerResponse> timerRouter() {
-        return RouterFunctions.route(RequestPredicates.GET("/time"), showAction::showTime)
+        return RouterFunctions
+                .route(RequestPredicates.GET("/hello"), showAction::hello)
+                .andRoute(RequestPredicates.GET("/time"), showAction::showTime)
                 .andRoute(RequestPredicates.GET("/date"), showAction::showDate)
                 .andRoute(RequestPredicates.GET("/times"), showAction::sendTimePerSec);
     }
