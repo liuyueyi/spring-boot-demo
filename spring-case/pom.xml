@@ -23,6 +23,8 @@
         <module>202-web-qrcode-login</module>
         <module>203-web-rest-adapter</module>
         <module>009-distribute-scheduler-task</module>
+        <module>002-dynamic-config</module>
+        <module>002-dynamic-config-demo</module>
     </modules>
 
     <dependencies>

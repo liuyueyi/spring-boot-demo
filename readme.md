@@ -163,6 +163,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 |  | | |
 | **SpringCase** | 实战/应用演练项目 | - |
 | [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果 | `FactoryBean` |
+| [002-dynamic-config](spring-case/002-dynamic-config) <br/> [002-dynamic-config-demo](spring-case/002-dynamic-config-demo) | 自定义配置加载与刷新示例工程 | 借助`InstantiationAwareBeanPostProcessorAdapter` + Spring事件机制实现`@Value` `@RefreshScope` |
 | [006-importbean](spring-case/006-importbean) | 将非spring项目导入Spring生态 <br/> 自定义注入实例 | `ImportBeanDefinitionRegistrar` |
 | [008-bean-order](spring-case/008-bean-order)<br/>[008-bean-order-client](spring-case/008-bean-order-client) | 指定bean加载优先级，让中间件的核心bean优于业务bean被加载 |`InstantiationAwareBeanPostProcessorAdapter`, `@Import` |
 | [009-distribute-scheduler-task](spring-case/009-distribute-scheduler-task) | 分布式定时任务mock实例 | AOP实现定时任务选择; 重写`ScheduledAnnotationBeanPostProcessor`扩展定时任务生成 |
@@ -212,6 +213,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】SpringBoot基础篇配置信息之自定义配置指定与配置内引用](http://spring.hhui.top/spring-blog/2018/09/21/180921-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%8C%87%E5%AE%9A%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%86%85%E5%BC%95%E7%94%A8/)
 - [【基础系列】SpringBoot配置信息之配置刷新](http://spring.hhui.top/spring-blog/2018/09/22/180922-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%85%8D%E7%BD%AE%E5%88%B7%E6%96%B0/)
 - [【基础系列】SpringBoot配置信息之默认配置](http://spring.hhui.top/spring-blog/2018/09/25/180925-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/)
+- [【基础系列】实现一个自定义配置加载器（应用篇）](http://spring.hhui.top/spring-blog/2020/05/07/200507-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%E5%99%A8/)
 
 
 **IoC(DI/bean)**
@@ -423,7 +425,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 
 公众号&博客
 
-![QrCode](https://gitee.com/liuyueyi/Source/raw/master/img/info/blogInfoV2.png)
+![QrCode](https://spring.hhui.top/spring-blog/imgs/info/info.png)
 
 
 打赏码
