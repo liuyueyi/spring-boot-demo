@@ -403,6 +403,11 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 
 微服务系列
 
+**Eureka系列**
+
+- [【SpringCloud系列】Eureka注册中心初体验](http://spring.hhui.top/spring-blog/2020/05/13/200513-SpringCloud%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BEureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%88%9D%E4%BD%93%E9%AA%8C/)
+
+
 **踩坑、填坑**
 
 - [【Feign系列】Feign请求参数包装异常问题定位](http://spring.hhui.top/spring-blog/2019/03/06/190306-SpringCloud%E4%B9%8BFeign%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%8C%85%E8%A3%85%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D/)

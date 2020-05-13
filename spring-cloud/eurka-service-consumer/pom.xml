@@ -39,7 +39,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-client</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

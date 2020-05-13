@@ -1,0 +1,34 @@
+<html>
+<script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+<body>
+<form id="upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file" id="pic"/>
+    <input type="button" value="提交" onclick="uploadPic();"/>
+    <span class="showUrl"></span>
+</form>
+
+<script>
+    function uploadPic() {
+        var form = document.getElementById('upload');
+        var formData = new FormData(form);
+        $.ajax({
+            url: "http://localhost:8083/up/file",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                if (res) {
+                    alert("上传成功！");
+                }
+                console.log(res);
+                $(".showUrl").html(res);
+            },
+            error: function (err) {
+                alert("网络连接失败,稍后重试", err);
+            }
+        })
+    }
+</script>
+</body>
+</html>
