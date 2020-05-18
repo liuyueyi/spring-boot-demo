@@ -120,6 +120,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [010-aop](spring-boot/010-aop) | 【AOP】切面 | aop基本使用姿势与注意事项 |
 | [011-aop-logaspect](spring-boot/011-aop-logaspect) | 【AOP】切面 | 实战，日志切面|
 | [012-context-listener](spring-boot/012-context-listener) | 【Listener】事件 | ContextListener |
+| [013-spel](spring-boot/013-spel) | 【SpEL】 | SpEL语法与实例 |
 | [100-mysql](spring-boot/100-mysql) | 【DB】mysql整合 | - |
 | [101-jdbctemplate](spring-boot/101-jdbctemplate) | 【DB】jdbctemplate使用姿势 CURD详解 | `JdbcTemplate` |
 | [101-jdbctemplate-transaction](spring-boot/101-jdbctemplate-transaction) | 【DB】事务 |`@Transactional`声明式; 编程式事务 <br/> - 隔离级别 <br/> 传递属性 |
@@ -249,6 +250,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 **定时任务**
 
 - [【基础系列】实现一个简单的分布式定时任务(应用篇)](https://spring.hhui.top/spring-blog/2020/04/12/200412-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/)
+
+**SpEL**
+
+- [【基础系列】SpEL语法扫盲与查询手册](http://spring.hhui.top/spring-blog/2020/05/18/200518-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BSpEL%E8%AF%AD%E6%B3%95%E6%89%AB%E7%9B%B2%E4%B8%8E%E6%9F%A5%E8%AF%A2%E6%89%8B%E5%86%8C/)
 
 ### 2. DB系列
 
