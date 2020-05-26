@@ -74,6 +74,7 @@
         <module>141-search-solr-auth</module>
         <module>106-mybatis-plus-generator</module>
         <module>013-spel</module>
+        <module>202-web-params-validate</module>
 
     </modules>
 
