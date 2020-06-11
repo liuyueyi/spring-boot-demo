@@ -1,0 +1,16 @@
+p {
+    size: 1.5em;
+    color: red;
+}
+
+div {
+    size: 2em;
+    padding: 1em;
+    border-bottom: darkblue;
+}
+
+a {
+    size: 1.2em;
+    color: blue;
+    border-bottom-color: red;
+}

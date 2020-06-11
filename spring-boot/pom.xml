@@ -75,6 +75,9 @@
         <module>106-mybatis-plus-generator</module>
         <module>013-spel</module>
         <module>202-web-params-validate</module>
+        <module>200-reactor</module>
+        <module>204-web-static-resources</module>
+        <module>204-web-static-resources-ui</module>
 
     </modules>
 

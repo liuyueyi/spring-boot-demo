@@ -147,6 +147,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [202-web-params](spring-boot/202-web-params) | 【web】请求参数解析的各种姿势 | get参数解析<br/>post参数解析<br/>自定义参数解析`HandlerMethodArgumentResolver` |
 | [202-web-params-validate](spring-boot/202-web-params-validate) | 【web】请求参数校验 | 参数校验validation-api |
 | [203-websocket](spring-boot/203-websocket) | 【web】websocket实例 | `WebSocketHandler`, `WebSocketConfigurer` |
+| [204-web-static-resources](spring-boot/204-web-static-resources) | 【web】静态资源访问实例 | `WebMvcConfigure`, `spring.resources.static-locations` |
+| [204-web-static-resources-ui](spring-boot/204-web-static-resources-ui) | 【web】webjar静态资源 | 第三方jar包提供纯静态资源 |
 | [204-web-freemaker](spring-boot/204-web-freemaker) | 【web】freemaker引擎整合 | freemaker |
 | [205-web-thymeleaf](spring-boot/205-web-thymeleaf) | 【web】thymeleaf引擎整合 | thymeleaf |
 | [206-web-beetl](spring-boot/206-web-beetl) | 【web】beetl引擎整合 | beetl |
@@ -352,6 +354,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】如何自定义参数解析器](http://spring.hhui.top/spring-blog/2019/08/31/190831-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E5%99%A8/)
 -  [【WEB系列】参数校验Validation](http://spring.hhui.top/spring-blog/2020/05/26/200526-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/)
 -  [【WEB系列】自定义请求匹配条件RequestCondition](http://spring.hhui.top/spring-blog/2019/12/22/191222-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%8C%B9%E9%85%8D%E6%9D%A1%E4%BB%B6RequestCondition/)
+-  [【WEB系列】静态资源配置与读取](http://spring.hhui.top/spring-blog/2020/06/11/200611-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWeb%E7%AF%87%E4%B9%8B%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE/)
 -  [【WEB系列】Freemaker环境搭建](http://spring.hhui.top/spring-blog/2019/08/16/190816-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8BFreemaker%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/)
 -  [【WEB系列】Thymeleaf环境搭建](http://spring.hhui.top/spring-blog/2019/08/20/190820-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8BThymeleaf%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/)
 -  [【WEB系列】Beetl环境搭建](http://spring.hhui.top/spring-blog/2019/08/22/190822-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8BBeetl%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/)
