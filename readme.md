@@ -387,6 +387,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 由于WebFlux和SpringMVC在一些基础上差别较大，单独开一个系列教程版块
 
 - [【WEB系列】WebFlux之初体验](http://spring.hhui.top/spring-blog/2020/04/21/200421-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWebFlux%E4%B9%8B%E5%88%9D%E4%BD%93%E9%AA%8C/)
+- [【WEB系列】WebFlux静态资源配置与访问](https://spring.hhui.top/spring-blog/2020/06/12/200612-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWebFlux%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%AE%BF%E9%97%AE/)
 
 
 ### 6. SpringSecurity系列

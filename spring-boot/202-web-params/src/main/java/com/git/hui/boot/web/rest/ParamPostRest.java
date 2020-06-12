@@ -33,7 +33,7 @@ public class ParamPostRest {
     /**
      * json串
      *
-     * curl 'http://127.0.0.1:8080/post/body' -X POST -H 'content-type:application/json;charset:UTF-8' -d '{"name": "yihui", "age": 20}'
+     * curl 'http://127.0.0.1:8080/post/body' -X POST -H 'content-type:application/json;charset:utf-8' -d '{"name": "yihui", "age": 20}'
      *
      * @param req
      * @return
@@ -46,7 +46,7 @@ public class ParamPostRest {
     /**
      * 最基本的使用方式
      *
-     * curl 'http://127.0.0.1:8080/post/req' -X POST -H 'content-type:application/json;charset:UTF-8' -d '{"name": "yihui", "age": 20}'
+     * curl 'http://127.0.0.1:8080/post/req' -X POST -H 'content-type:application/json;charset:utf-8' -d '{"name": "yihui", "age": 20}'
      * curl 'http://127.0.0.1:8080/post/req' -X POST -d 'name=yihui&age=18'
      *
      * @param req

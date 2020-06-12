@@ -1,5 +1,6 @@
 package com.git.hui.boot.web;
 
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.git.hui.boot.web.resolver.ListHandlerMethodArgumentResolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
