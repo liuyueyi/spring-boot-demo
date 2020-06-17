@@ -78,6 +78,7 @@
         <module>200-reactor</module>
         <module>204-web-static-resources</module>
         <module>204-web-static-resources-ui</module>
+        <module>221-web-resttemplate</module>
 
     </modules>
 

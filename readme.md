@@ -161,6 +161,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [212-web-listener](spring-boot/212-web-listener) | 【web】listener知识点 | Listener |
 | [219-web-asyn](spring-boot/219-web-asyn) | 【web】异步请求 |`AsyncContext方式` <br/> `Callable` <br/> `WebAsyncTask` <br/>`DeferredResult` |
 | [220-web-sse](spring-boot/220-web-sse) | 【web】sse 服务器发送事件 |`SseEmitter` |
+| [221-web-resttemplate](spring-boot/221-web-resttemplate) | 【web】RestTemplate使用姿势 |`RestTemplate` |
 | [300-rabbitmq](spring-boot/300-rabbitmq) | 【web】rabbitmq整合 | rabbitmq |
 | [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息 | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
 | [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) |【web】rabbitmq消费消息姿势 | `@RabbitListener` |
@@ -369,6 +370,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】异步请求知识点与使用姿势小结](http://spring.hhui.top/spring-blog/2020/03/29/200329-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%E6%9C%80%E5%85%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 -  [【WEB系列】SSE服务器发送事件详解](http://spring.hhui.top/spring-blog/2020/04/01/200401-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BSSE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%91%E9%80%81%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3/)
 -  [【WEB系列】springboot + websocket初体验](http://spring.hhui.top/spring-blog/2019/04/21/190421-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87WEB%E4%B9%8Bwebsocket%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)
+-  [【WEB系列】RestTemplate基础用法小结](http://spring.hhui.top/spring-blog/2020/06/17/200617-SpringBoot%E7%B3%BB%E5%88%97RestTemplate%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95%E5%B0%8F%E7%BB%93/)
 
 **采坑、填坑**
 
