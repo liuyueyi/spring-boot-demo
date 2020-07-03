@@ -1,18 +1,23 @@
 package com.git.hui.boot.resttemplate.rest;
 
+import ch.qos.logback.core.util.StringCollectionUtil;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import sun.misc.BASE64Decoder;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Enumeration;
 
@@ -92,6 +97,53 @@ public class DemoRest {
         HttpServletRequest request =
                 ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return buildResult(request, body);
+    }
+
+
+    @GetMapping(path = "timeout")
+    public String timeOut(HttpServletRequest request) throws InterruptedException {
+        Thread.sleep(60_000L);
+        return buildResult(request);
+    }
+
+    /**
+     * 标准的http auth验证
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    @GetMapping(path = "auth")
+    public String auth(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String auth = request.getHeader("Authorization");
+        if (StringUtils.isEmpty(auth)) {
+            response.setStatus(401);
+            response.setHeader("WWW-Authenticate", "Basic realm=\"input username and password\"");
+            return buildResult(request) + "\n>>>no auth header";
+        }
+
+        String[] userAndPass = new String(new BASE64Decoder().decodeBuffer(auth.split(" ")[1])).split(":");
+        if (userAndPass.length < 2) {
+            response.setStatus(401);
+            response.setHeader("WWW-Authenticate", "Basic realm=\"input username and password\"");
+            return buildResult(request) + "\n>>>illegal auth: " + auth;
+        }
+
+        if ("user".equalsIgnoreCase(userAndPass[0]) && "pwd".equalsIgnoreCase(userAndPass[1])) {
+            return buildResult(request) + "\n>>>auth: success!";
+        }
+
+        response.setStatus(401);
+        response.setHeader("WWW-Authenticate", "Basic realm=\"input username and password\"");
+        return buildResult(request) + "\n>>>illegal user or pwd!";
+    }
+
+
+    @GetMapping(path = "proxy")
+    private String proxy(HttpServletRequest request) {
+        String remote = request.getRemoteHost() + ":" + request.getRemotePort();
+        return buildResult(request) + "\n>>>remote ipInfo: " + remote;
     }
 
     @Autowired
