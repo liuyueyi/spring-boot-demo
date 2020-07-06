@@ -1,12 +1,12 @@
 package com.git.hui.boot.web;
 
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.git.hui.boot.web.resolver.ListHandlerMethodArgumentResolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -29,6 +29,8 @@ public class Application extends WebMvcConfigurationSupport {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
         converters.add(responseBodyConverter());
+//        请注意，没有这一行，xml参数解析和返回会失败
+//        converters.add(new MappingJackson2XmlHttpMessageConverter());
     }
 
     @Override
