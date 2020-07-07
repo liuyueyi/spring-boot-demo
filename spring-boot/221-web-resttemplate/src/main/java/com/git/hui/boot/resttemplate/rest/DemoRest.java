@@ -1,6 +1,7 @@
 package com.git.hui.boot.resttemplate.rest;
 
 import ch.qos.logback.core.util.StringCollectionUtil;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -102,7 +103,7 @@ public class DemoRest {
 
     @GetMapping(path = "timeout")
     public String timeOut(HttpServletRequest request) throws InterruptedException {
-        Thread.sleep(60_000L);
+        Thread.sleep(3_000L);
         return buildResult(request);
     }
 
@@ -152,6 +153,28 @@ public class DemoRest {
     @GetMapping(path = "test")
     public String test() {
         restTemplateDemo.test();
+        return "over";
+    }
+
+    @GetMapping(path = "atimeout")
+    public String aTimeOut(HttpServletRequest request) throws InterruptedException {
+        Thread.sleep(3_000L);
+        return "time out!" + JSON.toJSONString(request.getParameterMap());
+    }
+
+    @GetMapping(path = "4xx")
+    public String _4xx(HttpServletRequest request, HttpServletResponse response) {
+        response.setStatus(401);
+        return "return 401 : " + JSON.toJSONString(request.getParameterMap());
+    }
+
+
+    @Autowired
+    private AsyncRestTemplateDemo asyncRestTemplateDemo;
+
+    @GetMapping(path = "atest")
+    public String asyncTest() {
+        asyncRestTemplateDemo.test();
         return "over";
     }
 }
