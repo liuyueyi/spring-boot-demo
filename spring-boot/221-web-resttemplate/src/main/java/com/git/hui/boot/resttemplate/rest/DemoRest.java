@@ -1,18 +1,17 @@
 package com.git.hui.boot.resttemplate.rest;
 
-import ch.qos.logback.core.util.StringCollectionUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import sun.misc.BASE64Decoder;
 
 import javax.servlet.http.Cookie;
@@ -20,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 /**
  * Created by @author yihui in 19:33 20/6/16.
@@ -176,5 +177,30 @@ public class DemoRest {
     public String asyncTest() {
         asyncRestTemplateDemo.test();
         return "over";
+    }
+
+
+    /**
+     * 文件上传
+     *
+     * @param file
+     * @return
+     */
+    @PostMapping(path = "upload")
+    public String upload(@RequestPart(name = "data") MultipartFile file, String name) throws IOException {
+        String ans = new String(file.getBytes(), "utf-8") + "|" + name;
+        return ans;
+    }
+
+
+    @PostMapping(path = "upload2")
+    public String upload(MultipartHttpServletRequest request) throws IOException {
+        List<MultipartFile> files = request.getFiles("data");
+
+        List<String> ans = new ArrayList<>();
+        for (MultipartFile file : files) {
+            ans.add(new String(file.getBytes(), "utf-8"));
+        }
+        return JSON.toJSONString(ans);
     }
 }

@@ -6,13 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -25,6 +27,7 @@ import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -45,24 +48,26 @@ public class RestTemplateDemo {
         //        basicGet();
         //        System.out.println("\n=========== post实例 =============\n");
         //        basicPost();
-        System.out.println("\n=========== post body实例 =============\n");
-        jsonPost();
-        System.out.println("\n=========== 中文乱码 =============\n");
-        chinese();
-        System.out.println("\n=========== 请求头 =============\n");
-        header();
-        System.out.println("\n=========== 请求头错误case =============\n");
-        errorHeader();
-        System.out.println("\n=========== 超时 =============\n");
-        timeOut();
-        System.out.println("\n=========== 代理 =============\n");
-        proxy();
-        System.out.println("\n=========== 授权验证 =============\n");
-        auth();
-        System.out.println("\n=========== 异常 =============\n");
-        exception();
-        System.out.println("\n=========== ssl =============\n");
-        ssl();
+        //        System.out.println("\n=========== post body实例 =============\n");
+        //        jsonPost();
+        //        System.out.println("\n=========== 中文乱码 =============\n");
+        //        chinese();
+        //        System.out.println("\n=========== 请求头 =============\n");
+        //        header();
+        //        System.out.println("\n=========== 请求头错误case =============\n");
+        //        errorHeader();
+        //        System.out.println("\n=========== 超时 =============\n");
+        //        timeOut();
+        //        System.out.println("\n=========== 代理 =============\n");
+        //        proxy();
+        //        System.out.println("\n=========== 授权验证 =============\n");
+        //        auth();
+        //        System.out.println("\n=========== 异常 =============\n");
+        //        exception();
+        //        System.out.println("\n=========== ssl =============\n");
+        //        ssl();
+        System.out.println("\n=========== upload =============\n");
+        upload();
     }
 
     /**
@@ -378,5 +383,74 @@ public class RestTemplateDemo {
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.getForObject("https://story.hhui.top/", String.class);
         log.info("ssl response: {}", response);
+    }
+
+
+    public void upload() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        //设置请求头
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        //设置请求体，注意是LinkedMultiValueMap
+        FileSystemResource fileSystemResource =
+                new FileSystemResource(this.getClass().getClassLoader().getResource("test.txt").getFile());
+        MultiValueMap<String, Object> form = new LinkedMultiValueMap<>();
+        form.add("data", fileSystemResource);
+        form.add("name", "哒哒哒");
+
+        //用HttpEntity封装整个请求报文
+        HttpEntity<MultiValueMap<String, Object>> files = new HttpEntity<>(form, headers);
+        String ans = restTemplate.postForObject("http://127.0.0.1:8080/upload", files, String.class);
+        log.info("upload fileResource return: {}", ans);
+
+
+        final InputStream stream = this.getClass().getClassLoader().getResourceAsStream("test.txt");
+        InputStreamResource inputStreamResource = new InputStreamResource(stream) {
+            @Override
+            public long contentLength() throws IOException {
+                // 这个方法需要重写，否则无法正确上传文件；原因在于父类是通过读取流数据来计算大小
+                return stream.available();
+            }
+
+            @Override
+            public String getFilename() {
+                return "test.txt";
+            }
+        };
+        form.clear();
+        form.add("data", inputStreamResource);
+        files = new HttpEntity<>(form, headers);
+        ans = restTemplate.postForObject("http://127.0.0.1:8080/upload", files, String.class);
+        log.info("upload streamResource return: {}", ans);
+
+
+        ByteArrayResource byteArrayResource = new ByteArrayResource("hello 一灰灰😝".getBytes()) {
+            @Override
+            public String getFilename() {
+                return "test.txt";
+            }
+        };
+        form.clear();
+        form.add("data", byteArrayResource);
+        files = new HttpEntity<>(form, headers);
+        ans = restTemplate.postForObject("http://127.0.0.1:8080/upload", files, String.class);
+        log.info("upload bytesResource return: {}", ans);
+
+
+        // 多个文件上传
+        FileSystemResource f1 =
+                new FileSystemResource(this.getClass().getClassLoader().getResource("test.txt").getFile());
+        FileSystemResource f2 =
+                new FileSystemResource(this.getClass().getClassLoader().getResource("test2.txt").getFile());
+        form.clear();
+        form.add("data", f1);
+        form.add("data", f2);
+        form.add("name", "多传");
+
+        files = new HttpEntity<>(form, headers);
+        ans = restTemplate.postForObject("http://127.0.0.1:8080/upload2", files, String.class);
+        log.info("multi upload return: {}", ans);
     }
 }
