@@ -1,16 +1,27 @@
 package com.git.hui.boo.webclient.rest;
 
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import io.netty.channel.ChannelOption;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.WriteTimeoutHandler;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.*;
+import org.springframework.http.client.MultipartBodyBuilder;
+import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.netty.http.client.HttpClient;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,11 +29,38 @@ import java.util.Map;
  */
 @Component
 public class WebClientTutorial {
+    private void hook(long time, String tag) {
+        // 避免线程直接退出，导致没有输出
+        try {
+            Thread.sleep(time);
+            System.out.println("\n=============" + tag + "==============\n");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void test() {
         //        create();
+        //        hook(3000, "get");
         //        get();
-        post();
+        //        hook(3000, "post");
+        //        post();
+        //        hook(3000, "upload");
+        //        postFile();
+                hook(3000, "headers");
+                headers();
+        //        hook(3000, "auth");
+        //        auth();
+        //        hook(3000, "strategy");
+        //        strategy();
+        //        hook(3000, "response detail");
+        //        responseDetail();
+        //        hook(3000, "error");
+        //        errorCase();
+        //        hook(3000, "timeout");
+        //        timeout();
+        //        hook(10000, "block");
+        //        sync();
     }
 
     public void create() {
@@ -91,7 +129,7 @@ public class WebClientTutorial {
         ans.subscribe(s -> System.out.println("post formData ans: " + s));
 
 
-        // 官方文档上说这种方式可以，然而实际使用时，却是无法解析到参数
+        // 官方文档上说这种方式可以，请注意实际使用时，这里是body而不是bodyvalue
         ans = webClient.post().uri("/post").body(BodyInserters.fromFormData(formData)).retrieve()
                 .bodyToMono(String.class);
         ans.subscribe(s -> System.out.println("post2 formData ans: " + s));
@@ -105,5 +143,202 @@ public class WebClientTutorial {
         ans = webClient.post().uri("/body").contentType(MediaType.APPLICATION_JSON).bodyValue(body).retrieve()
                 .bodyToMono(String.class);
         ans.subscribe(s -> System.out.println("post body res: " + s));
+    }
+
+
+    /**
+     * 文件上传的方式
+     */
+    public void postFile() {
+        MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        builder.part("data",
+                new FileSystemResource(this.getClass().getClassLoader().getResource("test.txt").getFile()));
+
+        // 表单参数
+        builder.part("name", "一灰灰");
+
+        MultiValueMap<String, HttpEntity<?>> parts = builder.build();
+
+        WebClient webClient = WebClient.create("http://127.0.0.1:8080");
+        Mono<String> ans = webClient.post().uri("/upload").bodyValue(parts).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("upload file return : " + s));
+
+
+        // 以流的方式上传资源
+        builder = new MultipartBodyBuilder();
+        final InputStream stream = this.getClass().getClassLoader().getResourceAsStream("test.txt");
+        builder.part("data", new InputStreamResource(stream) {
+            @Override
+            public long contentLength() throws IOException {
+                // 这个方法需要重写，否则无法正确上传文件；原因在于父类是通过读取流数据来计算大小
+                return stream.available();
+            }
+
+            @Override
+            public String getFilename() {
+                return "test.txt";
+            }
+        });
+        parts = builder.build();
+        ans = webClient.post().uri("/upload").bodyValue(parts).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("upload stream return: " + s));
+
+
+        // 以字节数组的方式上传资源
+        builder = new MultipartBodyBuilder();
+        builder.part("data", new ByteArrayResource("hello 一灰灰😝!!!".getBytes()) {
+            @Override
+            public String getFilename() {
+                return "test.txt";
+            }
+        });
+        parts = builder.build();
+        ans = webClient.post().uri("/upload").bodyValue(parts).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("upload bytes return: " + s));
+
+
+        // 多文件上传
+        builder.part("data", new ByteArrayResource("welcome 二灰灰😭!!!".getBytes()) {
+            @Override
+            public String getFilename() {
+                return "test2.txt";
+            }
+        });
+        parts = builder.build();
+        ans = webClient.post().uri("/upload").bodyValue(parts).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("batch upload bytes return: " + s));
+
+
+        // 第二种上传姿势
+        ans = webClient.post().uri("/upload").body(BodyInserters.fromMultipartData("data",
+                new FileSystemResource(this.getClass().getClassLoader().getResource("test.txt").getFile()))
+                .with("name", "form参数")).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("upload file build by BodyInserters return: " + s));
+    }
+
+
+    /**
+     * 携带请求头
+     */
+    public void headers() {
+        // 1. 在创建时，指定默认的请求头
+        WebClient webClient = WebClient.builder().defaultHeader("User-Agent", "SelfDefine Header")
+                .defaultHeader("referer", "localhost").baseUrl("http://127.0.0.1:8080").build();
+
+        Mono<String> ans =
+                webClient.get().uri("/withHeader?name={1}&age={2}", "一灰灰", 19).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("basic get with default header return: " + s));
+
+
+        // 2. 使用filter
+        webClient = WebClient.builder().filter((request, next) -> {
+            ClientRequest filtered = ClientRequest.from(request).header("filter-header", "self defined header").build();
+            return next.exchange(filtered);
+        }).baseUrl("http://127.0.0.1:8080").build();
+        ans = webClient.get().uri("/withHeader?name={1}&age={2}", "一灰灰", 19).retrieve().bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("basic get with filter header return: " + s));
+    }
+
+
+    /**
+     * basic auth
+     */
+    public void auth() {
+        WebClient webClient = WebClient.builder().filter(ExchangeFilterFunctions.basicAuthentication("user", "pwd"))
+                .baseUrl("http://127.0.0.1:8080").build();
+        Mono<ResponseEntity<String>> response =
+                webClient.get().uri("/auth?name=一灰灰&age=18").exchange().flatMap(s -> s.toEntity(String.class));
+
+        response.subscribe(s -> System.out.println("auth return: " + s));
+    }
+
+
+    public void strategy() {
+        try {
+            // 默认允许的内存空间大小为256KB，可以通过下面的方式进行修改
+            WebClient webClient = WebClient.builder().exchangeStrategies(
+                    ExchangeStrategies.builder().codecs(codec -> codec.defaultCodecs().maxInMemorySize(10)).build())
+                    .baseUrl("http://127.0.0.1:8080").build();
+
+            String argument = "这也是一个很长很长的文本，用于测试超出上限!";
+            Mono<String> ans = webClient.get().uri("/get?name={1}", argument).retrieve().bodyToMono(String.class);
+            ans.subscribe(s -> System.out.println("exchange strategy: " + ans));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void responseDetail() {
+        // 利用 exchange 获取更详细的返回信息
+
+        WebClient webClient = WebClient.create("http://127.0.0.1:8080");
+
+        // 返回结果
+        Mono<ClientResponse> res = webClient.get().uri("/get?name={1}&age={2}", "一灰灰", 18).exchange();
+        res.subscribe(s -> {
+            HttpStatus statusCode = s.statusCode();
+            ClientResponse.Headers headers = s.headers();
+            MultiValueMap<String, ResponseCookie> ans = s.cookies();
+            s.bodyToMono(String.class).subscribe(body -> {
+                System.out.println(
+                        "response detail: \nheader: " + headers + "\ncode: " + statusCode + "\ncookies: " + ans +
+                                "\nbody:" + body);
+            });
+        });
+    }
+
+    public void errorCase() {
+        // 返回非200状态码的处理方式
+        // 区分 exchange 与 retrieve 两种使用姿势
+
+        WebClient webClient = WebClient.create("http://127.0.0.1:8080");
+        Mono<String> ans = webClient.get().uri("404").retrieve().onStatus(HttpStatus::is4xxClientError, response -> {
+            System.out.println("404 res: " + response.headers() + "|" + response.statusCode());
+            response.bodyToMono(String.class).subscribe(s -> System.out.println("inner res body: " + s));
+            return Mono.just(new RuntimeException("404 not found!"));
+        }).bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("404 ans: " + s));
+
+    }
+
+    public void timeout() {
+        // 超时相关设置
+
+        // 设置读写超时时间，设置连接超时时间
+        HttpClient httpClient = HttpClient.create().tcpConfiguration(
+                client -> client.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3_000).doOnConnected(
+                        conn -> conn.addHandlerLast(new ReadTimeoutHandler(3))
+                                .addHandlerLast(new WriteTimeoutHandler(3))));
+        // 设置httpclient
+        WebClient webClient = WebClient.builder().baseUrl("http://127.0.0.1:8080")
+                .clientConnector(new ReactorClientHttpConnector(httpClient)).build();
+
+        Mono<ResponseEntity<String>> ans =
+                webClient.get().uri("/timeout").exchange().flatMap(s -> s.toEntity(String.class));
+        ans.subscribe(s -> System.out.println("timeout res code: " + s.getStatusCode()));
+    }
+
+    public void sync() {
+        // 同步调用的姿势
+
+        // 需要特别注意，这种是使用姿势，不能在响应一个http请求的线程中执行；
+        // 比如这个项目中，可以通过  http://127.0.0.1:8080/test 来调用本类的测试方法；但本方法如果被这种姿势调用，则会抛异常；
+        // 如果需要正常测试，可以看一下test下的调用case
+
+        WebClient webClient = WebClient.create("http://127.0.0.1:8080");
+
+        String ans = webClient.get().uri("/get?name=一灰灰").retrieve().bodyToMono(String.class).block();
+        System.out.println("block get Mono res: " + ans);
+
+
+        Map<String, Object> uriVariables = new HashMap<>(4);
+        uriVariables.put("p1", "一灰灰");
+        uriVariables.put("p2", 19);
+
+        List<String> fans =
+                webClient.get().uri("/mget?name={p1}&age={p2}", uriVariables).retrieve().bodyToFlux(String.class)
+                        .collectList().block();
+        System.out.println("block get Flux res: " + fans);
     }
 }

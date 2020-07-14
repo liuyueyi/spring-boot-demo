@@ -23,6 +23,13 @@ public class WebClientTutorialTest {
         hook(4000);
     }
 
+    @Test
+    public void upload() {
+        WebClientTutorial web = new WebClientTutorial();
+        web.postFile();
+        hook(3000);
+    }
+
     private void hook(long time) {
         // 避免线程直接退出，导致没有输出
         try {
