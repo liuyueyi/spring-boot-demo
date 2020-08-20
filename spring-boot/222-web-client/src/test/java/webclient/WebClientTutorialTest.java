@@ -10,24 +10,43 @@ public class WebClientTutorialTest {
 
     @Test
     public void get() {
-        WebClientTutorial web = new WebClientTutorial();
-        web.get();
-        hook(4000);
+        try {
+            WebClientTutorial web = new WebClientTutorial();
+            web.get();
+            hook(4000);
+        } catch (Exception e) {
+        }
     }
 
 
     @Test
     public void post() {
-        WebClientTutorial web = new WebClientTutorial();
-        web.post();
-        hook(4000);
+        try {
+            WebClientTutorial web = new WebClientTutorial();
+            web.post();
+            hook(4000);
+        } catch (Exception e) {
+        }
     }
 
     @Test
     public void upload() {
-        WebClientTutorial web = new WebClientTutorial();
-        web.postFile();
-        hook(3000);
+        try {
+            WebClientTutorial web = new WebClientTutorial();
+            web.postFile();
+            hook(3000);
+        } catch (Exception e) {
+        }
+    }
+
+    @Test
+    public void sync() {
+        try {
+            WebClientTutorial web = new WebClientTutorial();
+            web.sync();
+            hook(3000);
+        } catch (Exception e) {
+        }
     }
 
     private void hook(long time) {
