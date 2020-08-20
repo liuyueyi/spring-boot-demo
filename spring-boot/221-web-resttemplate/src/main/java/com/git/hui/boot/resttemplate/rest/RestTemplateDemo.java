@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.ConnectionPool;
+import okhttp3.OkHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
@@ -13,9 +17,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.http.client.*;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -35,6 +37,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by @author yihui in 19:45 20/6/16.
@@ -452,5 +455,51 @@ public class RestTemplateDemo {
         files = new HttpEntity<>(form, headers);
         ans = restTemplate.postForObject("http://127.0.0.1:8080/upload2", files, String.class);
         log.info("multi upload return: {}", ans);
+    }
+
+
+    /**
+     * 设置独立的连接池相关信息
+     */
+    public void requestPool() {
+        // 连接池管理
+        PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager();
+        // 连接池最大连接数
+        poolingConnectionManager.setMaxTotal(1000);
+        // 每个主机的并发
+        poolingConnectionManager.setDefaultMaxPerRoute(100);
+        // 可用空闲连接过期时间
+        poolingConnectionManager.setValidateAfterInactivity(10_000);
+
+
+        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+        httpClientBuilder.setConnectionManager(poolingConnectionManager);
+
+
+        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+        requestFactory.setHttpClient(httpClientBuilder.build());
+        requestFactory.setConnectTimeout(3000); // 连接超时时间/毫秒
+        requestFactory.setReadTimeout(3000); // 读写超时时间/毫秒
+        requestFactory.setConnectionRequestTimeout(5000);// 请求超时时间/毫秒
+
+
+        // 创建restemplate对象，并制定 RequestFactory
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(requestFactory);
+    }
+
+
+    public void okHttpPool() {
+        // 设置连接池参数，最大空闲连接数200，空闲连接存活时间10s
+        ConnectionPool connectionPool = new ConnectionPool(200, 10, TimeUnit.SECONDS);
+
+        OkHttpClient okHttpClient =
+                new OkHttpClient.Builder().retryOnConnectionFailure(false).connectionPool(connectionPool)
+                        .connectTimeout(3, TimeUnit.SECONDS).readTimeout(3, TimeUnit.SECONDS)
+                        .writeTimeout(3, TimeUnit.SECONDS).build();
+
+        ClientHttpRequestFactory factory = new OkHttp3ClientHttpRequestFactory(okHttpClient);
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(factory);
     }
 }

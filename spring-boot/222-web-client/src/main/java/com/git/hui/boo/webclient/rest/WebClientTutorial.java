@@ -1,5 +1,6 @@
 package com.git.hui.boo.webclient.rest;
 
+import com.alibaba.fastjson.JSON;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
@@ -9,7 +10,10 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.*;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
+import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -47,12 +51,12 @@ public class WebClientTutorial {
         //        post();
         //        hook(3000, "upload");
         //        postFile();
-                hook(3000, "headers");
-                headers();
+        //        hook(3000, "headers");
+        //        headers();
         //        hook(3000, "auth");
         //        auth();
-        //        hook(3000, "strategy");
-        //        strategy();
+        hook(3000, "strategy");
+        strategy();
         //        hook(3000, "response detail");
         //        responseDetail();
         //        hook(3000, "error");
@@ -244,28 +248,49 @@ public class WebClientTutorial {
      * basic auth
      */
     public void auth() {
-        WebClient webClient = WebClient.builder().filter(ExchangeFilterFunctions.basicAuthentication("user", "pwd"))
+        // 最原始的请求头设置方式
+        WebClient webClient = WebClient.builder()
+                .defaultHeader("Authorization", "Basic " + Base64Utils.encodeToString("user:pwd".getBytes()))
                 .baseUrl("http://127.0.0.1:8080").build();
         Mono<ResponseEntity<String>> response =
                 webClient.get().uri("/auth?name=一灰灰&age=18").exchange().flatMap(s -> s.toEntity(String.class));
+        response.subscribe(s -> System.out.println("header auth return: " + s));
 
-        response.subscribe(s -> System.out.println("auth return: " + s));
+
+        // filter方式
+        webClient = WebClient.builder().filter(ExchangeFilterFunctions.basicAuthentication("user", "pwd"))
+                .baseUrl("http://127.0.0.1:8080").build();
+        response = webClient.get().uri("/auth?name=一灰灰&age=18").exchange().flatMap(s -> s.toEntity(String.class));
+
+        response.subscribe(s -> System.out.println("filter auth return: " + s));
     }
 
 
     public void strategy() {
-        try {
-            // 默认允许的内存空间大小为256KB，可以通过下面的方式进行修改
-            WebClient webClient = WebClient.builder().exchangeStrategies(
-                    ExchangeStrategies.builder().codecs(codec -> codec.defaultCodecs().maxInMemorySize(10)).build())
-                    .baseUrl("http://127.0.0.1:8080").build();
+        WebClient webClient = WebClient.builder().exchangeStrategies(ExchangeStrategies.builder().codecs(codec -> {
+            codec.customCodecs().decoder(new Jackson2JsonDecoder());
+            codec.customCodecs().encoder(new Jackson2JsonEncoder());
+        }).build()).baseUrl("http://127.0.0.1:8080").build();
+        Body body = new Body("一灰灰😝", 18);
+        Mono<Body> ans =
+                webClient.post().uri("/body2").contentType(MediaType.APPLICATION_JSON).bodyValue(body).retrieve()
+                        .bodyToMono(Body.class);
+        ans.subscribe(s -> System.out.println("retreive res: " + s));
 
-            String argument = "这也是一个很长很长的文本，用于测试超出上限!";
-            Mono<String> ans = webClient.get().uri("/get?name={1}", argument).retrieve().bodyToMono(String.class);
-            ans.subscribe(s -> System.out.println("exchange strategy: " + ans));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        hook(3000, "-----");
+
+        // 默认允许的内存空间大小为256KB，可以通过下面的方式进行修改
+        webClient = WebClient.builder().exchangeStrategies(
+                ExchangeStrategies.builder().codecs(codec -> codec.defaultCodecs().maxInMemorySize(10)).build())
+                .baseUrl("http://127.0.0.1:8080").build();
+
+        String argument = "这也是一个很长很长的文本，用于测试超出上限!";
+        Mono<String> ans2 = webClient.get().uri("/get?name={1}", argument).retrieve().bodyToMono(String.class)
+                .doOnError(WebClientResponseException.class, err -> {
+                    System.out.println(err.getRawStatusCode() + "," + err.getResponseBodyAsString());
+                    throw new RuntimeException(err.getMessage());
+                }).onErrorReturn("fallback");
+        ans.subscribe(s -> System.out.println("exchange strategy: " + ans2));
     }
 
 
@@ -281,11 +306,27 @@ public class WebClientTutorial {
             ClientResponse.Headers headers = s.headers();
             MultiValueMap<String, ResponseCookie> ans = s.cookies();
             s.bodyToMono(String.class).subscribe(body -> {
-                System.out.println(
-                        "response detail: \nheader: " + headers + "\ncode: " + statusCode + "\ncookies: " + ans +
-                                "\nbody:" + body);
+                System.out.println("response detail: \nheader: " + headers.asHttpHeaders() + "\ncode: " + statusCode +
+                        "\ncookies: " + ans + "\nbody:" + body);
             });
         });
+
+
+        Mono<ResponseEntity<String>> ans = webClient.get().uri("/get?name={1}&age={2}", "一灰灰", 18).exchange()
+                .flatMap(s -> s.toEntity(String.class));
+
+        ans.subscribe(s -> {
+            HttpStatus statusCode = s.getStatusCode();
+            HttpHeaders headers = s.getHeaders();
+            String body = s.getBody();
+            System.out.println("response detail2: \ncode: " + statusCode + "\nheaders: " + headers + "\nbody: " + body);
+        });
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void errorCase() {
@@ -293,13 +334,35 @@ public class WebClientTutorial {
         // 区分 exchange 与 retrieve 两种使用姿势
 
         WebClient webClient = WebClient.create("http://127.0.0.1:8080");
-        Mono<String> ans = webClient.get().uri("404").retrieve().onStatus(HttpStatus::is4xxClientError, response -> {
-            System.out.println("404 res: " + response.headers() + "|" + response.statusCode());
-            response.bodyToMono(String.class).subscribe(s -> System.out.println("inner res body: " + s));
-            return Mono.just(new RuntimeException("404 not found!"));
-        }).bodyToMono(String.class);
-        ans.subscribe(s -> System.out.println("404 ans: " + s));
 
+        try {
+            Mono<String> ans = webClient.get().uri("403").retrieve().bodyToMono(String.class);
+            ans.subscribe(s -> System.out.println("403 ans: " + s));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        hook(3000, "---");
+
+        Mono<String> ans = webClient.get().uri("403").retrieve().onStatus(HttpStatus::is4xxClientError, response -> {
+            System.out.println(
+                    "inner retrieve 403 res: " + response.headers().asHttpHeaders() + "|" + response.statusCode());
+            response.bodyToMono(String.class).subscribe(s -> System.out.println("inner res body: " + s));
+            return Mono.just(new RuntimeException("403 not found!"));
+        }).bodyToMono(String.class);
+        ans.subscribe(s -> System.out.println("retrieve 403 ans: " + s));
+
+        hook(3000, "------");
+
+        webClient.get().uri("403").exchange().subscribe(s -> {
+            HttpStatus statusCode = s.statusCode();
+            ClientResponse.Headers headers = s.headers();
+            MultiValueMap<String, ResponseCookie> cookies = s.cookies();
+            s.bodyToMono(String.class).subscribe(body -> {
+                System.out.println("exchange error response detail: \nheader: " + headers.asHttpHeaders() + "\ncode: " +
+                        statusCode + "\ncookies: " + cookies + "\nbody:" + body);
+            });
+        });
     }
 
     public void timeout() {

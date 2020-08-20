@@ -99,6 +99,11 @@ public class ReactRest {
         return Mono.just("body req: " + body);
     }
 
+    @PostMapping(path = "body2")
+    public Mono<Body> postBody2(@RequestBody  Body body) {
+        return Mono.just(body);
+    }
+
 
     /**
      * 文件上传
@@ -166,23 +171,29 @@ public class ReactRest {
                 JSONObject.toJSONString(params));
     }
 
+    @GetMapping(path = "403")
+    public Mono<String> _403(ServerHttpRequest request, ServerHttpResponse response) throws IOException {
+        response.setStatusCode(HttpStatus.FORBIDDEN);
+        return Mono.just("403 response body!");
+    }
+
     @GetMapping(path = "auth")
     public Mono<String> auth(ServerHttpRequest request, ServerHttpResponse response) throws IOException {
         List<String> authList = request.getHeaders().get("Authorization");
         if (CollectionUtils.isEmpty(authList)) {
-            response.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
             return Mono.just("no auth info!");
         }
 
         String auth = authList.get(0);
         String[] userAndPass = new String(new BASE64Decoder().decodeBuffer(auth.split(" ")[1])).split(":");
         if (userAndPass.length < 2) {
-            response.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
             return Mono.just("illegal auth info!");
         }
 
         if (!("user".equalsIgnoreCase(userAndPass[0]) && "pwd".equalsIgnoreCase(userAndPass[1]))) {
-            response.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            response.setStatusCode(HttpStatus.FORBIDDEN);
             return Mono.just("error auth info!");
         }
 
