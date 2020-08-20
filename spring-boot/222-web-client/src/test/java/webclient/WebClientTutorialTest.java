@@ -8,7 +8,6 @@ import org.junit.Test;
  */
 public class WebClientTutorialTest {
 
-    @Test
     public void get() {
         try {
             WebClientTutorial web = new WebClientTutorial();
@@ -19,7 +18,6 @@ public class WebClientTutorialTest {
     }
 
 
-    @Test
     public void post() {
         try {
             WebClientTutorial web = new WebClientTutorial();
@@ -29,7 +27,6 @@ public class WebClientTutorialTest {
         }
     }
 
-    @Test
     public void upload() {
         try {
             WebClientTutorial web = new WebClientTutorial();
@@ -39,7 +36,6 @@ public class WebClientTutorialTest {
         }
     }
 
-    @Test
     public void sync() {
         try {
             WebClientTutorial web = new WebClientTutorial();
