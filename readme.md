@@ -401,6 +401,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 - [【WEB系列】WebFlux之初体验](http://spring.hhui.top/spring-blog/2020/04/21/200421-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWebFlux%E4%B9%8B%E5%88%9D%E4%BD%93%E9%AA%8C/)
 - [【WEB系列】WebFlux静态资源配置与访问](https://spring.hhui.top/spring-blog/2020/06/12/200612-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BWebFlux%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%AE%BF%E9%97%AE/)
 - [【WEB系列】WebFlux之Path参数解析与url映射](https://hhui.top/spring-blog/2020/08/27/200827-SpringBoot%E7%B3%BB%E5%88%97WebFlux%E4%B9%8BPath%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E4%B8%8Eurl%E6%98%A0%E5%B0%84/)
+- [【WEB系列】WebFlux之header参数解析](http://spring.hhui.top/spring-blog/2020/09/07/200907-SpringBoot%E7%B3%BB%E5%88%97WebFlux%E4%B9%8Bheader%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/)
 
 webclient异步网络请求
 
