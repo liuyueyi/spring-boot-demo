@@ -121,6 +121,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [011-aop-logaspect](spring-boot/011-aop-logaspect) | 【AOP】切面 | 实战，日志切面|
 | [012-context-listener](spring-boot/012-context-listener) | 【Listener】事件 | ContextListener |
 | [013-spel](spring-boot/013-spel) | 【SpEL】 | SpEL语法与实例 |
+| [100-h2database](spring-boot/100-h2database) | 【DB】h2database整合 | - |
 | [100-mysql](spring-boot/100-mysql) | 【DB】mysql整合 | - |
 | [101-jdbctemplate](spring-boot/101-jdbctemplate) | 【DB】jdbctemplate使用姿势 CURD详解 | `JdbcTemplate` |
 | [101-jdbctemplate-transaction](spring-boot/101-jdbctemplate-transaction) | 【DB】事务 |`@Transactional`声明式; 编程式事务 <br/> - 隔离级别 <br/> 传递属性 |
@@ -162,6 +163,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [219-web-asyn](spring-boot/219-web-asyn) | 【web】异步请求 |`AsyncContext方式` <br/> `Callable` <br/> `WebAsyncTask` <br/>`DeferredResult` |
 | [220-web-sse](spring-boot/220-web-sse) | 【web】sse 服务器发送事件 |`SseEmitter` |
 | [221-web-resttemplate](spring-boot/221-web-resttemplate) | 【web】RestTemplate使用姿势 |`RestTemplate` |
+| [222-web-client](spring-boot/222-web-client) | 【web】WebClient使用姿势 |`WebClient` |
+| [223-webflux-params](spring-boot/223-webflux-params) | 【web】webflux参数解析实例demo |`webflux` |
 | [300-rabbitmq](spring-boot/300-rabbitmq) | 【web】rabbitmq整合 | rabbitmq |
 | [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息 | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
 | [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) |【web】rabbitmq消费消息姿势 | `@RabbitListener` |
@@ -262,6 +265,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 ### 2. DB系列
 
 我们将db区分为传统的关系型数据库如mysql，NoSql如redis、mongodb，时序数据库influxdb
+
+**h2database**
+
+- [【DB系列】h2databse集成示例demo](http://spring.hhui.top/spring-blog/2020/09/11/200911-SpringBoot%E7%B3%BB%E5%88%97h2databse%E9%9B%86%E6%88%90%E7%A4%BA%E4%BE%8Bdemo/)
 
 **MongoDB**
 
