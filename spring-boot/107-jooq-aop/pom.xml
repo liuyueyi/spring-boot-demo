@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot</artifactId>
+        <groupId>com.git.hui.boot</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>107-jooq-aop</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jooq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- The H2 test schema is loaded here -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <id>create-database-h2</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <driver>org.h2.Driver</driver>
+                    <url>jdbc:h2:~/h2-jooq-db</url>
+                    <username>test</username>
+                    <password></password>
+                    <autocommit>true</autocommit>
+                    <srcFiles>
+                        <srcFile>src/main/resources/schema-h2.sql</srcFile>
+                        <srcFile>src/main/resources/data-h2.sql</srcFile>
+                    </srcFiles>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.200</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- The jOOQ code generator plugin -->
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+
+                <executions>
+                    <execution>
+                        <id>generate-h2</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jdbc>
+                        <!-- 数据库相关配置 -->
+                        <driver>org.h2.Driver</driver>
+                        <url>jdbc:h2:~/h2-jooq-db</url>
+                        <username>test</username>
+                        <password></password>
+                    </jdbc>
+                    <generator>
+                        <database>
+                            <!-- 数据库的基本信息 -->
+                            <name>org.jooq.meta.h2.H2Database</name>
+                            <includes>.*</includes>
+                            <excludes></excludes>
+                            <inputSchema>PUBLIC</inputSchema>
+                        </database>
+                        <generate>
+                            <deprecated>false</deprecated>
+                            <instanceFields>true</instanceFields>
+                            <pojos>true</pojos>
+                        </generate>
+                        <target>
+                            <!-- 自动生成的类的包名，以及路径 -->
+                            <packageName>com.git.hui.boot.jooq.h2</packageName>
+                            <directory>src/main/java</directory>
+                        </target>
+                    </generator>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

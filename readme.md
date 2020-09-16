@@ -132,6 +132,9 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [104-mybatis-noxml](spring-boot/104-mybatis-noxml) | 【DB】mybatis 注解整合方式 | mybatis |
 | [105-mybatis-plus](spring-boot/105-mybatis-plus) | 【DB】mybatis-plus整合 | mybatis-plus |
 | [106-mybatis-plus-generator](spring-boot/106-mybatis-plus-generator) | 【DB】mybatis-plus代码自动生成 | mybatis-plus |
+| [107-jooq-aop](spring-boot/107-jooq-aop) | 【DB】jooq体验demo，jooq+aop导致项目启动巨慢的坑 | jooq |
+| [108-jooq-curd](spring-boot/108-jooq-curd) | 【DB】jooq CURD使用姿势 | jooq |
+| [108-jooq-mysql](spring-boot/108-jooq-mysql) | 【DB】jooq代码自动生成 | jooq-code-gen |
 | [110-mongo-basic](spring-boot/110-mongo-basic) | 【DB】mongodb整合 | mongodb |
 | [111-mongo-template](spring-boot/111-mongo-template) | 【DB】mongodb CURD使用姿势 | `MongoTemplate` |
 | [120-redis-config](spring-boot/120-redis-config)  | 【redis】环境配置与基本使用 | redis |
@@ -319,6 +322,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】事务不生效的几种case](http://spring.hhui.top/spring-blog/2020/02/03/200203-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E5%87%A0%E7%A7%8Dcase/)
 -  [【DB系列】编程式事务使用姿势介绍篇](http://spring.hhui.top/spring-blog/2020/02/04/200204-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D%E7%AF%87/)
 -  [【DB系列】SpringBoot+Mysql 无法保存emoj表情](http://spring.hhui.top/spring-blog/2019/12/10/191210-SpringBoot-Mysql-%E6%97%A0%E6%B3%95%E4%BF%9D%E5%AD%98emoj%E8%A1%A8%E6%83%85%EF%BC%9F/)
+-  [【DB系列】Jooq初体验](http://spring.hhui.top/spring-blog/2020/09/15/200915-SpringBoot%E7%B3%BB%E5%88%97Jooq%E5%88%9D%E4%BD%93%E9%AA%8C/)
+-  [【DB系列】Jooq代码自动生成](http://spring.hhui.top/spring-blog/2020/09/16/200916-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/)
 
 
 ### 3. 搜索系列
