@@ -300,10 +300,16 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 分别介绍多种不同的操作姿势
 
 -  [【DB系列】mysql基本项目演示](http://spring.hhui.top/spring-blog/2018/09/26/180926-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87DB%E4%B9%8B%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/)
+
+> JdbcTemplate
+
 -  [【DB系列】JdbcTemplate之数据插入使用姿势详解](http://spring.hhui.top/spring-blog/2019/04/07/190407-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E8%AF%A6%E8%A7%A3/)
 -  [【DB系列】JdbcTemplate之数据查询上篇](http://spring.hhui.top/spring-blog/2019/04/12/190412-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E4%B8%8A%E7%AF%87/)
 -  [【DB系列】JdbcTemplate之数据查询下篇](http://spring.hhui.top/spring-blog/2019/04/17/190417-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E4%B8%8B%E7%AF%87/)
 -  [【DB系列】JdbcTemplate之数据更新与删除](http://spring.hhui.top/spring-blog/2019/04/18/190418-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87JdbcTemplate%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E4%B8%8E%E5%88%A0%E9%99%A4/)
+
+> jpa
+
 -  [【DB系列】JPA之基础环境搭建](http://spring.hhui.top/spring-blog/2019/06/12/190612-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/)
 -  [【DB系列】JPA之新增记录使用姿势](http://spring.hhui.top/spring-blog/2019/06/14/190614-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA%E4%B9%8B%E6%96%B0%E5%A2%9E%E8%AE%B0%E5%BD%95%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 -  [【DB系列】JPA之update使用姿势](http://spring.hhui.top/spring-blog/2019/06/23/190623-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA%E4%B9%8Bupdate%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
@@ -312,16 +318,28 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】JPA之指定id保存](http://spring.hhui.top/spring-blog/2019/11/19/191119-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA%E4%B9%8B%E6%8C%87%E5%AE%9Aid%E4%BF%9D%E5%AD%98/)
 -  [【DB系列】JPA 错误姿势之环境配置问题](http://spring.hhui.top/spring-blog/2019/12/18/191218-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BJPA-%E9%94%99%E8%AF%AF%E5%A7%BF%E5%8A%BF%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/)
 -  [【DB系列】JPA错误姿势之Entity映射](http://spring.hhui.top/spring-blog/2020/01/03/200103-SpringBoot%E7%B3%BB%E5%88%97JPA%E9%94%99%E8%AF%AF%E5%A7%BF%E5%8A%BF%E4%B9%8BEntity%E6%98%A0%E5%B0%84/)
+
+> mybatis
+
 -  [【DB系列】Mybatis+xml整合篇](http://spring.hhui.top/spring-blog/2019/12/27/191227-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BMybatis-xml%E6%95%B4%E5%90%88%E7%AF%87/)
 -  [【DB系列】Mybatis+注解整合篇](http://spring.hhui.top/spring-blog/2019/12/30/191230-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BMybatis-%E6%B3%A8%E8%A7%A3%E6%95%B4%E5%90%88%E7%AF%87/)
 -  [【DB系列】MybatisPlus整合篇](http://spring.hhui.top/spring-blog/2019/12/31/191231-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BMybatisPlus%E6%95%B4%E5%90%88%E7%AF%87/)
 -  [【DB系列】Mybatis-Plus代码自动生成](http://spring.hhui.top/spring-blog/2020/04/06/200406-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BMybatis-Plus%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/)
+
+> 事务
+
 -  [【DB系列】声明式事务Transactional](http://spring.hhui.top/spring-blog/2020/01/19/200119-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1Transactional/)
 -  [【DB系列】事务隔离级别知识点小结](http://spring.hhui.top/spring-blog/2020/01/20/200120-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9F%A5%E8%AF%86%E7%82%B9%E5%B0%8F%E7%BB%93/)
 -  [【DB系列】事务传递属性](http://spring.hhui.top/spring-blog/2020/02/02/200202-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E4%BC%A0%E9%80%92%E5%B1%9E%E6%80%A7/)
 -  [【DB系列】事务不生效的几种case](http://spring.hhui.top/spring-blog/2020/02/03/200203-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E5%87%A0%E7%A7%8Dcase/)
 -  [【DB系列】编程式事务使用姿势介绍篇](http://spring.hhui.top/spring-blog/2020/02/04/200204-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D%E7%AF%87/)
+
+> 采坑、填坑
+
 -  [【DB系列】SpringBoot+Mysql 无法保存emoj表情](http://spring.hhui.top/spring-blog/2019/12/10/191210-SpringBoot-Mysql-%E6%97%A0%E6%B3%95%E4%BF%9D%E5%AD%98emoj%E8%A1%A8%E6%83%85%EF%BC%9F/)
+
+> jooq
+
 -  [【DB系列】Jooq初体验](http://spring.hhui.top/spring-blog/2020/09/15/200915-SpringBoot%E7%B3%BB%E5%88%97Jooq%E5%88%9D%E4%BD%93%E9%AA%8C/)
 -  [【DB系列】Jooq代码自动生成](http://spring.hhui.top/spring-blog/2020/09/16/200916-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/)
 
