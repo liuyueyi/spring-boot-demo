@@ -3,7 +3,10 @@ package com.git.hui.boot.redis.rest;
 import com.alibaba.fastjson.JSONObject;
 import com.git.hui.boot.redis.demo.KVBean;
 import com.git.hui.boot.redis.demo.ListBean;
+import com.git.hui.boot.redis.demo.PubSubBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.Message;
+import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -103,5 +106,25 @@ public class DemoRest {
         listBean.set(key, 0, "aaa");
         result.put("afterSet", listBean.index(key, 0) + "==aaa");
         return JSONObject.toJSONString(result);
+    }
+
+    @Autowired
+    private PubSubBean pubSubBean;
+
+    @GetMapping(path = "pub")
+    public String pubTest(String key, String value) {
+        pubSubBean.publish(key, value);
+        return "over";
+    }
+
+    @GetMapping(path = "sub")
+    public String subscribe(String key, String uuid) {
+        pubSubBean.subscribe(new MessageListener() {
+            @Override
+            public void onMessage(Message message, byte[] bytes) {
+                System.out.println(uuid + " ==> msg:" + message);
+            }
+        }, key);
+        return "over";
     }
 }
