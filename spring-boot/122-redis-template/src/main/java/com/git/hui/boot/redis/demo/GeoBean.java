@@ -21,17 +21,17 @@ public class GeoBean {
     /**
      * 添加geo信息
      *
-     * @param key
-     * @param longitude
-     * @param latitude
-     * @param member
+     * @param key       缓存key
+     * @param longitude 经度
+     * @param latitude  纬度
+     * @param member    位置名
      */
     public void add(String key, double longitude, double latitude, String member) {
         redisTemplate.opsForGeo().add(key, new Point(longitude, latitude), member);
     }
 
     /**
-     * 获取某个地方的
+     * 获取某个地方的坐标
      *
      * @param key
      * @param member
@@ -56,7 +56,7 @@ public class GeoBean {
 
     public void near(String key, double longitude, double latitude) {
         //longitude,latitude
-        Circle circle = new Circle(longitude, latitude, Metrics.KILOMETERS.getMultiplier());
+        Circle circle = new Circle(longitude, latitude, 5 * Metrics.KILOMETERS.getMultiplier());
         RedisGeoCommands.GeoRadiusCommandArgs args = RedisGeoCommands.GeoRadiusCommandArgs.newGeoRadiusArgs()
                 .includeDistance()
                 .includeCoordinates()
@@ -66,7 +66,7 @@ public class GeoBean {
         System.out.println(results);
     }
 
-    public void nearByPlace(String key) {
+    public void nearByPlace(String key, String member) {
         Distance distance = new Distance(5, Metrics.KILOMETERS);
         RedisGeoCommands.GeoRadiusCommandArgs args = RedisGeoCommands.GeoRadiusCommandArgs.newGeoRadiusArgs()
                 .includeDistance()
@@ -74,7 +74,7 @@ public class GeoBean {
                 .sortAscending()
                 .limit(5);
         GeoResults<RedisGeoCommands.GeoLocation<String>> results = redisTemplate.opsForGeo()
-                .radius(key, "北京", distance, args);
+                .radius(key, member, distance, args);
         System.out.println(results);
     }
 

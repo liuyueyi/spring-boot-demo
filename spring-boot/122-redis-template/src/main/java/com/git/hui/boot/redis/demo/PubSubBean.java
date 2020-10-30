@@ -1,5 +1,6 @@
 package com.git.hui.boot.redis.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -15,12 +16,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PubSubBean {
-
-    private final StringRedisTemplate redisTemplate;
-
-    public PubSubBean(StringRedisTemplate stringRedisTemplate) {
-        this.redisTemplate = stringRedisTemplate;
-    }
+    @Autowired
+    private StringRedisTemplate redisTemplate;
 
     public void publish(String key, String value) {
         redisTemplate.execute(new RedisCallback<Object>() {

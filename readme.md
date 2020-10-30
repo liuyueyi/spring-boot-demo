@@ -180,6 +180,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [009-distribute-scheduler-task](spring-case/009-distribute-scheduler-task) | 分布式定时任务mock实例 | AOP实现定时任务选择; 重写`ScheduledAnnotationBeanPostProcessor`扩展定时任务生成 |
 | [120-redis-ranklist](spring-case/120-redis-ranklist) | redis实现排行榜 | `zset` |
 | [124-redis-sitecount](spring-case/124-redis-sitecount) | redis实现站点统计 | `redisTemplate` |
+| [125-redis-distribuet-lock](spring-case/125-redis-distribuet-lock) | redis分布式锁 | `redisTemplate` |
 | [201-web-api-version](spring-case/201-web-api-version) | web版本控制 | `RequestMappingHandlerMapping` |
 | [202-web-qrcode-login](spring-case/202-web-qrcode-login) | web扫码登录实战 | `SseEmitter` |
 | [203-web-rest-adapter](spring-case/203-web-rest-adapter) | url匹配规则自定义，子类继承父类的参数注解 | `RequestMappingHandlerMapping`, `HandlerMethodArgumentResolver` |
@@ -211,6 +212,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 5. [【SpringBoot实战】AOP实现日志功能](http://spring.hhui.top/spring-blog/2019/03/13/190313-SpringCloud%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BAOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E5%8A%9F%E8%83%BD/)
 6. [【SpringBoot实战】徒手撸一个扫码登录示例工程](http://spring.hhui.top/spring-blog/2020/04/02/200402-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%BE%92%E6%89%8B%E6%92%B8%E4%B8%80%E4%B8%AA%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B/)
 7. [【SpringBoot实战】mock一个简单的分布式定时任务](https://spring.hhui.top/spring-blog/2020/04/12/200412-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/)
+8. [【SpringBoot实战】Redis实现分布式锁（应用篇）](https://spring.hhui.top/spring-blog/2020/10/30/201030-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%88%E5%BA%94%E7%94%A8%E7%AF%87%EF%BC%89/)
 
 
 ### 1. 基础系列
@@ -291,6 +293,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】Redis之Set数据结构使用姿势](http://spring.hhui.top/spring-blog/2018/12/11/181211-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87Redis%E4%B9%8BSet%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 -  [【DB系列】Redis之ZSet数据结构使用姿势](http://spring.hhui.top/spring-blog/2018/12/12/181212-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87Redis%E4%B9%8BZSet%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 -  [【DB系列】Redis之管道Pipelined使用姿势](http://spring.hhui.top/spring-blog/2020/04/11/200411-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E4%B9%8B%E7%AE%A1%E9%81%93Pipelined%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
+-  [【DB系列】Redis高级特性之Bitmap使用姿势及应用场景介绍](https://spring.hhui.top/spring-blog/2020/10/14/201014-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8BBitmap%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D/)
+-  [【DB系列】Redis高级特性之发布订阅](https://spring.hhui.top/spring-blog/2020/10/17/201017-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/)
+-  [【DB系列】Redis高级特性之HyperLoglog](https://spring.hhui.top/spring-blog/2020/10/21/201021-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8BHyperLoglog/)
+-  [【DB系列】Redis高级特性之GEO](https://spring.hhui.top/spring-blog/2020/10/27/201027-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8BGEO/)
 -  [【DB系列】Redis集群环境配置](http://spring.hhui.top/spring-blog/2019/09/27/190927-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BRedis%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/)
 -  [【DB系列】借助Redis实现排行榜功能（应用篇）](http://spring.hhui.top/spring-blog/2018/12/25/181225-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E5%AE%9E%E7%8E%B0%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%8A%9F%E8%83%BD/)
 -  [【DB系列】借助Redis搭建一个简单站点统计服务（应用篇）](http://spring.hhui.top/spring-blog/2019/05/13/190513-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E6%9C%8D%E5%8A%A1/)
