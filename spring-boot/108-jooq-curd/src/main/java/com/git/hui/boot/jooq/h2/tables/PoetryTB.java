@@ -9,6 +9,7 @@ import com.git.hui.boot.jooq.h2.Keys;
 import com.git.hui.boot.jooq.h2.Public;
 import com.git.hui.boot.jooq.h2.tables.records.PoetryPO;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row4;
+import org.jooq.Row5;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -41,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PoetryTB extends TableImpl<PoetryPO> {
 
-    private static final long serialVersionUID = 1020419106;
+    private static final long serialVersionUID = -1039567877;
 
     /**
      * The reference instance of <code>PUBLIC.POETRY</code>
@@ -75,6 +76,11 @@ public class PoetryTB extends TableImpl<PoetryPO> {
      * The column <code>PUBLIC.POETRY.CONTENT</code>.
      */
     public final TableField<PoetryPO, String> CONTENT = createField(DSL.name("CONTENT"), org.jooq.impl.SQLDataType.VARCHAR(128).nullable(false).defaultValue(org.jooq.impl.DSL.field("''", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>PUBLIC.POETRY.CREATE_AT</code>. 创建时间
+     */
+    public final TableField<PoetryPO, Timestamp> CREATE_AT = createField(DSL.name("CREATE_AT"), org.jooq.impl.SQLDataType.TIMESTAMP.precision(6).nullable(false).defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "创建时间");
 
     /**
      * Create a <code>PUBLIC.POETRY</code> table reference
@@ -156,11 +162,11 @@ public class PoetryTB extends TableImpl<PoetryPO> {
     }
 
     // -------------------------------------------------------------------------
-    // Row4 type methods
+    // Row5 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, Integer, String, String> fieldsRow() {
-        return (Row4) super.fieldsRow();
+    public Row5<Integer, Integer, String, String, Timestamp> fieldsRow() {
+        return (Row5) super.fieldsRow();
     }
 }

@@ -5,6 +5,7 @@ package com.git.hui.boot.jooq.h2.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 
@@ -22,12 +23,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PoetryBO implements Serializable {
 
-    private static final long serialVersionUID = -199010601;
+    private static final long serialVersionUID = 815217658;
 
-    private Integer id;
-    private Integer poetId;
-    private String  title;
-    private String  content;
+    private Integer   id;
+    private Integer   poetId;
+    private String    title;
+    private String    content;
+    private Timestamp createAt;
 
     public PoetryBO() {}
 
@@ -36,18 +38,21 @@ public class PoetryBO implements Serializable {
         this.poetId = value.poetId;
         this.title = value.title;
         this.content = value.content;
+        this.createAt = value.createAt;
     }
 
     public PoetryBO(
-        Integer id,
-        Integer poetId,
-        String  title,
-        String  content
+        Integer   id,
+        Integer   poetId,
+        String    title,
+        String    content,
+        Timestamp createAt
     ) {
         this.id = id;
         this.poetId = poetId;
         this.title = title;
         this.content = content;
+        this.createAt = createAt;
     }
 
     public Integer getId() {
@@ -82,6 +87,14 @@ public class PoetryBO implements Serializable {
         this.content = content;
     }
 
+    public Timestamp getCreateAt() {
+        return this.createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("PoetryBO (");
@@ -90,6 +103,7 @@ public class PoetryBO implements Serializable {
         sb.append(", ").append(poetId);
         sb.append(", ").append(title);
         sb.append(", ").append(content);
+        sb.append(", ").append(createAt);
 
         sb.append(")");
         return sb.toString();

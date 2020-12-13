@@ -12,5 +12,6 @@ CREATE TABLE poetry (
   `poet_id` int NOT NULL default '0',
   `title` varchar(128) not null default '',
   `content` varchar(128) not null default '',
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   CONSTRAINT pk_t_poetry PRIMARY KEY (ID)
 );

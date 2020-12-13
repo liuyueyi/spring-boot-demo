@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,6 +36,29 @@ public class PoetQueryRepository {
         // 转换
         poetMapper = dsl.configuration().recordMapperProvider().provide(poetTable.recordType(), PoetBO.class);
         poetryMapper = dsl.configuration().recordMapperProvider().provide(poetryTable.recordType(), PoetryBO.class);
+    }
+
+    public void test() {
+        System.out.println(queryById(1));
+        System.out.println(queryFieldsById(1));
+        System.out.println(queryFieldsById2(1));
+
+        System.out.println(queryByNotEq(1));
+        System.out.println(queryByIdGT(1));
+        System.out.println(queryByIdGE(1));
+        System.out.println(queryByIdLT(2));
+        System.out.println(queryByIdIn(Arrays.asList(1, 2, 3)));
+        System.out.println(queryByIdNotIn(Arrays.asList(1, 2, 3)));
+        System.out.println(queryByIdBetween(1, 4));
+        System.out.println(queryByNameLike("白"));
+        System.out.println(queryByNameIsNull());
+        System.out.println(queryByIdAndName(1, "李白"));
+        System.out.println(queryByIdOrName(1, "一灰"));
+        System.out.println(queryByIdGtOrderByIdDesc(1));
+        System.out.println(queryByIdGtOrderByPoetIdAndId(1));
+        System.out.println(queryLimit(2));
+        System.out.println(queryLimit(1, 2));
+        System.out.println(queryOffset(1, 2));
     }
 
     /**

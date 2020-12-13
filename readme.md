@@ -343,11 +343,20 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 > 采坑、填坑
 
 -  [【DB系列】SpringBoot+Mysql 无法保存emoj表情](http://spring.hhui.top/spring-blog/2019/12/10/191210-SpringBoot-Mysql-%E6%97%A0%E6%B3%95%E4%BF%9D%E5%AD%98emoj%E8%A1%A8%E6%83%85%EF%BC%9F/)
+-  [【DB系列】Jooq批量写入采坑记录](https://spring.hhui.top/spring-blog/2020/12/02/201202-SpingBoot%E7%B3%BB%E5%88%97Jooq%E6%89%B9%E9%87%8F%E5%86%99%E5%85%A5%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/)
 
 > jooq
 
 -  [【DB系列】Jooq初体验](http://spring.hhui.top/spring-blog/2020/09/15/200915-SpringBoot%E7%B3%BB%E5%88%97Jooq%E5%88%9D%E4%BD%93%E9%AA%8C/)
 -  [【DB系列】Jooq代码自动生成](http://spring.hhui.top/spring-blog/2020/09/16/200916-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/)
+-  [【DB系列】Jooq之新增记录使用姿势](http://spring.hhui.top/spring-blog/2020/09/20/200920-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E6%96%B0%E5%A2%9E%E8%AE%B0%E5%BD%95%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
+-  [【DB系列】Jooq之记录更新与删除](https://spring.hhui.top/spring-blog/2020/09/30/200930-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E8%AE%B0%E5%BD%95%E6%9B%B4%E6%96%B0%E4%B8%8E%E5%88%A0%E9%99%A4/)
+-  [【DB系列】Jooq批量写入采坑记录](https://spring.hhui.top/spring-blog/2020/12/02/201202-SpingBoot%E7%B3%BB%E5%88%97Jooq%E6%89%B9%E9%87%8F%E5%86%99%E5%85%A5%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/)
+-  [【DB系列】Jooq之记录查询基础篇](https://spring.hhui.top/spring-blog/2020/12/03/201203-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E8%AE%B0%E5%BD%95%E6%9F%A5%E8%AF%A2%E5%9F%BA%E7%A1%80%E7%AF%87/)
+-  [【DB系列】Jooq之聚合查询](https://spring.hhui.top/spring-blog/2020/12/05/201204-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E8%81%9A%E5%90%88%E6%9F%A5%E8%AF%A2/)
+-  [【DB系列】Jooq之常用函数使用姿势](https://spring.hhui.top/spring-blog/2020/12/10/201210-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
+-  [【DB系列】Jooq之多表联合查询](https://spring.hhui.top/spring-blog/2020/12/11/201211-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2/)
+-  [【DB系列】Jooq之事务](https://spring.hhui.top/spring-blog/2020/12/13/201213-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E4%BA%8B%E5%8A%A1/)
 
 
 ### 3. 搜索系列

@@ -78,6 +78,8 @@ public class PoetCreateRepository {
 
     /**
      * 通过Record执行批量添加
+     * <p>
+     * 通过源码查看，这种插入方式实际上是单条单条的写入数据，和下面的一次插入多条有本质区别
      *
      * @param list
      * @return
