@@ -19,7 +19,7 @@ public class Application {
     private UpdateService updateService;
 
     public Application(InsertService insertService, QueryService queryService, QueryServiceV2 queryServiceV2,
-            UpdateService updateService) {
+                       UpdateService updateService) {
         this.insertService = insertService;
         this.queryService = queryService;
         this.queryServiceV2 = queryServiceV2;

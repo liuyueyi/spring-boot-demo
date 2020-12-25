@@ -3,6 +3,7 @@ package com.git.hui.boot.properties.controller;
 import com.alibaba.fastjson.JSON;
 import com.git.hui.boot.properties.config.OtherProperBean;
 import com.git.hui.boot.properties.config.ProperBean;
+import com.git.hui.boot.properties.config.YmlProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -33,6 +34,9 @@ public class DemoController {
     @Value("${user.name}")
     private String name;
 
+    @Autowired
+    private YmlProperties ymlProperties;
+
     @GetMapping(path = "show")
     public String show() {
         Map<String, String> result = new HashMap<>(6);
@@ -42,6 +46,8 @@ public class DemoController {
         result.put("env", environment.getProperty("server.port"));
         result.put("not", notExists);
         result.put("name", name);
+
+        System.out.println(ymlProperties);
         return JSON.toJSONString(result);
     }
 }
