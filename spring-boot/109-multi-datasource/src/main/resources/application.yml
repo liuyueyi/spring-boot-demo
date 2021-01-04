@@ -1,0 +1,25 @@
+# 数据库相关配置
+spring:
+  datasource:
+    story:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/story?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password:
+    test:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password:
+
+# 日志相关配置
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        jdbc:
+          core: debug
+#    com:
+#      zaxxer:
+#        hikari: debug

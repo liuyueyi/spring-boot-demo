@@ -14,3 +14,4 @@
 
 1. [180919-SpringBoot基础篇配置信息之如何读取配置信息](http://spring.hhui.top/spring-blog/2018/09/19/180919-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E5%A6%82%E4%BD%95%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/)
 2. [180921-SpringBoot基础篇配置信息之自定义配置指定与配置内引用](http://spring.hhui.top/spring-blog/2018/09/21/180921-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%8C%87%E5%AE%9A%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%86%85%E5%BC%95%E7%94%A8/)
+3. [201226-SpringBoot系列PropertySource加载Yaml配置文件实例演示](http://spring.hhui.top/spring-blog/2020/12/26/201226-SpringBoot%E7%B3%BB%E5%88%97PropertySource%E5%8A%A0%E8%BD%BDYaml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)

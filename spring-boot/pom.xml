@@ -34,6 +34,12 @@
         <module>102-jpa-errorcase</module>
         <module>103-mybatis-xml</module>
         <module>104-mybatis-noxml</module>
+        <module>107-jooq-aop</module>
+        <module>100-h2database</module>
+        <module>108-jooq-curd</module>
+        <module>108-jooq-mysql</module>
+        <module>109-multi-datasource</module>
+        <module>109-multi-datasource-mybatis</module>
 
         <module>110-mongo-basic</module>
         <module>111-mongo-template</module>
@@ -81,10 +87,7 @@
         <module>221-web-resttemplate</module>
         <module>222-web-client</module>
         <module>223-webflux-params</module>
-        <module>107-jooq-aop</module>
-        <module>100-h2database</module>
-        <module>108-jooq-curd</module>
-        <module>108-jooq-mysql</module>
+        <module>109-multi-datasource-mybatis-plus</module>
 
     </modules>
 

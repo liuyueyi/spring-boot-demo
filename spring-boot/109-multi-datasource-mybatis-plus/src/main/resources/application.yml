@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    dynamic:
+      primary: story #设置默认的数据源或者数据源组,默认值即为master
+      strict: false  #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      datasource:
+        story:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/story?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password:
+        test:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password:
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        jdbc:
+          core: debug

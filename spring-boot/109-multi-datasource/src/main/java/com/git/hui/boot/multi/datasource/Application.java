@@ -1,17 +1,18 @@
-package com.git.hui.boot.properties;
+package com.git.hui.boot.multi.datasource;
 
-import com.git.hui.boot.properties.config.YmlProperties;
+import com.git.hui.boot.multi.datasource.server.JdbcServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by @author yihui in 14:08 18/9/19.
+ * @author yihui
+ * @date 20/12/27
  */
 @SpringBootApplication
 public class Application {
 
-    public Application(YmlProperties ymlProperties) {
-        System.out.println(ymlProperties);
+    public Application(JdbcServer jdbcServer) {
+        jdbcServer.query();
     }
 
     public static void main(String[] args) {

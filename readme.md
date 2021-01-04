@@ -18,7 +18,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [x] [Bean相关](http://spring.hhui.top/spring-blog/tags/Bean/)
 - [x] [日志相关](http://spring.hhui.top//spring-blog/tags/Log/)
 - [x] [AOP相关](http://spring.hhui.top//spring-blog/tags/AOP/)
-- [ ] SPEL
+- [x] [SPEL](https://spring.hhui.top/spring-blog/tags/SpEL/)
 - [ ] 事件通知机制
 
 ### II. 高级篇
@@ -227,7 +227,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】SpringBoot配置信息之配置刷新](http://spring.hhui.top/spring-blog/2018/09/22/180922-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%85%8D%E7%BD%AE%E5%88%B7%E6%96%B0/)
 - [【基础系列】SpringBoot配置信息之默认配置](http://spring.hhui.top/spring-blog/2018/09/25/180925-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/)
 - [【基础系列】实现一个自定义配置加载器（应用篇）](http://spring.hhui.top/spring-blog/2020/05/07/200507-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%E5%99%A8/)
-
+- [【基础系列】SpringBoot配置篇之PropertySource加载Yaml配置文件实例演示](https://spring.hhui.top/spring-blog/2020/12/26/201226-SpringBoot%E7%B3%BB%E5%88%97PropertySource%E5%8A%A0%E8%BD%BDYaml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
 
 **IoC(DI/bean)**
 

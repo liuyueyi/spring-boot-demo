@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.boot.multi.datasource.mapper.MoneyMapper">
+
+    <resultMap id="BaseResultMap" type="com.git.hui.boot.multi.datasource.entity.MoneyPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="money_po">
+      id, `name`, money, is_deleted, create_at, update_at
+    </sql>
+
+    <select id="findByIds" parameterType="list" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money where id in
+        <foreach item="id" collection="list" separator="," open="(" close=")" index="">
+            #{id}
+        </foreach>
+    </select>
+
+
+</mapper>

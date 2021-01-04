@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    story:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/story?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password:
+    test:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password:
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        jdbc:
+          core: debug
+    com:
+      zaxxer:
+        hikari:
+          HikariDataSource: debug
