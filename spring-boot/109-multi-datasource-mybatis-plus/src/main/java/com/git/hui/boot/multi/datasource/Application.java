@@ -19,11 +19,11 @@ import java.util.List;
 public class Application {
 
     public Application(TestMoneyServiceImpl testMoneyService, StoryMoneyServiceImpl storyMoneyService) {
-        List<MoneyPo> moneyPoList = testMoneyService.findByIds(Arrays.asList(1, 1000));
+        List<MoneyPo> moneyPoList = testMoneyService.listByIds(Arrays.asList(1, 1000));
         System.out.println(moneyPoList);
         System.out.println("--------------");
 
-        moneyPoList = storyMoneyService.findByIds(Arrays.asList(1, 1000));
+        moneyPoList = storyMoneyService.listByIds(Arrays.asList(1, 1000));
         System.out.println(moneyPoList);
     }
 

@@ -10,6 +10,4 @@ import java.util.List;
  * Created by @author yihui in 14:43 19/12/26.
  */
 public interface MoneyMapper extends BaseMapper<MoneyPo> {
-
-    List<MoneyPo> findByIds(List<Integer> ids);
 }

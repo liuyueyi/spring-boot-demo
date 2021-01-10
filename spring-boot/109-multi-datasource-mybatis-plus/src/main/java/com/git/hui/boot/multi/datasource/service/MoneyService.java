@@ -14,6 +14,4 @@ import java.util.List;
  * @since 2020-04-06
  */
 public interface MoneyService extends IService<MoneyPo> {
-
-    List<MoneyPo> findByIds(List<Integer> ids);
 }

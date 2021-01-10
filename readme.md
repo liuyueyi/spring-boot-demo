@@ -32,7 +32,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
         - 项目工程:  [spring-boot/103-mybatis-xml](spring-boot/103-mybatis-xml) , [spring-boot/104-mybatis-noxml](spring-boot/104-mybatis-noxml)
     - [x] mybatis plus
         - 项目工程: [spring-boot/105-mybatis-plus](spring-boot/105-mybatis-plus)
-    - [x] jooq 
+    - [x] [Jooq](http://spring.hhui.top/spring-blog/tags/Jooq/)
+        - 项目工程: [spring-boot/108-jooq-curd](spring-boot/108-jooq-curd), [spring-boot/108-jooq-mysql](spring-boot/108-jooq-mysql) 
 - [ ] influxdb 时序数据库
         - 项目工程: [spring-boot/130-influxdb](spring-boot/130-influxdb) ,  [spring-boot/131-influxdb-java](spring-boot/131-influxdb-java) 
 - [ ] [Mongo](http://spring.hhui.top/spring-blog/tags/Mongo/)
@@ -135,6 +136,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [107-jooq-aop](spring-boot/107-jooq-aop) | 【DB】jooq体验demo，jooq+aop导致项目启动巨慢的坑 | jooq |
 | [108-jooq-curd](spring-boot/108-jooq-curd) | 【DB】jooq CURD使用姿势 | jooq |
 | [108-jooq-mysql](spring-boot/108-jooq-mysql) | 【DB】jooq代码自动生成 | jooq-code-gen |
+| [109-multi-datasource](spring-boot/109-multi-datasource) | 【DB】多数据源配置 | JdbcTemplate, DataSource |
+| [109-multi-datasource-mybatis](spring-boot/109-multi-datasource-mybatis) | 【DB】mybatis多数据源配置 | Mybatis DataSource |
+| [109-multi-datasource-mybatis-ano](spring-boot/109-multi-datasource-mybatis-ano) | 【DB】mybatis多数据源配置 | Mybatis DataSource |
+| [109-multi-datasource-mybatis-plus](spring-boot/109-multi-datasource-mybatis-plus) | 【DB】mybatis-plus多数据源配置 | Mybatis-Plus DataSource |
 | [110-mongo-basic](spring-boot/110-mongo-basic) | 【DB】mongodb整合 | mongodb |
 | [111-mongo-template](spring-boot/111-mongo-template) | 【DB】mongodb CURD使用姿势 | `MongoTemplate` |
 | [120-redis-config](spring-boot/120-redis-config)  | 【redis】环境配置与基本使用 | redis |
@@ -334,6 +339,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】Mybatis-Plus代码自动生成](http://spring.hhui.top/spring-blog/2020/04/06/200406-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BMybatis-Plus%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/)
 -  [【DB系列】Mybatis多数据源配置与使用](https://spring.hhui.top/spring-blog/2021/01/09/210109-SpringBoot%E7%B3%BB%E5%88%97Mybatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/)
 -  [【DB系列】Mybatis基于AbstractRoutingDataSource与AOP实现多数据源切换](https://spring.hhui.top/spring-blog/2021/01/10/210110-SpringBoot%E7%B3%BB%E5%88%97Mybatis%E5%9F%BA%E4%BA%8EAbstractRoutingDataSource%E4%B8%8EAOP%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%88%87%E6%8D%A2/)
+-  [【DB系列】Mybatis-Plus多数据源配置](https://spring.hhui.top/spring-blog/2021/01/10/210110-SpringBoot%E7%B3%BB%E5%88%97Mybatis-Plus%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/)
+
 
 > 事务
 
