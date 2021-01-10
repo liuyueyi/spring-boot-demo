@@ -8,3 +8,4 @@
 
 ### 系列博文
 
+- [201227-SpringBoot系列JdbcTemplate之多数据源配置与使用](https://spring.hhui.top/spring-blog/2020/12/27/201227-SpringBoot%E7%B3%BB%E5%88%97JdbcTemplate%E4%B9%8B%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/)

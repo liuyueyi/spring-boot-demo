@@ -1,7 +1,7 @@
-package com.git.hui.boot.multi.datasource.story.repository;
+package com.git.hui.boot.multi.datasource.repository;
 
-import com.git.hui.boot.multi.datasource.story.entity.StoryMoneyEntity;
-import com.git.hui.boot.multi.datasource.story.mapper.StoryMoneyMapper;
+import com.git.hui.boot.multi.datasource.entity.StoryMoneyEntity;
+import com.git.hui.boot.multi.datasource.mapper.StoryMoneyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
