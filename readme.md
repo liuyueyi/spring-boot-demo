@@ -109,6 +109,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [000-properties](spring-boot/000-properties) | 【配置】使用姿势 | `@PropertySource` 指定配置文件，<br/> `@ConfigurationProperties` 指定配置前缀, <br/>`@value` 配置绑定|
 | [001-properties](spring-boot/001-properties) | 【配置】环境选择 | 配置`spring.profiles.active`指定环境 | 
 | [002-properties](spring-boot/002-properties) | 【配置】刷新示例 | SpringCloud生态配置刷新<br/>`@RefreshScope`，`EnvironmentChangeEvent`配置变更事件|
+| [002-properties-bind](spring-boot/002-properties-bind) | 【配置】刷新绑定的各种知识点 | `@ConfigurationProperties` |
 | [003-log](spring-boot/003-log) | 【日志】集成logback | logback日志集成与配置 |
 | [003-log4j2](spring-boot/003-log4j2) | 【日志】集成log4j2 | log4j2日志集成与配置 |
 | [004-bean](spring-boot/004-bean) | 【bean】使用姿势 | bean三种定义姿势 <br/> bean三种注入方式 |
@@ -233,6 +234,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】SpringBoot配置信息之默认配置](http://spring.hhui.top/spring-blog/2018/09/25/180925-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E4%B9%8B%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/)
 - [【基础系列】实现一个自定义配置加载器（应用篇）](http://spring.hhui.top/spring-blog/2020/05/07/200507-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%E5%99%A8/)
 - [【基础系列】SpringBoot配置篇之PropertySource加载Yaml配置文件实例演示](https://spring.hhui.top/spring-blog/2020/12/26/201226-SpringBoot%E7%B3%BB%E5%88%97PropertySource%E5%8A%A0%E8%BD%BDYaml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
+- [【基础系列】ConfigurationProperties配置绑定中那些你不知道的事情](https://spring.hhui.top/spring-blog/2021/01/17/210117-SpringBoot%E7%B3%BB%E5%88%97ConfigurationProperties%E9%85%8D%E7%BD%AE%E7%BB%91%E5%AE%9A%E4%B8%AD%E9%82%A3%E4%BA%9B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B%E6%83%85/)
 
 **IoC(DI/bean)**
 

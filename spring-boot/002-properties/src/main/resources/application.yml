@@ -1,5 +1,3 @@
-
-
 biz:
   refresh: ${random.long}
   key: refresh-test

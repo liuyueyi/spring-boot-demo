@@ -89,6 +89,7 @@
         <module>223-webflux-params</module>
         <module>109-multi-datasource-mybatis-plus</module>
         <module>109-multi-datasource-mybatis-ano</module>
+        <module>002-properties-bind</module>
 
     </modules>
 

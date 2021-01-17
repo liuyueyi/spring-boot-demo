@@ -1,0 +1,20 @@
+hhui:
+  bind:
+    #    测试不存在配置的场景
+    notExist: true
+    Name: YiHui
+    AGE: 20
+    list:
+      - java
+      - c
+      - python
+    map:
+      wechat: 小灰灰blog
+      blogs: http://blog.hhui.top
+      git: http://github.com/liuyueyi
+
+    mainPwd:
+      user: 一灰灰blog
+      pwd: yihuihui
+      code: 9
+    Jwt: '{"token": "11111111123", "timestamp": 1610880489123}'
