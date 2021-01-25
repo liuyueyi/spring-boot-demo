@@ -5,6 +5,7 @@ import com.git.hui.boot.mybatis.mapper.MoneyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -29,5 +30,16 @@ public class MoneyRepository {
         System.out.println("after addMoney: " + moneyMapper.findByName(po.getName()));
         moneyMapper.delPo(po.getId());
         System.out.println("after delete: " + moneyMapper.findByName(po.getName()));
+        Long id = moneyMapper.findIdById(100);
+        System.out.println(id);
+
+        // 批量保存，如果有不满足条件的可以忽略 --> 对于唯一键冲突，不做任何处理； 长度超限，截取
+        int ans = moneyMapper.batchSave(Arrays.asList(new MoneyPo("tt", 11L, 0),
+                new MoneyPo("mybatis user", 12L, 0),
+                new MoneyPo("hello world test this name is too long for sub one", 11L, 0),
+                new MoneyPo("haha", 122L, 0)
+                )
+        );
+        System.out.println(ans);
     }
 }

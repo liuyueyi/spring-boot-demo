@@ -13,7 +13,16 @@ import java.util.Map;
 @Mapper
 public interface MoneyMapper {
 
+    int batchSave(@Param("list") List<MoneyPo> list);
+
     int savePo(@Param("po") MoneyPo po);
+
+    /**
+     * 请注意返回值不能是 long， 否则当记录不存在时，会抛绑定异常
+     * @param id
+     * @return
+     */
+    Long findIdById(@Param("id") long id);
 
     List<MoneyPo> findByName(@Param("name") String name);
 
