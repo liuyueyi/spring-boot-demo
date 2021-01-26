@@ -90,6 +90,7 @@
         <module>109-multi-datasource-mybatis-plus</module>
         <module>109-multi-datasource-mybatis-ano</module>
         <module>002-properties-bind</module>
+        <module>230-web-resin</module>
 
     </modules>
 

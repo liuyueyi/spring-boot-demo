@@ -174,6 +174,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [221-web-resttemplate](spring-boot/221-web-resttemplate) | 【web】RestTemplate使用姿势 |`RestTemplate` |
 | [222-web-client](spring-boot/222-web-client) | 【web】WebClient使用姿势 |`WebClient` |
 | [223-webflux-params](spring-boot/223-webflux-params) | 【web】webflux参数解析实例demo |`webflux` |
+| [230-web-resin](spring-boot/230-web-resin) | 【web】resion容器整合 |`resin` |
 | [300-rabbitmq](spring-boot/300-rabbitmq) | 【web】rabbitmq整合 | rabbitmq |
 | [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息 | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
 | [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) |【web】rabbitmq消费消息姿势 | `@RabbitListener` |
@@ -437,7 +438,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】AsyncRestTemplate之异步非阻塞网络请求介绍篇](http://spring.hhui.top/spring-blog/2020/07/07/200707-SpringBoot%E7%B3%BB%E5%88%97AsyncRestTemplate%E4%B9%8B%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E4%BB%8B%E7%BB%8D%E7%AF%87/)
 -  [【WEB系列】404、500异常页面配置](http://spring.hhui.top/spring-blog/2019/09/30/190930-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B404%E3%80%81500%E5%BC%82%E5%B8%B8%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/)
 -  [【WEB系列】xml传参与返回使用姿势](http://spring.hhui.top/spring-blog/2020/07/06/200706-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8Bxml%E4%BC%A0%E5%8F%82%E4%B8%8E%E8%BF%94%E5%9B%9E%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
-
+-  [【WEB系列】整合resin容器](http://spring.hhui.top/spring-blog/2021/01/26/210126-SpringBoot%E7%B3%BB%E5%88%97%E6%95%B4%E5%90%88resin%E5%AE%B9%E5%99%A8/)
 
 **采坑、填坑**
 
