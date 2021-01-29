@@ -6,3 +6,6 @@ spring:
 mybatis:
   mapper-locations: classpath:sqlmapper/*.xml
   type-aliases-package: com.git.hui.boot.mybatis.entity
+#
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

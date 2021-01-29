@@ -12,6 +12,11 @@ public class Application {
 
     public Application(MoneyRepository repository) {
         repository.testMapper();
+
+        // 一级缓存测试
+        repository.testFirstCache(28);
+
+        repository.dupQuery(28);
     }
 
     public static void main(String[] args) {
