@@ -12,6 +12,7 @@
         <module>spring-case</module>
         <module>spring</module>
         <module>spring-security</module>
+        <module>spring-statemachine</module>
     </modules>
     <packaging>pom</packaging>
 
