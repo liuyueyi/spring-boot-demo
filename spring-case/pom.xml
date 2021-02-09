@@ -26,6 +26,7 @@
         <module>201-web-api-version</module>
         <module>202-web-qrcode-login</module>
         <module>203-web-rest-adapter</module>
+        <module>010-auto-inject</module>
     </modules>
 
     <dependencies>

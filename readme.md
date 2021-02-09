@@ -23,7 +23,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 
 ### II. 高级篇
 
-- [ ] [db读写](http://spring.hhui.top/spring-blog/tags/DB/)
+- [x] [db读写](http://spring.hhui.top/spring-blog/tags/DB/)
     - [x] 基本配置，数据源，多数据源
     - [x] [jdbcTemplate](http://spring.hhui.top/spring-blog/tags/JdbcTemplate/)
     - [x] [jpa](http://spring.hhui.top/spring-blog/tags/JPA/)
@@ -185,6 +185,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [006-importbean](spring-case/006-importbean) | 将非spring项目导入Spring生态 <br/> 自定义注入实例 | `ImportBeanDefinitionRegistrar` |
 | [008-bean-order](spring-case/008-bean-order)<br/>[008-bean-order-client](spring-case/008-bean-order-client) | 指定bean加载优先级，让中间件的核心bean优于业务bean被加载 |`InstantiationAwareBeanPostProcessorAdapter`, `@Import` |
 | [009-distribute-scheduler-task](spring-case/009-distribute-scheduler-task) | 分布式定时任务mock实例 | AOP实现定时任务选择; 重写`ScheduledAnnotationBeanPostProcessor`扩展定时任务生成 |
+| [010-auto-inject](spring-case/010-auto-inject) | 自定义注入实现 | `BeanPostProcessor` 与 代理类创建 |
 | [120-redis-ranklist](spring-case/120-redis-ranklist) | redis实现排行榜 | `zset` |
 | [124-redis-sitecount](spring-case/124-redis-sitecount) | redis实现站点统计 | `redisTemplate` |
 | [125-redis-distribuet-lock](spring-case/125-redis-distribuet-lock) | redis分布式锁 | `redisTemplate` |
