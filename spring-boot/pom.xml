@@ -91,6 +91,8 @@
         <module>109-multi-datasource-mybatis-ano</module>
         <module>002-properties-bind</module>
         <module>230-web-resin</module>
+        <module>125-cache-ano</module>
+        <module>400-docker-demo</module>
 
     </modules>
 
