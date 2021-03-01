@@ -93,6 +93,7 @@
         <module>230-web-resin</module>
         <module>125-cache-ano</module>
         <module>400-docker-demo</module>
+        <module>126-redisson</module>
 
     </modules>
 
