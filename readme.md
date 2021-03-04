@@ -178,6 +178,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [300-rabbitmq](spring-boot/300-rabbitmq) | 【web】rabbitmq整合 | rabbitmq |
 | [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息 | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
 | [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) |【web】rabbitmq消费消息姿势 | `@RabbitListener` |
+| [400-docker-demo](spring-boot/400-docker-demo) |【docker】docker整合 | `Dockerfile` |
 |  | | |
 | **SpringCase** | 实战/应用演练项目 | - |
 | [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果 | `FactoryBean` |
@@ -507,6 +508,12 @@ webclient异步网络请求
 
 - [【Feign系列】Feign请求参数包装异常问题定位](http://spring.hhui.top/spring-blog/2019/03/06/190306-SpringCloud%E4%B9%8BFeign%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%8C%85%E8%A3%85%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D/)
 
+
+### 8. 运维
+
+**docker**
+
+- [【运维系列】整合docker镜像打包](https://spring.hhui.top/spring-blog/2021/03/04/210304-SpringBoot%E7%B3%BB%E5%88%97%E6%95%B4%E5%90%88docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85/)
 
 ## 3. 其他
 

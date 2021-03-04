@@ -24,6 +24,15 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>com.git.hui.boot.docker.Application</mainClass>
+                </configuration>
+            </plugin>
+
             <!--加入maven插件 docker-maven-plugin -->
             <plugin>
                 <groupId>com.spotify</groupId>
