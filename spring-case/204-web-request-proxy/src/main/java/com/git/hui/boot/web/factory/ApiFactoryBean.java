@@ -1,6 +1,7 @@
 package com.git.hui.boot.web.factory;
 
 import com.alibaba.fastjson.JSONObject;
+import com.git.hui.boot.web.util.EnvironmentUtil;
 import com.git.hui.boot.web.util.ProxyUtil;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.util.LinkedMultiValueMap;
@@ -28,6 +29,9 @@ public class ApiFactoryBean<T> implements FactoryBean<T> {
         return ProxyUtil.newProxyInstance(targetClass, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if (method.getName().equalsIgnoreCase("toString")) {
+                    return method.invoke(proxy, args);
+                }
 
                 System.out.println("do before " + method.getName() + " | " + proxy.getClass() + " | " + Thread.currentThread());
                 try {
@@ -39,7 +43,8 @@ public class ApiFactoryBean<T> implements FactoryBean<T> {
                         params.add(p.getName(), args[index]);
                     }
 
-                    String url = "http://127.0.0.1:8080/" + targetClass.getSimpleName() + "/" + method.getName();
+                    String url = EnvironmentUtil.getProperties("api.host") + targetClass.getSimpleName() + "/" + method.getName();
+                    System.out.println("req url: " + url);
                     String response = restTemplate.postForObject(url, params, String.class);
                     if (method.getReturnType() == String.class) {
                         return response;

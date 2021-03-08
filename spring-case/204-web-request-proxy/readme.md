@@ -44,6 +44,8 @@ public class ConsumerService {
 
 接下来我们以一个最简单、基础的实例，来演示下这个实现思路
 
+部分代码参考自 [https://github.com/LianjiaTech/retrofit-spring-boot-starter](https://github.com/LianjiaTech/retrofit-spring-boot-starter)
+
 ### 2. 目标
 
 首先明确以下我们希望实现的效果，我们假定，所有的请求都是POST表单，请求路径由类名 + 方法名来确定，如
@@ -168,3 +170,232 @@ public class ApiScanner extends ClassPathBeanDefinitionScanner {
 
 - `addIncludeFilter(new AnnotationTypeFilter(Api.class));` 只注册了一个根据`@Api`注解进行过滤的Filter
 - `doScan`: 扫描包，捞出满足条件的类
+    - `isCandidateComponent`: 覆盖了父类的判断，用于过滤出我们需要的目标接口，没有它的话会发现捞出来的是一个空集合
+    - `processBeanDefinitions`: 针对捞出来的目标，指定FactoryBean(由它来创建bean对象)，构造方法的参数为BeanClass
+    
+#### 3.3 代理工厂类
+
+上面再注册bean的时候，主要是借助FactoryBean来实现的，我们这里实现一个`ApiFactoryBean`，来负责为接口生成代理的访问类，再内部使用RestTemplate来执行POST请求
+
+```java
+public class ApiFactoryBean<T> implements FactoryBean<T> {
+    private Class<T> targetClass;
+
+    public ApiFactoryBean(Class<T> targetClass) {
+        this.targetClass = targetClass;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public T getObject() throws Exception {
+        return ProxyUtil.newProxyInstance(targetClass, new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if (method.getName().equalsIgnoreCase("toString")) {
+                    return method.invoke(proxy, args);
+                }
+
+                // 每次访问都创建了要给RestTemplate，可以考虑直接使用容器的bean对象, 方便与ribbon集成，实现负载均衡 
+                RestTemplate restTemplate = new RestTemplate();
+                MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+
+                for (int index = 0; index < args.length; index++) {
+                    Parameter p = method.getParameters()[index];
+                    params.add(p.getName(), args[index]);
+                }
+    
+                // 这里用于演示host是写死的，可以考虑根据配置来加载（比如 @Api 中指定host，或者 配置参数方式）
+                String url = "http://127.0.0.1:8080/" + targetClass.getSimpleName() + "/" + method.getName();
+                String response = restTemplate.postForObject(url, params, String.class);
+                if (method.getReturnType() == String.class) {
+                    return response;
+                }
+
+                return JSONObject.parseObject(response, method.getReturnType());
+            }
+        });
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return targetClass;
+    }
+}
+``` 
+
+代理类的实现中，有几个可以优化的地方
+
+- `restTemplate`: 可以结合ribbon使用，从而实现更友好的负载策略
+- `host`: 上面是直接写死的，推荐采用配置化策略来替代（最简单的就是在application.yml文件中加一个api.host的参数，从它来获取，项目源码中给出了实例）
+
+代理生成工具类
+
+```java
+public class ProxyUtil {
+    public static <T> T newProxyInstance(Class<?> targetClass, InvocationHandler invocationHandler) {
+        if (targetClass == null) {
+            return null;
+        } else {
+            Enhancer enhancer = new Enhancer();
+            enhancer.setSuperclass(targetClass);
+            enhancer.setUseCache(true);
+            enhancer.setCallback(new ProxyUtil.SimpleMethodInterceptor(invocationHandler));
+            return (T) enhancer.create();
+        }
+    }
+
+    private static class SimpleMethodInterceptor implements MethodInterceptor, Serializable {
+        private transient InvocationHandler invocationHandler;
+
+        public SimpleMethodInterceptor(InvocationHandler invocationHandler) {
+            this.invocationHandler = invocationHandler;
+        }
+
+        @Override
+        public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+            return this.invocationHandler.invoke(o, method, objects);
+        }
+    }
+}
+```
+
+#### 3.4 bean注册
+
+Scanner通常配合Register使用，实现bean的注册
+
+```java
+@Slf4j
+public class ApiRegister implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, BeanFactoryAware, BeanClassLoaderAware {
+    private ResourceLoader resourceLoader;
+    private BeanFactory beanFactory;
+    private ClassLoader classLoader;
+
+    @Override
+    public void setResourceLoader(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = beanFactory;
+    }
+
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        this.classLoader = classLoader;
+    }
+
+    @Override
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+        Set<String> packages = getPackagesToScan(importingClassMetadata);
+        if (log.isDebugEnabled()) {
+            packages.forEach(pkg -> log.debug("Using auto-configuration base package '{}'", pkg));
+        }
+
+        ApiScanner apiScanner = new ApiScanner(registry, classLoader);
+        if (resourceLoader != null) {
+            apiScanner.setResourceLoader(resourceLoader);
+        }
+
+        apiScanner.scan(packages.toArray(new String[0]));
+    }
+
+    private Set<String> getPackagesToScan(AnnotationMetadata metadata) {
+        AnnotationAttributes attributes =
+                AnnotationAttributes.fromMap(metadata.getAnnotationAttributes(com.git.hui.boot.web.anno.ApiScanner.class.getName()));
+        String[] basePackages = attributes.getStringArray("basePackages");
+        Class<?>[] basePackageClasses = attributes.getClassArray("basePackageClasses");
+
+        Set<String> packagesToScan = new LinkedHashSet<>(Arrays.asList(basePackages));
+        for (Class clz : basePackageClasses) {
+            packagesToScan.add(ClassUtils.getPackageName(clz));
+        }
+
+        if (packagesToScan.isEmpty()) {
+            packagesToScan.add(ClassUtils.getPackageName(metadata.getClassName()));
+        }
+
+        return packagesToScan;
+    }
+}
+```
+
+最后自定义一个扫描注解，让上面的Register生效
+
+```java
+@Inherited
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Import(ApiRegister.class)
+public @interface ApiScanner {
+    @AliasFor("basePackages") String[] value() default {};
+
+    @AliasFor("value") String[] basePackages() default {};
+
+    Class<?>[] basePackageClasses() default {};
+}
+```
+
+#### 3.5 测试
+
+上面就完成了我们的预期目标，接下来写一个demo测试一下
+
+定义一个api，以及提供rest的Controller
+
+**项目1**
+
+启用端口号 8080
+
+```java
+@Api
+public interface UserApi {
+    String getName(int id);
+
+    String updateName(String user, int age);
+}
+
+
+@RestController
+@RequestMapping(path = "UserApi")
+public class UserRest implements UserApi {
+    @Override
+    @RequestMapping(path = "getName")
+    public String getName(int id) {
+        return "一灰灰blog: " + id;
+    }
+
+    @Override
+    @PostMapping(path = "updateName")
+    public String updateName(String user, int age) {
+        return "update " + user + " age to: " + age;
+    }
+}
+```
+
+**项目2**
+
+UserApi接口使用姿势，启用端口号 8081
+
+```java
+@RestController
+public class DemoRest {
+    @Autowired
+    private UserApi indexApi;
+
+    @GetMapping
+    public String call(String name, Integer age) {
+        String ans = indexApi.updateName(name, age);
+        String a2 = indexApi.getName(1);
+        return ans + " | " + a2;
+    }
+}
+```
+
+测试访问:
+
+```bash
+curl 'http://127.0.0.1:8081?name=yihui&age=18'
+
+## 输出日志如下
+update yihui age to: 18 | 一灰灰blog: 1
+```
