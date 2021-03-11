@@ -193,6 +193,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [201-web-api-version](spring-case/201-web-api-version) | web版本控制 | `RequestMappingHandlerMapping` |
 | [202-web-qrcode-login](spring-case/202-web-qrcode-login) | web扫码登录实战 | `SseEmitter` |
 | [203-web-rest-adapter](spring-case/203-web-rest-adapter) | url匹配规则自定义，子类继承父类的参数注解 | `RequestMappingHandlerMapping`, `HandlerMethodArgumentResolver` |
+| [204-web-request-proxy](spring-case/204-web-request-proxy) | 基于接口的REST访问支持 | `ClassPathBeanDefinitionScanner`, `ImportBeanDefinitionRegistrar` |
+| [205-web-rest-enhanced](spring-case/205-web-rest-enhanced) | 单机应用最小成本扩展REST服务示例 | `RequestMappingHandlerMapping` |
 | | | |
 | **SpringSecurity** | 安全 | |
 | [000-basic-demo](spring-security/000-basic-demo) | 整合实例 | |
@@ -452,7 +454,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 
 -  [【WEB系列】实现后端的接口版本支持（应用篇）](http://spring.hhui.top/spring-blog/2019/12/25/191225-SpringBoot-%E5%BA%94%E7%94%A8%E7%AF%87-%E5%AE%9E%E7%8E%B0%E5%90%8E%E7%AB%AF%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81/)
 -  [【WEB系列】徒手撸一个扫码登录示例工程（应用篇）](http://spring.hhui.top/spring-blog/2020/04/02/200402-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%BE%92%E6%89%8B%E6%92%B8%E4%B8%80%E4%B8%AA%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B/)
-
+-  [【WEB系列】一步步实现一个面向接口的网络访问实例(应用篇)](https://spring.hhui.top/spring-blog/2021/03/08/210308-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E4%B8%80%E6%AD%A5%E6%AD%A5%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AE%BF%E9%97%AE%E5%AE%9E%E4%BE%8B/)
 
 **WebFlux系列**
 
