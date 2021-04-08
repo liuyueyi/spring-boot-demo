@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.InvocationTargetException;
 
 /**
+ * 不推荐使用，性能较差
+ *
  * @author wuzebang
  * @date 2021/4/7
  */

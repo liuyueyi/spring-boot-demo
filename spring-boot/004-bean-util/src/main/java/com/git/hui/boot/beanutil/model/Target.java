@@ -12,8 +12,8 @@ import java.util.List;
 @Data
 public class Target {
     private Integer id;
-    private String userName;
+    private String user_name;
     private Double price;
     private List<Long> ids;
-    private BigDecimal market;
+    private BigDecimal marketPrice;
 }

@@ -15,5 +15,5 @@ public class Target2 {
     private String userName;
     private Double price;
     private List<Long> ids;
-    private BigDecimal market;
+    private BigDecimal market_price;
 }
