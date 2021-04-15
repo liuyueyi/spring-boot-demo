@@ -74,6 +74,8 @@ public class ZkLock implements Watcher {
                     // 这里不直接返回true，因为前面的一个节点删除，可能并不是因为它持有锁并释放锁，如果是因为这个会话中断导致临时节点删除，这个时候需要做的是换一下监听的 preNode
                     return lock();
                 }
+            } else {
+                return lock();
             }
         } catch (Exception e) {
             e.printStackTrace();
