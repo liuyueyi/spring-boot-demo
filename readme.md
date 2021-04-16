@@ -179,6 +179,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息 | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
 | [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) |【web】rabbitmq消费消息姿势 | `@RabbitListener` |
 | [400-docker-demo](spring-boot/400-docker-demo) |【docker】docker整合 | `Dockerfile` |
+| [410-zookeeper-basic](spring-boot/410-zookeeper-basic) |【中间件】zk使用姿势 | `ZooKeeper` |
+| [411-zookeeper-distributelock](spring-boot/411-zookeeper-distributelock) |【中间件】zk 分布式锁 | `DistributeLock` |
 |  | | |
 | **SpringCase** | 实战/应用演练项目 | - |
 | [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果 | `FactoryBean` |
@@ -516,6 +518,13 @@ webclient异步网络请求
 **docker**
 
 - [【运维系列】整合docker镜像打包](https://spring.hhui.top/spring-blog/2021/03/04/210304-SpringBoot%E7%B3%BB%E5%88%97%E6%95%B4%E5%90%88docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85/)
+
+### 9. 中间件
+
+**zookeeper**
+
+- [【中间件】zookeeper基础使用介绍](https://spring.hhui.top/spring-blog/2021/04/14/210414-SpringBoot%E6%95%B4%E5%90%88zookeeper%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/)
+- [【中间件】Zookeeper从0到1实现一个分布式锁](https://spring.hhui.top/spring-blog/2021/04/15/210415-SpringBoot%E6%95%B4%E5%90%88Zookeeper%E4%BB%8E0%E5%88%B01%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/)
 
 ## 3. 其他
 
