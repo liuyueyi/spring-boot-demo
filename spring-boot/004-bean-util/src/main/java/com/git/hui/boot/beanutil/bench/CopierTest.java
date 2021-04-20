@@ -30,6 +30,8 @@ public class CopierTest {
     private SpringBeanCopier springBeanCopier;
     @Autowired
     private MapsCopier mapsCopier;
+    @Autowired
+    private OrikaCopier orikaCopier;
 
     private Random random = new Random();
 
@@ -44,18 +46,19 @@ public class CopierTest {
     }
 
     public void test() throws Exception {
-//        copyTest();
+        copyTest();
+        camelParse();
         // 第一次用于预热
-//        autoCheck(Target.class, 10000);
-//        autoCheck(Target.class, 10000);
-//        autoCheck(Target.class, 10000_0);
-//        autoCheck(Target.class, 50000_0);
+        autoCheck(Target.class, 10000);
+        autoCheck(Target.class, 10000);
+        autoCheck(Target.class, 10000_0);
+        autoCheck(Target.class, 50000_0);
 //        autoCheck(Target.class, 10000_00);
 
-        autoCheck2(Target2.class, 10000);
-        autoCheck2(Target2.class, 10000);
-        autoCheck2(Target2.class, 10000_0);
-        autoCheck2(Target2.class, 50000_0);
+//        autoCheck2(Target2.class, 10000);
+//        autoCheck2(Target2.class, 10000);
+//        autoCheck2(Target2.class, 10000_0);
+//        autoCheck2(Target2.class, 50000_0);
 //        camelParse();
     }
 
@@ -67,8 +70,9 @@ public class CopierTest {
         Target tp = pureCglibCopier.copy(s, Target.class);
         Target th = hutoolCopier.copy(s, Target.class);
         Target tm = mapsCopier.copy(s, Target.class);
+        Target to = orikaCopier.copy(s, Target.class);
         System.out.println("source:\t" + s + "\napache:\t" + ta + "\nspring:\t" + ts
-                + "\nsCglib:\t" + tc + "\npCglib:\t" + tp + "\nhuTool:\t" + th + "\nmapStruct:\t" + tm);
+                + "\nsCglib:\t" + tc + "\npCglib:\t" + tp + "\nhuTool:\t" + th + "\nmapStruct:\t" + tm + "\norika:\t" + to);
     }
 
     private <T> void autoCheck(Class<T> target, int size) throws Exception {
@@ -79,6 +83,7 @@ public class CopierTest {
         runCopier(stopWatch, "hutoolCopier", size, (s) -> hutoolCopier.copy(s, target));
         runCopier(stopWatch, "springBeanCopier", size, (s) -> springBeanCopier.copy(s, target));
         runCopier(stopWatch, "mapStruct", size, (s) -> mapsCopier.copy(s, target));
+        runCopier(stopWatch, "orikaCopier", size, (s) -> orikaCopier.copy(s, target));
         System.out.println((size / 10000) + "w -------- cost: " + stopWatch.prettyPrint());
     }
 
@@ -89,7 +94,8 @@ public class CopierTest {
         runCopier(stopWatch, "pureCglibCopier", size, (s) -> pureCglibCopier.copyAndParse(s, target));
         runCopier(stopWatch, "hutoolCopier", size, (s) -> hutoolCopier.copyAndParse(s, target));
         runCopier(stopWatch, "springBeanCopier", size, (s) -> springBeanCopier.copy(s, target));
-        runCopier(stopWatch, "mapStruct", size, (s) -> mapsCopier.copyAndParse(s,  target));
+        runCopier(stopWatch, "mapStruct", size, (s) -> mapsCopier.copyAndParse(s, target));
+        runCopier(stopWatch, "mapStruct", size, (s) -> orikaCopier.copy(s, target));
         System.out.println((size / 10000) + "w -------- cost: " + stopWatch.prettyPrint());
     }
 
@@ -113,6 +119,7 @@ public class CopierTest {
         Target2 cglib2 = pureCglibCopier.copyAndParse(s, Target2.class);
         Target2 hutool = hutoolCopier.copyAndParse(s, Target2.class);
         Target2 map = mapsCopier.copyAndParse(s, Target2.class);
-        System.out.println("source:" + s + "\nsCglib:" + cglib + "\npCglib:" + cglib2 + "\nhuTool:" + hutool + "\nMapStruct:" + map);
+        Target2 orika = orikaCopier.copy(s, Target2.class);
+        System.out.println("source:" + s + "\nsCglib:" + cglib + "\npCglib:" + cglib2 + "\nhuTool:" + hutool + "\nMapStruct:" + map + "\norika:" + orika);
     }
 }
