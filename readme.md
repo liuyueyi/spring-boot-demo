@@ -281,6 +281,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 
 - [【基础系列】SpEL语法扫盲与查询手册](http://spring.hhui.top/spring-blog/2020/05/18/200518-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BSpEL%E8%AF%AD%E6%B3%95%E6%89%AB%E7%9B%B2%E4%B8%8E%E6%9F%A5%E8%AF%A2%E6%89%8B%E5%86%8C/)
 
+**事件**
+
+- [【基础系列】事件机制的两种消费姿势](https://spring.hhui.top/spring-blog/2021/04/29/210429-SpringBoot%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%B6%88%E8%B4%B9%E5%A7%BF%E5%8A%BF/)
+
 ### 2. DB系列
 
 我们将db区分为传统的关系型数据库如mysql，NoSql如redis、mongodb，时序数据库influxdb
