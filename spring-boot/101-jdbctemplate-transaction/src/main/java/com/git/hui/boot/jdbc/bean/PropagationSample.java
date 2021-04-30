@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * 事务隔离级别
  * Created by @author yihui in 11:32 20/2/2.
  */
 @Component
