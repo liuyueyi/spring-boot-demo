@@ -1,0 +1,12 @@
+spring:
+  messages:
+    basename: i18n/messages/messages
+    encoding: UTF-8
+    fallbackToSystemLocale: false
+
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false

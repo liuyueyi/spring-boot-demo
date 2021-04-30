@@ -107,6 +107,7 @@
         <module>410-zookeeper-basic</module>
         <module>411-zookeeper-distributelock</module>
         <module>420-prometheus-basic</module>
+        <module>150-i18n</module>
 
 
     </modules>
