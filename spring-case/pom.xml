@@ -30,6 +30,7 @@
         <module>204-web-request-proxy</module>
         <module>205-web-rest-enhanced</module>
         <module>421-prometheus-metric</module>
+        <module>126-redis-delay-list</module>
     </modules>
 
     <dependencies>

@@ -23,7 +23,7 @@ public class VisitService {
 
     /**
      * 获取pv
-     *
+     * <p>
      * pv存储结果为hash，一个应用一个key; field 为uri； value为pv
      *
      * @return null表示首次有人访问；这个时候需要+1
@@ -84,6 +84,8 @@ public class VisitService {
 
 
     /**
+     * fixme 这个算法有误， 如 192.1.2.3 何 192.3.0.1 两个ip访问了， 那么也会将 192.3.2.1 判定为访问过； 使用布隆过滤器或者hyperloglog来替换
+     *
      * 判断ip今天是否访问过
      * 采用bitset来判断ip是否有访问，key由app与uri唯一确定
      *
