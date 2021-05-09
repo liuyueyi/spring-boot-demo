@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="YiHui"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>一灰灰blog 国际化测试页面</title>
+</head>
+<body>
+
+<div>
+    <div class="title">hello world!</div>
+    <br/>
+    <div class="content" th:text="'name: ' + ${name}">默认用户名</div>
+    <br/>
+    <div class="sign" th:text="'pwd: ' + ${pwd}">默认密码</div>
+    <br/>
+
+<!--    <div class="content" th:text="'name: ' + #{200}">默认用户名</div>-->
+</div>
+</body>
+</html>
