@@ -285,6 +285,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 
 - [【基础系列】事件机制的两种消费姿势](https://spring.hhui.top/spring-blog/2021/04/29/210429-SpringBoot%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%B6%88%E8%B4%B9%E5%A7%BF%E5%8A%BF/)
 
+**国际化**
+
+- [【基础系列】国际化支持实例开发](https://spring.hhui.top/spring-blog/2021/05/09/210509-SpringBoot%E5%AE%9E%E7%8E%B0%E5%9B%BD%E9%99%85%E5%8C%96%E6%94%AF%E6%8C%81%E5%AE%9E%E4%BE%8B%E5%BC%80%E5%8F%91/)
+
 ### 2. DB系列
 
 我们将db区分为传统的关系型数据库如mysql，NoSql如redis、mongodb，时序数据库influxdb

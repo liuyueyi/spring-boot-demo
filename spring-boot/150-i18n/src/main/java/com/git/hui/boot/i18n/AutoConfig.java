@@ -18,15 +18,17 @@ import java.util.Locale;
  */
 @Configuration
 public class AutoConfig implements WebMvcConfigurer {
-    @Bean
-    @Primary
-    public ResourceBundleMessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("i18n/messages/messages");
-        messageSource.setDefaultEncoding("UTF8");
-        return messageSource;
-    }
 
+//    不使用配置时，可以考虑用这种方式声明 MessageSource
+//    @Bean
+//    @Primary
+//    public ResourceBundleMessageSource messageSource() {
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//        messageSource.setBasenames("i18n/messages/messages");
+//        messageSource.setDefaultEncoding("UTF8");
+//        return messageSource;
+//    }
+//
     /**
      * 这个如果不存在，则会抛异常: nested exception is java.lang.UnsupportedOperationException: Cannot change HTTP accept header - use a different locale resolution strategy
      *
