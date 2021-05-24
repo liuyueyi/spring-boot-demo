@@ -1,9 +1,6 @@
 package com.git.hui.boot.aop.logaspect;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * Created by @author yihui in 15:03 19/3/2.

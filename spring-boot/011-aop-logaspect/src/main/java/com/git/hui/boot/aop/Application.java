@@ -1,6 +1,7 @@
 package com.git.hui.boot.aop;
 
 import com.git.hui.boot.aop.anodemo.AnoDemo;
+import com.git.hui.boot.aop.anodemo.BaseApi;
 import com.git.hui.boot.aop.demo.PrintDemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,9 +12,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public Application(PrintDemo printDemo, AnoDemo anoDemo) {
-        System.out.println(printDemo.genRand(10, "--一灰灰Blog"));
-        System.out.println(anoDemo.gen("!23"));
+    public Application(PrintDemo printDemo, AnoDemo anoDemo, BaseApi baseApi) {
+//        System.out.println(printDemo.genRand(10, "--一灰灰Blog"));
+//        System.out.println(anoDemo.gen("!23"));
+//        System.out.println("\n\n\n ----------- \n\n");
+
+        System.out.println(baseApi.print("hello world"));
+        System.out.println("-----------");
+//        System.out.println(baseApi.print2("hello world"));
     }
 
     public static void main(String[] args) {
