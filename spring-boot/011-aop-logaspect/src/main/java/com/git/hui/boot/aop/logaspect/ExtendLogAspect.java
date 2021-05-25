@@ -2,7 +2,6 @@ package com.git.hui.boot.aop.logaspect;
 
 import com.alibaba.fastjson.JSON;
 import lombok.Setter;
-import lombok.SneakyThrows;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.ClassFilter;
@@ -13,7 +12,8 @@ import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.aop.support.annotation.AnnotationMethodMatcher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.util.StopWatch;
 
 import java.lang.reflect.Method;
 
@@ -22,7 +22,6 @@ import java.lang.reflect.Method;
  * @date 2021/5/24
  */
 @Configuration
-@Component
 public class ExtendLogAspect {
 
     public static class LogAdvice implements MethodInterceptor {
@@ -42,55 +41,47 @@ public class ExtendLogAspect {
                 throw e;
             } finally {
                 long end = System.currentTimeMillis();
-                System.out.println(req + "" + JSON.toJSONString(res) + SPLIT_SYMBOL + (end - start));
+                System.out.println("ExtendLogAspect:" + req + "" + JSON.toJSONString(res) + SPLIT_SYMBOL + (end - start));
             }
         }
 
 
         private String buildReqLog(MethodInvocation joinPoint) {
+            StopWatch stopWatch = new StopWatch();
             // 目标对象
+            stopWatch.start("getThis");
             Object target = joinPoint.getThis();
+            stopWatch.stop();
             // 执行的方法
+            stopWatch.start("getMethod");
             Method method = joinPoint.getMethod();
+            stopWatch.stop();
             // 请求参数
+            stopWatch.start("getArguments");
             Object[] args = joinPoint.getArguments();
+            stopWatch.stop();
 
+            stopWatch.start("reflect");
             StringBuilder builder = new StringBuilder(target.getClass().getName());
             builder.append(SPLIT_SYMBOL).append(method.getName()).append(SPLIT_SYMBOL);
+            stopWatch.stop();
+            stopWatch.start("buildArgs");
             for (Object arg : args) {
-                builder.append(JSON.toJSONString(arg)).append(",");
+//                builder.append(JSON.toJSONString(arg)).append(",");
+                builder.append(arg);
             }
-            return builder.substring(0, builder.length() - 1) + SPLIT_SYMBOL;
-        }
-    }
-
-    public static class LogAdvisor extends AbstractBeanFactoryPointcutAdvisor {
-        @Setter
-        private Pointcut logPointCut;
-
-        @Override
-        public Pointcut getPointcut() {
-            return logPointCut;
+            String ans = builder.toString() + SPLIT_SYMBOL;
+            stopWatch.stop();
+//            System.out.println("ExtendLogAspect buildReqLog cost: " + stopWatch.prettyPrint());
+            return ans;
         }
     }
 
     public static class LogPointCut extends StaticMethodMatcherPointcut {
 
-        @SneakyThrows
         @Override
         public boolean matches(Method method, Class<?> aClass) {
-
-            if (method.isAnnotationPresent(AnoDot.class)) {
-                return true;
-            }
-
-            for (Class in : aClass.getInterfaces()) {
-                try {
-                    return in.getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(AnoDot.class);
-                } catch (Exception e) {
-                }
-            }
-            return false;
+            return AnnotatedElementUtils.hasAnnotation(method, AnoDot.class);
         }
     }
 
@@ -119,12 +110,22 @@ public class ExtendLogAspect {
         }
     }
 
+    public static class LogAdvisor extends AbstractBeanFactoryPointcutAdvisor {
+        @Setter
+        private Pointcut logPointCut;
+
+        @Override
+        public Pointcut getPointcut() {
+            return logPointCut;
+        }
+    }
+
     @Bean
     public LogAdvisor init() {
         LogAdvisor logAdvisor = new LogAdvisor();
 //        自定义实现姿势
-//        logAdvisor.setLogPointCut(new LogPointCut());
-        logAdvisor.setLogPointCut(new AnoPointCut());
+        logAdvisor.setLogPointCut(new LogPointCut());
+//        logAdvisor.setLogPointCut(new AnoPointCut());
         logAdvisor.setAdvice(new LogAdvice());
         return logAdvisor;
     }

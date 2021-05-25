@@ -12,14 +12,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public Application(PrintDemo printDemo, AnoDemo anoDemo, BaseApi baseApi) {
+    public Application(PrintDemo printDemo, AnoDemo anoDemo, BaseApi baseApi) throws InterruptedException {
 //        System.out.println(printDemo.genRand(10, "--一灰灰Blog"));
 //        System.out.println(anoDemo.gen("!23"));
 //        System.out.println("\n\n\n ----------- \n\n");
 
-        System.out.println(baseApi.print("hello world"));
-        System.out.println("-----------");
-//        System.out.println(baseApi.print2("hello world"));
+        for (int i = 0; i < 100; i++) {
+            System.out.println(baseApi.print("hello world"));
+            System.out.println("-----------\n\n");
+        }
+
+        System.out.println(baseApi.print2("hello world"));
     }
 
     public static void main(String[] args) {

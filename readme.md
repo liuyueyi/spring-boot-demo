@@ -267,6 +267,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】AOP之高级使用技能](http://spring.hhui.top/spring-blog/2019/03/02/190302-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87AOP%E4%B9%8B%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8%E6%8A%80%E8%83%BD/)
 - [【基础系列】AOP之拦截优先级详解](http://spring.hhui.top/spring-blog/2019/03/10/190310-SpringCloud%E5%9F%BA%E7%A1%80%E7%AF%87AOP%E4%B9%8B%E6%8B%A6%E6%88%AA%E4%BC%98%E5%85%88%E7%BA%A7%E8%AF%A6%E8%A7%A3/)
 - [【基础系列】AOP实现一个日志插件（应用篇）](http://spring.hhui.top/spring-blog/2019/03/13/190313-SpringCloud%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BAOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E5%8A%9F%E8%83%BD/)
+- [【基础系列】接口上注解AOP拦截不到场景兼容](https://spring.hhui.top/spring-blog/2021/05/25/210525-SpringBoot%E6%8E%A5%E5%8F%A3%E6%B3%A8%E8%A7%A3%E5%88%87%E9%9D%A2%E6%8B%A6%E6%88%AA%E4%B8%8D%E5%88%B0%E5%9C%BA%E6%99%AF%E5%85%BC%E5%AE%B9/)
+
 
 **日志**
 
