@@ -1,0 +1,10 @@
+auth:
+  jwt:
+    token: TOKEN.123
+    expire: 1622616886456
+    whiteList: 4,5,6
+    blackList:
+      - 100
+      - 200
+      - 300
+    tt: token:tt_token; expire:1622616888888

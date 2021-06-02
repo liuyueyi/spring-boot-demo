@@ -108,6 +108,7 @@
         <module>411-zookeeper-distributelock</module>
         <module>420-prometheus-basic</module>
         <module>150-i18n</module>
+        <module>002-properties-value</module>
 
 
     </modules>

@@ -2,3 +2,12 @@ spring:
   profiles:
     active: bind
 
+
+val:
+  inj:
+    - a: 1
+      b: 2
+      c: 3
+    - z: 10
+      zz: 11
+      zzz: 12
