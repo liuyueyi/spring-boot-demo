@@ -30,6 +30,7 @@
         <module>011-aop-logaspect</module>
         <module>012-context-listener</module>
         <module>013-spel</module>
+        <module>014-spel-aop</module>
 
         <module>100-mysql</module>
         <module>101-jdbctemplate</module>
