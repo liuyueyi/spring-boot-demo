@@ -8,3 +8,6 @@ auth:
       - 200
       - 300
     tt: token:tt_token; expire:1622616888888
+spring:
+  profiles:
+    active: dynamic

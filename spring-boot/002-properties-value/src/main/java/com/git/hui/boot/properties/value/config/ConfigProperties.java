@@ -1,6 +1,8 @@
 package com.git.hui.boot.properties.value.config;
 
+import com.alibaba.fastjson.JSONObject;
 import com.git.hui.boot.properties.value.model.Jwt;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -14,6 +16,7 @@ import java.util.List;
  * @author yihui
  * @date 2021/6/2
  */
+@Data
 @Component
 public class ConfigProperties {
 
@@ -47,6 +50,24 @@ public class ConfigProperties {
     @Value("${auth.jwt.tt}")
     private Jwt tt;
 
+    @Value("1+2")
+    private String a;
+
+    @Value("#{1+2}")
+    private String b;
+
+    /**
+     * 配置注入 + 前缀
+     */
+    @Value("prefix_${auth.jwt.token}")
+    private String c;
+
+    /**
+     * spel表达式
+     */
+    @Value("#{randomService.randUid()}")
+    private String rid;
+
     @Autowired
     private Environment environment;
 
@@ -54,5 +75,9 @@ public class ConfigProperties {
     public void init() {
         System.out.println("token: " + token + "\nexpire:" + expire + "\nno:" + no + "\nwhiteList:" + whiteList +
                 "\nblackList:" + Arrays.asList(blackList) + "\ntt:" + tt);
+    }
+
+    public String toJsonStr() {
+        return JSONObject.toJSONString(this);
     }
 }
