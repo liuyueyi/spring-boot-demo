@@ -14,4 +14,14 @@ public class HelloService {
     public String say(DemoDo demo, String prefix) {
         return prefix + ":" + demo;
     }
+
+    /**
+     * 字面量，注意用单引号包裹起来
+     * @param key
+     * @return
+     */
+    @Log(key = "'yihuihuiblog'")
+    public String hello(String key, HelloService helloService) {
+        return key + "_" + helloService.say(new DemoDo().setName(key).setAge(10), "prefix");
+    }
 }

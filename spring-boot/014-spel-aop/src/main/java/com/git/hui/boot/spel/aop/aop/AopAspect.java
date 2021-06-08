@@ -1,5 +1,7 @@
 package com.git.hui.boot.spel.aop.aop;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,14 +13,10 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.expression.BeanFactoryResolver;
 import org.springframework.core.DefaultParameterNameDiscoverer;
 import org.springframework.core.ParameterNameDiscoverer;
-import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
-import org.springframework.expression.spel.support.SimpleEvaluationContext;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 /**
  * @author yihui
@@ -33,11 +31,14 @@ public class AopAspect implements ApplicationContextAware {
 
     @Around("@annotation(logAno)")
     public Object around(ProceedingJoinPoint joinPoint, Log logAno) throws Throwable {
+        long start = System.currentTimeMillis();
         String key = loadKey(logAno.key(), joinPoint);
         try {
             return joinPoint.proceed();
         } finally {
-            log.info("key: {}, args: {}", key, Arrays.asList(joinPoint.getArgs()));
+            log.info("key: {}, args: {}, cost: {}", key,
+                    new Gson().toJson(joinPoint.getArgs()),
+                    System.currentTimeMillis() - start);
         }
     }
 

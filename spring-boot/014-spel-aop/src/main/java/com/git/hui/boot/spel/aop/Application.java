@@ -14,6 +14,9 @@ public class Application {
 
     public Application(HelloService helloService) {
         helloService.say(new DemoDo().setName("一灰灰blog").setAge(18), "welcome");
+
+        String ans = helloService.hello("一灰灰", helloService);
+        System.out.println(ans);
     }
 
     public static void main(String[] args) {
