@@ -1,7 +1,6 @@
 package com.git.hui.boot.properties.value.config.dynamic;
 
 import com.alibaba.fastjson.JSONObject;
-import javafx.util.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,10 +12,13 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.PropertyPlaceholderHelper;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +29,7 @@ import java.util.Map;
  */
 @Component
 public class AnoValueRefreshPostProcessor extends InstantiationAwareBeanPostProcessorAdapter implements EnvironmentAware {
-    private Map<String, FieldPair> mapper = new HashMap<>();
+    private Map<String, List<FieldPair>> mapper = new HashMap<>();
     private Environment environment;
 
     @Override
@@ -37,7 +39,7 @@ public class AnoValueRefreshPostProcessor extends InstantiationAwareBeanPostProc
     }
 
     /**
-     * 扫描bean的所有属性，并获取@MetaVal修饰的属性
+     * 这里主要的目的就是获取支持动态刷新的配置属性，然后缓存起来
      *
      * @param bean
      */
@@ -51,8 +53,11 @@ public class AnoValueRefreshPostProcessor extends InstantiationAwareBeanPostProc
             for (Field field : clz.getDeclaredFields()) {
                 if (field.isAnnotationPresent(Value.class)) {
                     Value val = field.getAnnotation(Value.class);
-                    Pair<String, String> pair = pickPropertyKey(val.value());
-                    mapper.put(pair.getKey(), new FieldPair(bean, field, val, pair.getValue()));
+                    List<String> keyList = pickPropertyKey(val.value(), 0);
+                    for (String key : keyList) {
+                        mapper.computeIfAbsent(key, (k) -> new ArrayList<>())
+                                .add(new FieldPair(bean, field, val.value()));
+                    }
                 }
             }
         } catch (Exception e) {
@@ -65,25 +70,29 @@ public class AnoValueRefreshPostProcessor extends InstantiationAwareBeanPostProc
      * 实现一个基础的配置文件参数动态刷新支持
      *
      * @param value
-     * @return
+     * @return 提取key列表
      */
-    private Pair<String, String> pickPropertyKey(String value) {
-        int start = value.indexOf("$") + 2;
+    private List<String> pickPropertyKey(String value, int begin) {
+        int start = value.indexOf("${", begin) + 2;
+        if (start < 2) {
+            return new ArrayList<>();
+        }
+
         int middle = value.indexOf(":", start);
         int end = value.indexOf("}", start);
 
         String key;
-        String defaultValue;
         if (middle > 0 && middle < end) {
             // 包含默认值
             key = value.substring(start, middle);
-            defaultValue = value.substring(middle + 1, end);
         } else {
             // 不包含默认值
             key = value.substring(start, end);
-            defaultValue = null;
         }
-        return new Pair<>(key, defaultValue);
+
+        List<String> keys = pickPropertyKey(value, end);
+        keys.add(key);
+        return keys;
     }
 
     @Override
@@ -95,26 +104,29 @@ public class AnoValueRefreshPostProcessor extends InstantiationAwareBeanPostProc
     @NoArgsConstructor
     @AllArgsConstructor
     public static class FieldPair {
-        private static PropertyPlaceholderHelper propertyPlaceholderHelper = new PropertyPlaceholderHelper("${", "}");
+        private static PropertyPlaceholderHelper propertyPlaceholderHelper = new PropertyPlaceholderHelper("${", "}",
+                ":", true);
 
         Object bean;
         Field field;
-        Value value;
-        String defaultVal;
+        String value;
 
-        public void updateValue(Environment environment) throws IllegalAccessException {
+        public void updateValue(Environment environment) {
             boolean access = field.isAccessible();
             if (!access) {
                 field.setAccessible(true);
             }
 
-            String val = value.value();
-            if (defaultVal != null) {
-                val = value.value().replace(":" + defaultVal, "");
+            String updateVal = propertyPlaceholderHelper.replacePlaceholders(value, environment::getProperty);
+            try {
+                if (field.getType() == String.class) {
+                    field.set(bean, updateVal);
+                } else {
+                    field.set(bean, JSONObject.parseObject(updateVal, field.getType()));
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
-
-            String updateVal = propertyPlaceholderHelper.replacePlaceholders(val, environment::getProperty);
-            field.set(bean, JSONObject.parseObject(updateVal, field.getType()));
             field.setAccessible(access);
         }
     }
@@ -135,10 +147,10 @@ public class AnoValueRefreshPostProcessor extends InstantiationAwareBeanPostProc
     }
 
     @EventListener
-    public void updateConfig(ConfigUpdateEvent configUpdateEvent) throws IllegalAccessException {
-        FieldPair pair = mapper.get(configUpdateEvent.key);
-        if (pair != null) {
-            pair.updateValue(environment);
+    public void updateConfig(ConfigUpdateEvent configUpdateEvent) {
+        List<FieldPair> list = mapper.get(configUpdateEvent.key);
+        if (!CollectionUtils.isEmpty(list)) {
+            list.forEach(f -> f.updateValue(environment));
         }
     }
 }
