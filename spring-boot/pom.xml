@@ -110,6 +110,7 @@
         <module>420-prometheus-basic</module>
         <module>150-i18n</module>
         <module>002-properties-value</module>
+        <module>002-dynamic-envronment</module>
 
 
     </modules>
