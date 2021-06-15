@@ -34,7 +34,7 @@ public class FilePropertiesSource extends MapPropertySource {
         String ans =
                 FileCopyUtils.copyToString(new InputStreamReader(FilePropertiesSource.class.getClassLoader().getResourceAsStream("kv.properties")));
         Map<String, Object> map = new HashMap<>();
-        for (String sub : StringUtils.split(ans, "\n")) {
+        for (String sub : ans.split("\n")) {
             if (sub.isEmpty()) {
                 continue;
             }
