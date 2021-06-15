@@ -29,7 +29,7 @@ public class BasicDemo {
     }
 
     /**
-     * 时效缓存
+     * 失效缓存
      *
      * @param name
      * @return

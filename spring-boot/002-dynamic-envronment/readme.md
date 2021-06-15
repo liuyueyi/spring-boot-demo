@@ -10,3 +10,4 @@
 
 ### 博文说明
 
+- [210610-SpringBoot基础篇之自定义配置源的使用姿势](https://spring.hhui.top/spring-blog/2021/06/10/210610-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%BA%90%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)

@@ -19,7 +19,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [x] [日志相关](http://spring.hhui.top//spring-blog/tags/Log/)
 - [x] [AOP相关](http://spring.hhui.top//spring-blog/tags/AOP/)
 - [x] [SPEL](https://spring.hhui.top/spring-blog/tags/SpEL/)
-- [ ] 事件通知机制
+- [x] [事件通知机制](https://spring.hhui.top/spring-blog/tags/EventListener/)
 
 ### II. 高级篇
 
@@ -83,6 +83,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [ ] WebSocket
     - [x] [websocket基础](http://spring.hhui.top/spring-blog/tags/WebSocket/)
 - [ ] reactive
+    - [ ] [webflux](https://spring.hhui.top/spring-blog/tags/WebFlux/)
 
 
 ### IV. SpringCloud篇
@@ -110,6 +111,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [001-properties](spring-boot/001-properties) | 【配置】环境选择 | 配置`spring.profiles.active`指定环境 | 
 | [002-properties](spring-boot/002-properties) | 【配置】刷新示例 | SpringCloud生态配置刷新<br/>`@RefreshScope`，`EnvironmentChangeEvent`配置变更事件|
 | [002-properties-bind](spring-boot/002-properties-bind) | 【配置】刷新绑定的各种知识点 | `@ConfigurationProperties` |
+| [002-dynamic-envronment](spring-boot/002-dynamic-envronment) | 【配置】自定义配置源 | `MapPropertySource` |
+| [002-properties-value](spring-boot/002-properties-value) | 【配置】@Value扩展知识点 | `@Value` |
 | [003-log](spring-boot/003-log) | 【日志】集成logback | logback日志集成与配置 |
 | [003-log4j2](spring-boot/003-log4j2) | 【日志】集成log4j2 | log4j2日志集成与配置 |
 | [004-bean](spring-boot/004-bean) | 【bean】使用姿势 | bean三种定义姿势 <br/> bean三种注入方式 |
@@ -123,6 +126,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [011-aop-logaspect](spring-boot/011-aop-logaspect) | 【AOP】切面 | 实战，日志切面|
 | [012-context-listener](spring-boot/012-context-listener) | 【Listener】事件 | ContextListener |
 | [013-spel](spring-boot/013-spel) | 【SpEL】 | SpEL语法与实例 |
+| [014-spel-aop](spring-boot/014-spel-aop) | 【SpEL】 | SpEL & aop整合时注意事项 |
 | [100-h2database](spring-boot/100-h2database) | 【DB】h2database整合 | - |
 | [100-mysql](spring-boot/100-mysql) | 【DB】mysql整合 | - |
 | [101-jdbctemplate](spring-boot/101-jdbctemplate) | 【DB】jdbctemplate使用姿势 CURD详解 | `JdbcTemplate` |
@@ -152,6 +156,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [131-influxdb-java](spring-boot/131-influxdb-java) | 【DB】influxdb封装 | 封装更服务SpringBoot规范的`InfluxTemplate`，待实现 |
 | [140-search-solr](spring-boot/140-search-solr) | 【Solr】solr环境+CURD使用姿势 | `SolrTemplate`, `SolrClient` |
 | [141-search-solr-auth](spring-boot/141-search-solr-auth) | 【Solr】solr开启授权无法更新索引的四种解决方案 | 解决solr更新索引报错问题 |
+| [150-i18n](spring-boot/150-i18n) | 【i18n】国际化 | 国际化支持 |
 | [200-webflux](spring-boot/200-webflux) | 【web】WebFlux实例 | `React` |
 | [201-web](spring-boot/201-web) | 【web】basic http实例 | `springmvc` |
 | [202-web-params](spring-boot/202-web-params) | 【web】请求参数解析的各种姿势 | get参数解析<br/>post参数解析<br/>自定义参数解析`HandlerMethodArgumentResolver` |
@@ -242,6 +247,10 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】实现一个自定义配置加载器（应用篇）](http://spring.hhui.top/spring-blog/2020/05/07/200507-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%E5%99%A8/)
 - [【基础系列】SpringBoot配置篇之PropertySource加载Yaml配置文件实例演示](https://spring.hhui.top/spring-blog/2020/12/26/201226-SpringBoot%E7%B3%BB%E5%88%97PropertySource%E5%8A%A0%E8%BD%BDYaml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
 - [【基础系列】ConfigurationProperties配置绑定中那些你不知道的事情](https://spring.hhui.top/spring-blog/2021/01/17/210117-SpringBoot%E7%B3%BB%E5%88%97ConfigurationProperties%E9%85%8D%E7%BD%AE%E7%BB%91%E5%AE%9A%E4%B8%AD%E9%82%A3%E4%BA%9B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B%E6%83%85/)
+- [【基础系列】SpringBoot @Value之字面量及SpEL知识点介绍篇](https://spring.hhui.top/spring-blog/2021/06/15/210615-SpringBoot%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%87-Value%E4%B9%8B%E5%AD%97%E9%9D%A2%E9%87%8F%E5%8F%8ASpEL%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%8B%E7%BB%8D%E7%AF%87/)
+- [【基础系列】SpringBoot之自定义配置源的使用姿势](https://spring.hhui.top/spring-blog/2021/06/10/210610-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%BA%90%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
+- [【基础系列】SpringBoot基础篇@Value中哪些你不知道的知识点](https://spring.hhui.top/spring-blog/2021/06/06/210606-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87-Value%E4%B8%AD%E5%93%AA%E4%BA%9B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/)
+
 
 **IoC(DI/bean)**
 
@@ -268,7 +277,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】AOP之拦截优先级详解](http://spring.hhui.top/spring-blog/2019/03/10/190310-SpringCloud%E5%9F%BA%E7%A1%80%E7%AF%87AOP%E4%B9%8B%E6%8B%A6%E6%88%AA%E4%BC%98%E5%85%88%E7%BA%A7%E8%AF%A6%E8%A7%A3/)
 - [【基础系列】AOP实现一个日志插件（应用篇）](http://spring.hhui.top/spring-blog/2019/03/13/190313-SpringCloud%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8BAOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E5%8A%9F%E8%83%BD/)
 - [【基础系列】接口上注解AOP拦截不到场景兼容](https://spring.hhui.top/spring-blog/2021/05/25/210525-SpringBoot%E6%8E%A5%E5%8F%A3%E6%B3%A8%E8%A7%A3%E5%88%87%E9%9D%A2%E6%8B%A6%E6%88%AA%E4%B8%8D%E5%88%B0%E5%9C%BA%E6%99%AF%E5%85%BC%E5%AE%B9/)
-
+- [【基础系列】Spring之AOP结合SpEL实现日志输出的注意事项](https://spring.hhui.top/spring-blog/2021/06/08/210608-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87AOP%E7%BB%93%E5%90%88SpEL%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/)
 
 **日志**
 
