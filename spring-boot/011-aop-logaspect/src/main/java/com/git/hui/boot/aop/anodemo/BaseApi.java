@@ -3,7 +3,7 @@ package com.git.hui.boot.aop.anodemo;
 import com.git.hui.boot.aop.logaspect.AnoDot;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/5/24
  */
 public interface BaseApi {

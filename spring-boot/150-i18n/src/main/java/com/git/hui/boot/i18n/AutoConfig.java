@@ -13,7 +13,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import java.util.Locale;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/30
  */
 @Configuration

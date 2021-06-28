@@ -5,7 +5,7 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/21
  */
 @Component

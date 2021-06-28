@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/1
  */
 @Configuration

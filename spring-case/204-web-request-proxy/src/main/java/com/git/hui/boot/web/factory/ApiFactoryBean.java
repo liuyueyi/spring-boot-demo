@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/5
  */
 public class ApiFactoryBean<T> implements FactoryBean<T> {

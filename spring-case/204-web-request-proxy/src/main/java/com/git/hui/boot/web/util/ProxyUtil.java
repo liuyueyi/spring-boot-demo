@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/2/9
  */
 public class ProxyUtil {

@@ -3,7 +3,7 @@ package com.git.hub.boot.web.enhanced.example.api;
 import com.git.hub.boot.web.enhanced.anno.RestService;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/9
  */
 @RestService

@@ -5,7 +5,7 @@ import org.springframework.context.event.EventListener;
 import java.lang.annotation.*;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/5/7
  */
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})

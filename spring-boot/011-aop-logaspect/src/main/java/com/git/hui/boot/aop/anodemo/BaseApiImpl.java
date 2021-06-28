@@ -4,7 +4,7 @@ import com.git.hui.boot.aop.logaspect.AnoDot;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/5/24
  */
 @Component

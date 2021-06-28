@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * cglib bean copier 扩展，支持驼峰与下划线的转换
  *
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/8
  */
 public abstract class PureCglibBeanCopier {

@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * 读取自定义的yaml文件中的配置信息
- * @author wuzebang
+ * @author yihui
  * @date 2020/12/24
  */
 @Data

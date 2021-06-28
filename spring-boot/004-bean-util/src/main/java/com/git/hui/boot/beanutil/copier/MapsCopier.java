@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * 缺点是需要定义转换接口；优点是性能最高
  *
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/8
  */
 @Component

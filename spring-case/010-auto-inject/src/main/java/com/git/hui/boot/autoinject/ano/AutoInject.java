@@ -3,7 +3,7 @@ package com.git.hui.boot.autoinject.ano;
 import java.lang.annotation.*;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/2/9
  */
 @Target({ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.PARAMETER, ElementType.FIELD, ElementType.ANNOTATION_TYPE})

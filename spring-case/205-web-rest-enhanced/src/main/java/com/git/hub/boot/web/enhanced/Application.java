@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/9
  */
 @Configuration

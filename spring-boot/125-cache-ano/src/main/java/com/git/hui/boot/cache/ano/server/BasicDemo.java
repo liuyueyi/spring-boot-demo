@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/2/22
  */
 @Service
-public class BasicDemo {
+public class       BasicDemo {
     /**
      * 首先从缓存中查，查到之后，直接返回缓存数据；否则执行方法，并将结果缓存
      * <p>
@@ -69,6 +69,7 @@ public class BasicDemo {
      * @return
      */
     @Cacheable(cacheNames = "exception", key = "#age")
+    @CacheEvict(cacheNames = "say", key = "'p_yihuihui'")
     public int exception(int age) {
         return 10 / age;
     }

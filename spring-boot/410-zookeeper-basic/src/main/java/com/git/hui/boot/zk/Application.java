@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Scanner;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/14
  */
 @SpringBootApplication

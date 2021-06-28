@@ -3,7 +3,7 @@ package com.git.hui.boot.autoinject.example;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/2/9
  */
 @Component

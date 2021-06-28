@@ -3,7 +3,7 @@ package com.git.hui.boot.web.example.api;
 import com.git.hui.boot.web.anno.Api;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/5
  */
 @Api

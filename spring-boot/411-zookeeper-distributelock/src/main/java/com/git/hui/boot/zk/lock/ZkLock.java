@@ -12,7 +12,7 @@ import java.util.List;
  * - 固定节点
  * - 请求锁时，从这个固定节点上，创建一个有序的临时节点，如果顺序最小，则表示获取到了锁；否则监听傻上一个临时节点的删除事件
  *
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/12
  */
 public class ZkLock implements Watcher {

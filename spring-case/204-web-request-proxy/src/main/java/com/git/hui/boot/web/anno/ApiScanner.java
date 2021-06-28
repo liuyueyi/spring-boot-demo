@@ -7,7 +7,7 @@ import org.springframework.core.annotation.AliasFor;
 import java.lang.annotation.*;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/5
  */
 @Inherited

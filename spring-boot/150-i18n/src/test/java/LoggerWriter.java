@@ -3,7 +3,7 @@ import org.junit.Test;
 import java.util.regex.Pattern;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/30
  */
 public class LoggerWriter {

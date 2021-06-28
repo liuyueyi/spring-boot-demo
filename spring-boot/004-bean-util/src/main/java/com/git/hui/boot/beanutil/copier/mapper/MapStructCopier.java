@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/8
  */
 @Mapper

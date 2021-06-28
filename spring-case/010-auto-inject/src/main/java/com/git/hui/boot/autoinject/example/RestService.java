@@ -4,7 +4,7 @@ import com.git.hui.boot.autoinject.ano.AutoInject;
 import org.springframework.stereotype.Service;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/2/9
  */
 @Service

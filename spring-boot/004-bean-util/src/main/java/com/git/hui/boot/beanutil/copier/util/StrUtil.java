@@ -1,7 +1,7 @@
 package com.git.hui.boot.beanutil.copier.util;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/8
  */
 public class StrUtil {

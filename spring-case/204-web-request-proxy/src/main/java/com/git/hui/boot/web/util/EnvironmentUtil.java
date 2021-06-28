@@ -4,7 +4,7 @@ import lombok.Setter;
 import org.springframework.core.env.Environment;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/3/8
  */
 public class EnvironmentUtil {

@@ -6,7 +6,7 @@ import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Component;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/7
  */
 @Component

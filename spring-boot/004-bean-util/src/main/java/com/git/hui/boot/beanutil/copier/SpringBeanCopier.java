@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * 属性类型不同，不会拷贝
  * 泛型只在编译期起作用，不能依靠泛型来做运行期的限制；
  *
- * @author wuzebang
+ * @author yihui
  * @date 2021/4/7
  */
 @Component
