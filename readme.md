@@ -50,7 +50,8 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
         - 排行榜应用实例工程 [spring-case/120-redis-ranklist](spring-case/120-redis-ranklist)
         - 站点统计应用实例工程 [spring-case/124-redis-sitecount](spring-case/124-redis-sitecount)
 - [ ] MemCache
-- [ ] SpringCache
+- [x] SpringCache
+    - [x] 项目工程：[spring-boot/125-cache-ano](spring-boot/125-cache-ano)
 - [ ] 定时器 
 - [ ] 搜索 ES
 - [x] 搜索 [Solr](http://spring.hhui.top/spring-blog/tags/Solr/)
@@ -152,6 +153,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [122-redis-template](spring-boot/122-redis-template) | 【redis】RedisTemplate 使用姿势详解 | `RedisTemplate` |
 | [123-redis-lettuce-config](spring-boot/123-redis-lettuce-config) | 【redis】lettuce配置 | lettuce |
 | [124-redis-cluster](spring-boot/124-redis-cluster) | 【redis】集群使用姿势 | redis集群实例 |
+| [125-cache-ano](spring-boot/125-cache-ano) | 【Cache】缓存注解 | Spring缓存注解使用姿势 |
 | [130-influxdb](spring-boot/130-influxdb) | 【DB】influxdb整合及CURD | 时序数据库 influxdb |
 | [131-influxdb-java](spring-boot/131-influxdb-java) | 【DB】influxdb封装 | 封装更服务SpringBoot规范的`InfluxTemplate`，待实现 |
 | [140-search-solr](spring-boot/140-search-solr) | 【Solr】solr环境+CURD使用姿势 | `SolrTemplate`, `SolrClient` |
@@ -333,6 +335,9 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】Redis集群环境配置](http://spring.hhui.top/spring-blog/2019/09/27/190927-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BRedis%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/)
 -  [【DB系列】借助Redis实现排行榜功能（应用篇）](http://spring.hhui.top/spring-blog/2018/12/25/181225-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E5%AE%9E%E7%8E%B0%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%8A%9F%E8%83%BD/)
 -  [【DB系列】借助Redis搭建一个简单站点统计服务（应用篇）](http://spring.hhui.top/spring-blog/2019/05/13/190513-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E6%9C%8D%E5%8A%A1/)
+-  [【DB系列】缓存注解@Cacheable @CacheEvit @CachePut使用姿势介绍](https://spring.hhui.top/spring-blog/2021/06/16/210616-SpringBoot%E7%BC%93%E5%AD%98%E6%B3%A8%E8%A7%A3-Cacheable-CacheEvit-CachePut%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D/)
+-  [【DB系列】SpringBoot缓存注解@Cacheable之自定义key策略及缓存失效时间指定](https://spring.hhui.top/spring-blog/2021/07/01/210701-SpringBoot%E7%BC%93%E5%AD%98%E6%B3%A8%E8%A7%A3-Cacheable%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89key%E7%AD%96%E7%95%A5%E5%8F%8A%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E6%97%B6%E9%97%B4%E6%8C%87%E5%AE%9A/)
+
 
 **mysql**
 
