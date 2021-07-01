@@ -76,4 +76,14 @@ public class ExtendDemo {
             return target.getClass().getSimpleName() + "#" + method.getName() + "(" + JSON.toJSONString(params) + ")";
         }
     }
+
+/**
+ * 通过自定义的RedisCacheManager, 对value进行解析，=后面的表示失效时间
+ * @param key
+ * @return
+ */
+@Cacheable(value = "ttl=30")
+public String ttl(String key) {
+    return "k_" + key;
+}
 }
