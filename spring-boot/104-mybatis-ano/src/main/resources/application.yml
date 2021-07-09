@@ -3,3 +3,8 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/story?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password:
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true # 驼峰与下划线互转支持
+    config-location: classpath:mybatis-config.xml

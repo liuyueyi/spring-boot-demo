@@ -96,7 +96,7 @@ public class MetricWrapper {
         private Object histogramLock = new Object();
 
         /**
-         * 计数组件
+         * 计数组件,可以用来统计访问量
          *
          * @return
          */

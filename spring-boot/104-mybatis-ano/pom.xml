@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>104-mybatis-noxml</artifactId>
+    <artifactId>104-mybatis-ano</artifactId>
 
     <dependencies>
         <dependency>
@@ -22,5 +22,4 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
-
 </project>

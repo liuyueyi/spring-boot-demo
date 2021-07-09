@@ -32,6 +32,7 @@ public class MoneyRepository {
 
         // 查询
         List<MoneyPo> list =
+                // 与下面等价 new QueryWrapper<MoneyPo>().eq("name", po.getName())
                 moneyMapper.selectList(new QueryWrapper<MoneyPo>().lambda().eq(MoneyPo::getName, po.getName()));
         System.out.println("after insert: " + list);
 

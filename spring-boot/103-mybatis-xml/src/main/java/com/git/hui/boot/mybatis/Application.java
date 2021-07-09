@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public Application(MoneyRepository repository) {
-        repository.testMapper();
+//        repository.testMapper();
 
         // 一级缓存测试
         repository.testFirstCache(28);
