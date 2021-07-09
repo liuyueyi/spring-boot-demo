@@ -8,3 +8,5 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true # 驼峰与下划线互转支持
     config-location: classpath:mybatis-config.xml
+    log-prefix: money
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

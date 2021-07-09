@@ -112,6 +112,7 @@
         <module>002-properties-value</module>
         <module>002-dynamic-envronment</module>
         <module>104-mybatis-ano</module>
+        <module>430-email</module>
 
 
     </modules>

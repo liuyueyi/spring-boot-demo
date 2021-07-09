@@ -3,8 +3,13 @@
         PUBLIC "-//ibatis.apache.org//DTD Config 3.1//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <mappers>
+<!--    <mappers>-->
 <!--        <mapper resource="sqlmapper/money-mapper.xml"/>-->
-    </mappers>
+<!--    </mappers>-->
+
+    <typeAliases>
+        <!-- 类型别名   -->
+        <package name="com.git.hui.boot.mybatis.entity"/>
+    </typeAliases>
 
 </configuration>

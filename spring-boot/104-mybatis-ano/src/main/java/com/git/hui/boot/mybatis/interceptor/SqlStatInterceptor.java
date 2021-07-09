@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.plugin.*;
+import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.session.ResultHandler;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,14 @@ import java.util.Properties;
 public class SqlStatInterceptor implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        // MetaObject 是 Mybatis 提供的一个用于访问对象属性的对象
+        MetaObject metaObject = SystemMetaObject.forObject(invocation);
+        System.out.println("当前拦截到的对象：" + metaObject.getValue("target"));
+        System.out.println("SQL语句：" + metaObject.getValue("target.delegate.boundSql.sql"));
+        System.out.println("SQL语句入参：" + metaObject.getValue("target.delegate.parameterHandler.parameterObject"));
+        System.out.println("SQL语句类型：" + metaObject.getValue("target.delegate.parameterHandler.mappedStatement.sqlCommandType"));
+        System.out.println("Mapper方法全路径名：" + metaObject.getValue("target.delegate.parameterHandler.mappedStatement.id"));
+
         long time = System.currentTimeMillis();
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         String sql = statementHandler.getBoundSql().getSql();

@@ -16,6 +16,7 @@
 
     <plugins>
         <plugin interceptor="com.git.hui.boot.mybatis.interceptor.SqlStatInterceptor"/>
+        <plugin interceptor="com.git.hui.boot.mybatis.interceptor.ExecuteStatInterceptor"/>
     </plugins>
 
 </configuration>

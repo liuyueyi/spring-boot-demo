@@ -23,3 +23,25 @@ Mapper接口与sql文件映射的四种姿势
 // 设置mybatis的xml所在位置，这里使用mybatis注解方式，没有配置xml文件
 bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/*.xml"));
 ```
+
+---
+
+类型别名:
+
+- 在 `mybatis-config.xml` 文件中指定，这样默认的别名为首字母小写的case, 如 `MoneyPo` 的别名就是 `moneyPo`
+
+```xml
+<typeAliases>
+    <!-- 类型别名   -->
+    <package name="com.git.hui.boot.mybatis.entity"/>
+</typeAliases>
+```
+
+- 依然是在上面的xml文件中，指定别名
+
+```xml
+<typeAliases>
+    <typeAlias alias="MoneyPo" type="com.git.hui.boot.mybatis.entity.MoneyPo"/>
+</typeAliases>
+```
+- 使用注解 `@Alias`，放在PO对象上

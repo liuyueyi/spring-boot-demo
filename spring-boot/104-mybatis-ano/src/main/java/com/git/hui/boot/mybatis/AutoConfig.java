@@ -7,7 +7,6 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
@@ -21,18 +20,18 @@ import javax.sql.DataSource;
  */
 //@Configuration
 public class AutoConfig {
-@Bean(name = "sqlSessionFactory")
-public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-    SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-    bean.setDataSource(dataSource);
-    bean.setMapperLocations(
-            // 设置mybatis的xml所在位置，这里使用mybatis注解方式，没有配置xml文件
-            new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/*.xml"));
-    // 注册typehandler，供全局使用
-    bean.setTypeHandlers(new Timestamp2LongHandler());
-    bean.setPlugins(new SqlStatInterceptor());
-    return bean.getObject();
-}
+    @Bean(name = "sqlSessionFactory")
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setDataSource(dataSource);
+        bean.setMapperLocations(
+                // 设置mybatis的xml所在位置，这里使用mybatis注解方式，没有配置xml文件
+                new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/*.xml"));
+        // 注册typehandler，供全局使用
+        bean.setTypeHandlers(new Timestamp2LongHandler());
+        bean.setPlugins(new SqlStatInterceptor());
+        return bean.getObject();
+    }
 
     @Bean("sqlSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory storySqlSessionFactory) {
