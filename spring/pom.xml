@@ -14,6 +14,7 @@
     <modules>
         <module>200-mvc-annotation</module>
         <module>201-mvc-xml</module>
+        <module>500-json</module>
     </modules>
 
 

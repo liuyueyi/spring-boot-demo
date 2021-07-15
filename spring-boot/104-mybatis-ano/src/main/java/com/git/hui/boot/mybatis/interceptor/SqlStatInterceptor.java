@@ -1,20 +1,27 @@
 package com.git.hui.boot.mybatis.interceptor;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.StatementHandler;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
+import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
  * 拦截器，用于输出sql日志
- *
+ * <p>
  * - xml配置注册
  * - SqlSessionFactory注册
  * - @Component默认方式
@@ -39,20 +46,29 @@ public class SqlStatInterceptor implements Interceptor {
 
         long time = System.currentTimeMillis();
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-        String sql = statementHandler.getBoundSql().getSql();
 
-        String args = JSONObject.toJSONString(statementHandler.getBoundSql().getParameterObject());
+        BoundSql sql = statementHandler.getBoundSql();
+        DefaultParameterHandler handler = (DefaultParameterHandler) statementHandler.getParameterHandler();
+        Field field = handler.getClass().getDeclaredField("configuration");
+        field.setAccessible(true);
+        Configuration configuration = (Configuration) ReflectionUtils.getField(field, handler);
+        MetaObject mo = configuration.newMetaObject(sql.getParameterObject());
+        List<Object> args = new ArrayList<>();
+        for (ParameterMapping key : sql.getParameterMappings()) {
+            args.add(mo.getValue(key.getProperty()));
+        }
+
         Object rs;
         try {
             rs = invocation.proceed();
         } catch (Throwable e) {
-            log.error("error sql: " + sql, e);
+            log.error("error sql: " + sql.getSql(), e);
             throw e;
         } finally {
             long cost = System.currentTimeMillis() - time;
-            sql = this.replaceContinueSpace(sql);
+            String sSql = this.replaceContinueSpace(sql.getSql());
             // 这个方法的总耗时
-            log.info("\n\n ============= \nsql ----> {}\narg ----> {}\ncost ----> {}\n ============= \n", sql, args, cost);
+            log.info("\n\n ============= \nsql ----> {}\narg ----> {}\ncost ----> {}\n ============= \n", sSql, args, cost);
         }
 
         return rs;
