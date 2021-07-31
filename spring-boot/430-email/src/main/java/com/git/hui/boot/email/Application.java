@@ -16,8 +16,8 @@ import java.io.IOException;
 public class Application {
 
     public Application(MailDemo mailDemo) throws MessagingException, IOException, TemplateException {
-//        mailDemo.basicSend();
-//        mailDemo.sendWithFile();
+        mailDemo.basicSend();
+        mailDemo.sendWithFile();
         mailDemo.freeMakerTemplate();
     }
 

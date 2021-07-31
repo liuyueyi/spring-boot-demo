@@ -29,7 +29,7 @@ public class MailDemo {
     @Value("${spring.mail.from:xhhuiblog@163.com}")
     private String from;
 
-    private void basicSend() {
+    public void basicSend() {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         //邮件发送人
         simpleMailMessage.setFrom(from);

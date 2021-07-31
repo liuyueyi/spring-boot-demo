@@ -1,0 +1,18 @@
+spring:
+  #邮箱配置
+  mail:
+    host: smtp.163.com
+    from: xhhuiblog@163.com
+    # 使用自己的发送方用户名 + 授权码填充
+    username:
+    password:
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  profiles:
+    active: mail
