@@ -1,6 +1,6 @@
 package com.git.hui.boot.properties.value;
 
-import com.alibaba.fastjson.JSONObject;
+
 import com.git.hui.boot.properties.value.config.ConfigProperties;
 import com.git.hui.boot.properties.value.config.SpelProperties;
 import org.springframework.beans.factory.annotation.Autowired;

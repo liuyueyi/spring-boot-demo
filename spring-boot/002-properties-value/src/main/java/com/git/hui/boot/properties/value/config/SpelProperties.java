@@ -62,7 +62,7 @@ public class SpelProperties {
     @Value("#{randomService.randUid()}")
     private String spelBeanMethod;
 
-    @Value("${￥{auth.jwt.token}}")
+     @Value("${￥{auth.jwt.token}}")
     private String selfProperty;
 
     public static String uuid(String prefix) {

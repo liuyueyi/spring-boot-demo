@@ -82,7 +82,7 @@
             <name>Spring Snapshots</name>
             <url>https://repo.spring.io/libs-snapshot-local</url>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>

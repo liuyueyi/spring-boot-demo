@@ -21,7 +21,7 @@ public class RefreshConfigProperties {
     @Value("${xhh.dynamic.age:18}")
     private Integer age;
 
-    @Value("${xhh.dynamic.other:test}")
+    @Value("hello ${xhh.dynamic.other:test}")
     private String other;
 
 }
