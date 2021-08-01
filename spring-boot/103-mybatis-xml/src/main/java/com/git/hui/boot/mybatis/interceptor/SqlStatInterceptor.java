@@ -15,7 +15,7 @@ import java.util.Properties;
  * @date 2021/1/26
  */
 @Slf4j
-@Component
+//@Component
 @Intercepts({@Signature(type = StatementHandler.class, method = "query", args = {Statement.class, ResultHandler.class}),
         @Signature(type = StatementHandler.class, method = "update", args = {Statement.class})})
 public class SqlStatInterceptor implements Interceptor {

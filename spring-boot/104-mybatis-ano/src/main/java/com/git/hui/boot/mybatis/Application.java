@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author yihui
  * @date 2021/7/6
  */
-@MapperScan(basePackages = "com.git.hui.boot.*.mapper")
+@MapperScan(basePackages = "com.git.hui.boot.mybatis.mapper")
 @SpringBootApplication
 public class Application {
 

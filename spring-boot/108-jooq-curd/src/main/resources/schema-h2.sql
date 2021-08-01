@@ -6,6 +6,7 @@ CREATE TABLE poet (
   CONSTRAINT pk_t_poet PRIMARY KEY (ID)
 );
 
+DROP TABLE IF EXISTS  poetry;
 
 CREATE TABLE poetry (
   `id` int NOT NULL,

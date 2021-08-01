@@ -61,6 +61,10 @@ public interface MoneyMapper {
             @Result(property = "updateAt", column = "update_at", jdbcType = JdbcType.TIMESTAMP, typeHandler = Timestamp2LongHandler.class)})
     MoneyPo getById(@Param("id") int id);
 
+    @Select("select * from money where `name` = #{name}")
+    @ResultMap(value = "moneyResultMap")
+    MoneyPo getByName(@Param("name") String name);
+
 //    -------------------- 上面属于基础操作 -------------------
 
     /**

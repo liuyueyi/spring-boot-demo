@@ -18,6 +18,22 @@ public class MoneyRepository {
     @Autowired
     private MoneyMapper moneyMapper;
 
+    public void testBasic() {
+        MoneyPo po = new MoneyPo();
+        po.setName("mybatis user");
+        po.setMoney((long) random.nextInt(12343));
+        po.setIsDeleted(0);
+
+        moneyMapper.savePo(po);
+        System.out.println(po);
+        MoneyPo out = moneyMapper.findById(po.getId());
+        System.out.println("query:" + out);
+        moneyMapper.addMoney(po.getId(), 100);
+        System.out.println("after update:" + moneyMapper.findById(po.getId()));
+        moneyMapper.delPo(po.getId());
+        System.out.println("after del:" + moneyMapper.findById(po.getId()));
+    }
+
     private Random random = new Random();
 
     public void testMapper() {

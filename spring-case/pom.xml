@@ -31,6 +31,7 @@
         <module>205-web-rest-enhanced</module>
         <module>421-prometheus-metric</module>
         <module>126-redis-delay-list</module>
+        <module>430-mail-alarm</module>
     </modules>
 
     <dependencies>
