@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.boot.mybatis.mapper.MoneyMapperV2">
+
+    <resultMap id="BaseResultMap" type="com.git.hui.boot.mybatis.entity.MoneyPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="money_po">
+      id, name, money, is_deleted, create_at, update_at
+    </sql>
+
+    <select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="money_po"/>
+        from money where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="name != null">
+            and `name` = #{name}
+        </if>
+        <if test="is_deleted != null">
+            and `is_deleted` = #{is_deleted}
+        </if>
+    </select>
+
+    <select id="queryByConditionV2" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="money_po"/>
+        from money
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+            <if test="is_deleted != null">
+                and `is_deleted` = #{is_deleted}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByConditionV3" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="money_po"/>
+        from money
+        <where>
+            <choose>
+                <when test="id != null">id = #{id}</when>
+                <when test="name != null">`name` = ${name}</when>
+                <otherwise>id = 1</otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <select id="queryByIds" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="queryByIdAndNames" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money where (id, `name`) in
+        <foreach collection="items" item="item" separator="," open="(" close=")">
+            (#{item.id}, #(item.name))
+        </foreach>
+    </select>
+
+    <select id="update" parameterType="java.util.Map">
+        update money
+        <set>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            <if test="is_deleted != null">
+                `is_deleted` = #{is_deleted}
+            </if>
+        </set>
+        where id = #{id}
+    </select>
+</mapper>
