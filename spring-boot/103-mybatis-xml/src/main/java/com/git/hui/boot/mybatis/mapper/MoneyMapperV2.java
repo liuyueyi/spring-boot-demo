@@ -49,4 +49,7 @@ public interface MoneyMapperV2 {
      * @return
      */
     int update(Map<String, Object> params);
+
+
+    List<MoneyPo> groupBy(@Param("tt") String name);
 }

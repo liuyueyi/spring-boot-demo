@@ -12,6 +12,7 @@ public class Application {
 
     public Application(MoneyRepository repository) {
         repository.testBasic();
+//        repository.groupBy();
 //        repository.testMapper();
 
         // 一级缓存测试

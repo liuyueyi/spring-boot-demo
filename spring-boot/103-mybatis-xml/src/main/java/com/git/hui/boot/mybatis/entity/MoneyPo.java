@@ -25,6 +25,8 @@ public class MoneyPo {
 
     private Timestamp updateAt;
 
+    private Integer cnt;
+
     public MoneyPo(String name, Long money, Integer isDeleted) {
         this.name = name;
         this.money = money;

@@ -9,6 +9,7 @@
         <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
         <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
         <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+        <result column="cnt" property="cnt" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="money_po">
       id, name, money, is_deleted, create_at, update_at
@@ -89,5 +90,16 @@
             </if>
         </set>
         where id = #{id}
+    </select>
+
+    <select id="groupBy" resultMap="BaseResultMap">
+        select `name`, count(1) as cnt from money
+        <if test="tt != null">
+            group by ${tt}
+        </if>
+    </select>
+
+    <select id="queryBy" resultMap="BaseResultMap">
+        select * from money where `name` = ${name}
     </select>
 </mapper>

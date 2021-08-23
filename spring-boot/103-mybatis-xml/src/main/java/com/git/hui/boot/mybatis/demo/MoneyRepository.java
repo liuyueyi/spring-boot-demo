@@ -2,6 +2,7 @@ package com.git.hui.boot.mybatis.demo;
 
 import com.git.hui.boot.mybatis.entity.MoneyPo;
 import com.git.hui.boot.mybatis.mapper.MoneyMapper;
+import com.git.hui.boot.mybatis.mapper.MoneyMapperV2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,8 @@ import java.util.Random;
 public class MoneyRepository {
     @Autowired
     private MoneyMapper moneyMapper;
+    @Autowired
+    private MoneyMapperV2 moneyMapperV2;
 
     public void testBasic() {
         MoneyPo po = new MoneyPo();
@@ -75,5 +78,10 @@ public class MoneyRepository {
         po = moneyMapper.findById(id);
         System.out.println("\n>>>>>>>>>>>>" + po + " | " + System.identityHashCode(po) + "\n");
         System.out.println("\n\n<<<<<<<<< over >>>>>>>>>>>>>\n\n");
+    }
+
+    public void groupBy() {
+        List<MoneyPo> list = moneyMapperV2.groupBy("name");
+        System.out.println(list);
     }
 }
