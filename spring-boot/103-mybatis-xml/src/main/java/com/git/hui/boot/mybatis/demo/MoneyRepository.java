@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by @author yihui in 15:24 19/12/25.
@@ -135,7 +133,15 @@ public class MoneyRepository {
         // &amp; == & 与符号
         // &apos; == ' 单引号
         // &quot; == " 双引号
-        List<Long> ids = moneyMapper.queryBitCondition(1);
-        System.out.println(ids);
+//        List<Long> ids = moneyMapper.queryBitCondition(1);
+//        System.out.println(ids);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "tt");
+        List list = moneyMapper.findByIdOrCondition(1, map);
+        System.out.println(list);
+
+        list = moneyMapper.findByIdOrConditionV2(1, map);
+        System.out.println(list);
     }
 }

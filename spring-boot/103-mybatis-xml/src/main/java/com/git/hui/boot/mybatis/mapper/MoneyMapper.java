@@ -74,4 +74,8 @@ public interface MoneyMapper {
      * @return
      */
     List<Long> queryBitCondition(int bit);
+
+    List<MoneyPo> findByIdOrCondition(@Param("id") int id, @Param("map") Map<String, Object> map);
+
+    List<MoneyPo> findByIdOrConditionV2(int id, Map<String, Object> map);
 }

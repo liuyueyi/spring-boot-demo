@@ -104,4 +104,13 @@
     <select id="queryBitCondition" resultType="long">
         select id from money where  <![CDATA[ `money` & #{bit} = #{bit} ]]>
     </select>
+
+
+    <select id="findByIdOrCondition" resultMap="BaseResultMap">
+        select <include refid="money_po"/> from money where id = #{id} or  `name`=#{map.name}
+    </select>
+
+    <select id="findByIdOrConditionV2" resultMap="BaseResultMap">
+        select <include refid="money_po"/> from money where id = #{param1} or `name`=#{param2.name}
+    </select>
 </mapper>
