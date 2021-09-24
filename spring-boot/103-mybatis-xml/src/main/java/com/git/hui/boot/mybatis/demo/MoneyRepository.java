@@ -3,6 +3,7 @@ package com.git.hui.boot.mybatis.demo;
 import com.git.hui.boot.mybatis.entity.MoneyPo;
 import com.git.hui.boot.mybatis.mapper.MoneyMapper;
 import com.git.hui.boot.mybatis.mapper.MoneyMapperV2;
+import com.git.hui.boot.mybatis.mapper.MoneyMapperV3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,8 @@ public class MoneyRepository {
     private MoneyMapper moneyMapper;
     @Autowired
     private MoneyMapperV2 moneyMapperV2;
+    @Autowired
+    private MoneyMapperV3 moneyMapperV3;
 
     public void testBasic() {
         MoneyPo po = new MoneyPo();
@@ -80,8 +83,59 @@ public class MoneyRepository {
         System.out.println("\n\n<<<<<<<<< over >>>>>>>>>>>>>\n\n");
     }
 
+    /**
+     * 用于验证某些场景下，只能使用 ${}
+     */
     public void groupBy() {
         List<MoneyPo> list = moneyMapperV2.groupBy("name");
         System.out.println(list);
+    }
+
+
+    /**
+     * 测试枚举类型的case
+     *
+     * 知识点：
+     * 枚举类型，传入的参数，应该为String类型；如果是int，则表示根据枚举的下标索引来检索
+     *  - 如枚举字段 bank ('2', '3', '1')
+     *  - 传参 1 对应的是 '2'， 传参 '1' 对应的则是 '1'
+     */
+    public void testEnumQuery() {
+        // 枚举类型的查询，虽然定义的是字符串，但是传参为数字时，会有问题
+        List list = moneyMapperV2.queryByBank(1);
+        System.out.println(list);
+
+    }
+
+    /**
+     * 用于测试，mybatis中 #{} 替换的参数类型，是否会转换为String类型
+     */
+    public void testArgumentReplace() {
+        List list = moneyMapperV3.queryByName(1);
+        System.out.println(list);
+
+        list = moneyMapperV3.queryByNameV2(1);
+        System.out.println(list);
+
+        list = moneyMapperV3.queryByNameV3("1");
+        System.out.println(list);
+
+        list = moneyMapperV3.queryByNameV4(1);
+        System.out.println(list);
+    }
+
+    /**
+     * 位查询
+     */
+    public void testByteQuery() {
+        // xml 使用 <![CDATA[  ]]> 内部可以填写原始的表达式，不需要额外的转移符
+        // 其他的转移:
+        // &lt; == < 小于号
+        // &gt; == > 大于号
+        // &amp; == & 与符号
+        // &apos; == ' 单引号
+        // &quot; == " 双引号
+        List<Long> ids = moneyMapper.queryBitCondition(1);
+        System.out.println(ids);
     }
 }

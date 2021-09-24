@@ -27,6 +27,8 @@ public class MoneyPo {
 
     private Integer cnt;
 
+    private Integer bank;
+
     public MoneyPo(String name, Long money, Integer isDeleted) {
         this.name = name;
         this.money = money;

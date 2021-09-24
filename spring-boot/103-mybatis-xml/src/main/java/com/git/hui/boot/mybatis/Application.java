@@ -11,7 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public Application(MoneyRepository repository) {
-        repository.testBasic();
+        // 参数替换测试
+//        repository.testArgumentReplace();
+        // 位查询
+        repository.testByteQuery();
+
 //        repository.groupBy();
 //        repository.testMapper();
 

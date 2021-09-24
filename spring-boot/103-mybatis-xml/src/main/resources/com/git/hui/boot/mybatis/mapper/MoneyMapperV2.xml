@@ -10,9 +10,10 @@
         <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
         <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
         <result column="cnt" property="cnt" jdbcType="INTEGER"/>
+        <result column="bank" property="bank"/>
     </resultMap>
     <sql id="money_po">
-      id, name, money, is_deleted, create_at, update_at
+      id, name, money, is_deleted, create_at, update_at, bank
     </sql>
 
     <select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
@@ -99,7 +100,7 @@
         </if>
     </select>
 
-    <select id="queryBy" resultMap="BaseResultMap">
-        select * from money where `name` = ${name}
+    <select id="queryByBank" resultMap="BaseResultMap">
+        select * from money where `bank` = #{bank}
     </select>
 </mapper>

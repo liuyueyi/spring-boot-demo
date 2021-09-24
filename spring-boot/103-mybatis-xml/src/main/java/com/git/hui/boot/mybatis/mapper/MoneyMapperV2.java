@@ -50,6 +50,18 @@ public interface MoneyMapperV2 {
      */
     int update(Map<String, Object> params);
 
-
+    /**
+     * 对于groupBy + 字段名这种场景，需要注意，只能使用 ${}，而不能使用 #{}
+     * @param name
+     * @return
+     */
     List<MoneyPo> groupBy(@Param("tt") String name);
+
+    /**
+     * 枚举字段的查询注意事项，不要传入数字，否则容易掉坑
+     *
+     * @param bank
+     * @return
+     */
+    List<MoneyPo> queryByBank(@Param("bank") Integer bank);
 }

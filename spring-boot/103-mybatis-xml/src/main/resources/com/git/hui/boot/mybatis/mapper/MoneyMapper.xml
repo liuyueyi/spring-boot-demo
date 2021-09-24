@@ -56,6 +56,13 @@
         from money where id=#{id}
     </select>
 
+    <select id="findByIdV2" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="money_po"/>
+        from money where id=#{dd}
+    </select>
+
+
     <select id="findByMap" resultMap="BaseResultMap">
         select
         <include refid="money_po"/>
@@ -92,5 +99,9 @@
 
     <select id="findIdById" parameterType="long" resultType="long">
         select id from money where id = #{id}
+    </select>
+
+    <select id="queryBitCondition" resultType="long">
+        select id from money where  <![CDATA[ `money` & #{bit} = #{bit} ]]>
     </select>
 </mapper>

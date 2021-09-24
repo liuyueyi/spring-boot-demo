@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.boot.mybatis.mapper.MoneyMapperV3">
+
+    <resultMap id="BaseResultMap" type="com.git.hui.boot.mybatis.entity.MoneyPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+        <result column="cnt" property="cnt" jdbcType="INTEGER"/>
+        <result column="bank" property="bank"/>
+    </resultMap>
+    <sql id="money_po">
+      id, name, money, is_deleted, create_at, update_at, bank
+    </sql>
+
+    <select id="queryByName" resultMap="BaseResultMap">
+        select * from money where `name` = #{name} for update
+    </select>
+
+    <select id="queryByNameV2" resultMap="BaseResultMap">
+        select * from money where `name` = #{name, jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryByNameV3" resultMap="BaseResultMap">
+        select * from money where `name` = #{name, jdbcType=VARCHAR} and 1=1
+    </select>
+
+    <select id="queryByNameV4" resultMap="BaseResultMap">
+        select * from money where `name` = #{name, jdbcType=VARCHAR, typeHandler=com.git.hui.boot.mybatis.handler.StrTypeHandler} and 2=2
+    </select>
+
+</mapper>
