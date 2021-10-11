@@ -1,14 +1,13 @@
 package com.git.hui.web.thymeleaf.rest;
 
+import javafx.util.Pair;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by @author yihui in 14:44 19/8/16.
@@ -40,5 +39,23 @@ public class IndexController {
         data.put("name", "Show2---->");
         data.put("now", LocalDateTime.now().toString());
         return "show2";
+    }
+
+    @GetMapping(path = "list")
+    public String list(Model model) {
+        List list = new ArrayList<>();
+        list.add(toMap("title", "标题1", "name", "yhh"));
+        list.add(toMap("title", "标题2", "name", "sc"));
+        model.addAttribute("list", list);
+        return "list";
+    }
+
+    private Map<String, Object> toMap(String key, Object val, Object ... obj) {
+        Map<String, Object> ans = new HashMap<>();
+        ans.put(key, val);
+        for (int i = 0; i < obj.length; i += 2) {
+            ans.put((String) obj[i], obj[i+1]);
+        }
+        return ans;
     }
 }
