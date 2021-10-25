@@ -1,9 +1,11 @@
 package com.git.hui.boot.mybatis.demo;
 
 import com.git.hui.boot.mybatis.entity.MoneyPo;
+import com.git.hui.boot.mybatis.entity.QueryBean;
 import com.git.hui.boot.mybatis.mapper.MoneyMapper;
 import com.git.hui.boot.mybatis.mapper.MoneyMapperV2;
 import com.git.hui.boot.mybatis.mapper.MoneyMapperV3;
+import com.git.hui.boot.mybatis.mapper.MoneyMapperV4;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -109,16 +111,17 @@ public class MoneyRepository {
      * 用于测试，mybatis中 #{} 替换的参数类型，是否会转换为String类型
      */
     public void testArgumentReplace() {
-        List list = moneyMapperV3.queryByName(1);
+        int name = 120;
+        List list = moneyMapperV3.queryByName(name);
         System.out.println(list);
 
-        list = moneyMapperV3.queryByNameV2(1);
+        list = moneyMapperV3.queryByNameV2(name);
         System.out.println(list);
 
-        list = moneyMapperV3.queryByNameV3("1");
+        list = moneyMapperV3.queryByNameV3(String.valueOf(name));
         System.out.println(list);
 
-        list = moneyMapperV3.queryByNameV4(1);
+        list = moneyMapperV3.queryByNameV4(name);
         System.out.println(list);
     }
 
@@ -143,5 +146,27 @@ public class MoneyRepository {
 
         list = moneyMapper.findByIdOrConditionV2(1, map);
         System.out.println(list);
+    }
+
+    @Autowired
+    private MoneyMapperV4 moneyMapperV4;
+
+    public void testV4() {
+        System.out.println(moneyMapperV4.queryByName("1"));
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", 1L);
+        map.put("name", "一灰灰blog");
+        System.out.println(moneyMapperV4.queryByCondition(map));
+
+        QueryBean queryBean = new QueryBean();
+        queryBean.setId(1L);
+        queryBean.setName("一灰灰blog");
+        System.out.println(moneyMapperV4.queryByBean(queryBean));
+
+
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("name", 120L);
+        System.out.println(moneyMapperV4.queryByCondition(map2));
     }
 }

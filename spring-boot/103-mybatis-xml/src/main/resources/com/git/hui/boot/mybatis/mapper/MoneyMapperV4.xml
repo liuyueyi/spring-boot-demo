@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.boot.mybatis.mapper.MoneyMapperV4">
+
+    <resultMap id="BaseResultMap" type="com.git.hui.boot.mybatis.entity.MoneyPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+<!--        <result column="cnt" property="cnt" jdbcType="INTEGER"/>-->
+<!--        <result column="bank" property="bank"/>-->
+    </resultMap>
+    <sql id="money_po">
+      id, name, money, is_deleted, create_at, update_at
+    </sql>
+
+    <select id="queryByName"  parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from money where `name` = #{name}
+    </select>
+
+    <select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="money_po"/>
+        from money where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="name != null">
+            and `name` = #{name}
+        </if>
+        <if test="is_deleted != null">
+            and `is_deleted` = #{is_deleted}
+        </if>
+    </select>
+
+
+    <select id="queryByBean" resultMap="BaseResultMap" parameterType="com.git.hui.boot.mybatis.entity.QueryBean">
+        select
+        <include refid="money_po"/>
+        from money where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="name != null">
+            and `name` = #{name}
+        </if>
+    </select>
+
+    <parameterMap id="queryMap" type="java.util.Map">
+        <parameter property="name" typeHandler="com.git.hui.boot.mybatis.handler.StrTypeHandler"/>
+    </parameterMap>
+
+    <select id="queryByNameV2" parameterMap="queryMap" resultMap="BaseResultMap">
+        select * from money where `name` = #{name}
+    </select>
+
+</mapper>

@@ -17,11 +17,11 @@
     </sql>
 
     <select id="queryByName" resultMap="BaseResultMap">
-        select * from money where `name` = #{name} for update
+        select * from money where `name` = #{name}
     </select>
 
     <select id="queryByNameV2" resultMap="BaseResultMap">
-        select * from money where `name` = #{name, jdbcType=VARCHAR}
+        select * from money where `name` = #{name, jdbcType=VARCHAR} and 0=0
     </select>
 
     <select id="queryByNameV3" resultMap="BaseResultMap">
