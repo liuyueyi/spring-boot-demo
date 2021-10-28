@@ -59,6 +59,8 @@ public class MailDemo {
                 " <img width=\"200px\" height=\"200px\" src=\"https://blog.hhui.top/hexblog/imgs/info/wx.jpg\"/>" +
                 "</div>", true);
 
+        // 解决linux上发送邮件时，抛出异常 JavaMailSender no object DCH for MIME type multipart/mixed
+        Thread.currentThread().setContextClassLoader(javax.mail.Message.class.getClassLoader());
         javaMailSender.send(mimeMailMessage);
     }
 

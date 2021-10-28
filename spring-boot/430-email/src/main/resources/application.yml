@@ -7,9 +7,14 @@ spring:
     username:
     password:
     default-encoding: UTF-8
+    port: 465
     properties:
       mail:
         smtp:
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
           auth: true
           starttls:
             enable: true
