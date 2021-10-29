@@ -80,7 +80,7 @@
         </foreach>
     </select>
 
-    <select id="update" parameterType="java.util.Map">
+    <select id="update" parameterType="java.util.Map" resultType="int">
         update money
         <set>
             <if test="name != null">
@@ -103,4 +103,8 @@
     <select id="queryByBank" resultMap="BaseResultMap">
         select * from money where `bank` = #{bank}
     </select>
-</mapper>
+
+    <select id="queryCnt" resultType="java.util.HashMap">
+        select `name`, count(1) as cnt from money group by `name`
+    </select>
+ </mapper>

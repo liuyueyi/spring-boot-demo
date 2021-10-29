@@ -23,6 +23,8 @@ public class MoneyRepository {
     private MoneyMapperV2 moneyMapperV2;
     @Autowired
     private MoneyMapperV3 moneyMapperV3;
+    @Autowired
+    private MoneyMapperV4 moneyMapperV4;
 
     public void testBasic() {
         MoneyPo po = new MoneyPo();
@@ -147,9 +149,6 @@ public class MoneyRepository {
         list = moneyMapper.findByIdOrConditionV2(1, map);
         System.out.println(list);
     }
-
-    @Autowired
-    private MoneyMapperV4 moneyMapperV4;
 
     public void testV4() {
         System.out.println(moneyMapperV4.queryByName("1"));

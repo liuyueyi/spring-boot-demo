@@ -2,6 +2,7 @@
 ---
 普罗米修斯监控
 
+默认的端点: `/actuator/prometheus`
 
 ### 统计脚本
 

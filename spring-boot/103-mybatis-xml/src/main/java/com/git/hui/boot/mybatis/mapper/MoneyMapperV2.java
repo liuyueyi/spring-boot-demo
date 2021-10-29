@@ -52,6 +52,7 @@ public interface MoneyMapperV2 {
 
     /**
      * 对于groupBy + 字段名这种场景，需要注意，只能使用 ${}，而不能使用 #{}
+     *
      * @param name
      * @return
      */
@@ -64,4 +65,11 @@ public interface MoneyMapperV2 {
      * @return
      */
     List<MoneyPo> queryByBank(@Param("bank") Integer bank);
+
+    /**
+     * 返回结果，非POJO的定义
+     *
+     * @return
+     */
+    List<Map<String, Object>> queryCnt();
 }

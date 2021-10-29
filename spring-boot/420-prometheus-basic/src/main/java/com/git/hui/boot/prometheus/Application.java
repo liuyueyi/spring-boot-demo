@@ -1,5 +1,6 @@
 package com.git.hui.boot.prometheus;
 
+import com.git.hui.boot.prometheus.interceptor.PrometheusInterceptor;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -8,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Random;
 
@@ -19,8 +22,13 @@ import java.util.Random;
  */
 @RestController
 @SpringBootApplication
-public class Application {
+public class Application implements WebMvcConfigurer {
     private Random random = new Random();
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new PrometheusInterceptor()).addPathPatterns("/**");
+    }
 
     @GetMapping(path = "hello")
     public String hello(String name) {

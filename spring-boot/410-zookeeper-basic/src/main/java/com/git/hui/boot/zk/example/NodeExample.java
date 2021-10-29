@@ -145,7 +145,7 @@ public class NodeExample implements Watcher {
             // 注意这个节点存在
             // 添加监听, 与 exist 不同的在于，触发之后，依然有效还会被触发， 只有手动调用remove才会取消
             // 感知： 节点创建，删除，数据变更 ； 创建子节点，删除子节点
-            // 无法感知： 子节点的字节点创建/删除， 子节点的数据变更
+            // 无法感知： 子节点的子节点创建/删除， 子节点的数据变更
             zooKeeper.addWatch(path + "/yes", new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
