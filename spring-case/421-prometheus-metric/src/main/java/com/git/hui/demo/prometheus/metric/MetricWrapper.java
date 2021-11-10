@@ -1,14 +1,16 @@
 package com.git.hui.demo.prometheus.metric;
 
-import io.micrometer.core.instrument.*;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Tag;
+import io.micrometer.core.instrument.Timer;
 import io.micrometer.core.instrument.search.Search;
 import lombok.Setter;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -91,9 +93,9 @@ public class MetricWrapper {
             return this.slots(Duration.ofMillis(slos));
         }
 
-        private Object countLock = new Object();
-        private Object gaugeLock = new Object();
-        private Object histogramLock = new Object();
+        private final Object countLock = new Object();
+        private final Object gaugeLock = new Object();
+        private final Object histogramLock = new Object();
 
         /**
          * 计数组件,可以用来统计访问量
@@ -103,6 +105,15 @@ public class MetricWrapper {
         public Counter count() {
             Counter ct = find(Search::counter);
             return checkAndInit(ct, countLock, () -> meterRegistry.counter(key, tags));
+        }
+
+        /**
+         * 可增可见，比如用于统计当前的线程数等
+         *
+         * @return
+         */
+        public <T extends Number> T gauge(T t) {
+            return meterRegistry.gauge(key, tags, t);
         }
 
         /**
@@ -131,12 +142,9 @@ public class MetricWrapper {
             }
 
             synchronized (lock) {
-                if (target == null) {
-                    System.out.println("init metric: " + func.toString());
-                    return func.get();
-                }
+                System.out.println("init metric: " + func.toString());
+                return func.get();
             }
-            return target;
         }
     }
 }

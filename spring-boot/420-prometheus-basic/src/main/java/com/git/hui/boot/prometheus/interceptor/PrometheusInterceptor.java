@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/9/29
  */
 public class PrometheusInterceptor extends HandlerInterceptorAdapter {

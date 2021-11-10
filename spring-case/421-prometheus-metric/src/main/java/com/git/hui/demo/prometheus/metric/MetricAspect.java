@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author yihui
  * @date 2021/4/19
@@ -18,6 +20,8 @@ public class MetricAspect {
     @Pointcut("execution(public * com.git.hui.demo.prometheus.service.*.*(..))")
     public void point() {
     }
+
+    AtomicInteger ato = new AtomicInteger(0);
 
 
     /**
@@ -34,13 +38,26 @@ public class MetricAspect {
         String method = joinPoint.getSignature().getName();
         int code = 0;
 
+        MetricWrapper.create().key("metric.service.count").tag(Tag.of("service", service))
+                .tag(Tag.of("method", method))
+                .tag(Tag.of("code", String.valueOf(code)))
+                .gauge(ato);
         Timer.Sample sample = Timer.start();
         try {
+            ato.addAndGet(1);
             return joinPoint.proceed();
         } catch (Exception e) {
             code = 500;
             throw e;
         } finally {
+            ato.addAndGet(-1);
+            // 计数 +1
+            MetricWrapper.create().key("metric.service.count").tag(Tag.of("service", service))
+                    .tag(Tag.of("method", method))
+                    .tag(Tag.of("code", String.valueOf(code)))
+                    .count().increment();
+
+            // 统计采样
             sample.stop(MetricWrapper.create().key("metric.service.duration").tag(Tag.of("service", service))
                     .tag(Tag.of("method", method))
                     .tag(Tag.of("code", String.valueOf(code)))

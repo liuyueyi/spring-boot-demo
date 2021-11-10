@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author wuzebang
+ * @author yihui
  * @date 2021/9/24
  */
 @MappedTypes(value = {Long.class, Integer.class})
