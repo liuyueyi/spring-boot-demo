@@ -252,6 +252,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 - [【基础系列】SpringBoot @Value之字面量及SpEL知识点介绍篇](https://spring.hhui.top/spring-blog/2021/06/15/210615-SpringBoot%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E7%AF%87-Value%E4%B9%8B%E5%AD%97%E9%9D%A2%E9%87%8F%E5%8F%8ASpEL%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%8B%E7%BB%8D%E7%AF%87/)
 - [【基础系列】SpringBoot之自定义配置源的使用姿势](https://spring.hhui.top/spring-blog/2021/06/10/210610-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%BA%90%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 - [【基础系列】SpringBoot基础篇@Value中哪些你不知道的知识点](https://spring.hhui.top/spring-blog/2021/06/06/210606-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87-Value%E4%B8%AD%E5%93%AA%E4%BA%9B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/)
+- [【基础系列】SpringBoot应用篇@Value注解支持配置自动刷新能力扩展](https://spring.hhui.top/spring-blog/2021/08/01/210801-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87-Value%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E8%83%BD%E5%8A%9B%E6%89%A9%E5%B1%95/)
 
 
 **IoC(DI/bean)**
@@ -337,7 +338,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 -  [【DB系列】借助Redis搭建一个简单站点统计服务（应用篇）](http://spring.hhui.top/spring-blog/2019/05/13/190513-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E5%BA%94%E7%94%A8%E7%AF%87%E4%B9%8B%E5%80%9F%E5%8A%A9Redis%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E6%9C%8D%E5%8A%A1/)
 -  [【DB系列】缓存注解@Cacheable @CacheEvit @CachePut使用姿势介绍](https://spring.hhui.top/spring-blog/2021/06/16/210616-SpringBoot%E7%BC%93%E5%AD%98%E6%B3%A8%E8%A7%A3-Cacheable-CacheEvit-CachePut%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D/)
 -  [【DB系列】SpringBoot缓存注解@Cacheable之自定义key策略及缓存失效时间指定](https://spring.hhui.top/spring-blog/2021/07/01/210701-SpringBoot%E7%BC%93%E5%AD%98%E6%B3%A8%E8%A7%A3-Cacheable%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89key%E7%AD%96%E7%95%A5%E5%8F%8A%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E6%97%B6%E9%97%B4%E6%8C%87%E5%AE%9A/)
-
+-  [【DB系列】借助redis来实现延时队列（应用篇）](https://spring.hhui.top/spring-blog/2021/08/05/210805-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E5%80%9F%E5%8A%A9redis%E6%9D%A5%E5%AE%9E%E7%8E%B0%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/)
 
 **mysql**
 
@@ -438,6 +439,8 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】过滤器Filter使用指南扩展篇](http://spring.hhui.top/spring-blog/2019/10/18/191018-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E8%BF%87%E6%BB%A4%E5%99%A8Filter%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E6%89%A9%E5%B1%95%E7%AF%87/)
 -  [【WEB系列】Servlet 注册的四种姿势](http://spring.hhui.top/spring-blog/2019/11/22/191122-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87Servlet-%E6%B3%A8%E5%86%8C%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%A7%BF%E5%8A%BF/)
 -  [【WEB系列】Listener四种注册姿势](http://spring.hhui.top/spring-blog/2019/12/06/191206-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87Listener%E5%9B%9B%E7%A7%8D%E6%B3%A8%E5%86%8C%E5%A7%BF%E5%8A%BF/)
+-  [【WEB系列】拦截器Interceptor使用姿势介绍](https://spring.hhui.top/spring-blog/2021/08/04/210804-SpringBoot%E7%B3%BB%E5%88%97Web%E7%AF%87%E4%B9%8B%E6%8B%A6%E6%88%AA%E5%99%A8Interceptor%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D/)
+-  [【WEB系列】SpringBoot之拦截器注入Bean的几种姿势](https://spring.hhui.top/spring-blog/2021/11/15/211115-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%8B%A6%E6%88%AA%E5%99%A8%E6%B3%A8%E5%85%A5Bean%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/)
 -  [【WEB系列】Get请求参数解析姿势汇总](http://spring.hhui.top/spring-blog/2019/08/24/190824-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8BGet%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E5%A7%BF%E5%8A%BF%E6%B1%87%E6%80%BB/)
 -  [【WEB系列】Post请求参数解析姿势汇总](http://spring.hhui.top/spring-blog/2019/08/28/190828-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8BPost%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E5%A7%BF%E5%8A%BF%E6%B1%87%E6%80%BB/)
 -  [【WEB系列】如何自定义参数解析器](http://spring.hhui.top/spring-blog/2019/08/31/190831-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E5%99%A8/)
@@ -475,6 +478,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】SpringBoot文件上传异常之提示The temporary upload location xxx is not valid（填坑篇）](http://spring.hhui.top/spring-blog/2019/02/13/190213-SpringBoot%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%BC%82%E5%B8%B8%E4%B9%8B%E6%8F%90%E7%A4%BAThe-temporary-upload-location-xxx-is-not-valid/)
 -  [【WEB系列】中文乱码问题解决（填坑篇）](http://spring.hhui.top/spring-blog/2019/09/05/190905-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/)
 -  [【WEB系列】RestTemplate之urlencode参数解析异常全程分析（填坑篇）](http://spring.hhui.top/spring-blog/2019/03/27/190327-Spring-RestTemplate%E4%B9%8Burlencode%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E5%BC%82%E5%B8%B8%E5%85%A8%E7%A8%8B%E5%88%86%E6%9E%90/)
+-  [【WEB系列】thymeleaf foreach踩坑记录](https://spring.hhui.top/spring-blog/2021/11/13/211113-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8Bthymeleaf-foreach%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/)
 
 **应用实战**
 
@@ -549,6 +553,17 @@ webclient异步网络请求
 
 - [【中间件】zookeeper基础使用介绍](https://spring.hhui.top/spring-blog/2021/04/14/210414-SpringBoot%E6%95%B4%E5%90%88zookeeper%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/)
 - [【中间件】Zookeeper从0到1实现一个分布式锁](https://spring.hhui.top/spring-blog/2021/04/15/210415-SpringBoot%E6%95%B4%E5%90%88Zookeeper%E4%BB%8E0%E5%88%B01%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/)
+
+
+**prometheus**
+
+- [【中间件】Prometheus自定义埋点上报](https://spring.hhui.top/spring-blog/2021/11/09/211109-SpringBoot%E4%B9%8BPrometheus%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%8B%E7%82%B9%E4%B8%8A%E6%8A%A5/)
+- [【中间件】SpringBoot整合Prometheus实现应用监控](https://spring.hhui.top/spring-blog/2021/04/19/210419-SpringBoot%E6%95%B4%E5%90%88Prometheus%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/)
+
+**邮件**
+
+- [【中间件】SpringBoot系列之邮件发送姿势介绍](https://spring.hhui.top/spring-blog/2021/08/02/210802-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D/)
+- [【中间件】SpringBoot实战基于异常日志的邮件报警](https://spring.hhui.top/spring-blog/2021/08/03/210803-SpringBoot%E5%AE%9E%E6%88%98%E5%9F%BA%E4%BA%8E%E5%BC%82%E5%B8%B8%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8A%A5%E8%AD%A6/)
 
 ## 3. 其他
 

@@ -1,11 +1,14 @@
 package com.git.hui.boot.web.interceptor.inter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * @author yihui
@@ -13,9 +16,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 public class SecurityInterceptor implements HandlerInterceptor {
+    @Autowired
+    private Environment environment;
 
     /**
      * 在执行具体的Controller方法之前调用
+     *
+     * 验证： curl 'http://127.0.0.1:8080/show' -H 'req-name:yihuihui' -i
      *
      * @param request
      * @param response
@@ -27,7 +34,7 @@ public class SecurityInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 一个简单的安全校验，要求请求头中必须包含 req-name : yihuihui
         String header = request.getHeader("req-name");
-        if ("yihuihui".equals(header)) {
+        if (Objects.equals(environment.getProperty("security.check"), header)) {
             return true;
         }
 
@@ -38,7 +45,7 @@ public class SecurityInterceptor implements HandlerInterceptor {
     /**
      * controller执行完毕之后被调用，在 DispatcherServlet 进行视图返回渲染之前被调用，
      * 所以我们可以在这个方法中对 Controller 处理之后的 ModelAndView 对象进行操作。
-     *
+     * <p>
      * preHandler 返回false，这个也不会执行
      *
      * @param request
