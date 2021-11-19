@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: prometheus-micro
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

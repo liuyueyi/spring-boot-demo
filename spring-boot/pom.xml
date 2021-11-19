@@ -114,6 +114,7 @@
         <module>104-mybatis-ano</module>
         <module>430-email</module>
         <module>213-web-interceptor</module>
+        <module>421-prometheus-micro</module>
 
 
     </modules>
