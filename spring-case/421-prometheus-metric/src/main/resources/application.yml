@@ -12,4 +12,4 @@ management:
     tags:
       application: ${spring.application.name}
 server:
-  port: 8081
+  port: 8000

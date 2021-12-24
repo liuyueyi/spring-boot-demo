@@ -14,8 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author yihui
  * @date 2021/4/19
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class MetricAspect {
     @Pointcut("execution(public * com.git.hui.demo.prometheus.service.*.*(..))")
     public void point() {

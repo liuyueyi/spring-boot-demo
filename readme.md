@@ -199,11 +199,14 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 | [120-redis-ranklist](spring-case/120-redis-ranklist) | redis实现排行榜 | `zset` |
 | [124-redis-sitecount](spring-case/124-redis-sitecount) | redis实现站点统计 | `redisTemplate` |
 | [125-redis-distribuet-lock](spring-case/125-redis-distribuet-lock) | redis分布式锁 | `redisTemplate` |
+| [126-redis-delay-list](spring-case/126-redis-delay-list) | redis实现的演示队列 | `redisTemplate` |
 | [201-web-api-version](spring-case/201-web-api-version) | web版本控制 | `RequestMappingHandlerMapping` |
 | [202-web-qrcode-login](spring-case/202-web-qrcode-login) | web扫码登录实战 | `SseEmitter` |
 | [203-web-rest-adapter](spring-case/203-web-rest-adapter) | url匹配规则自定义，子类继承父类的参数注解 | `RequestMappingHandlerMapping`, `HandlerMethodArgumentResolver` |
 | [204-web-request-proxy](spring-case/204-web-request-proxy) | 基于接口的REST访问支持 | `ClassPathBeanDefinitionScanner`, `ImportBeanDefinitionRegistrar` |
 | [205-web-rest-enhanced](spring-case/205-web-rest-enhanced) | 单机应用最小成本扩展REST服务示例 | `RequestMappingHandlerMapping` |
+| [421-prometheus-metric](spring-case/421-prometheus-metric) | AOP实现自定义的Prometheus埋点上报 | `Prometheus` |
+| [430-mail-alarm](spring-case/430-mail-alarm) | 基于日志的邮件报警 | `javaMailSender` |
 | | | |
 | **SpringSecurity** | 安全 | |
 | [000-basic-demo](spring-security/000-basic-demo) | 整合实例 | |
@@ -233,7 +236,7 @@ SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀
 6. [【SpringBoot实战】徒手撸一个扫码登录示例工程](http://spring.hhui.top/spring-blog/2020/04/02/200402-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%BE%92%E6%89%8B%E6%92%B8%E4%B8%80%E4%B8%AA%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B/)
 7. [【SpringBoot实战】mock一个简单的分布式定时任务](https://spring.hhui.top/spring-blog/2020/04/12/200412-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/)
 8. [【SpringBoot实战】Redis实现分布式锁（应用篇）](https://spring.hhui.top/spring-blog/2020/10/30/201030-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BRedis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%88%E5%BA%94%E7%94%A8%E7%AF%87%EF%BC%89/)
-
+9. [【SpringBoot实战】借助redis来实现延时队列（应用篇）](https://spring.hhui.top/spring-blog/2021/08/05/210805-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87%E5%80%9F%E5%8A%A9redis%E6%9D%A5%E5%AE%9E%E7%8E%B0%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/)
 
 ### 1. 基础系列
 
@@ -557,6 +560,8 @@ webclient异步网络请求
 
 **prometheus**
 
+- [【中间件】Prometheus大盘配置实战 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2021/12/23/211223-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BPrometheus%E5%A4%A7%E7%9B%98%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%88%98/)
+- [【中间件】Prometheus基于AOP实现埋点采集上报 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2021/12/22/211222-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BPrometheus%E5%9F%BA%E4%BA%8EAOP%E5%AE%9E%E7%8E%B0%E5%9F%8B%E7%82%B9%E9%87%87%E9%9B%86%E4%B8%8A%E6%8A%A5/)
 - [【中间件】Prometheus自定义埋点上报](https://spring.hhui.top/spring-blog/2021/11/09/211109-SpringBoot%E4%B9%8BPrometheus%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%8B%E7%82%B9%E4%B8%8A%E6%8A%A5/)
 - [【中间件】SpringBoot整合Prometheus实现应用监控](https://spring.hhui.top/spring-blog/2021/04/19/210419-SpringBoot%E6%95%B4%E5%90%88Prometheus%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/)
 
@@ -572,7 +577,7 @@ webclient异步网络请求
 
 ### 声明
 
-尽信书则不如，已上内容，一家之言，因个人能力有限，难免有疏漏和错误之处，如发现bug或者有更好的建议，欢迎批评指正，不吝感激
+尽信书则不如无书，以上内容，一家之言，因个人能力有限，难免有疏漏和错误之处，如发现bug或者有更好的建议，欢迎批评指正，不吝感激
 
 - 微博地址: 小灰灰Blog
 - QQ： 一灰灰/3302797840
