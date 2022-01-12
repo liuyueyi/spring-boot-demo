@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public Application(MoneyRepository repository) {
-        repository.testV4();
+//        repository.testResQuery();
+
+//        repository.testV4();
         // 参数替换测试
 //        repository.testArgumentReplace();
         // 位查询
@@ -24,6 +26,9 @@ public class Application {
 //        repository.testFirstCache(28);
 
 //        repository.dupQuery(28);
+
+        // 批量插入
+        repository.testBatchInsert();
     }
 
     public static void main(String[] args) {

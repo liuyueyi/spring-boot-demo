@@ -2,10 +2,11 @@ package com.git.hui.boot.mybatis.demo;
 
 import com.git.hui.boot.mybatis.entity.MoneyPo;
 import com.git.hui.boot.mybatis.entity.QueryBean;
-import com.git.hui.boot.mybatis.mapper.MoneyMapper;
-import com.git.hui.boot.mybatis.mapper.MoneyMapperV2;
-import com.git.hui.boot.mybatis.mapper.MoneyMapperV3;
-import com.git.hui.boot.mybatis.mapper.MoneyMapperV4;
+import com.git.hui.boot.mybatis.mapper.*;
+import com.google.common.collect.Lists;
+import org.apache.ibatis.session.ExecutorType;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,19 @@ public class MoneyRepository {
     private MoneyMapperV3 moneyMapperV3;
     @Autowired
     private MoneyMapperV4 moneyMapperV4;
+    @Autowired
+    private MoneyInsertMapper moneyInsertMapper;
+
+
+    public void testResQuery() {
+        List<MoneyPo> list = moneyMapperV4.queryByName("一灰灰blog");
+        System.out.println(list);
+        List<HashMap<String, Object>> mapList = moneyMapperV4.queryMapsByName("一灰灰blog");
+        System.out.println(mapList);
+
+        List<Long> idList = moneyMapperV4.queryIdByName("一灰灰blog");
+        System.out.println(idList);
+    }
 
     public void testBasic() {
         MoneyPo po = new MoneyPo();
@@ -96,11 +110,11 @@ public class MoneyRepository {
 
     /**
      * 测试枚举类型的case
-     *
+     * <p>
      * 知识点：
      * 枚举类型，传入的参数，应该为String类型；如果是int，则表示根据枚举的下标索引来检索
-     *  - 如枚举字段 bank ('2', '3', '1')
-     *  - 传参 1 对应的是 '2'， 传参 '1' 对应的则是 '1'
+     * - 如枚举字段 bank ('2', '3', '1')
+     * - 传参 1 对应的是 '2'， 传参 '1' 对应的则是 '1'
      */
     public void testEnumQuery() {
         // 枚举类型的查询，虽然定义的是字符串，但是传参为数字时，会有问题
@@ -138,8 +152,8 @@ public class MoneyRepository {
         // &amp; == & 与符号
         // &apos; == ' 单引号
         // &quot; == " 双引号
-//        List<Long> ids = moneyMapper.queryBitCondition(1);
-//        System.out.println(ids);
+        List<Long> ids = moneyMapper.queryBitCondition(1);
+        System.out.println(ids);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", "tt");
@@ -167,5 +181,44 @@ public class MoneyRepository {
         Map<String, Object> map2 = new HashMap<>();
         map2.put("name", 120L);
         System.out.println(moneyMapperV4.queryByCondition(map2));
+    }
+
+
+    private MoneyPo buildPo() {
+        MoneyPo po = new MoneyPo();
+        po.setName("mybatis user");
+        po.setMoney((long) random.nextInt(12343));
+        po.setIsDeleted(0);
+        return po;
+    }
+
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
+
+    public void testBatchInsert() {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH)) {
+            MoneyInsertMapper moneyInsertMapper = sqlSession.getMapper(MoneyInsertMapper.class);
+            for (int i = 0; i < 10; i++) {
+                moneyInsertMapper.save(buildPo());
+                sqlSession.commit();;
+            }
+        }
+
+        List<MoneyPo> list = new ArrayList<>();
+        list.add(buildPo());
+        list.add(buildPo());
+        list.add(buildPo());
+        list.add(buildPo());
+        list.add(buildPo());
+        list.add(buildPo());
+        moneyInsertMapper.batchSave(list);
+
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, false)) {
+            MoneyInsertMapper moneyInsertMapper = sqlSession.getMapper(MoneyInsertMapper.class);
+            for (List<MoneyPo> subList : Lists.partition(list, 2)) {
+                moneyInsertMapper.batchSave(subList);
+            }
+            sqlSession.commit();
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.git.hui.boot.mybatis.entity.QueryBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,14 @@ public interface MoneyMapperV4 {
      */
     List<MoneyPo> queryByName(@Param("name") String name);
 
+    /**
+     * 注意返回结果
+     *
+     * @param name
+     * @return
+     */
+    List<HashMap<String, Object>> queryMapsByName(@Param("name") String name);
+
 
     List<MoneyPo> queryByCondition(Map<String, Object> params);
 
@@ -29,4 +38,7 @@ public interface MoneyMapperV4 {
 
 
     List<MoneyPo> queryByNameV2(Map<String, Object> params);
+
+
+    List<Long> queryIdByName(String name);
 }

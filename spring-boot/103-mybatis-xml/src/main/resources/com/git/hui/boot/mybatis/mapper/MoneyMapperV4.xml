@@ -20,6 +20,10 @@
         select * from money where `name` = #{name}
     </select>
 
+    <select id="queryMapsByName"  parameterType="java.lang.String" resultType="java.util.HashMap">
+        select * from money where `name` = #{name}
+    </select>
+
     <select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
         select
         <include refid="money_po"/>
@@ -56,4 +60,7 @@
         select * from money where `name` = #{name}
     </select>
 
+    <select id="queryIdByName" resultType="long">
+        select id from money where `name` = #{name}
+    </select>
 </mapper>

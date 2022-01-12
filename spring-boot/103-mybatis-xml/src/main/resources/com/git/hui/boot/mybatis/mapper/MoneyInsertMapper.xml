@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.boot.mybatis.mapper.MoneyInsertMapper">
+
+    <resultMap id="BaseResultMap" type="com.git.hui.boot.mybatis.entity.MoneyPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="money_po">
+      id, name, money, is_deleted, create_at, update_at
+    </sql>
+
+    <insert id="batchSave" parameterType="com.git.hui.boot.mybatis.entity.MoneyPo"  useGeneratedKeys="true" keyProperty="id">
+        insert ignore into `money` (`name`, `money`, `is_deleted`)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.name}, #{item.money}, #{item.isDeleted})
+        </foreach>
+    </insert>
+
+    <insert id="save" parameterType="com.git.hui.boot.mybatis.entity.MoneyPo" useGeneratedKeys="true" keyProperty="po.id">
+      INSERT INTO `money` (`name`, `money`, `is_deleted`)
+      VALUES
+	  (#{po.name}, #{po.money}, #{po.isDeleted});
+    </insert>
+
+</mapper>
