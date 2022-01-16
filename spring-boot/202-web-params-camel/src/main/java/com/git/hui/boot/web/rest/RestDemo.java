@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.git.hui.boot.web.resolver.CamelAno;
+import com.git.hui.boot.web.resolver.databinder.ParamName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,9 @@ public class RestDemo {
     @AllArgsConstructor
 //    @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class ViewDo {
-
+        @ParamName("user_id")
         private Integer userId;
-
+        @ParamName("user_name")
         private String userName;
     }
 

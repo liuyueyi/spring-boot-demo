@@ -4,3 +4,9 @@ spring:
     # 特别注意。使用这种方式的时候，要求不能有自定义的WebMvcConfigurationSupport，因为会覆盖默认的处理方式
     # 解决办法就是 拿到ObjectMapper的bean对象，手动塞入进去
     property-naming-strategy: SNAKE_CASE
+
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true

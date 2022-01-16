@@ -6,6 +6,7 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.MethodParameter;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -14,6 +15,8 @@ import org.springframework.web.method.annotation.MethodArgumentConversionNotSupp
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
+
+import javax.servlet.ServletRequest;
 
 /**
  * @author yihui
@@ -110,5 +113,12 @@ public class CamelArgumentResolver implements HandlerMethodArgumentResolver {
                 }
                 return webRequest.getParameter(newParam);
         }
+    }
+
+    protected void bindRequestParameters(WebDataBinder binder, NativeWebRequest request) {
+        ServletRequest servletRequest = (ServletRequest)request.getNativeRequest(ServletRequest.class);
+        Assert.state(servletRequest != null, "No ServletRequest");
+        ServletRequestDataBinder servletBinder = (ServletRequestDataBinder)binder;
+        servletBinder.bind(servletRequest);
     }
 }
