@@ -15,6 +15,8 @@ import java.util.Map;
 /**
  * Get请求参数的处理方式
  *
+ * 建议对比博文查看: <a href="https://spring.hhui.top/spring-blog/2019/08/24/190824-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8BGet%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E5%A7%BF%E5%8A%BF%E6%B1%87%E6%80%BB/"/>
+ *
  * Created by @author yihui in 14:08 19/3/29.
  */
 @RestController
@@ -147,6 +149,12 @@ public class ParamGetRest {
     }
 
 
+    /**
+     * 注意下面这个写法，无法正常获取请求参数，如果希望使用Map接收传参，则使用上面的姿势
+     *
+     * @param params
+     * @return
+     */
     @GetMapping(path = "mapper2")
     public String mapperParam2(Map<String, Object> params) {
         return params.toString();
@@ -194,7 +202,7 @@ public class ParamGetRest {
     // -------------------------------------------------------------------------------------------
 
     /**
-     * 自定义参数解析器
+     * 自定义参数解析器, 将names对应的参数值，通过英文逗号分割为列表
      *
      * @param names
      * @param age

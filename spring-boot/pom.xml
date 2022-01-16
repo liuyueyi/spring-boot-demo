@@ -13,6 +13,8 @@
         <module>000-properties</module>
         <module>001-properties</module>
         <module>002-properties</module>
+        <module>002-properties-value</module>
+        <module>002-dynamic-envronment</module>
         <module>002-properties-bind</module>
         <module>003-log</module>
         <module>003-log4j2</module>
@@ -39,6 +41,7 @@
         <module>102-jpa-errorcase</module>
         <module>102-jpa-errorcase2</module>
         <module>103-mybatis-xml</module>
+        <module>104-mybatis-ano</module>
         <module>104-mybatis-noxml</module>
         <module>105-mybatis-plus</module>
         <module>106-mybatis-plus-generator</module>
@@ -68,11 +71,17 @@
         <module>140-search-solr</module>
         <module>141-search-solr-auth</module>
 
+        <module>150-i18n</module>
+
         <module>200-webflux</module>
         <module>200-reactor</module>
         <module>201-web</module>
         <module>202-web-params</module>
+        <module>202-web-params-camel</module>
+        <module>202-web-params-validate</module>
         <module>203-websocket</module>
+        <module>204-web-static-resources</module>
+        <module>204-web-static-resources-ui</module>
         <module>204-web-freemaker</module>
         <module>205-web-thymeleaf</module>
         <module>206-web-beetl</module>
@@ -83,13 +92,9 @@
         <module>210-web-filter-order</module>
         <module>211-web-servlet</module>
         <module>212-web-listener</module>
-
+        <module>213-web-interceptor</module>
 
         <module>220-web-sse</module>
-
-        <module>202-web-params-validate</module>
-        <module>204-web-static-resources</module>
-        <module>204-web-static-resources-ui</module>
         <module>221-web-resttemplate</module>
         <module>222-web-client</module>
         <module>223-webflux-params</module>
@@ -108,14 +113,9 @@
         <module>410-zookeeper-basic</module>
         <module>411-zookeeper-distributelock</module>
         <module>420-prometheus-basic</module>
-        <module>150-i18n</module>
-        <module>002-properties-value</module>
-        <module>002-dynamic-envronment</module>
-        <module>104-mybatis-ano</module>
-        <module>430-email</module>
-        <module>213-web-interceptor</module>
         <module>421-prometheus-micro</module>
 
+        <module>430-email</module>
 
     </modules>
 
