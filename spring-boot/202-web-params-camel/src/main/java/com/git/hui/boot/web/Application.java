@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.git.hui.boot.web.resolver.CamelArgumentResolver;
 import com.git.hui.boot.web.resolver.databinder.ParamArgumentProcessor;
+import com.git.hui.boot.web.resolver.databinder.ParamAttrProcessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -19,16 +19,19 @@ import java.util.List;
  */
 @SpringBootApplication
 public class Application  extends WebMvcConfigurationSupport {
+//
+//    @Bean
+//    public ParamArgumentProcessor argumentProcessor() {
+//        return new ParamArgumentProcessor(true);
+//    }
 
-    @Bean
-    public ParamArgumentProcessor argumentProcessor() {
-        return new ParamArgumentProcessor(true);
-    }
 
     @Override
     protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(new CamelArgumentResolver());
-        argumentResolvers.add(argumentProcessor());
+//        argumentResolvers.add(new SimpleArgumentProcessor(true));
+        argumentResolvers.add(new ParamAttrProcessor());
+        argumentResolvers.add(new ParamArgumentProcessor());
     }
 
 

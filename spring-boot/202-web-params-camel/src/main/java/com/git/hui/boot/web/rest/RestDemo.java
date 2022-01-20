@@ -1,5 +1,6 @@
 package com.git.hui.boot.web.rest;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -23,10 +24,12 @@ public class RestDemo {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-//    @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
+    @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class ViewDo {
+        @JsonProperty("user_id")
         @ParamName("user_id")
         private Integer userId;
+        @JsonProperty("user_name")
         @ParamName("user_name")
         private String userName;
     }
@@ -56,7 +59,7 @@ public class RestDemo {
 
     /**
      * http://127.0.0.1:8080/getV4?user_id=12&user_name=一灰灰
-     *
+     * <p>
      * 传参是Map, 对应的Spring中参数转换是 MapMethodProcessor
      *
      * @param map
@@ -71,18 +74,20 @@ public class RestDemo {
 
     /**
      * POJO 对应Spring中的参数转换是 ServletModelAttributeMethodProcessor | RequestParamMethodArgumentResolver
+     *
      * @param viewDo
      * @return
      */
     @GetMapping(path = "getV5")
-    public String getV5(ViewDo viewDo) {
+    public ViewDo getV5(ViewDo viewDo) {
         System.out.println("v5: " + viewDo);
-        return viewDo.toString();
+        return viewDo;
     }
 
     /**
-     *  curl 'http://127.0.0.1:8080/postV1' -X POST -d 'user_id=123&user_name=一灰灰'
-     *  注意：非json传参，jackson的配置将不会生效，即上面这个请求是不会实现下划线转驼峰的； 但是返回结果会是下划线的
+     * curl 'http://127.0.0.1:8080/postV1' -X POST -d 'user_id=123&user_name=一灰灰'
+     * 注意：非json传参，jackson的配置将不会生效，即上面这个请求是不会实现下划线转驼峰的； 但是返回结果会是下划线的
+     *
      * @param viewDo
      * @return
      */
@@ -92,19 +97,23 @@ public class RestDemo {
         return viewDo;
     }
 
-    @Autowired
-    private Environment environment;
-    @Autowired
-    private ObjectMapper objectMapper;
-
     /**
      * post json串
-     *  curl 'http://127.0.0.1:8080/postV2' -X POST -H 'content-type:application/json' -d '{"user_id": 123, "user_name": "一灰灰"}'
+     * curl 'http://127.0.0.1:8080/postV2' -X POST -H 'content-type:application/json' -d '{"user_id": 123, "user_name": "一灰灰"}'
+     *
      * @param viewDo
      * @return
      */
     @PostMapping(path = "postV2")
     public ViewDo postV2(@RequestBody ViewDo viewDo) {
+        System.out.println(viewDo);
+        return viewDo;
+    }
+
+
+    @GetMapping(path = "ano")
+    public ViewDo ano(@ParamName("user_name") String userName, @ParamName("user_id") Integer userId) {
+        ViewDo viewDo = new ViewDo(userId, userName);
         System.out.println(viewDo);
         return viewDo;
     }
