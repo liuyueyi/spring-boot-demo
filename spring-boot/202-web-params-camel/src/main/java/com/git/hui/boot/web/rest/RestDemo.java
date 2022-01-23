@@ -112,8 +112,8 @@ public class RestDemo {
 
 
     @GetMapping(path = "ano")
-    public ViewDo ano(@ParamName("user_name") String userName, @ParamName("user_id") Integer userId) {
-        ViewDo viewDo = new ViewDo(userId, userName);
+    public ViewDo ano(@ParamName("uesr_name") String userName, @ParamName("user_id") String userId) {
+        ViewDo viewDo = new ViewDo(userName, userId);
         System.out.println(viewDo);
         return viewDo;
     }
