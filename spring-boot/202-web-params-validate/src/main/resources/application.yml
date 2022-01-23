@@ -1,0 +1,4 @@
+spring:
+  jackson:
+    # 使用下面这个配置，json的传参，返回结果会支持下划线与驼峰的互转
+    property-naming-strategy: SNAKE_CASE

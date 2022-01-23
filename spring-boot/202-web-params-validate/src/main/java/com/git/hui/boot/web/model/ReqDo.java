@@ -1,5 +1,7 @@
 package com.git.hui.boot.web.model;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.git.hui.boot.web.ex.IdCard;
 import lombok.Data;
 
@@ -9,6 +11,7 @@ import javax.validation.constraints.*;
  * Created by @author yihui in 11:37 20/5/25.
  */
 @Data
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ReqDo {
 
     @NotNull

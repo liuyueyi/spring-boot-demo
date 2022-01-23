@@ -53,4 +53,22 @@ public class RestDemo {
         System.out.println(reqDo);
         return reqDo;
     }
+
+    /**
+     * curl 'http://127.0.0.1:8080/check' -X POST -H 'content-type:application/json' -d '{"age": 18, "name": "一灰灰", "email": "xx@xx.com", "id_card": "4209120123123432", "xx": 12}'
+     *
+     * @param req
+     * @return
+     */
+    @PostMapping(path = "check")
+    public ReqDo check(@RequestBody ReqDo req) {
+        System.out.println("req: " + req);
+        return req;
+    }
+
+    @GetMapping(path = "get")
+    public ReqDo get(ReqDo req) {
+        System.out.println(req);
+        return req;
+    }
 }
