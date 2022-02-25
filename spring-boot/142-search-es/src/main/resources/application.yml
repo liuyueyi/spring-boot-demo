@@ -1,0 +1,15 @@
+spring:
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+      username: elastic
+      password: test123
+
+elasticsearch:
+  host: localhost
+  port: 9200
+  user: elastic
+  pwd: test123
+  connTimeout: 3000
+  socketTimeout: 5000
+  connectionRequestTimeout: 500
