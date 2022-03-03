@@ -16,11 +16,11 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.TermQueryBuilder;
 import org.elasticsearch.index.reindex.BulkByScrollResponse;
+import org.elasticsearch.index.reindex.DeleteByQueryRequest;
 import org.elasticsearch.index.reindex.UpdateByQueryRequest;
 import org.elasticsearch.script.Script;
 import org.elasticsearch.script.ScriptType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.IncorrectUpdateSemanticsDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 
@@ -165,7 +165,13 @@ public class BasicCurdDemo {
         get(indexName, TEST_ID);
     }
 
-
+    /**
+     * 根据id进行删除
+     *
+     * @param indexName
+     * @param id
+     * @throws IOException
+     */
     public void delete(String indexName, String id) throws IOException {
         DeleteRequest deleteRequest = new DeleteRequest(indexName);
         deleteRequest.type("_doc");
@@ -173,5 +179,25 @@ public class BasicCurdDemo {
 
         DeleteResponse response = client.delete(deleteRequest, requestOptions);
         System.out.println("删除后返回" + response.toString());
+    }
+
+
+    /**
+     * 条件删除
+     *
+     * @param indexName
+     * @param query
+     * @throws IOException
+     */
+    public void deleteByQuery(String indexName, Map<String, String> query) throws IOException {
+        DeleteByQueryRequest request = new DeleteByQueryRequest(indexName);
+        request.types("_doc");
+        for (Map.Entry<String, String> entry : query.entrySet()) {
+            QueryBuilder queryBuilder = new TermQueryBuilder(entry.getKey(), entry.getValue());
+            request.setQuery(queryBuilder);
+        }
+        BulkByScrollResponse response = client.deleteByQuery(request, requestOptions);
+        System.out.println("条件删除:" + response.toString());
+        get(indexName, TEST_ID);
     }
 }
