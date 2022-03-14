@@ -4,7 +4,42 @@
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/liuyueyi/spring-boot-demo.svg)](http://isitmaintained.com/project/liuyueyi/spring-boot-demo "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/liuyueyi/spring-boot-demo.svg)](http://isitmaintained.com/project/liuyueyi/spring-boot-demo "Percentage of issues still open")
 
-SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀记录下学习历程
+> SpringBoot + SpringCloud + SpringSecurity学习过程中的源码汇总，沉淀记录下学习历程
+
+欢迎关注公众号 `一灰灰blog` 更多干货持续分享 
+
+![QrCode](https://spring.hhui.top/spring-blog/imgs/info/info.png)
+
+## 0. 项目说明
+
+如果想在本机使用这个项目的demo，下面有一些注意事项
+
+环境要求
+
+```bash
+java: jdk1.8
+maven: 3.2+
+spring boot: 2.2.1.RELEASE
+ide: IDEA/Eclipse/NetBeans随意
+
+## 不同项目的环境依赖，请以项目对应的博文要求为准
+db: mongodb + mysql + redis + solr + elasticsearch
+中间件: promotheus + grafana + kibana + rabbitmq
+```
+
+IDEA插件
+
+```bash
+# 必须
+lombok
+
+# 推荐
+maven helper: 查看依赖树的好工具（排除依赖冲突非常棒）
+Free MyBatis plugin: mybatis的mapper与xml跳转比较方便
+Mybatis log Plugin：日志
+CodeGlance: 类似sublimetext 右边的快速预览框
+Rainbow Brackets: 不同层级的括号颜色不一样
+```
 
 ## 1. 知识点图谱
 
