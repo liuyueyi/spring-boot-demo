@@ -1,6 +1,7 @@
 package com.git.hui.boot.search.es;
 
 import com.git.hui.boot.search.es.basic.BasicCurdDemo;
+import com.git.hui.boot.search.es.basic.TermQueryDemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,9 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public Application(EsTest esTest, BasicCurdDemo basicCurdDemo) throws Exception {
+    public Application(EsTest esTest, BasicCurdDemo basicCurdDemo, TermQueryDemo termQueryDemo) throws Exception {
 //        esTest.testGet();
-        basicCurdDemo.testOperate();
+//        basicCurdDemo.testOperate();
+        termQueryDemo.testQuery();
     }
 
     public static void main(String[] args) {
