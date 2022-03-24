@@ -6,6 +6,8 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.FieldSortBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -85,7 +87,9 @@ public class TermQueryDemo {
         searchSourceBuilder.from(from);
         //每页显示的记录数
         searchSourceBuilder.size(size);
-        //搜索源搜索方式
+        // 根据age字段进行倒排
+        searchSourceBuilder.sort(new FieldSortBuilder("age").order(SortOrder.DESC));
+        // 查询所有的文档
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
         searchRequest.source(searchSourceBuilder);
 
@@ -179,7 +183,7 @@ public class TermQueryDemo {
     }
 
     /**
-     * 根据字段是否存在查询
+     * 根据字段匹配查询
      *
      * @throws IOException
      */
