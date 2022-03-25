@@ -9,7 +9,14 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.index.query.TermQueryBuilder;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.Aggregations;
+import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.avg.ParsedAvg;
+import org.elasticsearch.search.aggregations.metrics.max.ParsedMax;
+import org.elasticsearch.search.aggregations.metrics.min.ParsedMin;
+import org.elasticsearch.search.aggregations.metrics.sum.ParsedSum;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,15 +51,18 @@ public class AggregateQueryDemo {
 
     private String TEST_ID = "11123-33345-66543-55231";
     private String TEST_ID_2 = "11123-33345-66543-55232";
+    private String TEST_ID_3 = "11123-33345-66543-55233";
 
     private String index = "aggregate-demo";
 
     public AggregateQueryDemo(BasicCurdDemo basicCurdDemo) throws IOException {
         this.basicCurdDemo = basicCurdDemo;
-        Map<String, Object> doc = newMap("name", "一灰灰", "age", 10, "skills", Arrays.asList("java", "python"), "site", "blog.hhui.top");
+        Map<String, Object> doc = newMap("user", "yihui", "name", "一灰灰", "age", 10, "skills", Arrays.asList("java", "python"), "site", "blog.hhui.top");
         basicCurdDemo.addDoc(index, doc, TEST_ID);
-        doc = newMap("name", "二灰灰", "age", 16, "skills", Arrays.asList("js", "html"));
+        doc = newMap("user", "erhui", "name", "二灰灰", "age", 16, "skills", Arrays.asList("js", "html"));
         basicCurdDemo.addDoc(index, doc, TEST_ID_2);
+        doc = newMap("user", "yihui", "name", "二灰灰", "age", 18, "skills", Arrays.asList("c#", ".net"));
+        basicCurdDemo.addDoc(index, doc, TEST_ID_3);
     }
 
     @PreDestroy
@@ -65,7 +75,7 @@ public class AggregateQueryDemo {
         mustCondition();
         shouldCondition();
         querySpecialFields();
-        avgQuery();
+        groupBy();
     }
 
     /**
@@ -135,15 +145,40 @@ public class AggregateQueryDemo {
         System.out.println("querySpecialFields:" + searchResponse.toString());
     }
 
-    private void avgQuery() throws IOException {
+    /**
+     * 分组,计算
+     *
+     * @throws IOException
+     */
+    private void groupBy() throws IOException {
+        // 分组 + 计算
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("user_group").field("user.keyword")
+                .subAggregation(AggregationBuilders.avg("avg_age").field("age"))
+                .subAggregation(AggregationBuilders.min("min_age").field("age"))
+                .subAggregation(AggregationBuilders.max("max_age").field("age"))
+                .subAggregation(AggregationBuilders.sum("sum_age").field("age"));
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        System.out.println("groupBy dsl:" + searchSourceBuilder.toString());
+
         SearchRequest searchRequest = new SearchRequest(index);
         searchRequest.types("_doc");
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = client.search(searchRequest, requestOptions);
 
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("age").field("age")
-                .subAggregation(AggregationBuilders.avg("age_avg").field("age"));
-        searchSourceBuilder.aggregation(aggregationBuilder);
-        SearchResponse searchResponse = client.search(searchRequest, requestOptions);
-        System.out.println("avgQuery:" + searchResponse.toString());
+        Aggregations aggregations = response.getAggregations();
+        ParsedStringTerms parsedStringTerms = aggregations.get("user_group");
+        for (Terms.Bucket bucket : parsedStringTerms.getBuckets()) {
+            String key = bucket.getKeyAsString();
+            long docCount = bucket.getDocCount();
+            Aggregations data = bucket.getAggregations();
+            ParsedAvg avg = data.get("avg_age");
+            ParsedMin min = data.get("min_age");
+            ParsedMax max = data.get("max_age");
+            ParsedSum sum = data.get("sum_age");
+            System.out.println("group by: " + key + "#" + docCount + ": avg=" + avg.getValueAsString()
+                    + " min=" + min.getValueAsString() + " max=" + max.getValueAsString() + " sum=" + sum.getValueAsString());
+        }
+        System.out.println("groupBy:" + response.toString());
     }
 }
