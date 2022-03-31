@@ -1,5 +1,6 @@
 package com.git.hui.boot.search.es.basic;
 
+import com.alibaba.fastjson.JSONObject;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -14,16 +15,26 @@ import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.aggregations.metrics.avg.ParsedAvg;
+import org.elasticsearch.search.aggregations.metrics.cardinality.CardinalityAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.cardinality.ParsedCardinality;
 import org.elasticsearch.search.aggregations.metrics.max.ParsedMax;
 import org.elasticsearch.search.aggregations.metrics.min.ParsedMin;
+import org.elasticsearch.search.aggregations.metrics.percentiles.ParsedPercentiles;
+import org.elasticsearch.search.aggregations.metrics.percentiles.Percentile;
+import org.elasticsearch.search.aggregations.metrics.percentiles.PercentilesAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.stats.ParsedStats;
 import org.elasticsearch.search.aggregations.metrics.sum.ParsedSum;
+import org.elasticsearch.search.aggregations.metrics.valuecount.ParsedValueCount;
+import org.elasticsearch.search.aggregations.metrics.valuecount.ValueCountAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import static com.git.hui.boot.search.es.MapUtil.newMap;
@@ -38,7 +49,7 @@ import static com.git.hui.boot.search.es.MapUtil.newMap;
  * - 排序
  * - 多条件查询
  *
- * @author wuzebang
+ * @author yihui
  * @date 2022/3/22
  */
 @Component
@@ -68,14 +79,18 @@ public class AggregateQueryDemo {
     @PreDestroy
     public void remove() throws IOException {
         basicCurdDemo.delete(index, TEST_ID);
-        basicCurdDemo.delete(index, TEST_ID);
+        basicCurdDemo.delete(index, TEST_ID_2);
+        basicCurdDemo.delete(index, TEST_ID_3);
     }
 
     public void test() throws IOException {
         mustCondition();
         shouldCondition();
-        querySpecialFields();
         groupBy();
+        stats();
+        cardinality();
+        valueCount();
+        percentile();
     }
 
     /**
@@ -96,6 +111,7 @@ public class AggregateQueryDemo {
         boolBuilder.must(rangeQueryBuilder);
         searchSourceBuilder.query(boolBuilder);
         searchRequest.source(searchSourceBuilder);
+        System.out.println("mustDsl: " + searchSourceBuilder.toString());
 
         SearchResponse searchResponse = client.search(searchRequest, requestOptions);
         System.out.println("mustCondition: " + searchResponse.toString());
@@ -121,29 +137,12 @@ public class AggregateQueryDemo {
         boolBuilder.should(rangeQueryBuilder);
         searchSourceBuilder.query(boolBuilder);
         searchRequest.source(searchSourceBuilder);
+        System.out.println("should Dsl: " + searchSourceBuilder.toString());
 
         SearchResponse searchResponse = client.search(searchRequest, requestOptions);
         System.out.println("shouldCondition: " + searchResponse.toString());
     }
 
-    /**
-     * 查询指定的字段内容
-     *
-     * @throws IOException
-     */
-    private void querySpecialFields() throws IOException {
-        SearchRequest searchRequest = new SearchRequest(index);
-        searchRequest.types("_doc");
-
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        String[] includeFields = new String[]{"name", "age", "site"};
-        String[] excludeFields = new String[]{"_type"};
-        searchSourceBuilder.fetchSource(includeFields, excludeFields);
-        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
-        searchRequest.source(searchSourceBuilder);
-        SearchResponse searchResponse = client.search(searchRequest, requestOptions);
-        System.out.println("querySpecialFields:" + searchResponse.toString());
-    }
 
     /**
      * 分组,计算
@@ -180,5 +179,104 @@ public class AggregateQueryDemo {
                     + " min=" + min.getValueAsString() + " max=" + max.getValueAsString() + " sum=" + sum.getValueAsString());
         }
         System.out.println("groupBy:" + response.toString());
+    }
+
+    private void stats() throws IOException {
+        // 分组 + 计算
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        TermsAggregationBuilder aggregationBuilder = AggregationBuilders.terms("user_group").field("user.keyword")
+                .subAggregation(AggregationBuilders.stats("stat_age").field("age"));
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        System.out.println("groupBy withStat dsl:" + searchSourceBuilder.toString());
+
+        SearchRequest searchRequest = new SearchRequest(index);
+        searchRequest.types("_doc");
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = client.search(searchRequest, requestOptions);
+
+        Aggregations aggregations = response.getAggregations();
+        ParsedStringTerms parsedStringTerms = aggregations.get("user_group");
+        for (Terms.Bucket bucket : parsedStringTerms.getBuckets()) {
+            String key = bucket.getKeyAsString();
+            long docCount = bucket.getDocCount();
+            Aggregations data = bucket.getAggregations();
+            ParsedStats stats = data.get("stat_age");
+            System.out.println("group by: " + key + "#" + docCount + ": stat=" + JSONObject.toJSONString(stats));
+        }
+        System.out.println("stats:" + response.toString());
+    }
+
+    /**
+     * 去重统计
+     *
+     * @throws IOException
+     */
+    private void cardinality() throws IOException {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        // 根据name去重统计
+        CardinalityAggregationBuilder aggregationBuilder = AggregationBuilders.cardinality("ca_name").field("name.keyword");
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        System.out.println("cardinality dls:" + aggregationBuilder.toString());
+
+        SearchRequest searchRequest = new SearchRequest(index);
+        searchRequest.types("_doc");
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = client.search(searchRequest, requestOptions);
+
+        Aggregations aggregations = response.getAggregations();
+        ParsedCardinality parsedStringTerms = aggregations.get("ca_name");
+        System.out.println("cardinality value count: " + parsedStringTerms.getValueAsString());
+        System.out.println("cardinality: " + response.toString());
+    }
+
+    /**
+     * 计数统计，与前面的区别是它返回全量数据
+     *
+     * @throws IOException
+     */
+    private void valueCount() throws IOException {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        // 根据name去重统计
+        ValueCountAggregationBuilder aggregationBuilder = AggregationBuilders.count("ca_name").field("name.keyword");
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        System.out.println("valueCount dls:" + aggregationBuilder.toString());
+
+        SearchRequest searchRequest = new SearchRequest(index);
+        searchRequest.types("_doc");
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = client.search(searchRequest, requestOptions);
+
+        Aggregations aggregations = response.getAggregations();
+        ParsedValueCount valueCount = aggregations.get("ca_name");
+        System.out.println("valueCount = " + valueCount.getValueAsString());
+        System.out.println("cardinality: " + response.toString());
+    }
+
+    /**
+     * 百分位数统计
+     *
+     * @throws IOException
+     */
+    private void percentile() throws IOException {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        // 根据
+        PercentilesAggregationBuilder aggregationBuilder = AggregationBuilders.percentiles("pc_age").field("age");
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        System.out.println("percentile dls:" + aggregationBuilder.toString());
+
+        SearchRequest searchRequest = new SearchRequest(index);
+        searchRequest.types("_doc");
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = client.search(searchRequest, requestOptions);
+
+        // 获取返回的百分比统计，并输出
+        Aggregations aggregations = response.getAggregations();
+        ParsedPercentiles parsedPercentiles = aggregations.get("pc_age");
+        List<String> ans = new ArrayList<>();
+        for (Percentile percentile : parsedPercentiles) {
+            ans.add(percentile.getPercent() + " : " + percentile.getValue());
+        }
+        System.out.println("parsedPercentiles: " + ans);
+        System.out.println("percentile: " + response.toString());
     }
 }
