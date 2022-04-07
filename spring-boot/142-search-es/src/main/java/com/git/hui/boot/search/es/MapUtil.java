@@ -8,7 +8,7 @@ import java.util.Map;
  * @date 2022/3/3
  */
 public class MapUtil {
-    public static  <K, V> Map<K, V> newMap(K k, V v, Object... kv) {
+    public static <K, V> Map<K, V> newMap(K k, V v, Object... kv) {
         Map<K, V> map = new HashMap<>();
         map.put(k, v);
         for (int i = 0; i < kv.length; i += 2) {

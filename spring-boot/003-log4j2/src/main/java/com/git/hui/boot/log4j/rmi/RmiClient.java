@@ -1,5 +1,7 @@
 package com.git.hui.boot.log4j.rmi;
 
+import org.apache.logging.log4j.core.lookup.JndiLookup;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.rmi.Naming;
@@ -36,6 +38,10 @@ public class RmiClient {
     }
 
     public static void main(String[] args) throws Exception {
-        injectTest();
+//        injectTest();
+
+        JndiLookup jndiLookup = new JndiLookup();
+        String ans = jndiLookup.lookup("ldap://127.0.0.1:8080/fix.txt");
+        System.out.println(ans);
     }
 }
