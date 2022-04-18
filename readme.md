@@ -90,10 +90,15 @@ Rainbow Brackets: 不同层级的括号颜色不一样
         - 排行榜应用实例工程 [spring-case/120-redis-ranklist](spring-case/120-redis-ranklist)
         - 站点统计应用实例工程 [spring-case/124-redis-sitecount](spring-case/124-redis-sitecount)
 - [ ] MemCache
+- [ ] InfluxDb
+    - [x] 项目工程：[spring-boot/130-influxdb](spring-boot/130-influxdb)
+    - [InfluxDB系列博文](https://blog.hhui.top/hexblog/categories/DB/InfluxDB/)
 - [x] SpringCache
     - [x] 项目工程：[spring-boot/125-cache-ano](spring-boot/125-cache-ano)
 - [ ] 定时器 
-- [ ] 搜索 ES
+- [x] 搜索 ES
+    - [x] 项目工程: [spring-boot/142-search-es](spring-boot/142-search-es)
+    - [x] [ES系列博文](https://spring.hhui.top/spring-blog/tags/ElasticSearch/)
 - [x] 搜索 [Solr](http://spring.hhui.top/spring-blog/tags/Solr/)
     - [x] 项目工程：[spring-boot/140-search-solr](spring-boot/140-search-solr)
     - [x] [基本环境搭建](http://spring.hhui.top/spring-blog/2019/05/10/190510-SpringBoot%E9%AB%98%E7%BA%A7%E7%AF%87%E6%90%9C%E7%B4%A2%E4%B9%8BSolr%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E7%AE%80%E5%8D%95%E6%B5%8B%E8%AF%95/)
@@ -105,7 +110,9 @@ Rainbow Brackets: 不同层级的括号颜色不一样
     - [x] 项目工程: 
         - 基本使用姿势：[spring-boot/210-web-filter](spring-boot/210-web-filter)
         - filter优先级: [spring-boot/210-web-filter-order](spring-boot/210-web-filter-order)
-- [ ] 拦截器
+- [x] 拦截器
+    - [x] 项目工程：[spring-boot/213-web-interceptor](spring-boot/213-web-interceptor)
+    - [x] 基本使用姿势: [拦截器](https://spring.hhui.top/spring-blog/tags/Interceptor/)
 - [x] Get/Post/Put/Delete等http方法支持
 - [x] 参数绑定(get/post参数解析，自定义参数解析器)
     - [x] 项目工程: [spring-boot/202-web-params](spring-boot/202-web-params)
@@ -200,6 +207,7 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 | [131-influxdb-java](spring-boot/131-influxdb-java) | 【DB】influxdb封装 | 封装更服务SpringBoot规范的`InfluxTemplate`，待实现 |
 | [140-search-solr](spring-boot/140-search-solr) | 【Solr】solr环境+CURD使用姿势 | `SolrTemplate`, `SolrClient` |
 | [141-search-solr-auth](spring-boot/141-search-solr-auth) | 【Solr】solr开启授权无法更新索引的四种解决方案 | 解决solr更新索引报错问题 |
+| [142-search-es](spring-boot/142-search-es) | 【ES】es实例使用demo | ES，权限验证，CURD，高级特性等 `RestHighLevelClient` |
 | [150-i18n](spring-boot/150-i18n) | 【i18n】国际化 | 国际化支持 |
 | [200-webflux](spring-boot/200-webflux) | 【web】WebFlux实例 | `React` |
 | [201-web](spring-boot/201-web) | 【web】basic http实例 | `springmvc` |
@@ -460,6 +468,12 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 -  [【搜索系列】Solr文档删除](http://spring.hhui.top/spring-blog/2020/01/14/200114-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BSolr%E4%B9%8B%E6%96%87%E6%A1%A3%E5%88%A0%E9%99%A4/)
 -  [【搜索系列】Solr查询使用姿势小结](http://spring.hhui.top/spring-blog/2020/01/15/200115-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8BSolr%E4%B9%8B%E6%9F%A5%E8%AF%A2%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF%E5%B0%8F%E7%BB%93/)
 -  [【搜索系列】Solr身份认证与授权更新异常解决方案](http://spring.hhui.top/spring-blog/2020/03/30/200330-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8BSolr%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83%E6%9B%B4%E6%96%B0%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/)
+
+**es**
+
+- [【搜索系列】ES基本项目搭建](https://spring.hhui.top/spring-blog/2022/03/28/220328-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BES%E5%9F%BA%E6%9C%AC%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/)
+- [【搜索系列】ES文档基本操作CURD实例演示](https://spring.hhui.top/spring-blog/2022/03/31/220331-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BES%E6%96%87%E6%A1%A3%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9CCURD%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
+- [【搜索系列】ES查询常用实例演示](https://spring.hhui.top/spring-blog/2022/04/18/220418-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BES%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
 
 ### 4. MQ系列
 

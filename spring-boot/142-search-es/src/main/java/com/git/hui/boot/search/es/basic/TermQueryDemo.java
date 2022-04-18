@@ -21,7 +21,7 @@ import static com.git.hui.boot.search.es.MapUtil.newMap;
 /**
  * es操作博文
  *
- * <a href='https://blog.hhui.top/hexblog/2021/03/31/210331-ElastchSearch-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/#2-1-%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89'/>
+ * <a href='https://blog.hhui.top/hexblog/2021/03/31/210331-ElasticSearch-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/'/>
  * <a href="https://blog.csdn.net/gz1993/article/details/110794944"/>
  *
  * @author yihui
@@ -51,7 +51,7 @@ public class TermQueryDemo {
     @PreDestroy
     public void remove() throws IOException {
         basicCurdDemo.delete(index, TEST_ID);
-        basicCurdDemo.delete(index, TEST_ID);
+        basicCurdDemo.delete(index, TEST_ID_2);
     }
 
     public void testQuery() throws IOException {
@@ -121,9 +121,9 @@ public class TermQueryDemo {
         searchRequest.types("_doc");
 
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        // 对于中文查询，需要注意分词的场景, 如果直接使用 "name : 一灰灰" 的方式进行查询，则啥也不会发挥
+        // 对于中文查询，需要注意分词的场景, 如果直接使用 "name : 一灰灰" 的方式进行查询，则啥也不会返回
         // elasticsearch 里默认的IK分词器是会将每一个中文都进行了分词的切割，所以你直接想查一整个词，或者一整句话是无返回结果的。
-        // 在此种情况下，我们可以通过制定 keyword 的方式来处理, 设置关键词搜索（不进行分词）
+        // 在此种情况下，我们可以通过指定 keyword 的方式来处理, 设置关键词搜索（不进行分词）
         searchSourceBuilder.query(QueryBuilders.termQuery("name.keyword", "一灰灰"));
 
         searchRequest.source(searchSourceBuilder);

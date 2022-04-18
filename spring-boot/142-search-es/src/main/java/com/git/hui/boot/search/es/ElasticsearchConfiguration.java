@@ -48,29 +48,37 @@ public class ElasticsearchConfiguration {
     }
 
     @Bean
-    public RequestOptionsFactoryBean requestOptions(ElasticsearchConfiguration elasticsearchConfiguration) {
-        return new RequestOptionsFactoryBean(elasticsearchConfiguration.user, elasticsearchConfiguration.pwd);
+    public RequestOptions requestOptions() {
+        String auth = "Basic " + Base64Utils.encodeToString((user + ":" + pwd).getBytes());
+        RequestOptions.Builder build = RequestOptions.DEFAULT.toBuilder();
+        build.addHeader("Authorization", auth);
+        return build.build();
     }
-
-    public class RequestOptionsFactoryBean implements FactoryBean<RequestOptions> {
-        private String user, pwd;
-
-        public RequestOptionsFactoryBean(String user, String pwd) {
-            this.user = user;
-            this.pwd = pwd;
-        }
-
-        @Override
-        public RequestOptions getObject() {
-            String auth = "Basic " + Base64Utils.encodeToString((user + ":" + pwd).getBytes());
-            RequestOptions.Builder build = RequestOptions.DEFAULT.toBuilder();
-            build.addHeader("Authorization", auth);
-            return build.build();
-        }
-
-        @Override
-        public Class<?> getObjectType() {
-            return RequestOptions.class;
-        }
-    }
+//
+//    @Bean
+//    public RequestOptionsFactoryBean requestOptions(ElasticsearchConfiguration elasticsearchConfiguration) {
+//        return new RequestOptionsFactoryBean(elasticsearchConfiguration.user, elasticsearchConfiguration.pwd);
+//    }
+//
+//    public class RequestOptionsFactoryBean implements FactoryBean<RequestOptions> {
+//        private String user, pwd;
+//
+//        public RequestOptionsFactoryBean(String user, String pwd) {
+//            this.user = user;
+//            this.pwd = pwd;
+//        }
+//
+//        @Override
+//        public RequestOptions getObject() {
+//            String auth = "Basic " + Base64Utils.encodeToString((user + ":" + pwd).getBytes());
+//            RequestOptions.Builder build = RequestOptions.DEFAULT.toBuilder();
+//            build.addHeader("Authorization", auth);
+//            return build.build();
+//        }
+//
+//        @Override
+//        public Class<?> getObjectType() {
+//            return RequestOptions.class;
+//        }
+//    }
 }

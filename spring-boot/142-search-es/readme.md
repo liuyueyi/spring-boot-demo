@@ -1,5 +1,18 @@
 # es实例demo
 
+## es版本
+> https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html
+
+es: 6.8
+
+docker安装命令 `docker pull docker.elastic.co/elasticsearch/elasticsearch:6.8.23`
+
+启动
+
+```
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.8.23
+```
+
 ## es基本case
 
 权限验证开启
@@ -46,3 +59,10 @@ POST first-index/_doc
   ]
 }
 ```
+
+
+## 系列博文
+
+- [【搜索系列】ES基本项目搭建](https://spring.hhui.top/spring-blog/2022/03/28/220328-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BES%E5%9F%BA%E6%9C%AC%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/)
+- [【搜索系列】ES文档基本操作CURD实例演示](https://spring.hhui.top/spring-blog/2022/03/31/220331-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BES%E6%96%87%E6%A1%A3%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9CCURD%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
+- [【搜索系列】ES查询常用实例演示](https://spring.hhui.top/spring-blog/2022/04/18/220418-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BES%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
