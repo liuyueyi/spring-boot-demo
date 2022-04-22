@@ -1,0 +1,16 @@
+.title {
+    color: #c00;
+    font-weight: normal;
+    font-size: 2em;
+}
+
+.content {
+    color: darkblue;
+    font-size: 1.2em;
+}
+
+.sign {
+    color: lightgray;
+    font-size: 0.8em;
+    font-style: italic;
+}

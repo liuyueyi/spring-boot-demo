@@ -117,6 +117,7 @@
         <module>142-search-es</module>
 
         <module>430-email</module>
+        <module>001-properties-env-mvn</module>
 
     </modules>
 
