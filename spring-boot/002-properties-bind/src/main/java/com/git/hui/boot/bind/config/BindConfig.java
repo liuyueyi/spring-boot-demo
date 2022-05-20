@@ -35,6 +35,8 @@ public class BindConfig {
 
     private Jwt jwt;
 
+    private List<Jwt> ljwt;
+
     /**
      * fixme 对于列表这种嵌套的方式，生成的 spring-configuration-metadata.json 无法友好的支持它； 即IDEA中，在yml文件中，配置对应的属性时，无法直接定位到 Jwt#token
      */
