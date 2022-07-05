@@ -12,6 +12,7 @@
     <modules>
         <module>000-properties</module>
         <module>001-properties</module>
+        <module>001-properties-env-mvn</module>
         <module>002-properties</module>
         <module>002-properties-value</module>
         <module>002-dynamic-envronment</module>
@@ -117,7 +118,7 @@
         <module>142-search-es</module>
 
         <module>430-email</module>
-        <module>001-properties-env-mvn</module>
+        <module>204-web-xml</module>
 
     </modules>
 
