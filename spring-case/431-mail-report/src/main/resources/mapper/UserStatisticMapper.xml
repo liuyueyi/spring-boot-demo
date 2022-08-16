@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.hui.demo.report.dao.UserStatisticMapper">
+
+    <resultMap id="countMap" type="com.git.hui.demo.report.dao.po.UserStatisticPo">
+        <result column="day" property="day"/>
+        <result column="count" property="count"/>
+    </resultMap>
+
+    <!-- 统计用户新增  -->
+    <select id="statisticUserCnt" resultMap="countMap">
+        SELECT date_table.day as `day`, IFNULL(data.cnt, 0) as `count`
+        from
+        (select DATE_FORMAT(create_time, '%Y-%m-%d') day, count(id) cnt from u1 GROUP BY day) data
+            right join
+        (SELECT @date := DATE_ADD(@date, interval - 1 day) day from (SELECT @date := DATE_ADD(CURDATE(), interval 1 day) from u1) days limit #{days}) date_table
+        on date_table.day = data.day
+    </select>
+</mapper>

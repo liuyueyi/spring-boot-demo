@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">每日用户统计</title>
+</head>
+<style>
+    .title22 {
+        font: 16px/24px bold;
+        position: relative;
+        display: block;
+        padding: 0 6px;
+        margin-left: -6px;
+        margin-bottom: 12px;
+        font-size: 22px;
+        font-weight: 550;
+    }
+
+    .container {
+        background: #fff;
+        overflow: auto;
+        padding: 6px;
+        margin: 6px;
+        font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体';
+    }
+
+    .content {
+        overflow: auto;
+        padding: 6px 12px;
+        margin: 6px;
+    }
+
+    .form11 {
+        overflow: hidden;
+        text-align: left;
+        font: 14px/20px normal;
+        font-weight: 540;
+    }
+
+    .form11 > .label {
+        position: relative;
+        color: #666;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        float: left;
+        font: 14px/20px bold;
+        font-weight: 600;
+    }
+
+    .form11 > .label-item {
+        width: 62%;
+        color: #333;
+        float: left;
+        font: 14px/20px bold;
+        font-weight: 550;
+    }
+
+    .form-col-third {
+        width: 33%;
+    }
+
+    table {
+        border: none;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .thead {
+        font: 14px/20px bold;
+        font-weight: 550;
+        background: #eaeaea;
+        line-height: 1.5em;
+    }
+
+    .tbody {
+        font: 15px/20px normal;
+        font-weight: 540;
+        background: #fff;
+    }
+
+    tr > td {
+        padding: 6px 12px;
+        border: 1px solid #d8d8d8;
+        max-width: 600px;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="title22" style="color: red;" th:text="tableTitle">统计标题</div>
+        <table>
+            <thead class="thead">
+            <tr>
+                <td class="thead" style="background:#eaeaea;">日期</td>
+                <td style="min-width: 50px; color: #4040e1">新增用户</td>
+            </tr>
+            </thead>
+            <tbody class="tbody">
+            <tr th:each="item: ${cntList}">
+                <td class="thead" style="background:#eaeaea;" th:text="${item.day}">2022-08-01</td>
+                <td style="min-width: 50px; color: #4040e1" th:text="${item.count}">1</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>
