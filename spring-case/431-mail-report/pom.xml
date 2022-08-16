@@ -11,11 +11,6 @@
 
     <artifactId>431-mail-report</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <!-- 邮件发送的核心依赖 -->
         <dependency>

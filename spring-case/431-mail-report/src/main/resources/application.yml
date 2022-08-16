@@ -19,6 +19,15 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/story?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password:
+
+
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.git.hui.demo.report.dao.po

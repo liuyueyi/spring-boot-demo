@@ -1,16 +1,15 @@
 -- story.u1 definition
 -- 测试数据库
 
-CREATE TABLE `u1`
-(
-    `id`          bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
-    `name`        varchar(64)  NOT NULL DEFAULT '' COMMENT 'name',
-    `email`       varchar(512) NOT NULL DEFAULT '' COMMENT 'email',
-    `create_time` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '生成时间',
-    `update_time` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    PRIMARY KEY (`id`),
-    KEY           `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='u1测试';
+CREATE TABLE `u1` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `name` varchar(64) NOT NULL DEFAULT '' COMMENT 'name',
+  `email` varchar(512) NOT NULL DEFAULT '' COMMENT 'email',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '生成时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='u1测试';
 
 
 -- 初始化数据，可以由 gen_test_date.py 脚本生成

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${title}">每日用户统计</title>
+    <title th:text="${vo.htmlTitle}">每日用户统计</title>
 </head>
 <style>
     .title22 {
@@ -87,7 +87,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title22" style="color: red;" th:text="tableTitle">统计标题</div>
+        <div class="title22" style="color: red;" th:text="${vo.tableTitle}">统计标题</div>
         <table>
             <thead class="thead">
             <tr>
@@ -96,13 +96,12 @@
             </tr>
             </thead>
             <tbody class="tbody">
-            <tr th:each="item: ${cntList}">
+            <tr th:each="item: ${vo.list}">
                 <td class="thead" style="background:#eaeaea;" th:text="${item.day}">2022-08-01</td>
                 <td style="min-width: 50px; color: #4040e1" th:text="${item.count}">1</td>
             </tr>
             </tbody>
         </table>
-
     </div>
 </div>
 </body>
