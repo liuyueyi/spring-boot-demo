@@ -119,6 +119,7 @@
 
         <module>430-email</module>
         <module>204-web-xml</module>
+        <module>204-web-xml-json</module>
 
     </modules>
 
