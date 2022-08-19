@@ -44,16 +44,23 @@ public class StatisticAndReportService {
         return vo;
     }
 
-
-    // 定时发送，每天4:15分统计一次，发送邮件
-    @Scheduled(cron = "0 15 4 * * ?")
-//    下上面这个是每分钟执行一次，用于本地测试
-//    @Scheduled(cron = "0/1 * * * * ?")
-    public void autoCalculateUserStatisticAndSendEmail() throws MessagingException {
-        StatisticVo vo = statisticAddUserReport();
+    public String renderReport(StatisticVo vo) {
         Context context = new Context();
         context.setVariable("vo", vo);
-        sendMail("新增用户报告", context);
+        String content = templateEngine.process("report", context);
+        return content;
+    }
+
+
+    // 定时发送，每天4:15分统计一次，发送邮件
+//    @Scheduled(cron = "0 15 4 * * ?")
+//    下上面这个是每分钟执行一次，用于本地测试
+    @Scheduled(cron = "0/1 * * * * ?")
+    public void autoCalculateUserStatisticAndSendEmail() throws MessagingException {
+        StatisticVo vo = statisticAddUserReport();
+        String content = renderReport(vo);
+        sendMail("新增用户报告", content);
+        System.out.println("over");
     }
 
 
@@ -61,10 +68,10 @@ public class StatisticAndReportService {
      * 发送邮件的逻辑
      *
      * @param title
-     * @param context
+     * @param content
      * @throws MessagingException
      */
-    public void sendMail(String title, Context context) throws MessagingException {
+    public void sendMail(String title, String content) throws MessagingException {
         MimeMessage mimeMailMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMailMessage, true);
         //邮件发送人
@@ -73,8 +80,6 @@ public class StatisticAndReportService {
         mimeMessageHelper.setTo("bangzewu@126.com");
         //邮件主题
         mimeMessageHelper.setSubject(title);
-        // 模板渲染
-        String content = templateEngine.process("report", context);
         //邮件内容
         mimeMessageHelper.setText(content, true);
 
