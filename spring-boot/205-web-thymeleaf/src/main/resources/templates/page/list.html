@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SpringBoot thymeleaf"/>
+    <meta name="author" content="YiHui"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>YiHui's SpringBoot Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-p1KAotb3W9ndluCsqePPYnjRm3c6abdnIjo0tQwYUv83VsbsYd43RuofnFAaDo0E"
+          crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div>
+    <div id="tables" class="card m-b-20">
+        <h1>内容如下</h1>
+        <div id="itemList">
+            <div th:replace="page/item-page" >
+                数据列表
+            </div>
+        </div>
+        <button class="btn btn-outline" id="moreBtn">加载更多</button>
+    </div>
+</div>
+<script th:inline="javascript">
+    let currentPage = 1;
+    $('#moreBtn').click(function () {
+        $.get("/page/list/next?page=" + currentPage, function (response) {
+            console.log("response body:", response);
+            $('#itemList').append(response);
+        });
+    });
+</script>
+</body>
+</html>

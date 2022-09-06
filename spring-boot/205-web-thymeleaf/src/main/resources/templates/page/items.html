@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<!-- 文章卡片 -->
+<div class="divide-y" th:fragment="item_list(items)" th:each="item : ${items}">
+    <div class="row">
+        <div class="col-auto">
+            <span class="avatar" th:text="${item.name}">JL</span>
+        </div>
+        <div class="col">
+            <div class="text-truncate">
+                <strong th:text="${item.first}">Jeffie Lewzey</strong> commented on your
+                <strong th:text="${item.end}">"I'm not a witch."</strong> post.
+            </div>
+            <div class="text-muted" th:text="${item.day}">yesterday</div>
+        </div>
+        <div class="col-auto align-self-center">
+            <div class="badge bg-primary"></div>
+        </div>
+    </div>
+</div>
