@@ -13,6 +13,7 @@
         <module>spring</module>
         <module>spring-security</module>
         <module>spring-statemachine</module>
+        <module>spring-extention</module>
     </modules>
     <packaging>pom</packaging>
 
