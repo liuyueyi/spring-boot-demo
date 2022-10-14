@@ -33,6 +33,7 @@
         <module>126-redis-delay-list</module>
         <module>430-mail-alarm</module>
         <module>431-mail-report</module>
+        <module>422-prometheus-druid</module>
     </modules>
 
     <dependencies>
