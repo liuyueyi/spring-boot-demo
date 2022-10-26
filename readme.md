@@ -150,7 +150,9 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 
 ### V. 源码篇
 
-- [ ] xxx
+- [ ] 扩展点
+  - [x] [项目](spring-extention/) 
+  - [x] [Spring扩展点专栏](https://spring.hhui.top/spring-blog/categories/Spring%E6%BA%90%E7%A0%81/%E6%89%A9%E5%B1%95%E7%82%B9/)
 
 ### VI. 项目说明
 
@@ -635,6 +637,12 @@ webclient异步网络请求
 
 - [【中间件】SpringBoot系列之邮件发送姿势介绍](https://spring.hhui.top/spring-blog/2021/08/02/210802-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D/)
 - [【中间件】SpringBoot实战基于异常日志的邮件报警](https://spring.hhui.top/spring-blog/2021/08/03/210803-SpringBoot%E5%AE%9E%E6%88%98%E5%9F%BA%E4%BA%8E%E5%BC%82%E5%B8%B8%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8A%A5%E8%AD%A6/)
+
+### 10. 扩展点
+
+* [【扩展点】 容器刷新前回调ApplicationContextInitializer | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/09/27/220927-Spring%E6%89%A9%E5%B1%95%E4%B9%8B%E5%AE%B9%E5%99%A8%E5%88%B7%E6%96%B0%E5%89%8D%E5%9B%9E%E8%B0%83ApplicationContextInitializer/)
+* [【扩展点】 自定义bean注册扩展机制BeanDefinitionRegistryPostProcessor | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/10/26/221026-Spring扩展点之自定义bean注册/)
+
 
 ## 3. 其他
 
