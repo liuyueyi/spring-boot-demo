@@ -1,6 +1,7 @@
 package com.git.hui.boot.web.rest;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.git.hui.boot.web.resolver.ListParam;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -9,6 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +36,19 @@ public class ParamGetRest {
     @GetMapping(path = "req")
     public String requestParam(HttpServletRequest httpRequest) {
         Map<String, String[]> ans = httpRequest.getParameterMap();
-        return JSON.toJSONString(ans);
+
+        // 将请求头也一并返回
+        Enumeration<String> headers = httpRequest.getHeaderNames();
+        StringBuilder h = new StringBuilder("==========\n");
+        while (headers.hasMoreElements()) {
+            String val = httpRequest.getHeader(headers.nextElement());
+            h.append(val).append("\n");
+        }
+        h.append("===========\n");
+        JSONObject res = new JSONObject();
+        res.put("params", ans);
+        res.put("header", new String[]{h.toString()});
+        return JSON.toJSONString(res);
     }
 
     @GetMapping(path = "req2")
