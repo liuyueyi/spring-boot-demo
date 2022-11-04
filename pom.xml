@@ -14,6 +14,7 @@
         <module>spring-security</module>
         <module>spring-statemachine</module>
         <module>spring-extention</module>
+        <module>spring-extention/102-bean-factory-post-processor</module>
     </modules>
     <packaging>pom</packaging>
 
