@@ -24,6 +24,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>1.4.200</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -36,13 +37,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.2.RELEASE</version>
             </plugin>
 
             <!-- The H2 test schema is loaded here -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sql-maven-plugin</artifactId>
-
+                <version>1.5</version>
                 <executions>
                     <execution>
                         <id>create-database-h2</id>
@@ -69,7 +71,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>2.1.210</version>
+                        <version>1.4.200</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -78,7 +80,7 @@
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
-
+                <version>3.12.3</version>
                 <executions>
                     <execution>
                         <id>generate-h2</id>
