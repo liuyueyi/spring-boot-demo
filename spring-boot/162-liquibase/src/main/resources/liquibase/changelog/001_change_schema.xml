@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <!-- 后续出现新的变更时，每一个变更都新增一个对应的 changeSet  -->
+    <changeSet id="00000000000003" author="YiHui">
+        <sqlFile dbms="mysql" endDelimiter=";" encoding="UTF-8" path="liquibase/data/init_data_221212.sql"/>
+    </changeSet>
+</databaseChangeLog>

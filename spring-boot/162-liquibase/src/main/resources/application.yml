@@ -1,0 +1,20 @@
+# 默认的数据库名
+database:
+  name: tt
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/${database.name}?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password:
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+    enabled: true
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        jdbc:
+          core: debug

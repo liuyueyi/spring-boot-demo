@@ -121,6 +121,9 @@
         <module>204-web-xml</module>
         <module>204-web-xml-json</module>
         <module>160-druid</module>
+        <module>161-schema-init</module>
+        <module>162-liquibase</module>
+
 
     </modules>
 
