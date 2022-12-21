@@ -44,6 +44,7 @@ public class DataSourceInit {
         // 设置数据源
         initializer.setDataSource(dataSource);
         initializer.setDatabasePopulator(databasePopulator());
+        // true表示需要执行，false表示不需要初始化
         initializer.setEnabled(needInit(dataSource));
         return initializer;
     }

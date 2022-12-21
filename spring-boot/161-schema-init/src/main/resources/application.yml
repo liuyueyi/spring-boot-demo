@@ -7,6 +7,27 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/${database.name}?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password:
+    initialization-mode: always
+    platform: mysql
+    separator: ; # 默认为 ;
+    data: classpath:config-data.sql
+    #data-username: root
+    #data-password:
+    schema: classpath:config-schema.sql # schema必须也存在，若只存在data，data中的sql也不会被执行
+
+# springboot 2.5+ 版本使用下面这个
+#  sql:
+#    init:
+#      mode: always
+#      data-location: classpath:config-data.sql
+#      schema-location: classpath:init-schema.sql
+
+#  jpa方式
+#  jpa:
+#    show-sql: true
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: create #
 
 logging:
   level:

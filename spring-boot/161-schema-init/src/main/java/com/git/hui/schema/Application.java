@@ -27,6 +27,6 @@ public class Application implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List list = jdbcTemplate.queryForList("select * from user limit 2");
-        log.info("启动成功，初始化数据: {}", list);
+        log.info("启动成功，初始化数据: {}\n{}", list.size(), list);
     }
 }
