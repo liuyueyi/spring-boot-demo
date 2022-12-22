@@ -77,3 +77,8 @@ create database if not exist 数据库名;
 实现接口 `ApplicationRunner`
 
 ### 系列博文
+
+
+* [221221-SpringBoot系列之数据库初始化-datasource配置方式 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/21/221221-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-datasource%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/)
+* [221221-SpringBoot系列之数据库初始化-jpa配置方式 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/21/221221-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-jpa%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/)
+* [221221-SpringBoot系列之数据库初始化-DataSourceInitializer方式 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/21/221221-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-DataSourceInitializer%E6%96%B9%E5%BC%8F/)

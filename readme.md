@@ -158,126 +158,131 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 
 <details><summary> 项目说明 </summary>
 
-| 项目 | 说明 | 知识点 | 
-| --- | --- | --- |
-| **SpringBoot** | SpringBoot项目 | - |
-| [000-properties](spring-boot/000-properties) | 【配置】使用姿势 | `@PropertySource` 指定配置文件，<br/> `@ConfigurationProperties` 指定配置前缀, <br/>`@value` 配置绑定|
-| [001-properties](spring-boot/001-properties) | 【配置】环境选择 | 配置`spring.profiles.active`指定环境 | 
-| [002-properties](spring-boot/002-properties) | 【配置】刷新示例 | SpringCloud生态配置刷新<br/>`@RefreshScope`，`EnvironmentChangeEvent`配置变更事件|
-| [002-properties-bind](spring-boot/002-properties-bind) | 【配置】刷新绑定的各种知识点 | `@ConfigurationProperties` |
-| [002-dynamic-envronment](spring-boot/002-dynamic-envronment) | 【配置】自定义配置源 | `MapPropertySource` |
-| [002-properties-value](spring-boot/002-properties-value) | 【配置】@Value扩展知识点 | `@Value` |
-| [003-log](spring-boot/003-log) | 【日志】集成logback | logback日志集成与配置 |
-| [003-log4j2](spring-boot/003-log4j2) | 【日志】集成log4j2 | log4j2日志集成与配置 |
-| [004-bean](spring-boot/004-bean) | 【bean】使用姿势 | bean三种定义姿势 <br/> bean三种注入方式 |
-| [005-autoconfig](spring-boot/005-autoconfig) | 【bean】自动加载 | `@Configuration`自动加载配置类 |
-| [005-config-selector](spring-boot/005-config-selector) | 【bean】选择注入 | `ImportSelector` 选择在接口的多个实现中，具体实例化哪个 |
-| [006-dynamicbean](spring-boot/006-dynamicbean) | 【bean】动态注册bean | `BeanDefinitionRegistryPostProcessor` 扩展实现bean动态注册 |
-| [007-conditionbean](spring-boot/007-conditionbean) | 【bean】条件注入 | `@Coinditional` 使用姿势 |
-| [008-beanorder](spring-boot/008-beanorder)<br/>[008-beanorder-addition](spring-boot/008-beanorder-addition)<br/> [008-beanorder-addition2](spring-boot/008-beanorder-addition2)| 【bean】加载顺序 | bean加载顺序的反面示例与正确写法 |
-| [009-schedule](spring-boot/009-schedule) | 【定时器】定时任务/计划任务 | `@Scheduled` 基本语法与自定义线程池 |
-| [010-aop](spring-boot/010-aop) | 【AOP】切面 | aop基本使用姿势与注意事项 |
-| [011-aop-logaspect](spring-boot/011-aop-logaspect) | 【AOP】切面 | 实战，日志切面|
-| [012-context-listener](spring-boot/012-context-listener) | 【Listener】事件 | ContextListener |
-| [013-spel](spring-boot/013-spel) | 【SpEL】 | SpEL语法与实例 |
-| [014-spel-aop](spring-boot/014-spel-aop) | 【SpEL】 | SpEL & aop整合时注意事项 |
-| [100-h2database](spring-boot/100-h2database) | 【DB】h2database整合 | - |
-| [100-mysql](spring-boot/100-mysql) | 【DB】mysql整合 | - |
-| [101-jdbctemplate](spring-boot/101-jdbctemplate) | 【DB】jdbctemplate使用姿势 CURD详解 | `JdbcTemplate` |
-| [101-jdbctemplate-transaction](spring-boot/101-jdbctemplate-transaction) | 【DB】事务 |`@Transactional`声明式; 编程式事务 <br/> - 隔离级别 <br/> 传递属性 |
-| [102-jpa](spring-boot/102-jpa) | 【DB】 jpa使用姿势 | JPA |
-| [102-jpa-errorcase](spring-boot/102-jpa-errorcase) | 【DB】环境配置易错点 | `@EnableJpaRepositories`, `@EntityScan`指定扫描包 |
-| [102-jpa-errorcase2](spring-boot/102-jpa-errorcase2) | 【DB】Entity映射错误 | Field映射POJO |
-| [103-mybatis-xml](spring-boot/103-mybatis-xml) | 【DB】mybatis xml配置整合方式 | mybatis |
-| [104-mybatis-noxml](spring-boot/104-mybatis-noxml) | 【DB】mybatis 注解整合方式 | mybatis |
-| [105-mybatis-plus](spring-boot/105-mybatis-plus) | 【DB】mybatis-plus整合 | mybatis-plus |
-| [106-mybatis-plus-generator](spring-boot/106-mybatis-plus-generator) | 【DB】mybatis-plus代码自动生成 | mybatis-plus |
-| [107-jooq-aop](spring-boot/107-jooq-aop) | 【DB】jooq体验demo，jooq+aop导致项目启动巨慢的坑 | jooq |
-| [108-jooq-curd](spring-boot/108-jooq-curd) | 【DB】jooq CURD使用姿势 | jooq |
-| [108-jooq-mysql](spring-boot/108-jooq-mysql) | 【DB】jooq代码自动生成 | jooq-code-gen |
-| [109-multi-datasource](spring-boot/109-multi-datasource) | 【DB】多数据源配置 | JdbcTemplate, DataSource |
-| [109-multi-datasource-mybatis](spring-boot/109-multi-datasource-mybatis) | 【DB】mybatis多数据源配置 | Mybatis DataSource |
-| [109-multi-datasource-mybatis-ano](spring-boot/109-multi-datasource-mybatis-ano) | 【DB】mybatis多数据源配置 | Mybatis DataSource |
-| [109-multi-datasource-mybatis-plus](spring-boot/109-multi-datasource-mybatis-plus) | 【DB】mybatis-plus多数据源配置 | Mybatis-Plus DataSource |
-| [110-mongo-basic](spring-boot/110-mongo-basic) | 【DB】mongodb整合 | mongodb |
-| [111-mongo-template](spring-boot/111-mongo-template) | 【DB】mongodb CURD使用姿势 | `MongoTemplate` |
-| [120-redis-config](spring-boot/120-redis-config)  | 【redis】环境配置与基本使用 | redis |
-| [121-redis-jedis-config](spring-boot/121-redis-jedis-config) |【redis】jedis配置 | jedis |
-| [122-redis-template](spring-boot/122-redis-template) | 【redis】RedisTemplate 使用姿势详解 | `RedisTemplate` |
-| [123-redis-lettuce-config](spring-boot/123-redis-lettuce-config) | 【redis】lettuce配置 | lettuce |
-| [124-redis-cluster](spring-boot/124-redis-cluster) | 【redis】集群使用姿势 | redis集群实例 |
-| [125-cache-ano](spring-boot/125-cache-ano) | 【Cache】缓存注解 | Spring缓存注解使用姿势 |
-| [130-influxdb](spring-boot/130-influxdb) | 【DB】influxdb整合及CURD | 时序数据库 influxdb |
-| [131-influxdb-java](spring-boot/131-influxdb-java) | 【DB】influxdb封装 | 封装更服务SpringBoot规范的`InfluxTemplate`，待实现 |
-| [140-search-solr](spring-boot/140-search-solr) | 【Solr】solr环境+CURD使用姿势 | `SolrTemplate`, `SolrClient` |
-| [141-search-solr-auth](spring-boot/141-search-solr-auth) | 【Solr】solr开启授权无法更新索引的四种解决方案 | 解决solr更新索引报错问题 |
-| [142-search-es](spring-boot/142-search-es) | 【ES】es实例使用demo | ES，权限验证，CURD，高级特性等 `RestHighLevelClient` |
-| [150-i18n](spring-boot/150-i18n) | 【i18n】国际化 | 国际化支持 |
-| [200-webflux](spring-boot/200-webflux) | 【web】WebFlux实例 | `React` |
-| [201-web](spring-boot/201-web) | 【web】basic http实例 | `springmvc` |
-| [202-web-params](spring-boot/202-web-params) | 【web】请求参数解析的各种姿势 | get参数解析<br/>post参数解析<br/>自定义参数解析`HandlerMethodArgumentResolver` |
-| [202-web-params-validate](spring-boot/202-web-params-validate) | 【web】请求参数校验 | 参数校验validation-api |
-| [203-websocket](spring-boot/203-websocket) | 【web】websocket实例 | `WebSocketHandler`, `WebSocketConfigurer` |
-| [204-web-static-resources](spring-boot/204-web-static-resources) | 【web】静态资源访问实例 | `WebMvcConfigure`, `spring.resources.static-locations` |
-| [204-web-static-resources-ui](spring-boot/204-web-static-resources-ui) | 【web】webjar静态资源 | 第三方jar包提供纯静态资源 |
-| [204-web-xml](spring-boot/204-web-xml) | 【web】xml传参与返回实例 | xml传参返回使用姿势 |
-| [204-web-xml-json](spring-boot/204-web-xml-json) | 【web】自定义返回数据类型的几种方式 | 返回xml，返回json，请求头、返回头，内容协商`ContentNegotiationConfigurer` |
-| [204-web-freemaker](spring-boot/204-web-freemaker) | 【web】freemaker引擎整合 | freemaker |
-| [205-web-thymeleaf](spring-boot/205-web-thymeleaf) | 【web】thymeleaf引擎整合 | thymeleaf |
-| [206-web-beetl](spring-boot/206-web-beetl) | 【web】beetl引擎整合 | beetl |
-| [207-web-response](spring-boot/207-web-response) | 【web】http响应的各种姿势 | 基本数据返回 <br/> 重定向 <br/> 错误页面配置 <br/> 定制http code |
-| [208-web-mapping](spring-boot/208-web-mapping) | 【web】自定义url映射规则 | `RequestCondition` |
-| [209-web-error](spring-boot/209-web-error) | 【web】全局异常处理 | `ControllerAdvice`, `ExceptionHandler` |
-| [210-web-filter](spring-boot/210-web-filter) | 【web】filter使用姿势 | HttpFilter过滤器 |
-| [210-web-filter-order](spring-boot/210-web-filter-order) | 【web】filter优先级使用姿势 | `HttpFilter`, `@Order` |
-| [211-web-servlet](spring-boot/211-web-servlet) | 【web】servlet使用姿势 | Servlet |
-| [212-web-listener](spring-boot/212-web-listener) | 【web】listener知识点 | Listener |
-| [219-web-asyn](spring-boot/219-web-asyn) | 【web】异步请求 |`AsyncContext方式` <br/> `Callable` <br/> `WebAsyncTask` <br/>`DeferredResult` |
-| [220-web-sse](spring-boot/220-web-sse) | 【web】sse 服务器发送事件 |`SseEmitter` |
-| [221-web-resttemplate](spring-boot/221-web-resttemplate) | 【web】RestTemplate使用姿势 |`RestTemplate` |
-| [222-web-client](spring-boot/222-web-client) | 【web】WebClient使用姿势 |`WebClient` |
-| [223-webflux-params](spring-boot/223-webflux-params) | 【web】webflux参数解析实例demo |`webflux` |
-| [230-web-resin](spring-boot/230-web-resin) | 【web】resion容器整合 |`resin` |
-| [300-rabbitmq](spring-boot/300-rabbitmq) | 【web】rabbitmq整合 | rabbitmq |
-| [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息 | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
-| [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) |【web】rabbitmq消费消息姿势 | `@RabbitListener` |
-| [400-docker-demo](spring-boot/400-docker-demo) |【docker】docker整合 | `Dockerfile` |
-| [410-zookeeper-basic](spring-boot/410-zookeeper-basic) |【中间件】zk使用姿势 | `ZooKeeper` |
-| [411-zookeeper-distributelock](spring-boot/411-zookeeper-distributelock) |【中间件】zk 分布式锁 | `DistributeLock` |
-|  | | |
-| **SpringCase** | 实战/应用演练项目 | - |
-| [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果 | `FactoryBean` |
-| [002-dynamic-config](spring-case/002-dynamic-config) <br/> [002-dynamic-config-demo](spring-case/002-dynamic-config-demo) | 自定义配置加载与刷新示例工程 | 借助`InstantiationAwareBeanPostProcessorAdapter` + Spring事件机制实现`@Value` `@RefreshScope` |
+| 项目 | 说明                                 | 知识点 | 
+| --- |------------------------------------| -- |
+| **SpringBoot** | SpringBoot项目                       | - |
+| [000-properties](spring-boot/000-properties) | 【配置】使用姿势                           | `@PropertySource` 指定配置文件，<br/> `@ConfigurationProperties` 指定配置前缀, <br/>`@value` 配置绑定|
+| [001-properties](spring-boot/001-properties) | 【配置】环境选择                           | 配置`spring.profiles.active`指定环境 | 
+| [002-properties](spring-boot/002-properties) | 【配置】刷新示例                           | SpringCloud生态配置刷新<br/>`@RefreshScope`，`EnvironmentChangeEvent`配置变更事件|
+| [002-properties-bind](spring-boot/002-properties-bind) | 【配置】刷新绑定的各种知识点                     | `@ConfigurationProperties` |
+| [002-dynamic-envronment](spring-boot/002-dynamic-envronment) | 【配置】自定义配置源                         | `MapPropertySource` |
+| [002-properties-value](spring-boot/002-properties-value) | 【配置】@Value扩展知识点                    | `@Value` |
+| [003-log](spring-boot/003-log) | 【日志】集成logback                      | logback日志集成与配置 |
+| [003-log4j2](spring-boot/003-log4j2) | 【日志】集成log4j2                       | log4j2日志集成与配置 |
+| [004-bean](spring-boot/004-bean) | 【bean】使用姿势                         | bean三种定义姿势 <br/> bean三种注入方式 |
+| [005-autoconfig](spring-boot/005-autoconfig) | 【bean】自动加载                         | `@Configuration`自动加载配置类 |
+| [005-config-selector](spring-boot/005-config-selector) | 【bean】选择注入                         | `ImportSelector` 选择在接口的多个实现中，具体实例化哪个 |
+| [006-dynamicbean](spring-boot/006-dynamicbean) | 【bean】动态注册bean                     | `BeanDefinitionRegistryPostProcessor` 扩展实现bean动态注册 |
+| [007-conditionbean](spring-boot/007-conditionbean) | 【bean】条件注入                         | `@Coinditional` 使用姿势 |
+| [008-beanorder](spring-boot/008-beanorder)<br/>[008-beanorder-addition](spring-boot/008-beanorder-addition)<br/> [008-beanorder-addition2](spring-boot/008-beanorder-addition2)| 【bean】加载顺序                         | bean加载顺序的反面示例与正确写法 |
+| [009-schedule](spring-boot/009-schedule) | 【定时器】定时任务/计划任务                     | `@Scheduled` 基本语法与自定义线程池 |
+| [010-aop](spring-boot/010-aop) | 【AOP】切面                            | aop基本使用姿势与注意事项 |
+| [011-aop-logaspect](spring-boot/011-aop-logaspect) | 【AOP】切面                            | 实战，日志切面|
+| [012-context-listener](spring-boot/012-context-listener) | 【Listener】事件                       | ContextListener |
+| [013-spel](spring-boot/013-spel) | 【SpEL】                             | SpEL语法与实例 |
+| [014-spel-aop](spring-boot/014-spel-aop) | 【SpEL】                             | SpEL & aop整合时注意事项 |
+| [100-h2database](spring-boot/100-h2database) | 【DB】h2database整合                   | - |
+| [100-mysql](spring-boot/100-mysql) | 【DB】mysql整合                        | - |
+| [101-jdbctemplate](spring-boot/101-jdbctemplate) | 【DB】jdbctemplate使用姿势 CURD详解        | `JdbcTemplate` |
+| [101-jdbctemplate-transaction](spring-boot/101-jdbctemplate-transaction) | 【DB】事务                             |`@Transactional`声明式; 编程式事务 <br/> - 隔离级别 <br/> 传递属性 |
+| [102-jpa](spring-boot/102-jpa) | 【DB】 jpa使用姿势                       | JPA |
+| [102-jpa-errorcase](spring-boot/102-jpa-errorcase) | 【DB】环境配置易错点                        | `@EnableJpaRepositories`, `@EntityScan`指定扫描包 |
+| [102-jpa-errorcase2](spring-boot/102-jpa-errorcase2) | 【DB】Entity映射错误                     | Field映射POJO |
+| [103-mybatis-xml](spring-boot/103-mybatis-xml) | 【DB】mybatis xml配置整合方式              | mybatis |
+| [104-mybatis-noxml](spring-boot/104-mybatis-noxml) | 【DB】mybatis 注解整合方式                 | mybatis |
+| [105-mybatis-plus](spring-boot/105-mybatis-plus) | 【DB】mybatis-plus整合                 | mybatis-plus |
+| [106-mybatis-plus-generator](spring-boot/106-mybatis-plus-generator) | 【DB】mybatis-plus代码自动生成             | mybatis-plus |
+| [107-jooq-aop](spring-boot/107-jooq-aop) | 【DB】jooq体验demo，jooq+aop导致项目启动巨慢的坑  | jooq |
+| [108-jooq-curd](spring-boot/108-jooq-curd) | 【DB】jooq CURD使用姿势                  | jooq |
+| [108-jooq-mysql](spring-boot/108-jooq-mysql) | 【DB】jooq代码自动生成                     | jooq-code-gen |
+| [109-multi-datasource](spring-boot/109-multi-datasource) | 【DB】多数据源配置                         | JdbcTemplate, DataSource |
+| [109-multi-datasource-mybatis](spring-boot/109-multi-datasource-mybatis) | 【DB】mybatis多数据源配置                  | Mybatis DataSource |
+| [109-multi-datasource-mybatis-ano](spring-boot/109-multi-datasource-mybatis-ano) | 【DB】mybatis多数据源配置                  | Mybatis DataSource |
+| [109-multi-datasource-mybatis-plus](spring-boot/109-multi-datasource-mybatis-plus) | 【DB】mybatis-plus多数据源配置             | Mybatis-Plus DataSource |
+| [110-mongo-basic](spring-boot/110-mongo-basic) | 【DB】mongodb整合                      | mongodb |
+| [111-mongo-template](spring-boot/111-mongo-template) | 【DB】mongodb CURD使用姿势               | `MongoTemplate` |
+| [120-redis-config](spring-boot/120-redis-config)  | 【redis】环境配置与基本使用                   | redis |
+| [121-redis-jedis-config](spring-boot/121-redis-jedis-config) | 【redis】jedis配置                     | jedis |
+| [122-redis-template](spring-boot/122-redis-template) | 【redis】RedisTemplate 使用姿势详解        | `RedisTemplate` |
+| [123-redis-lettuce-config](spring-boot/123-redis-lettuce-config) | 【redis】lettuce配置                   | lettuce |
+| [124-redis-cluster](spring-boot/124-redis-cluster) | 【redis】集群使用姿势                      | redis集群实例 |
+| [125-cache-ano](spring-boot/125-cache-ano) | 【Cache】缓存注解                        | Spring缓存注解使用姿势 |
+| [130-influxdb](spring-boot/130-influxdb) | 【DB】influxdb整合及CURD                | 时序数据库 influxdb |
+| [131-influxdb-java](spring-boot/131-influxdb-java) | 【DB】influxdb封装                     | 封装更服务SpringBoot规范的`InfluxTemplate`，待实现 |
+| [140-search-solr](spring-boot/140-search-solr) | 【Solr】solr环境+CURD使用姿势              | `SolrTemplate`, `SolrClient` |
+| [141-search-solr-auth](spring-boot/141-search-solr-auth) | 【Solr】solr开启授权无法更新索引的四种解决方案        | 解决solr更新索引报错问题 |
+| [142-search-es](spring-boot/142-search-es) | 【ES】es实例使用demo                     | ES，权限验证，CURD，高级特性等 `RestHighLevelClient` |
+| [150-i18n](spring-boot/150-i18n) | 【i18n】国际化                          | 国际化支持 |
+| [161-schema-init](spring-boot/161-schema-init) | 【DB】数据初始化                          | 数据初始化 |
+| [162-liquibase](spring-boot/162-liquibase) | 【DB】Liquibase                          | Liquibase数据库版本管理 |
+| [200-webflux](spring-boot/200-webflux) | 【web】WebFlux实例                     | `React` |
+| [201-web](spring-boot/201-web) | 【web】basic http实例                  | `springmvc` |
+| [202-web-params](spring-boot/202-web-params) | 【web】请求参数解析的各种姿势                   | get参数解析<br/>post参数解析<br/>自定义参数解析`HandlerMethodArgumentResolver` |
+| [202-web-params-validate](spring-boot/202-web-params-validate) | 【web】请求参数校验                        | 参数校验validation-api |
+| [203-websocket](spring-boot/203-websocket) | 【web】websocket实例                   | `WebSocketHandler`, `WebSocketConfigurer` |
+| [204-web-static-resources](spring-boot/204-web-static-resources) | 【web】静态资源访问实例                      | `WebMvcConfigure`, `spring.resources.static-locations` |
+| [204-web-static-resources-ui](spring-boot/204-web-static-resources-ui) | 【web】webjar静态资源                    | 第三方jar包提供纯静态资源 |
+| [204-web-xml](spring-boot/204-web-xml) | 【web】xml传参与返回实例                    | xml传参返回使用姿势 |
+| [204-web-xml-json](spring-boot/204-web-xml-json) | 【web】自定义返回数据类型的几种方式                | 返回xml，返回json，请求头、返回头，内容协商`ContentNegotiationConfigurer` |
+| [204-web-freemaker](spring-boot/204-web-freemaker) | 【web】freemaker引擎整合                 | freemaker |
+| [205-web-thymeleaf](spring-boot/205-web-thymeleaf) | 【web】thymeleaf引擎整合                 | thymeleaf |
+| [206-web-beetl](spring-boot/206-web-beetl) | 【web】beetl引擎整合                     | beetl |
+| [207-web-response](spring-boot/207-web-response) | 【web】http响应的各种姿势                   | 基本数据返回 <br/> 重定向 <br/> 错误页面配置 <br/> 定制http code |
+| [208-web-mapping](spring-boot/208-web-mapping) | 【web】自定义url映射规则                    | `RequestCondition` |
+| [209-web-error](spring-boot/209-web-error) | 【web】全局异常处理                        | `ControllerAdvice`, `ExceptionHandler` |
+| [210-web-filter](spring-boot/210-web-filter) | 【web】filter使用姿势                    | HttpFilter过滤器 |
+| [210-web-filter-order](spring-boot/210-web-filter-order) | 【web】filter优先级使用姿势                 | `HttpFilter`, `@Order` |
+| [211-web-servlet](spring-boot/211-web-servlet) | 【web】servlet使用姿势                   | Servlet |
+| [212-web-listener](spring-boot/212-web-listener) | 【web】listener知识点                   | Listener |
+| [219-web-asyn](spring-boot/219-web-asyn) | 【web】异步请求                          |`AsyncContext方式` <br/> `Callable` <br/> `WebAsyncTask` <br/>`DeferredResult` |
+| [220-web-sse](spring-boot/220-web-sse) | 【web】sse 服务器发送事件                   |`SseEmitter` |
+| [221-web-resttemplate](spring-boot/221-web-resttemplate) | 【web】RestTemplate使用姿势              |`RestTemplate` |
+| [222-web-client](spring-boot/222-web-client) | 【web】WebClient使用姿势                 |`WebClient` |
+| [223-webflux-params](spring-boot/223-webflux-params) | 【web】webflux参数解析实例demo             |`webflux` |
+| [230-web-resin](spring-boot/230-web-resin) | 【web】resion容器整合                    |`resin` |
+| [300-rabbitmq](spring-boot/300-rabbitmq) | 【web】rabbitmq整合                    | rabbitmq |
+| [301-rabbitmq-publish](spring-boot/301-rabbitmq-publish) | 【web】rabbitmq发送消息                  | `RabbitTemplate` <br/> 消息确认模式 <br/> 事务模式 |
+| [302-rabbitmq-consumer](spring-boot/302-rabbitmq-consumer) | 【web】rabbitmq消费消息姿势                | `@RabbitListener` |
+| [400-docker-demo](spring-boot/400-docker-demo) | 【docker】docker整合                   | `Dockerfile` |
+| [410-zookeeper-basic](spring-boot/410-zookeeper-basic) | 【中间件】zk使用姿势                        | `ZooKeeper` |
+| [411-zookeeper-distributelock](spring-boot/411-zookeeper-distributelock) | 【中间件】zk 分布式锁                       | `DistributeLock` |
+|  |                                    | |
+| **SpringCase** | 实战/应用演练项目                          | - |
+| [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果               | `FactoryBean` |
+| [002-dynamic-config](spring-case/002-dynamic-config) <br/> [002-dynamic-config-demo](spring-case/002-dynamic-config-demo) | 自定义配置加载与刷新示例工程                     | 借助`InstantiationAwareBeanPostProcessorAdapter` + Spring事件机制实现`@Value` `@RefreshScope` |
 | [006-importbean](spring-case/006-importbean) | 将非spring项目导入Spring生态 <br/> 自定义注入实例 | `ImportBeanDefinitionRegistrar` |
 | [008-bean-order](spring-case/008-bean-order)<br/>[008-bean-order-client](spring-case/008-bean-order-client) | 指定bean加载优先级，让中间件的核心bean优于业务bean被加载 |`InstantiationAwareBeanPostProcessorAdapter`, `@Import` |
-| [009-distribute-scheduler-task](spring-case/009-distribute-scheduler-task) | 分布式定时任务mock实例 | AOP实现定时任务选择; 重写`ScheduledAnnotationBeanPostProcessor`扩展定时任务生成 |
-| [010-auto-inject](spring-case/010-auto-inject) | 自定义注入实现 | `BeanPostProcessor` 与 代理类创建 |
-| [120-redis-ranklist](spring-case/120-redis-ranklist) | redis实现排行榜 | `zset` |
-| [124-redis-sitecount](spring-case/124-redis-sitecount) | redis实现站点统计 | `redisTemplate` |
-| [125-redis-distribuet-lock](spring-case/125-redis-distribuet-lock) | redis分布式锁 | `redisTemplate` |
-| [126-redis-delay-list](spring-case/126-redis-delay-list) | redis实现的演示队列 | `redisTemplate` |
-| [201-web-api-version](spring-case/201-web-api-version) | web版本控制 | `RequestMappingHandlerMapping` |
-| [202-web-qrcode-login](spring-case/202-web-qrcode-login) | web扫码登录实战 | `SseEmitter` |
-| [203-web-rest-adapter](spring-case/203-web-rest-adapter) | url匹配规则自定义，子类继承父类的参数注解 | `RequestMappingHandlerMapping`, `HandlerMethodArgumentResolver` |
-| [204-web-request-proxy](spring-case/204-web-request-proxy) | 基于接口的REST访问支持 | `ClassPathBeanDefinitionScanner`, `ImportBeanDefinitionRegistrar` |
-| [205-web-rest-enhanced](spring-case/205-web-rest-enhanced) | 单机应用最小成本扩展REST服务示例 | `RequestMappingHandlerMapping` |
-| [421-prometheus-metric](spring-case/421-prometheus-metric) | AOP实现自定义的Prometheus埋点上报 | `Prometheus` |
-| [430-mail-alarm](spring-case/430-mail-alarm) | 基于日志的邮件报警 | `javaMailSender` |
-| | | |
-| **SpringSecurity** | 安全 | |
-| [000-basic-demo](spring-security/000-basic-demo) | 整合实例 | |
-| [001-authentication-mem-config](spring-security/001-authentication-mem-config) | 内存认证 | |
-| [001-authentication-mem-userdetail](spring-security/001-authentication-mem-userdetail) | 内存认证 | |
-| [002-authentication-db](spring-security/002-authentication-db) | db认证 | |
-| [010-accesscontrol-rbac](spring-security/010-accesscontrol-rbac) | rbac 权限管理 | |
-| [011-accesscontrol-acl](spring-security/011-accesscontrol-acl) | acl权限管理 | |
-| | | |
-| **spring-cloud** | 微服务 | |
-| [config-server](spring-cloud/config-server) | 配置中心 | spring cloud config|
-| [eurka-server](spring-cloud/eurka-server) | 注册中心 | spring cloud eurka |
-| [eurka-service-consumer](spring-cloud/eurka-service-consumer) | 服务提供者 | spring cloud eurka |
-| [eurka-service-provider](spring-cloud/eurka-service-provider) | 服务消费者 | ribbon feign |
-| [gateway](spring-cloud/gateway) | 网关 | spring cloud gateway 网关 |
+| [009-distribute-scheduler-task](spring-case/009-distribute-scheduler-task) | 分布式定时任务mock实例                      | AOP实现定时任务选择; 重写`ScheduledAnnotationBeanPostProcessor`扩展定时任务生成 |
+| [010-auto-inject](spring-case/010-auto-inject) | 自定义注入实现                            | `BeanPostProcessor` 与 代理类创建 |
+| [120-redis-ranklist](spring-case/120-redis-ranklist) | redis实现排行榜                         | `zset` |
+| [124-redis-sitecount](spring-case/124-redis-sitecount) | redis实现站点统计                        | `redisTemplate` |
+| [125-redis-distribuet-lock](spring-case/125-redis-distribuet-lock) | redis分布式锁                          | `redisTemplate` |
+| [126-redis-delay-list](spring-case/126-redis-delay-list) | redis实现的演示队列                       | `redisTemplate` |
+| [201-web-api-version](spring-case/201-web-api-version) | web版本控制                            | `RequestMappingHandlerMapping` |
+| [202-web-qrcode-login](spring-case/202-web-qrcode-login) | web扫码登录实战                          | `SseEmitter` |
+| [203-web-rest-adapter](spring-case/203-web-rest-adapter) | url匹配规则自定义，子类继承父类的参数注解             | `RequestMappingHandlerMapping`, `HandlerMethodArgumentResolver` |
+| [204-web-request-proxy](spring-case/204-web-request-proxy) | 基于接口的REST访问支持                      | `ClassPathBeanDefinitionScanner`, `ImportBeanDefinitionRegistrar` |
+| [205-web-rest-enhanced](spring-case/205-web-rest-enhanced) | 单机应用最小成本扩展REST服务示例                 | `RequestMappingHandlerMapping` |
+| [421-prometheus-metric](spring-case/421-prometheus-metric) | AOP实现自定义的Prometheus埋点上报            | `Prometheus` |
+| [430-mail-alarm](spring-case/430-mail-alarm) | 基于日志的邮件报警                          | `javaMailSender` |
+| |                                    | |
+| **SpringSecurity** | 安全                                 | |
+| [000-basic-demo](spring-security/000-basic-demo) | 整合实例                               | |
+| [001-authentication-mem-config](spring-security/001-authentication-mem-config) | 内存认证                               | |
+| [001-authentication-mem-userdetail](spring-security/001-authentication-mem-userdetail) | 内存认证                               | |
+| [002-authentication-db](spring-security/002-authentication-db) | db认证                               | |
+| [010-accesscontrol-rbac](spring-security/010-accesscontrol-rbac) | rbac 权限管理                          | |
+| [011-accesscontrol-acl](spring-security/011-accesscontrol-acl) | acl权限管理                            | |
+| |                                    | |
+| **spring-cloud** | 微服务                                | |
+| [config-server](spring-cloud/config-server) | 配置中心                               | spring cloud config|
+| [eurka-server](spring-cloud/eurka-server) | 注册中心                               | spring cloud eurka |
+| [eurka-service-consumer](spring-cloud/eurka-service-consumer) | 服务提供者                              | spring cloud eurka |
+| [eurka-service-provider](spring-cloud/eurka-service-provider) | 服务消费者                              | ribbon feign |
+| [gateway](spring-cloud/gateway) | 网关                                 | spring cloud gateway 网关 |
+| **spring-extention** | Spring的扩展点                                | |
+| [100-application-context-extend](spring-extention/100-application-context-extend) | 上下文刷新前扩展点ApplicationContextInitializer                               | ApplicationContextInitializer|
+
 
 </details>
 
@@ -462,6 +467,12 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 -  [【DB系列】Jooq之多表联合查询](https://spring.hhui.top/spring-blog/2020/12/11/201211-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2/)
 -  [【DB系列】Jooq之事务](https://spring.hhui.top/spring-blog/2020/12/13/201213-SpringBoot%E7%B3%BB%E5%88%97Jooq%E4%B9%8B%E4%BA%8B%E5%8A%A1/)
 
+> 数据初始化
+
+* [【DB系列】数据库初始化-datasource配置方式 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/21/221221-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-datasource%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/)
+* [【DB系列】数据库初始化-jpa配置方式 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/21/221221-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-jpa%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/)
+* [【DB系列】数据库初始化-DataSourceInitializer方式 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/21/221221-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-DataSourceInitializer%E6%96%B9%E5%BC%8F/)
+* [【DB系列】数据库版本管理Liquibase集成 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/12/22/221222-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86Liquibase%E9%9B%86%E6%88%90/)
 
 ### 3. 搜索系列
 
