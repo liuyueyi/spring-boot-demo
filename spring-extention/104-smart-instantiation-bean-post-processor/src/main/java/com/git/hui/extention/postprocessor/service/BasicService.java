@@ -22,7 +22,7 @@ public class BasicService {
 
     public BasicService(DemoService2 demoService2) {
         this.demoService2 = demoService2;
-        System.out.println("BasicServiec 使用demoService传参构建");
+        System.out.println("BasicService 使用demoService传参构建");
     }
 
     @PostConstruct
