@@ -123,6 +123,7 @@
         <module>160-druid</module>
         <module>161-schema-init</module>
         <module>162-liquibase</module>
+        <module>500-cache-caffeine</module>
 
 
     </modules>

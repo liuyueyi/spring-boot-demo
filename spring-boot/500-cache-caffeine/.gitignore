@@ -1,0 +1,7 @@
+.*
+target/*
+*.iml
+!.gitignore
+
+# 避免泄露邮箱信息，忽略邮箱认证信息
+/src/main/resources/application-mail.yml
