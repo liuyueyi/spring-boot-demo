@@ -53,6 +53,12 @@ public class CacheConfig {
 
     @Bean
     public Cache customCache() {
-        return new CaffeineCache("customCache", Caffeine.newBuilder().maximumSize(200).initialCapacity(100).expireAfterWrite(5, TimeUnit.MINUTES).recordStats().build(), true);
+        return new CaffeineCache("customCache", Caffeine.newBuilder()
+                .maximumSize(200)
+                .initialCapacity(100)
+                .expireAfterWrite(5, TimeUnit.MINUTES)
+                .recordStats()
+                .build(),
+                true);
     }
 }

@@ -1,0 +1,6 @@
+# 指定全局默认的缓存策略
+spring:
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=10,maximumSize=200,expireAfterWrite=5m

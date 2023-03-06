@@ -11,12 +11,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 注意，这里选中的 cacheManager = customCacheManager， 而这个缓存管理器，只定义了一个 cacheName = customCache 的缓存
+ * 所以下面的cacheName 不能和 AnoCacheService2 中的一样，随便选择前缀；这里必须是 customCacheManager 中声明的 Cache name
+ *
  * @author YiHui
  * @date 2023/3/5
  */
 @Service
-// 这个注释的是默认的缓存策略，此时对应的 cacheManager 由 spring.cache.caffeine.spec 来指定缓存规则
-@CacheConfig(cacheNames = "customCache")
+@CacheConfig(cacheNames = "customCache", cacheManager = "customCacheManager")
 public class AnoCacheService {
 
     /**

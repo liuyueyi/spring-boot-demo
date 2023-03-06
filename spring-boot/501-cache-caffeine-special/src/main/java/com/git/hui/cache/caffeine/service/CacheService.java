@@ -5,7 +5,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -155,7 +154,7 @@ public class CacheService {
         }
     }
 
-    @PostConstruct
+    //    @PostConstruct
     public void test() {
         String key = UUID.randomUUID().toString();
 
