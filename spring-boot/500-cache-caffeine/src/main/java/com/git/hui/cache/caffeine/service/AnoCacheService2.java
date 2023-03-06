@@ -11,15 +11,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 注意，这里选中的 cacheManager = customCacheManager， 而这个缓存管理器，只定义了一个 cacheName = customCache 的缓存
- * 所以下面的cacheName 不能和 AnoCacheService2 中的一样，随便选择前缀；这里必须是 customCacheManager 中声明的 Cache name
+ * 1. cacheManager 指定具体的缓存管理器
+ * 2. cacheName 表示这个缓存前缀
+ * 3. 通过CacheConfig 注解进行修饰，表示适用于这个类下的所有公共方法
  *
  * @author YiHui
  * @date 2023/3/5
  */
 @Service
-@CacheConfig(cacheNames = "customCache", cacheManager = "customCacheManager")
-public class AnoCacheService {
+@CacheConfig(cacheNames = "ano2", cacheManager = "otherCacheManager")
+public class AnoCacheService2 {
 
     /**
      * 用一个map来模拟存储

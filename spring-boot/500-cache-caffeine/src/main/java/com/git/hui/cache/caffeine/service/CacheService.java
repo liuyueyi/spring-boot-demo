@@ -155,7 +155,7 @@ public class CacheService {
         }
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void test() {
         String key = UUID.randomUUID().toString();
 
