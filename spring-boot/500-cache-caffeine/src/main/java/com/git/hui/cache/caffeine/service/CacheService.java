@@ -24,7 +24,7 @@ public class CacheService {
     // 手动加载缓存
     private Cache<String, Integer> uidCache;
 
-    // 再常见时，自动指定加载规则
+    // 在创建时，自动指定加载规则
     private LoadingCache<String, Integer> autoCache;
 
 
