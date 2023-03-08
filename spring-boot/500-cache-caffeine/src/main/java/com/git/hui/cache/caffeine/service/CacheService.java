@@ -120,13 +120,19 @@ public class CacheService {
 
         // 第二个参数表示当不存在时，初始化一个，并写入缓存中
         uid = asyncUidCache.get(session, (key) -> 10);
-        System.out.println("初始化一个之后，返回的是: " + uid);
+        System.out.println("初始化一个之后，返回的是: " + uid.get());
+
+        // 手动塞入一个缓存
+        asyncUidCache.put(session + "_2", CompletableFuture.supplyAsync(() -> 12));
 
         // 移除缓存
         asyncUidCache.synchronous().invalidate(session);
         // 查看所有的额缓存
-        Map map = asyncUidCache.asMap();
-        System.out.println("total: " + map);
+        System.out.println("print total cache:");
+        for (Map.Entry<String, CompletableFuture<Integer>> sub : asyncUidCache.asMap().entrySet()) {
+            System.out.println(sub.getKey() + "==>" + sub.getValue().get());
+        }
+        System.out.println("total over");
     }
 
     public void asyncAutoGetUid(String session) {
@@ -141,15 +147,19 @@ public class CacheService {
             List<String> keys = Arrays.asList(session, session + "_1");
             CompletableFuture<Map<String, Integer>> map = asyncAutoCache.getAll(keys);
             System.out.println("批量获取，一个存在一个不存在时：" + map.get());
+
             // 手动加一个
-            asyncAutoCache.put(session + "_2", new CompletableFuture<Integer>() {
-                @Override
-                public Integer get() {
-                    return 11;
-                }
-            });
-            Map total = asyncAutoCache.asMap();
-            System.out.println("total: " + total);
+            asyncAutoCache.put(session + "_2", CompletableFuture.supplyAsync(() -> 11));
+
+            // 查看所有的额缓存
+            System.out.println("print total cache:");
+            for (Map.Entry<String, CompletableFuture<Integer>> sub : asyncAutoCache.asMap().entrySet()) {
+                System.out.println(sub.getKey() + "==>" + sub.getValue().get());
+            }
+            System.out.println("total over");
+
+            // 清空所有缓存
+            asyncAutoCache.synchronous().invalidateAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
