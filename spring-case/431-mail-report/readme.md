@@ -19,3 +19,5 @@
 
 <!-- more -->
 
+
+* [【实战系列】数据报表统计并定时推送用户的手把手教程 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/08/19/220819-SpringBoot%E5%AE%9E%E6%88%98%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%A1%A8%E7%BB%9F%E8%AE%A1%E5%B9%B6%E5%AE%9A%E6%97%B6%E6%8E%A8%E9%80%81%E7%94%A8%E6%88%B7/)

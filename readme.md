@@ -82,6 +82,7 @@ Rainbow Brackets: 不同层级的括号颜色不一样
     - [x] 项目工程
         - 基础环境 [spring-boot/110-mongo-basic](spring-boot/110-mongo-basic)
         - mongoTemplate使用姿势 [spring-boot/111-mongo-template](spring-boot/111-mongo-template)
+    - [x] 系列博文：[分类: MongoDB | 一灰灰Blog](https://spring.hhui.top/spring-blog/categories/SpringBoot/DB%E7%B3%BB%E5%88%97/MongoDB/)
 - [x] [Redis读写](http://spring.hhui.top/spring-blog/tags/Redis/)
     - [x] 项目工程：
         - 基本环境构建 [spring-boot/120-redis-config](spring-boot/120-redis-config)
@@ -91,7 +92,13 @@ Rainbow Brackets: 不同层级的括号颜色不一样
         - redis集群实例工程 [spring-boot/124-redis-cluster](spring-boot/124-redis-cluster)
         - 排行榜应用实例工程 [spring-case/120-redis-ranklist](spring-case/120-redis-ranklist)
         - 站点统计应用实例工程 [spring-case/124-redis-sitecount](spring-case/124-redis-sitecount)
+    - [x] 系列博文： [分类: Redis | 一灰灰Blog](https://spring.hhui.top/spring-blog/categories/SpringBoot/DB%E7%B3%BB%E5%88%97/Redis/)
 - [ ] MemCache
+- [] 内存缓存
+  - [x] Caffiene
+    - 项目工程： [spring-boot/500-cache-caffeine](spring-boot/500-cache-caffeine) ， [spring-boot/501-cache-caffeine-special](spring-boot/501-cache-caffeine-special)
+    - 关联博文： [分类: Caffiene | 一灰灰Blog](https://spring.hhui.top/spring-blog/categories/SpringBoot/%E4%B8%AD%E9%97%B4%E4%BB%B6/Caffiene/)
+  - [ ] Guava
 - [ ] InfluxDb
     - [x] 项目工程：[spring-boot/130-influxdb](spring-boot/130-influxdb)
     - [InfluxDB系列博文](https://blog.hhui.top/hexblog/categories/DB/InfluxDB/)
@@ -246,6 +253,11 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 | [400-docker-demo](spring-boot/400-docker-demo) | 【docker】docker整合                   | `Dockerfile` |
 | [410-zookeeper-basic](spring-boot/410-zookeeper-basic) | 【中间件】zk使用姿势                        | `ZooKeeper` |
 | [411-zookeeper-distributelock](spring-boot/411-zookeeper-distributelock) | 【中间件】zk 分布式锁                       | `DistributeLock` |
+| [420-prometheus-basic](spring-boot/420-prometheus-basic) | 【中间件】Prometheus监控                     | `Prometheus` |
+| [421-prometheus-micro](spring-boot/421-prometheus-micro) | 【中间件】Prometheus监控                    | `Prometheus` |
+| [430-email](spring-boot/430-email) | 【中间件】email 邮件发送                     | `email` |
+| [500-cache-caffeine](spring-boot/500-cache-caffeine) | 【中间件】内存缓存Caffiene                       | `Caffiene` |
+| [501-cache-caffeine-special](spring-boot/501-cache-caffeine-special) | 【中间件】内存缓存Caffiene                      | `Caffiene` |
 |  |                                    | |
 | **SpringCase** | 实战/应用演练项目                          | - |
 | [000-spi-factorybean](spring-case/000-spi-factorybean) | 借助FactoryBean实现SPI效果               | `FactoryBean` |
@@ -265,6 +277,7 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 | [205-web-rest-enhanced](spring-case/205-web-rest-enhanced) | 单机应用最小成本扩展REST服务示例                 | `RequestMappingHandlerMapping` |
 | [421-prometheus-metric](spring-case/421-prometheus-metric) | AOP实现自定义的Prometheus埋点上报            | `Prometheus` |
 | [430-mail-alarm](spring-case/430-mail-alarm) | 基于日志的邮件报警                          | `javaMailSender` |
+| [431-mail-report](spring-case/431-mail-report) | 每天邮件上报统计报表实例                          | `javaMailSender` |
 | |                                    | |
 | **SpringSecurity** | 安全                                 | |
 | [000-basic-demo](spring-security/000-basic-demo) | 整合实例                               | |
@@ -280,8 +293,14 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 | [eurka-service-consumer](spring-cloud/eurka-service-consumer) | 服务提供者                              | spring cloud eurka |
 | [eurka-service-provider](spring-cloud/eurka-service-provider) | 服务消费者                              | ribbon feign |
 | [gateway](spring-cloud/gateway) | 网关                                 | spring cloud gateway 网关 |
+| |                                    | |
 | **spring-extention** | Spring的扩展点                                | |
 | [100-application-context-extend](spring-extention/100-application-context-extend) | 上下文刷新前扩展点ApplicationContextInitializer                               | ApplicationContextInitializer|
+| [101-bean-definition](spring-extention/101-bean-definition) |                                |  |
+| [102-bean-factory-post-processor](spring-extention/102-bean-factory-post-processor) |                                |  |
+| [103-instantiation-bean-post-processor](spring-extention/103-instantiation-bean-post-processor) |               | |
+| [104-smart-instantiation-bean-post-processor](spring-extention/104-smart-instantiation-bean-post-processor) |               | |
+| [105-bean-factory-aware](spring-extention/105-bean-factory-aware) |               | |
 
 
 </details>
@@ -648,6 +667,13 @@ webclient异步网络请求
 
 - [【中间件】SpringBoot系列之邮件发送姿势介绍](https://spring.hhui.top/spring-blog/2021/08/02/210802-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E5%A7%BF%E5%8A%BF%E4%BB%8B%E7%BB%8D/)
 - [【中间件】SpringBoot实战基于异常日志的邮件报警](https://spring.hhui.top/spring-blog/2021/08/03/210803-SpringBoot%E5%AE%9E%E6%88%98%E5%9F%BA%E4%BA%8E%E5%BC%82%E5%B8%B8%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8A%A5%E8%AD%A6/)
+* [【实战系列】数据报表统计并定时推送用户的手把手教程 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2022/08/19/220819-SpringBoot%E5%AE%9E%E6%88%98%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%A1%A8%E7%BB%9F%E8%AE%A1%E5%B9%B6%E5%AE%9A%E6%97%B6%E6%8E%A8%E9%80%81%E7%94%A8%E6%88%B7/)
+
+**Caffiene缓存**
+
+* [【中间件】内存缓存Caffeine基本使用 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2023/03/06/230307-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E5%86%85%E5%AD%98%E7%BC%93%E5%AD%98Caffeine%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/)
+* [【中间件】内存Caffeine整合Cachebale注解 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2023/03/08/230308-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E5%86%85%E5%AD%98%E7%BC%93%E5%AD%98Caffeine%E6%95%B4%E5%90%88Cachebale%E6%B3%A8%E8%A7%A3/)* [【中间件】内存Caffeine整合Cachebale注解 | 一灰灰Blog](https://spring.hhui.top/spring-blog/2023/03/08/230308-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E5%86%85%E5%AD%98%E7%BC%93%E5%AD%98Caffeine%E6%95%B4%E5%90%88Cachebale%E6%B3%A8%E8%A7%A3/)
+* [【中间件】内存缓存Caffiene自定义CacheManager | 一灰灰Blog](https://spring.hhui.top/spring-blog/2023/03/09/230309-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E5%86%85%E5%AD%98%E7%BC%93%E5%AD%98Caffiene%E8%87%AA%E5%AE%9A%E4%B9%89CacheBean/)
 
 ### 10. 扩展点
 
