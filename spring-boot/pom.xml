@@ -125,6 +125,7 @@
         <module>162-liquibase</module>
         <module>500-cache-caffeine</module>
         <module>501-cache-caffeine-special</module>
+        <module>224-web-session</module>
 
 
     </modules>
