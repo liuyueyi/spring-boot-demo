@@ -1,6 +1,6 @@
 # Spring-Boot-Demo
 
-<a href="https://blog.hhui.top" target="_blank">
+<a href="https://spring.hhui.top" target="_blank">
     <img src="https://img.shields.io/badge/-微信关注“一灰灰blog”公众号-orange.svg" alt="#" align="right">
 </a>
 
