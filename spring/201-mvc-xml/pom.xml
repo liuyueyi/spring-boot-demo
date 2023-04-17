@@ -13,7 +13,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.version>5.2.1.RELEASE</spring.version>
+        <spring.version>5.2.24.RELEASE</spring.version>
     </properties>
 
     <dependencies>
