@@ -2,6 +2,11 @@ spring:
   profiles:
     active: bind
 
+bind:
+  auto:
+    user: 自动导入
+    pwd: password
+    code: 123
 
 val:
   inj:
