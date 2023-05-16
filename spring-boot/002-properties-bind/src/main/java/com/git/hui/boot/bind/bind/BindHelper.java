@@ -25,6 +25,7 @@ public class BindHelper implements EnvironmentAware {
 
     @PostConstruct
     public void bindInfo() {
+        // 直接将前缀对应的配置，加载到指定的对象中
         Pwd config = Binder.get(environment).bindOrCreate("bind.auto", Pwd.class);
         System.out.println(config);
     }
