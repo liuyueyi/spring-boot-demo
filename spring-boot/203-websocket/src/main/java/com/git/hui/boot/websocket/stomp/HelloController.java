@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class HelloController {
 
     /**
-     * 当接受到客户端发送的消息时, header为 /app/hello
+     * 当接受到客户端发送的消息时, 发送的路径是： /app/hello (这个/app前缀是 StompConfiguration 中的配置的)
      * 将返回结果推送给所有订阅了 /topic/hello 的消费者
      *
      * @param content
