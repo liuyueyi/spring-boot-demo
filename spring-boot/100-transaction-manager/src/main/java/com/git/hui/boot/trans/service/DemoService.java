@@ -29,7 +29,7 @@ public class DemoService {
 
     @Transactional(rollbackFor = Exception.class)
     public void outTransExecute() throws InterruptedException {
-        String name = "2灰灰" + cnt.getAndAdd(1);
+        String name = "out灰灰" + cnt.getAndAdd(1);
         log.info("{}-out写入缓存: {}", Thread.currentThread(), name);
         jdbcTemplate.execute("insert into money (`name`, `money`) values ('" + name + "', " + cnt.get() + ");");
 
@@ -43,36 +43,43 @@ public class DemoService {
         // 验证外部事务回滚，子线程的事务是否也会回滚（判断两个事务是否是同一个）
         log.info("外部执行完毕!");
         Thread.sleep(2000);
-        Assert.isTrue(Math.random() > 0.5, "外部事务回滚");
+        Assert.isTrue(Math.random() > 0.5, "外部事务回滚，子线程的事务不会回滚");
     }
 
     /**
      * 事务提交前执行某些操作
-     * - 再同一个线程中执行，不过注册的事务提交前执行任务，会后置到这个方法执行完，再然后在相同的线程中执行
+     * - 都是在同一个线程中执行，但是注册回调钩子，会在事务提交前执行任务，即后置到这个方法执行完，再然后在相同的线程中执行
      */
     @Transactional(rollbackFor = Exception.class)
     public void transExecute(boolean hasException) {
         String name = "一灰灰" + cnt.getAndAdd(1);
         log.info("{}-外部写入缓存: {}", Thread.currentThread(), name);
         cache.set(name);
-        jdbcTemplate.execute("insert into money (`name`, `money`) values ('" + name + "', " + cnt.get() + ");");
-        registryBeforeCommitOrImmediatelyRun(new Runnable() {
-            @Override
-            public void run() {
-                String last = cache.get();
-                log.info("{}-缓存中的新增数据: {}", Thread.currentThread(), last);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+        try {
+            jdbcTemplate.execute("insert into money (`name`, `money`) values ('" + name + "', " + cnt.get() + ");");
+            registryBeforeCommitOrImmediatelyRun(new Runnable() {
+                @Override
+                public void run() {
+                    String last = cache.get();
+                    log.info("{}-缓存中的新增数据: {}", Thread.currentThread(), last);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
 
-                if (hasException) {
-                    // 让这里概率性失败，从而模拟事务回滚的场景
-                    Assert.isTrue(Math.random() > 0.5f, "模拟事务回滚!");
+                    if (hasException) {
+                        // 让这里概率性失败，从而模拟事务回滚的场景
+                        Assert.isTrue(Math.random() > 0.5f, "模拟事务回滚!");
+                    }
                 }
-            }
-        });
+            });
+        } finally {
+            registryAfterCompletionOrImmediatelyRun(() -> {
+                cache.remove();
+                log.info("事务提交/回滚之后，主动释放上下文信息");
+            });
+        }
 
         log.info("transExecute 执行完毕!");
     }
@@ -93,6 +100,26 @@ public class DemoService {
             TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
                 @Override
                 public void beforeCommit(boolean readOnly) {
+                    runnable.run();
+                }
+            });
+        } else {
+            // 马上执行
+            runnable.run();
+        }
+    }
+
+    public static void registryAfterCompletionOrImmediatelyRun(Runnable runnable) {
+        if (runnable == null) {
+            return;
+        }
+        // 处于事务中
+        if (TransactionSynchronizationManager.isSynchronizationActive()) {
+            // 等事务提交或者回滚之后执行
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+                @Override
+                public void afterCompletion(int status) {
+                    TransactionSynchronization.super.afterCommit();
                     runnable.run();
                 }
             });
