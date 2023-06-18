@@ -337,7 +337,7 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 - [【基础系列】SpringBoot之自定义配置源的使用姿势](https://spring.hhui.top/spring-blog/2021/06/10/210610-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%BA%90%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 - [【基础系列】SpringBoot基础篇@Value中哪些你不知道的知识点](https://spring.hhui.top/spring-blog/2021/06/06/210606-SpringBoot%E5%9F%BA%E7%A1%80%E7%AF%87-Value%E4%B8%AD%E5%93%AA%E4%BA%9B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/)
 - [【基础系列】SpringBoot应用篇@Value注解支持配置自动刷新能力扩展](https://spring.hhui.top/spring-blog/2021/08/01/210801-SpringBoot%E5%BA%94%E7%94%A8%E7%AF%87-Value%E6%B3%A8%E8%A7%A3%E6%94%AF%E6%8C%81%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E8%83%BD%E5%8A%9B%E6%89%A9%E5%B1%95/)
-
+- [【基础系列】编程式属性绑定Binder](https://spring.hhui.top/spring-blog/2023/06/18/230618-SpringBoot之编程式属性绑定Binder/)
 
 **IoC(DI/bean)**
 
