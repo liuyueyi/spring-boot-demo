@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: bind
+    active: bind,dynamic
 
 bind:
   auto:

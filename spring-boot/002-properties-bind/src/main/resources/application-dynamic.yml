@@ -1,0 +1,26 @@
+demo:
+  dynamic:
+    master:
+      user: main
+      password: m1
+    slave:
+      user: slave
+      password: s1
+  proxy:
+    - ip: 127.0.0.1
+      port: 1080
+    - ip: localhost
+      port: 1800
+  mail:
+    host: smtp.163.com
+    from: xhhuiblog@163.com
+    username: test
+    password: testpwd
+    port: 465
+  mail2:
+    host: smtp.163.com
+    from: xhhuiblog@163.com
+    username: test
+    password: testpwd
+  enc:
+    pwd: 5LiA54Gw54GwYmxvZw==

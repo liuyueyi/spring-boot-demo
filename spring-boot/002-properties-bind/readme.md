@@ -9,3 +9,4 @@
 本项目对应的博文内容为
 
 - [210117-SpringBoot系列ConfigurationProperties配置绑定中那些你不知道的事情](http://spring.hhui.top/spring-blog/2021/01/17/210117-SpringBoot系列ConfigurationProperties配置绑定中那些你不知道的事情/)
+- [230618-SpringBoot之编程式属性绑定Binder](https://spring.hhui.top/spring-blog/2023/06/18/230618-SpringBoot之编程式属性绑定Binder/)
