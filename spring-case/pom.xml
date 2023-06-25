@@ -16,6 +16,7 @@
         <module>000-spi-factorybean</module>
         <module>002-dynamic-config</module>
         <module>002-dynamic-config-demo</module>
+        <module>003-self-config-binder</module>
         <module>006-importbean</module>
         <module>008-bean-order</module>
         <module>008-bean-order-client</module>
