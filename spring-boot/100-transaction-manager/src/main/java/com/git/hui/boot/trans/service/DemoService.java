@@ -119,7 +119,7 @@ public class DemoService {
             TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
                 @Override
                 public void afterCompletion(int status) {
-                    TransactionSynchronization.super.afterCommit();
+                    TransactionSynchronization.super.afterCompletion(status);
                     runnable.run();
                 }
             });
