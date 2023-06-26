@@ -1,7 +1,6 @@
 package com.git.hui.boot.selfconfig.auto;
 
 import org.springframework.beans.PropertyEditorRegistry;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.BindHandler;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
@@ -36,12 +35,12 @@ public class SelfConfigBinder {
     }
 
     public <T> void bind(Bindable<T> bindable) {
-        ConfigurationProperties propertiesAno = bindable.getAnnotation(ConfigurationProperties.class);
+        ConfDot propertiesAno = bindable.getAnnotation(ConfDot.class);
         BindHandler bindHandler = getBindHandler(propertiesAno);
         getBinder().bind(propertiesAno.prefix(), bindable, bindHandler);
     }
 
-    private BindHandler getBindHandler(ConfigurationProperties annotation) {
+    private BindHandler getBindHandler(ConfDot annotation) {
         BindHandler handler = new IgnoreTopLevelConverterNotFoundBindHandler();
         if (annotation.ignoreInvalidFields()) {
             handler = new IgnoreErrorsBindHandler(handler);

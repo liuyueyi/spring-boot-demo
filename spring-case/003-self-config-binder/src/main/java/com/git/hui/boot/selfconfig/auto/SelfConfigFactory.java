@@ -1,12 +1,10 @@
 package com.git.hui.boot.selfconfig.auto;
 
 import org.springframework.beans.BeansException;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
-import org.springframework.core.ResolvableType;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
@@ -19,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 自定义的配置工厂类，专门用于 ConfigurationProperties 属性配置文件的配置加载，支持从自定义的配置源获取
+ * 自定义的配置工厂类，专门用于 ConfDot 属性配置文件的配置加载，支持从自定义的配置源获取
  *
  * @author YiHui
  * @date 2023/6/20
@@ -35,6 +33,7 @@ public class SelfConfigFactory implements EnvironmentAware, ApplicationContextAw
     @PostConstruct
     public void init() {
         cache.put("config.type", 12);
+        cache.put("config.wechat", "一灰灰blog");
         bindBeansFromLocalCache("config", cache);
     }
 
@@ -44,14 +43,14 @@ public class SelfConfigFactory implements EnvironmentAware, ApplicationContextAw
         MapPropertySource propertySource = new MapPropertySource(namespace, cache);
         propertySources.addFirst(propertySource);
         this.binder = new SelfConfigBinder(this.applicationContext, propertySources);
-        applicationContext.getBeansWithAnnotation(ConfigurationProperties.class).values().forEach(bean -> {
-            Bindable<?> target = Bindable.ofInstance(bean)
-//                    Bindable.of(ResolvableType.forClass(bean.getClass())).withExistingValue(bean)
-                    .withAnnotations(AnnotationUtils.findAnnotation(bean.getClass(), ConfigurationProperties.class));
-            binder.bind(target);
-        });
+        refreshConfig(null, null);
     }
 
+    /**
+     * 配置绑定
+     *
+     * @param bindable
+     */
     public void bind(Bindable bindable) {
         binder.bind(bindable);
     }
@@ -64,5 +63,23 @@ public class SelfConfigFactory implements EnvironmentAware, ApplicationContextAw
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+    }
+
+    /**
+     * 支持配置的动态刷新
+     *
+     * @param key
+     * @param val
+     */
+    public void refreshConfig(String key, String val) {
+        if (key != null) {
+            cache.put(key, val);
+        }
+        applicationContext.getBeansWithAnnotation(ConfDot.class).values().forEach(bean -> {
+            Bindable<?> target = Bindable.ofInstance(bean)
+                    // Bindable.of(ResolvableType.forClass(bean.getClass())).withExistingValue(bean)
+                    .withAnnotations(AnnotationUtils.findAnnotation(bean.getClass(), ConfDot.class));
+            bind(target);
+        });
     }
 }

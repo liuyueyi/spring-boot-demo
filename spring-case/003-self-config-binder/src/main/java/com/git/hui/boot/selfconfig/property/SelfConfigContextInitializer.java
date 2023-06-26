@@ -1,4 +1,4 @@
-package com.git.hui.boot.selfconfig.auto;
+package com.git.hui.boot.selfconfig.property;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
@@ -8,10 +8,9 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
+ * 注册自定义的配置源
+ *
  * @author YiHui
  * @date 2023/6/25
  */
@@ -19,16 +18,16 @@ public class SelfConfigContextInitializer implements ApplicationContextInitializ
         EnvironmentPostProcessor {
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
+        System.out.println("postProcessEnvironment");
         initialize(environment);
     }
 
     @Override
     public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+        System.out.println("postProcessEnvironment#initialize");
         ConfigurableEnvironment env = configurableApplicationContext.getEnvironment();
         initialize(env);
     }
-
-    public Map<String, Object> cache = new HashMap<>();
 
     protected void initialize(ConfigurableEnvironment environment) {
         if (environment.getPropertySources().contains("selfSource")) {
@@ -37,9 +36,7 @@ public class SelfConfigContextInitializer implements ApplicationContextInitializ
         }
 
         MutablePropertySources propertySources = new MutablePropertySources(environment.getPropertySources());
-        // 将内存的配置信息设置为最高优先级
-        cache.put("config.type", 33);
-        MapPropertySource propertySource = new MapPropertySource("selfSource", cache);
+        MapPropertySource propertySource = new MapPropertySource("selfSource", SelfConfigContext.getInstance().getCache());
         propertySources.addFirst(propertySource);
         environment.getPropertySources().addFirst(propertySource);
     }

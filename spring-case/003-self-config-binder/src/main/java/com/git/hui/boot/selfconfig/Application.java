@@ -1,6 +1,6 @@
 package com.git.hui.boot.selfconfig;
 
-import com.git.hui.boot.selfconfig.auto.SelfConfigContextInitializer;
+import com.git.hui.boot.selfconfig.property.SelfConfigContextInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
