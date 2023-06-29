@@ -23,18 +23,28 @@ import java.util.Map;
  * @date 2023/6/20
  */
 @Component
-public class SelfConfigFactory implements EnvironmentAware, ApplicationContextAware {
+public class SelfConfigContainer implements EnvironmentAware, ApplicationContextAware {
     private ConfigurableEnvironment environment;
     private ApplicationContext applicationContext;
-    public Map<String, Object> cache = new HashMap<>();
+
+    @Override
+    public void setEnvironment(Environment environment) {
+        this.environment = (ConfigurableEnvironment) environment;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 
     private SelfConfigBinder binder;
+    public Map<String, Object> configCache = new HashMap<>();
 
     @PostConstruct
     public void init() {
-        cache.put("config.type", 12);
-        cache.put("config.wechat", "一灰灰blog");
-        bindBeansFromLocalCache("config", cache);
+        configCache.put("config.type", 12);
+        configCache.put("config.wechat", "一灰灰blog");
+        bindBeansFromLocalCache("config", configCache);
     }
 
     private void bindBeansFromLocalCache(String namespace, Map<String, Object> cache) {
@@ -55,16 +65,6 @@ public class SelfConfigFactory implements EnvironmentAware, ApplicationContextAw
         binder.bind(bindable);
     }
 
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.environment = (ConfigurableEnvironment) environment;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
     /**
      * 支持配置的动态刷新
      *
@@ -73,7 +73,7 @@ public class SelfConfigFactory implements EnvironmentAware, ApplicationContextAw
      */
     public void refreshConfig(String key, String val) {
         if (key != null) {
-            cache.put(key, val);
+            configCache.put(key, val);
         }
         applicationContext.getBeansWithAnnotation(ConfDot.class).values().forEach(bean -> {
             Bindable<?> target = Bindable.ofInstance(bean)

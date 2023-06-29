@@ -34,10 +34,16 @@ public class SelfConfigBinder {
         this.propertySource = propertySource;
     }
 
+    public <T> void bind(String prefix, Bindable<T> bindable) {
+        getBinder().bind(prefix, bindable, new IgnoreTopLevelConverterNotFoundBindHandler());
+    }
+
     public <T> void bind(Bindable<T> bindable) {
         ConfDot propertiesAno = bindable.getAnnotation(ConfDot.class);
-        BindHandler bindHandler = getBindHandler(propertiesAno);
-        getBinder().bind(propertiesAno.prefix(), bindable, bindHandler);
+        if (propertiesAno != null) {
+            BindHandler bindHandler = getBindHandler(propertiesAno);
+            getBinder().bind(propertiesAno.prefix(), bindable, bindHandler);
+        }
     }
 
     private BindHandler getBindHandler(ConfDot annotation) {

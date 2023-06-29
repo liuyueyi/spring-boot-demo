@@ -35,9 +35,7 @@ public class SelfConfigContextInitializer implements ApplicationContextInitializ
             return;
         }
 
-        MutablePropertySources propertySources = new MutablePropertySources(environment.getPropertySources());
         MapPropertySource propertySource = new MapPropertySource("selfSource", SelfConfigContext.getInstance().getCache());
-        propertySources.addFirst(propertySource);
         environment.getPropertySources().addFirst(propertySource);
     }
 }

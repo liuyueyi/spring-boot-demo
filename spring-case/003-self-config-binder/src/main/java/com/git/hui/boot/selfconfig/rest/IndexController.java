@@ -1,7 +1,7 @@
 package com.git.hui.boot.selfconfig.rest;
 
 import com.alibaba.fastjson.JSON;
-import com.git.hui.boot.selfconfig.auto.SelfConfigFactory;
+import com.git.hui.boot.selfconfig.auto.SelfConfigContainer;
 import com.git.hui.boot.selfconfig.property.SelfConfigContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class IndexController {
     @Autowired
     private MyConfig myConfig;
     @Autowired
-    private SelfConfigFactory selfConfigFactory;
+    private SelfConfigContainer selfConfigContainer;
 
 
     @Value("${config.type:-1}")
@@ -43,9 +43,9 @@ public class IndexController {
 
     @GetMapping(path = "update")
     public String updateCache(String key, String val) {
-        selfConfigFactory.refreshConfig(key, val);
+        selfConfigContainer.refreshConfig(key, val);
         SelfConfigContext.getInstance().updateConfig(key, val);
-        return "update!";
+        return hello();
     }
 
 }
