@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/story?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&generateSimpleParameterMetadata=true&failOverReadOnly=false&connectTimeout=30000&socketTimeout=1000
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password:
+      initial-size: 1
+      min-idle: 1
+      max-active: 1
+      max-wait: 6000
+      test-while-idle: true
+      validation-query: select 1
+      remove-abandoned: true
+      async-init: true
+      keep-alive: true
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 0
+        slf4j:
+          enabled: true
+          statement-prepare-after-log-enabled: false
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true # 驼峰与下划线互转支持
+    config-location: classpath:mybatis-config.xml
+    log-prefix: money
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志打印级别
+logging:
+  level:
+    root: info
+    com.git.hui.boot.db.mapper.*: debug
+    org.springframework.jdbc.core: debug
