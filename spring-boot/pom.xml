@@ -129,6 +129,7 @@
         <module>501-cache-caffeine-special</module>
         <module>224-web-session</module>
         <module>100-db-log</module>
+        <module>225-web-jwt</module>
 
 
     </modules>

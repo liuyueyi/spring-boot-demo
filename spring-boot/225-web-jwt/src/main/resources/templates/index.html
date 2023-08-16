@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SpringBoot thymeleaf"/>
+    <meta name="author" content="YiHui"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>JWT示例demo</title>
+</head>
+<body>
+
+<div>
+    <div>准备登录</div>
+    <br/>
+    <div>
+        用户名: <input type="text" id="uname">
+    </div>
+    <div>
+        密码: <input type="password" id="pwd">
+    </div>
+    <div>
+        <button onclick="login()">登录</button>
+    </div>
+    <div id="tip"></div>
+    </br>
+    <hr/>
+    <div> --- 分割线 ---</div>
+    </br>
+    <button onclick="query()">查询用户信息</button>
+    </br>
+    <div>
+        <pre id="res"></pre>
+    </div>
+</div>
+<script>
+    function login() {
+        const uname = document.getElementById("uname").value;
+        const pwd = document.getElementById("pwd").value;
+        console.log("开始登录", uname, pwd);
+        var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+        httpRequest.open('POST', '/login', true); //第二步：打开连接
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+        httpRequest.send(`uname=${uname}&pwd=${pwd}`);//发送请求 将情头体写在send中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
+                const res = httpRequest.responseText;//获取到服务端返回的数据
+                console.log(res);
+                document.getElementById("tip").innerText = "登录完成:" + res;
+                window.sessionStorage.setItem("jwt", res);
+            }
+        };
+    }
+
+    function query() {
+        var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+        httpRequest.open('GET', '/query', true);//第二步：打开连接
+        httpRequest.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.getItem("jwt"));
+        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var json = httpRequest.responseText;//获取到json字符串，还需解析
+                console.log(json);
+                document.getElementById("res").innerText = json;
+            }
+        };
+    }
+</script>
+</body>
+</html>

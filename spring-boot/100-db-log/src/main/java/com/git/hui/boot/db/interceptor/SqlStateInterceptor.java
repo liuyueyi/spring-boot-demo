@@ -5,7 +5,6 @@ import com.mysql.cj.MysqlConnection;
 import com.zaxxer.hikari.pool.HikariProxyConnection;
 import com.zaxxer.hikari.pool.HikariProxyPreparedStatement;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.el.util.ReflectionUtil;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.ParameterMapping;

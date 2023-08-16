@@ -34,3 +34,4 @@ logging:
     root: info
     com.git.hui.boot.db.mapper.*: debug
     org.springframework.jdbc.core: debug
+    com.alibaba.druid: debug
