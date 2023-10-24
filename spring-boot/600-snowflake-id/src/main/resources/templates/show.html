@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SpringBoot thymeleaf"/>
+    <meta name="author" content="YiHui"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>YiHui's SpringBoot Demo</title>
+</head>
+<body>
+
+<div>
+    <div class="title">hello world!</div>
+    <br/>
+    <div class="content" th:text="'HuTool = ' + ${hu}">hu id</div>
+    <br/>
+    <div class="sign" th:text="'自定义 = ' + ${se}">self id</div>
+    <br/>
+    <strong>直接输出，模拟精度丢失</strong>
+    <br/>
+    <hr/>
+    <div>
+        huTool:
+        <div th:text="${hu}">hu id</div>
+    </div>
+    <br/>
+    <div>
+        自定义:
+        <div th:text="${se}">self id</div>
+    </div>
+</div>
+<script th:inline="javascript">
+    let hu = [[${hu == null ? vo.hu : hu}]];
+    let se = [[${se == null ? vo.se : se}]];
+    console.log("hu = ", hu);
+    console.log("se = ", se);
+    var vo = [[${vo}]]
+    console.log("vo = ", vo);
+</script>
+</body>
+</html>
