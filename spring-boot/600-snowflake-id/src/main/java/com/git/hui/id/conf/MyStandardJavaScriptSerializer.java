@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.FieldPosition;
 import java.text.ParsePosition;
@@ -144,7 +146,11 @@ public final class MyStandardJavaScriptSerializer implements IStandardJavaScript
         }
 
         private static void writeNumber(Writer writer, Number number) throws IOException {
-            writer.write(number.toString());
+            if (number instanceof Long || number instanceof BigDecimal || number instanceof BigInteger) {
+                writeString(writer, number.toString());
+            } else {
+                writer.write(number.toString());
+            }
         }
 
         private static void writeBoolean(Writer writer, Boolean bool) throws IOException {

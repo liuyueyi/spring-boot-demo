@@ -31,16 +31,16 @@ public class MyWebConfig implements WebMvcConfigurer {
     private TemplateEngine templateEngine;
 
     @PostConstruct
-    private void init() {
+    public void init() {
         log.info("XmlWebConfig init...");
         // 通过templateEngine获取SpringStandardDialect
         SpringStandardDialect springStandardDialect = CollectionUtils.findValueOfType(templateEngine.getDialects(), SpringStandardDialect.class);
-        // 方式1. 通过自定义重写 StandardJavaScriptSerializer 方式，支持序列化的长整型转换
-//        springStandardDialect.setJavaScriptSerializer(new MyStandardJavaScriptSerializer(true));
-//        System.out.println("over");
+//         方式1. 通过自定义重写 StandardJavaScriptSerializer 方式，支持序列化的长整型转换
+        springStandardDialect.setJavaScriptSerializer(new MyStandardJavaScriptSerializer(true));
+        System.out.println("over");
 
         // 方式2. 使用反射的方式，在序列化框架上添加长整型转String
-        reflectRegistertModule(springStandardDialect);
+//        reflectRegistertModule(springStandardDialect);
     }
 
     private void reflectRegistertModule(SpringStandardDialect springStandardDialect) {
@@ -72,7 +72,7 @@ public class MyWebConfig implements WebMvcConfigurer {
             }
             // 设置序列化Module,修改long型序列化为字符串
             objectMapper.registerModule(JacksonUtil.bigIntToStrsimpleModule());
-            log.info("WebConf init 设置jackson序列化long为字符串成功!!!");
+            log.info("WebConf init 设置jackson序列化长整型为字符串成功!!!");
         }
     }
 
@@ -82,7 +82,7 @@ public class MyWebConfig implements WebMvcConfigurer {
      * @param converters
      */
     @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter convert = new MappingJackson2HttpMessageConverter();
         ObjectMapper mapper = new ObjectMapper();
         // 长整型序列化返回时，更新为string，避免前端js精度丢失
