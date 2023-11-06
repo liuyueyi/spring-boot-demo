@@ -24,12 +24,33 @@ import java.util.function.BiFunction;
 public class SpringValueRegistry {
     @Data
     public static class SpringValue {
+        /**
+         * 适合用于：配置是通过set类方法实现注入绑定的方式，只有一个传参，为对应的配置key
+         */
         private MethodParameter methodParameter;
+        /**
+         * 成员变量
+         */
         private Field field;
+        /**
+         * bean示例的弱引用
+         */
         private WeakReference<Object> beanRef;
+        /**
+         * Spring Bean Name
+         */
         private String beanName;
+        /**
+         * 配置对应的key： 如 config.user
+         */
         private String key;
+        /**
+         * 配置引用，如 ${config.user}
+         */
         private String placeholder;
+        /**
+         * 配置绑定的目标类型
+         */
         private Class<?> targetType;
 
         public SpringValue(String key, String placeholder, Object bean, String beanName, Field field) {
@@ -51,6 +72,12 @@ public class SpringValueRegistry {
             this.targetType = paramTps[0];
         }
 
+        /**
+         * 配置基于反射的动态变更
+         *
+         * @param newVal String: 配置对应的key   Class: 配置绑定的成员/方法参数类型， Object 新的配置值
+         * @throws Exception
+         */
         public void update(BiFunction<String, Class, Object> newVal) throws Exception {
             if (isField()) {
                 injectField(newVal);

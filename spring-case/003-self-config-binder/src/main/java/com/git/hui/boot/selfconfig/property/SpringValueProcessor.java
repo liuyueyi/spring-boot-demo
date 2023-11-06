@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 配置变更注册
+ * 配置变更注册, 找到 @Value 注解修饰的配置，注册到 SpringValueRegistry，实现统一的配置变更自动刷新管理
  *
  * @author YiHui
  * @date 2023/6/26
@@ -53,6 +53,13 @@ public class SpringValueProcessor implements BeanPostProcessor {
         return res;
     }
 
+    /**
+     * 成员变量上添加 @Value 方式绑定的配置
+     *
+     * @param bean
+     * @param beanName
+     * @param field
+     */
     protected void processField(Object bean, String beanName, Field field) {
         // register @Value on field
         Value value = field.getAnnotation(Value.class);
@@ -72,6 +79,13 @@ public class SpringValueProcessor implements BeanPostProcessor {
         }
     }
 
+    /**
+     * 通过 @Value 修饰方法的方式，通过一个传参进行实现的配置绑定
+     *
+     * @param bean
+     * @param beanName
+     * @param method
+     */
     protected void processMethod(Object bean, String beanName, Method method) {
         //register @Value on method
         Value value = method.getAnnotation(Value.class);
