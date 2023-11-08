@@ -2,6 +2,7 @@ package com.git.hui.boot.selfconfig.property;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 注册自定义的配置源
@@ -16,7 +17,7 @@ public class SelfConfigContext {
         return instance;
     }
 
-    private Map<String, Object> cache = new HashMap<>();
+    private Map<String, Object> cache = new ConcurrentHashMap<>();
 
     public Map<String, Object> getCache() {
         return cache;

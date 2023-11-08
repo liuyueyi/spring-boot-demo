@@ -3,6 +3,7 @@ package com.git.hui.boot.selfconfig.rest;
 import com.alibaba.fastjson.JSON;
 import com.git.hui.boot.selfconfig.auto.SelfConfigContainer;
 import com.git.hui.boot.selfconfig.property.SelfConfigContext;
+import com.git.hui.boot.selfconfig.util.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,8 @@ public class IndexController {
     private MyConfig myConfig;
     @Autowired
     private SelfConfigContainer selfConfigContainer;
+    @Autowired
+    private UserConfig userConfig;
 
 
     @Value("${config.type:-1}")
@@ -41,11 +44,21 @@ public class IndexController {
         return JSON.toJSONString(myConfig);
     }
 
-    @GetMapping(path = "update")
-    public String updateCache(String key, String val) {
-        selfConfigContainer.refreshConfig(key, val);
-        SelfConfigContext.getInstance().updateConfig(key, val);
-        return hello();
+    @GetMapping(path = "/user")
+    public UserConfig user() {
+        return userConfig;
     }
 
+    @GetMapping(path = "update")
+    public String updateCache(String key, String val) {
+//        selfConfigContainer.refreshConfig(key, val);
+        SelfConfigContext.getInstance().updateConfig(key, val);
+        return wechat + "_" + type + "_" + email;
+//        return JSON.toJSONString(userConfig);
+    }
+
+    @GetMapping(path = "get")
+    public String getProperty(String key) {
+        return SpringUtil.getEnvironment().getProperty(key);
+    }
 }

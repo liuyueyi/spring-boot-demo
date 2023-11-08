@@ -117,6 +117,12 @@ public class SpringValueRegistry {
 
     public static Map<String, Set<SpringValue>> registry = new ConcurrentHashMap<>();
 
+    /**
+     * 像registry中注册配置key绑定的对象W
+     *
+     * @param key
+     * @param val
+     */
     public static void register(String key, SpringValue val) {
         if (!registry.containsKey(key)) {
             synchronized (SpringValueRegistry.class) {
@@ -126,20 +132,23 @@ public class SpringValueRegistry {
             }
         }
 
-        Set<SpringValue> set = registry.get(key);
+        Set<SpringValue> set = registry.getOrDefault(key, new HashSet<>());
         set.add(val);
     }
 
+    /**
+     * key对应的配置发生了变更，找到绑定这个配置的属性，进行反射刷新
+     *
+     * @param key
+     */
     public static void updateValue(String key) {
-        Set<SpringValue> set = registry.get(key);
-        if (set != null) {
-            set.forEach(s -> {
-                try {
-                    s.update((s1, aClass) -> SpringUtil.getBinder().bindOrCreate(s1, aClass));
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        }
+        Set<SpringValue> set = registry.getOrDefault(key, new HashSet<>());
+        set.forEach(s -> {
+            try {
+                s.update((s1, aClass) -> SpringUtil.getBinder().bindOrCreate(s1, aClass));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
