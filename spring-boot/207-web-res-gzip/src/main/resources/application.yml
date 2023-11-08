@@ -1,0 +1,4 @@
+server:
+  compression:
+    enabled: true # 开启支持gzip压缩
+    min-response-size: 128 # 当响应长度超过128时，才执行压缩

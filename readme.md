@@ -235,6 +235,7 @@ Rainbow Brackets: 不同层级的括号颜色不一样
 | [205-web-thymeleaf](spring-boot/205-web-thymeleaf) | 【web】thymeleaf引擎整合                     | thymeleaf                                                                             |
 | [206-web-beetl](spring-boot/206-web-beetl) | 【web】beetl引擎整合                         | beetl                                                                                 |
 | [207-web-response](spring-boot/207-web-response) | 【web】http响应的各种姿势                       | 基本数据返回 <br/> 重定向 <br/> 错误页面配置 <br/> 定制http code                                       |
+| [207-web-res-gzip](spring-boot/207-web-res-gzip) | 【web】返回结果压缩                            | json/text/静态资源返回压缩                                                                    |
 | [208-web-mapping](spring-boot/208-web-mapping) | 【web】自定义url映射规则                        | `RequestCondition`                                                                    |
 | [209-web-error](spring-boot/209-web-error) | 【web】全局异常处理                            | `ControllerAdvice`, `ExceptionHandler`                                                |
 | [210-web-filter](spring-boot/210-web-filter) | 【web】filter使用姿势                        | HttpFilter过滤器                                                                         |
@@ -575,7 +576,7 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】404、500异常页面配置](http://spring.hhui.top/spring-blog/2019/09/30/190930-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8Bweb%E7%AF%87%E4%B9%8B404%E3%80%81500%E5%BC%82%E5%B8%B8%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/)
 -  [【WEB系列】xml传参与返回使用姿势](http://spring.hhui.top/spring-blog/2020/07/06/200706-SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8Bxml%E4%BC%A0%E5%8F%82%E4%B8%8E%E8%BF%94%E5%9B%9E%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/)
 -  [【WEB系列】整合resin容器](http://spring.hhui.top/spring-blog/2021/01/26/210126-SpringBoot%E7%B3%BB%E5%88%97%E6%95%B4%E5%90%88resin%E5%AE%B9%E5%99%A8/)
-
+-  [【WEB系列】压缩返回结果实例演示 | 一灰灰Blog](http://spring.hhui.top/spring-blog/2023/11/08/231108-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E5%8E%8B%E7%BC%A9%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
 
 **采坑、填坑**
 
