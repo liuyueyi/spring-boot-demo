@@ -34,6 +34,7 @@ public class Application {
         String rspMsg = Thread.currentThread().getName() + " 自动返回 | sc1：" + LocalDateTime.now();
 //        MyWebSocketHandler.groupSend();
 
+        // 后端主动给前端发送消息
         simpMessagingTemplate.convertAndSend("/topic/hello", rspMsg);
     }
 

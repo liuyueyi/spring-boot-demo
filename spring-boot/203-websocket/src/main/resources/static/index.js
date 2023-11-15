@@ -12,7 +12,8 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('/ws/hello');
+    // var socket = new SockJS($("#endpoint").val());
+    var socket = new SockJS("/ws/hello");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
@@ -34,12 +35,12 @@ function disconnect() {
 }
 
 function sendName() {
-    // 表示讲消息转发到那个目标，类似与http请求中的path路径
+    // 表示将消息转发到哪个目标，类似与http请求中的path路径，对应的是后端 @MessageMapping 修饰的方法
     stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
 function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    $("#greetings").prepend("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {
