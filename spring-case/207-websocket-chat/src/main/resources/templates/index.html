@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <title>Hello WebSocket</title>
+    <link th:href="@{/main.css}" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/sockjs.min.js"></script>
+    <script src="/js/stomp.min.js"></script>
+    <script src="/index.js"></script>
+</head>
+<body>
+
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket 连接:</label>
+                    <input type="text" id="endpoint" class="form-control" value="globalChannel">
+                    <input type="text" id="uname" class="form-control" value="一灰灰">
+                    <button id="connect" class="btn btn-warning" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-danger" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">send some message: </label>
+                    <input type="text" id="name" class="form-control" placeholder="message here...">
+                    <button id="send" class="btn btn-dark" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Greetings</th>
+                </tr>
+                </thead>
+                <tbody id="greetings">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -36,6 +36,7 @@
         <module>430-mail-alarm</module>
         <module>431-mail-report</module>
         <module>422-prometheus-druid</module>
+        <module>207-websocket-chat</module>
     </modules>
 
     <dependencies>
