@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,12 +21,15 @@ public class ChatController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private SimpMessagingTemplate simpMessagingTemplate;
-
     @GetMapping(path = "/")
     public String index() {
         return "index";
+    }
+
+    @GetMapping(path = "/chat")
+    public String chat(Model modelAttribute) {
+        modelAttribute.addAttribute("uname", userService.getUsernameByCookie());
+        return "chat";
     }
 
     private static final int COOKIE_AGE = 30 * 86400;

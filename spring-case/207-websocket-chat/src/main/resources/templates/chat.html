@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+>
+<head>
+    <title>WebSocket聊天</title>
+    <link href="/css/bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/sockjs.min.js"></script>
+    <script src="/js/stomp.min.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <!-- 头部导航 -->
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand monospace" href="javascript:void(0)">
+                <span>WebSocket</span>
+                <small>在线测试工具</small>
+            </a>
+        </div>
+    </nav>
+    <!-- 主体内容 -->
+    <div class="container mt-3 main-container">
+        <div class="row monospace">
+            <div class="col-sm-12">
+                <div class="card">
+                    <!-- 应用容器 -->
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- 服务设置 -->
+                            <div class="col-sm-11 col-md-4 offset-md-1">
+                                <h5 class="card-title" id="title_login" display="block">
+                                    <input type="text" id="uname">
+                                    <button class="btn btn-info" onclick="login()">登录</button>
+                                </h5>
+                                <h5 class="card-title" id="title_welcome" display="none">
+                                    成功建立连接:
+                                    <bold id="sname"></bold>
+                                </h5>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <!-- 连接地址 -->
+                                <div class="card-text">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">ws://localhost:8080</div>
+                                        </div>
+                                        <input type="text" class="form-control" id="channel"
+                                               placeholder="输入 WebSocket 服务器地址" value="/ws/chat/channel">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-block btn-success" id="connBtn"
+                                                    onclick="connect(this)">连接
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <hr class="divider divider-dashed">
+                            <br/>
+                        </div>
+                        <div class="row">
+                            <!-- 左侧面板 -->
+                            <div class="col-sm-12 col-md-5">
+                                <!-- 发包设置 -->
+                                <div class="col-sm-12 mt-3">
+                                    <h5 class="card-title">全局频道</h5>
+                                    <hr class="divider divider-dashed">
+                                    <!-- 自动发送 -->
+                                    <div class="card-text">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">订阅</div>
+                                            </div>
+                                            <!-- 默认订阅的Broker -->
+                                            <input value="globalChannel" type="text" class="form-control text-center"
+                                                   id="topic1">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-block btn-success"
+                                                        onclick="subscribe(this, 'topic1', 'console-box')"> 开始订阅
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 手动发送 -->
+                                    <div class="card-text mt-2">
+                                            <textarea class="form-control mt-1" id="exampleTextarea" rows="2"
+                                                      placeholder="需要发送到服务端的内容"></textarea>
+                                    </div>
+                                    <div class="card-text mt-2">
+                                        <button class="btn btn-block btn-success"
+                                                onclick="sendMsg('exampleTextarea', 'topic1')">发送到服务端
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- 调试消息 -->
+                                <div class="col-sm-12 mt-3">
+                                    <h5 class="card-title">调试消息</h5>
+                                    <hr class="divider divider-dashed">
+                                    <div class="card-text">
+                                        <div class="card-title console-box" id="console-box">
+                                            <div class="mb-2" v-for="item in consoleData">
+                                                <strong :class="'text-'+item.type">{{item.time}} => </strong> <span>{{item.content}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 右侧面板 -->
+                            <div class="col-sm-12 col-md-5">
+                                <!-- 发包设置 -->
+                                <div class="col-sm-12 mt-3">
+                                    <h5 class="card-title">私人频道</h5>
+                                    <hr class="divider divider-dashed">
+                                    <!-- 自动发送 -->
+                                    <div class="card-text">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">订阅</div>
+                                            </div>
+                                            <!-- 默认订阅的Broker -->
+                                            <input value="singleChannel" type="text" class="form-control text-center"
+                                                   id="topic2">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-block btn-success"
+                                                        onclick="subscribe(this, 'topic2', 'console-box2')"> 开始订阅
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 手动发送 -->
+                                    <div class="card-text mt-2">
+                                            <textarea class="form-control mt-1" id="exampleTextarea2" rows="2"
+                                                      placeholder="需要发送到服务端的内容"></textarea>
+                                    </div>
+                                    <div class="card-text mt-2">
+                                        <button class="btn btn-block btn-success"
+                                                onclick="sendMsg('exampleTextarea2', 'topic2')">
+                                            发送到服务端
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- 调试消息 -->
+                                <div class="col-sm-12 mt-3">
+                                    <h5 class="card-title">调试消息</h5>
+                                    <hr class="divider divider-dashed">
+                                    <div class="card-text">
+                                        <div class="card-title console-box" id="console-box2">
+                                            <div class="mb-2">
+                                                <strong :class="'text-'+item.type">{{item.time}} => </strong> <span>{{item.content}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:inline="javascript">
+    const loginUser = [[ ${uname}]];
+    updateLoginInfo(loginUser);
+
+    function login() {
+        // 首先进行登录
+        const uname = $("#uname").val();
+        $.ajax('http://localhost:8080/login?name=' + uname, {
+            method: 'GET',
+            success: function (result) {
+                console.log("登录成功", result);
+                updateLoginInfo(uname);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function updateLoginInfo(uname) {
+        console.log("当前登录用户: ", loginUser);
+        if (uname) {
+            // 已成功登录
+            $("#sname").text(uname)
+            $('#title_welcome').show()
+            $('#title_login').hide()
+        } else {
+            // 未登录
+            $('#title_welcome').hide()
+            $('#title_login').show()
+        }
+    }
+
+    let stompClient = null;
+    let subscribeMap = {};
+
+    /**
+     * 建立ws连接
+     */
+    function connect(ref) {
+        const channel = $('#channel').val();
+        console.log("建立websocket连接: ", channel);
+        if (ref.classList.contains('btn-success')) {
+            // 建立连接
+            ref.textContent = '中断';
+            ref.classList.remove('btn-success');
+            ref.classList.add('btn-danger');
+            $('#channel').prop("disabled", true);
+
+            const socket = new SockJS(channel);
+            stompClient = Stomp.over(socket);
+            stompClient.connect({"uname": $("#uname").val()}, function (frame) {
+                console.log('Connected: ' + frame);
+            });
+            socket.onclose = disconnect;
+        } else {
+            disconnect(ref);
+        }
+    }
+
+    /**
+     * 取消链接
+     */
+    function disconnect(ref) {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+            stompClient = null;
+        }
+
+        if (ref == null) {
+            ref = $("#connBtn");
+        }
+        // 取消连接
+        ref.textContent = '连接';
+        ref.classList.add('btn-success');
+        ref.classList.remove('btn-danger');
+        $('#channel').prop("disabled", false);
+    }
+
+    /**
+     * 订阅
+     * @param ref
+     * @param id
+     */
+    function subscribe(ref, id, showMsgId) {
+        const channel = $(`#${id}`).val();
+        console.log("准备订阅: ", channel);
+
+        SUBS_ID = "/topic/chat/" + channel;
+
+        if (ref.classList.contains('btn-success')) {
+            if (stompClient == null) {
+                alert("请先建立链接");
+                return;
+            }
+
+            // 执行订阅
+            ref.textContent = '订阅成功';
+            ref.classList.remove('btn-success');
+            ref.classList.add('btn-danger');
+            $(`#${id}`).prop("disabled", true);
+
+            // 订阅，并保存返回的对象，用户后续的取消订阅
+            subscribeMap[channel] = stompClient.subscribe('/topic/chat/' + channel, function (greeting) {
+                    // 表示这个长连接，订阅了 "/topic/hello" , 这样后端像这个路径转发消息时，我们就可以拿到对应的返回
+                    console.log("resp: ", greeting.body)
+                    showGreeting(showMsgId, greeting.body);
+                }, {id: SUBS_ID}
+            )
+        } else {
+            // 取消订阅
+            ref.textContent = '开始订阅';
+            ref.classList.add('btn-success');
+            ref.classList.remove('btn-danger');
+            $(`#${id}`).prop("disabled", false);
+            // 下面这种取消订阅方式，和if中的取消订阅方式等价
+            // stompClient.unsubscribe(SUBS_ID);
+            if (subscribeMap[channel]) {
+                subscribeMap[channel].unsubscribe();
+                subscribeMap[channel] = null;
+            }
+        }
+    }
+
+    function showGreeting(showMsgId, txt) {
+        $(`#${showMsgId}`).prepend(`<div class="mb-2"> <strong :class="'text-'+item.type"> ${txt} </strong> </div>`)
+    }
+
+    function sendMsg(msgId, topicId) {
+        // 表示将消息转发到哪个目标，类似与http请求中的path路径，对应的是后端 @MessageMapping 修饰的方法
+        const channel = $(`#${topicId}`).val();
+        const msg = $(`#${msgId}`).val();
+
+        console.log("input msg:", channel, msg);
+        stompClient.send('/app/hello/' + channel, {}, msg);
+    }
+
+</script>
+</html>

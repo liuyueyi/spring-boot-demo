@@ -1,0 +1,135 @@
+html {
+    font-size: 14px;
+}
+
+pre {
+    font-family: monospace
+}
+
+.monospace {
+    font-family: monospace
+}
+
+.inline-flex {
+    display: inline-flex !important
+}
+
+.card-body {
+    min-height: 90vh;
+    padding: 1.25rem 0 0;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease
+}
+
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1, .5, .8, 1)
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+    opacity: 0;
+    transform: translateX(10px)
+}
+
+.ws-alert {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    left: 0;
+    z-index: 65535;
+    margin: auto;
+    max-width: 550px;
+    text-align: center
+}
+
+.divider {
+    clear: both;
+    overflow: hidden;
+    margin: 1rem auto;
+    height: 0
+}
+
+.divider-dashed {
+    border-top: 1px dashed #ccc
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #f8f8f8
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 28px;
+    background-color: #ddd;
+    background-clip: padding-box
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #bbb
+}
+
+.message-box {
+    max-height: calc(100vh - 220px)
+}
+
+.console-box, .message-box {
+    display: block;
+    overflow: auto;
+    padding: 1rem
+}
+
+.console-box {
+    max-height: calc(100vh - 485px)
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #ffffff
+}
+
+.hljs, .hljs-subst, .hljs-tag, .hljs-title {
+    color: #000000
+}
+
+.hljs-strong, .hljs-emphasis {
+    color: #000000
+}
+
+.hljs-bullet, .hljs-quote, .hljs-number, .hljs-regexp, .hljs-literal {
+    color: #000080
+}
+
+.hljs-code .hljs-selector-class {
+    color: #800080
+}
+
+.hljs-emphasis, .hljs-stronge, .hljs-type {
+    font-style: italic
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-function, .hljs-section, .hljs-symbol, .hljs-name {
+    color: #808000
+}
+
+.hljs-attribute {
+    color: #800000
+}
+
+.hljs-variable, .hljs-params, .hljs-class .hljs-title {
+    color: #0055AF
+}
+
+.hljs-string, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-template-tag, .hljs-template-variable, .hljs-addition, .hljs-link {
+    color: #008000
+}
+
+.hljs-comment, .hljs-meta, .hljs-deletion {
+    color: #008000
+}

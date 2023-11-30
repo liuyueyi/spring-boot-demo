@@ -107,11 +107,17 @@ public class SocketInChannelInterceptor implements ChannelInterceptor {
         log.info("IN: afterSendCompletion: {}, sent: {}", message, sent);
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(message);//消息头访问器
         if (headerAccessor.getCommand() == null) return;// 避免非stomp消息类型，例如心跳检测
+
+        // 订阅成功，回复一个订阅成功的消息
+        String uname = (String) headerAccessor.getSessionAttributes().getOrDefault("uname", "-");
         if (headerAccessor.getCommand() == StompCommand.SUBSCRIBE) {
             // 订阅成功，回复一个订阅成功的消息
-            String uname = (String) headerAccessor.getSessionAttributes().getOrDefault("uname", "-");
             log.info("[IN-After] {} 订阅完成: {}", uname, message);
             WsAnswerHelper.publish((String) message.getHeaders().get("simpDestination"), "🔔【系统消息】：欢迎: 【" + uname + "】 加入聊天!");
+        } else if (headerAccessor.getCommand() == StompCommand.UNSUBSCRIBE) {
+            // fixme 需要注意，下面这个要求取消订阅时，将订阅的 destination 也传递过来，否则这个离开的消息不知道发送给谁
+            log.info("[IN-After] {} 取消订阅: {}", uname, message);
+            WsAnswerHelper.publish((String) message.getHeaders().get("simpSubscriptionId"), "🔔【系统消息】：【" + uname + "】 离开了聊天!");
         }
 
         ChannelInterceptor.super.afterSendCompletion(message, channel, sent, ex);
