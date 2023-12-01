@@ -21,7 +21,11 @@ public class WsAnswerHelper {
         WsAnswerHelper.instance = this;
     }
 
-    public static void publish(String target, Object msg) {
-        instance.simpMessagingTemplate.convertAndSend(target, msg);
+    public static void publish(String destination, Object msg) {
+        instance.simpMessagingTemplate.convertAndSend(destination, msg);
+    }
+
+    public static void publish(String user, String destination, Object msg) {
+        instance.simpMessagingTemplate.convertAndSendToUser(user, destination, msg);
     }
 }

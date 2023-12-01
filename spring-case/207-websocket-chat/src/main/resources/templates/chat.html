@@ -58,6 +58,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-12 col-md-6">
+                                <h5 class="card-title">系统通知消息</h5>
+                                <hr class="divider divider-dashed">
+                                <div class="card-text">
+                                    <div class="card-title console-box" id="systemMsg">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <hr class="divider divider-dashed">
@@ -218,7 +226,12 @@
             stompClient = Stomp.over(socket);
             stompClient.connect({"uname": $("#uname").val()}, function (frame) {
                 console.log('Connected: ' + frame);
-            });
+                stompClient.subscribe(`/user/topic/notify`, function (message) {
+                    // 订阅用户的私人broker，用于接收系统私发消息； 后台通过向 /user/xxx/topic/notify 发送消息，来传递给某个私人用户
+                    console.log("系统消息: ", message);
+                    showGreeting('systemMsg', message.body);
+                });
+            }, {id: loginUser});
             socket.onclose = disconnect;
         } else {
             disconnect(ref);

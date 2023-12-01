@@ -42,6 +42,9 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // Endpoint指定了客户端建立连接时的请求地址
         registry.addEndpoint("/ws/chat/{channel}")
+                // 用于设置连接的用户身份识别
+                .setHandshakeHandler(new AuthHandshakeHandler())
+                // 设置拦截器，从cookie中识别出登录用户
                 .addInterceptors(authHandshakeInterceptor())
                 .withSockJS();
     }
@@ -58,7 +61,7 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
      */
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
-        registration.interceptors(socketInChannelInterceptor());
+        registration.interceptors(new SocketInChannelInterceptor());
     }
 
     /**
@@ -68,16 +71,6 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
      */
     @Override
     public void configureClientOutboundChannel(ChannelRegistration registration) {
-        registration.interceptors(socketOutChannelInterceptor());
-    }
-
-    @Bean
-    public SocketInChannelInterceptor socketInChannelInterceptor() {
-        return new SocketInChannelInterceptor();
-    }
-
-    @Bean
-    public SocketOutChannelInterceptor socketOutChannelInterceptor() {
-        return new SocketOutChannelInterceptor();
+        registration.interceptors(new SocketOutChannelInterceptor());
     }
 }

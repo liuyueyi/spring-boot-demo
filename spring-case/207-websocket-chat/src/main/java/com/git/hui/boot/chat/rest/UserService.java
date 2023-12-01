@@ -1,5 +1,7 @@
 package com.git.hui.boot.chat.rest;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -7,6 +9,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +19,7 @@ import java.util.UUID;
  * @author YiHui
  * @date 2023/11/23
  */
+@Slf4j
 @Service
 public class UserService {
     private Map<String, String> userCache;
@@ -52,5 +56,18 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    @Scheduled(fixedRate = 3000)
+    public void autoSendMsgToUser() {
+        userCache.keySet().forEach(uname -> {
+            log.info("用户广播消息: {}", uname);
+            WsAnswerHelper.publish(uname, "/topic/notify", String.format("【%s】当前时间: %s", uname, LocalDateTime.now()));
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
