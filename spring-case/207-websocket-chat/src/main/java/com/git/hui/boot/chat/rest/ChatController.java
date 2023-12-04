@@ -22,7 +22,8 @@ public class ChatController {
     private UserService userService;
 
     @GetMapping(path = "/")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("uname", userService.getUsernameByCookie());
         return "index";
     }
 

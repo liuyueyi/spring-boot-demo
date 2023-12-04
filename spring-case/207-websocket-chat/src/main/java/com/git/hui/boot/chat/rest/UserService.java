@@ -22,6 +22,9 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class UserService {
+    /**
+     * 用户登录缓存：key 用户名 value sessionId
+     */
     private Map<String, String> userCache;
 
     @PostConstruct

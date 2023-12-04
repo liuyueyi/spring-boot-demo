@@ -41,9 +41,10 @@ public class AuthHandshakeInterceptor extends HttpSessionHandshakeInterceptor {
                     String uname = userService.getUsername(val);
                     log.info("获取登录用户: {}", uname);
                     attributes.put("uname", uname);
-                    break;
+                    return true;
                 }
             }
+            return false;
         }
         return super.beforeHandshake(request, response, wsHandler, attributes);
     }

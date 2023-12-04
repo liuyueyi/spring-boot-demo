@@ -23,8 +23,7 @@ function connect() {
 
     // 其次建立ws链接
     const channel = $("#endpoint").val();
-    // const socket = new SockJS('/ws/chat/' + channel);
-    const socket = new SockJS('/ws/chat/channel');
+    const socket = new SockJS('/ws/chat/' + channel);
     stompClient = Stomp.over(socket);
 
     stompClient.connect({"uname": $("#uname").val()}, function (frame) {

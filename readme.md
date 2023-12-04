@@ -578,6 +578,11 @@ web系列的东西就比较多了，基本上日常开发中，你需要的都�
 -  [【WEB系列】整合resin容器](http://spring.hhui.top/spring-blog/2021/01/26/210126-SpringBoot%E7%B3%BB%E5%88%97%E6%95%B4%E5%90%88resin%E5%AE%B9%E5%99%A8/)
 -  [【WEB系列】压缩返回结果实例演示 | 一灰灰Blog](http://spring.hhui.top/spring-blog/2023/11/08/231108-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8B%E5%8E%8B%E7%BC%A9%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/)
 
+**websocket**
+
+- [【WEB系列】 WebSocket身份鉴权 | 一灰灰Blog](http://spring.hhui.top/spring-blog/2023/12/04/231204-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BWebSocket%E8%BA%AB%E4%BB%BD%E9%89%B4%E6%9D%83/)
+- [【WEB系列】 WebScoket整合stomp协议实例 | 一灰灰Blog](http://spring.hhui.top/spring-blog/2023/11/15/231115-SpringBoot%E7%B3%BB%E5%88%97%E4%B9%8BWebScoket%E6%95%B4%E5%90%88stomp%E5%8D%8F%E8%AE%AE%E5%AE%9E%E4%BE%8B/)
+
 **采坑、填坑**
 
 -  [【WEB系列】SpringBoot文件上传异常之提示The temporary upload location xxx is not valid（填坑篇）](http://spring.hhui.top/spring-blog/2019/02/13/190213-SpringBoot%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%BC%82%E5%B8%B8%E4%B9%8B%E6%8F%90%E7%A4%BAThe-temporary-upload-location-xxx-is-not-valid/)
