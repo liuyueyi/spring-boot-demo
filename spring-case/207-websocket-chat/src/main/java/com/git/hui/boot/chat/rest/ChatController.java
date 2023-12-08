@@ -1,16 +1,20 @@
 package com.git.hui.boot.chat.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 /**
  * @author YiHui
@@ -27,10 +31,10 @@ public class ChatController {
         return "index";
     }
 
-    @GetMapping(path = "/chat")
-    public String chat(Model modelAttribute) {
+    @GetMapping(path = "/view/{chat}")
+    public String chat(@PathVariable String chat, Model modelAttribute) {
         modelAttribute.addAttribute("uname", userService.getUsernameByCookie());
-        return "chat";
+        return chat;
     }
 
     private static final int COOKIE_AGE = 30 * 86400;
@@ -65,5 +69,25 @@ public class ChatController {
     public void sayHello(String content, @DestinationVariable("channel") String channel, SimpMessageHeaderAccessor headerAccessor) {
         String text = String.format("【%s】发送内容：%s", headerAccessor.getSessionAttributes().get("uname"), content);
         WsAnswerHelper.publish("/topic/chat/" + channel, text);
+    }
+
+
+    /**
+     * 文件发送
+     */
+    @MessageMapping("/msg/{channel}")
+    public void sendFile(Message msg, @DestinationVariable("channel") String channel) {
+        Object payload = msg.getPayload();
+        if (payload instanceof byte[]) {
+            payload = new String((byte[]) payload);
+        }
+
+        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(msg);
+        String uname = headerAccessor.getUser().getName();
+        HashMap map = new HashMap();
+        map.put("uname", uname);
+        map.put("time", System.currentTimeMillis());
+        map.put("msg", payload);
+        WsAnswerHelper.publish("/topic/chat/" + channel, map);
     }
 }
