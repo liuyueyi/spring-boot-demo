@@ -73,7 +73,7 @@ public class ChatController {
 
 
     /**
-     * 文件发送
+     * 富文本传输的支持；将图文base64之后传递给后端
      */
     @MessageMapping("/msg/{channel}")
     public void sendFile(Message msg, @DestinationVariable("channel") String channel) {
