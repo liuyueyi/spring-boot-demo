@@ -307,6 +307,7 @@
         const channel = $(`#${topicId}`).val();
         const msg = $(`#${msgId}`).html();
 
+        // 富文本传输，主要是通过base64的方式进行交互
         console.log("input msg:", channel, msg);
         stompClient.send('/app/msg/' + channel, {}, msg);
         console.log("消息发送完成!");

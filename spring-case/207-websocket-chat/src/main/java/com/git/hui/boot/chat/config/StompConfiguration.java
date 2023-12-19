@@ -7,9 +7,13 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+
+import java.util.concurrent.Executors;
 
 /**
- * Created by @author yihui in 10:39 19/4/18.
+ * @author YiHui
+ * @date 2023/11/24
  */
 @Configuration
 @EnableWebSocketMessageBroker
@@ -41,7 +45,7 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // Endpoint指定了客户端建立连接时的请求地址
-        registry.addEndpoint("/ws/chat/{channel}")
+        registry.addEndpoint("/ws/chat/{channel}", "/video/{target}")
                 // 用于设置连接的用户身份识别
                 .setHandshakeHandler(new AuthHandshakeHandler())
                 // 设置拦截器，从cookie中识别出登录用户
@@ -61,6 +65,7 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
      */
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
+        registration.taskExecutor().corePoolSize(4).maxPoolSize(4).queueCapacity(100).keepAliveSeconds(60);
         registration.interceptors(new SocketInChannelInterceptor());
     }
 
@@ -72,5 +77,20 @@ public class StompConfiguration implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureClientOutboundChannel(ChannelRegistration registration) {
         registration.interceptors(new SocketOutChannelInterceptor());
+    }
+
+
+    /**
+     * 用途：扫描并注册所有携带@ServerEndpoint注解的实例。 @ServerEndpoint("/websocket")
+     * PS：如果使用外部容器 则无需提供ServerEndpointExporter。
+     */
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
+
+    @Bean
+    public MyEndpointConfigure myEndpointConfigure() {
+        return new MyEndpointConfigure();
     }
 }
