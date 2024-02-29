@@ -61,7 +61,7 @@ public class UserService {
         return null;
     }
 
-//    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 3000)
     public void autoSendMsgToUser() {
         userCache.keySet().forEach(uname -> {
             log.info("用户广播消息: {}", uname);
