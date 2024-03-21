@@ -12,7 +12,7 @@
     <artifactId>500-json</artifactId>
 
     <properties>
-        <jackson.version.databind>2.12.4</jackson.version.databind>
+        <jackson.version.databind>2.12.7.1</jackson.version.databind>
         <jackson.version.annotations>2.12.4</jackson.version.annotations>
         <jackson.version.core>2.12.4</jackson.version.core>
     </properties>
